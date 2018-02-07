@@ -1,5 +1,5 @@
-.name "train"
-.comment "TCHOUTCHOU"
+.name "test"
+.comment "IMDUMBLOL"
 
 init:
 	st r1, 0
@@ -10,7 +10,6 @@ loop:
 	sti r1, %:live2, %1
 	sti r1, %:end, %1
 	and %1, %2, r2
-	fork %:train
 start:
 	live %42
 	fork %:start
@@ -19,11 +18,11 @@ live1:
 	fork %:start
 live2:
 	live %42
+	fork %:start
 end:
 	live %42
+	sti r2, %:start, %-4
+	sti r2, %:start, %-8
+	st r2, 13
+	st r2, 12
 	zjmp %:end
-train:
-	ld %151220226, r2 ;09 03 70 02
-	st r2, 15
-	st r2, 15
-	st r4, 2
