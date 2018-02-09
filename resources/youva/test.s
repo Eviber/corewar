@@ -1,60 +1,60 @@
 .name "train"
 .comment "TCHOUTCHOU"
 
+;sti r2, r4, r6     ;0b 54 02 04 06
+;sti r3, r5, r6     ;0b 54 03 05 06
+;live %42           ;01 00 00 00 2a
+
 begin:
 	st r1, 0
 	ldi %:begin, %0, r1
 	fork %:train
 loop:
 	sti r1, %:init, %1
-	sti r1, %:launch, %1
+	sti r1, %:launch, %11
 	sti r1, %:start, %1
 	sti r1, %:live1, %1
 	sti r1, %:live2, %1
 	sti r1, %:end, %1
-	and %1, %2, r2
+	and %1, %0, r2
 start:
-	live %42
+	live %-1
 	fork %:start
 live1:
-	live %42
+	live %-1
 	fork %:start
 live2:
-	live %42
+	live %-1
 	fork %:start
 end:
-	live %42
+	live %-1
 	zjmp %:end
 train:
-	ld %33554431, r5    ;01 ff ff ff
-	ld %4278933506, r6  ;ff 0b 58 02
-	ld %50460425, r7    ;03 01 f7 09
-	ld %32964608, r8    ;01 f7 00 00
-
-	ld %225285, r9      ;00 03 70 05
-	ld %33489776, r10   ;01 ff 03 70
-	ld %100793859, r11  ;06 01 fe 03
-	ld %1879507453, r12 ;70 07 01 fd
-	ld %57673729, r13   ;03 70 08 01
-	ld %4228448747, r14 ;fc 09 01 eb
 init:
-	live %42
+	live %-1
 	fork %:split
-	ld %33751040, r2    ;02 03 00 00
-	ld %8, r3
-	and %1, %2, r4
+	ld %190054916, r2    ;0b 54 02 04 190054916 ar2
+	ldi %:start, %-2, r3
+	and r3, %65535, r3        ;00 00 FF FF
+	or r3, %84279296, r3      ;05 06 00 00
+;	ld %84279552, r3     ;05 06 01 00 84279552  ar3
+	ld %15, r4
+	ld %18, r5
+	and %1, %2, r16
 	zjmp %:launch
 split:
-	ld %190317059, r2   ;0b 58 02 03
-	ld %6, r3
-	and %1, %2, r4
+	ld %101405699, r2    ;06 0b 54 03 101405699 br2
+	ldi %:start, %2, r3
+	and r3, %4294967040, r3        ;FF FF FF 00
+	or r3, %11, r3      ;00 00 00 0b
+;	ld %10752, r3        ;00 00 2a 0b 10752     br3
+	ld %19, r4
+	ld %22, r5
+	and %1, %2, r16
 	zjmp %:launch
 launch:
-	live %42
-	st r9, 510
-	st r10, 509
-	st r11, 508
-	st r12, 507
-	st r13, 506
-	st r14, 505
-	zjmp %481
+	sti r2, r4, r6
+	sti r3, r5, r6
+	live %-1
+
+; 03 70 01 00 00 0a a4 ff fb 00 00 01 0c 00 58 0b 68 01 00 55 00 01 0b 68 01 00 aa 00 0b 0b 68 01 00 27 00 01 0b 68 01 00 28 00 01 0b 68 01 00 29 00 01 0b 68 01 00 2a 00 01 06 a4 00 00 00 01 00 00 00 02 02 01 ff ff ff ff 0c ff fb 01 ff ff ff ff 0c ff f3 01 ff ff ff ff 0c ff eb 01 ff ff ff ff 09 ff fb 01 ff ff ff ff 0c 00 2d 02 90 0b 54 02 04 02 02 90 05 06 01 00 03 02 90 00 00 00 0f 04 02 90 00 00 00 12 05 06 a4 00 00 00 01 00 00 00 02 10 09 00 2d 02 90 06 0b 54 03 02 02 90 00 00 2a 00 03 02 90 00 00 00 13 04 02 90 00 00 00 16 05 06 a4 00 00 00 01 00 00 00 02 10 09 00 03 0b 54 02 04 06 0b 54 03 05 06 01 ff ff ff ff
