@@ -1,19 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op.h                                               :+:      :+:    :+:   */
+/*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2013/11/06 14:21:46 by zaz              ###   ########.fr       */
+/*   Updated: 2018/02/11 17:44:57 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** Toutes les tailles sont en octets.
-** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
-*/
+typedef struct			s_vm
+{
+	unsigned char		memory[MEM_SIZE];
+	unsigned long		c_todie;
+	unsigned long		c_delta;
+	unsigned long		nbr_live;
+	unsigned long		max_check;
+	unsigned long		check;
+}						t_vm;
+
+typedef struct			s_process
+{
+	unsigned int		pc;
+	unsigned int		carry;
+	unsigned int		reg[REG_NUMBER];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #define IND_SIZE				2
 #define REG_SIZE				4
