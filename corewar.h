@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/02/11 17:44:57 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/02/11 17:53:05 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct			s_process
 	unsigned int		pc;
 	unsigned int		carry;
 	unsigned int		reg[REG_NUMBER];
+	unsigned int		cooldown;
 }
 
 
