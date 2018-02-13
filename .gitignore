@@ -1,8 +1,8 @@
 *.o
 *.a
 *.swp
-lem-in
-libft/*
+corewar
 a.out
 test.c
 tmp
+*.dSYM
