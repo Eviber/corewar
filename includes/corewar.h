@@ -12,51 +12,6 @@
 
 #include "libft.h"
 
-typedef struct			s_vm
-{
-	unsigned char		memory[MEM_SIZE];
-	unsigned long		c_todie;
-	unsigned long		c_delta;
-	unsigned long		nbr_live;
-	unsigned long		max_check;
-	unsigned long		check;
-}						t_vm;
-
-typedef struct			s_process
-{
-	unsigned int		pc;
-	unsigned int		carry;
-	unsigned int		reg[REG_NUMBER];
-	unsigned int		cooldown;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #define IND_SIZE				2
 #define REG_SIZE				4
 #define DIR_SIZE				REG_SIZE
@@ -109,10 +64,32 @@ typedef char	t_arg_type;
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
 
-typedef struct		header_s
+typedef struct		s_header
 {
   unsigned int		magic;
   char				prog_name[PROG_NAME_LENGTH + 1];
-  unsigned int		prog_size;
+  unsigned long		prog_size;
   char				comment[COMMENT_LENGTH + 1];
-}					header_t;
+	struct s_header *next;
+}					t_header;
+
+
+
+typedef struct			s_vm
+{
+	t_header	*champion;
+	unsigned char		memory[MEM_SIZE];
+	unsigned long		c_todie;
+	unsigned long		c_delta;
+	unsigned long		nbr_live;
+	unsigned long		max_check;
+	unsigned long		check;
+}						t_vm;
+
+typedef struct			s_process
+{
+	unsigned int		pc;
+	unsigned int		carry;
+	unsigned int		reg[REG_NUMBER];
+	unsigned int		cooldown;
+}									t_process;

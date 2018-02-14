@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op.h"
-#include "corewar.h"
+#include "vm.h"
 
 static void		init(t_vm *env)
 {
@@ -23,6 +22,7 @@ static void		init(t_vm *env)
 	env->nbr_live = NBR_LIVE;
 	env->c_delta = CYCLE_DELTA;
 	env->c_todie = CYCLE_TO_DIE;
+	env->champion = NULL;
 	ft_bzero((void*)env->memory, MEM_SIZE);
 }
 
@@ -31,5 +31,6 @@ int				main(int ac, char **av)
 	t_vm	env;
 
 	init(&env);
+	parsing(ac, av, &env);
 	return (0);
 }
