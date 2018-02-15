@@ -31,7 +31,7 @@ PATH_ASM_SRC =		asm/src/
 #PATH_ASM_PARS =	$(PATH_ASM_SRC)parser/
 
 CC =				gcc -Wall -Werror -Wextra
-INC =				-I includes/ -I libft/
+INC =				-I includes/ -I libft/include
 
 VM_SRC =			$(PATH_VM_SRC)corewar.c\
 					$(PATH_VM_SRC)utility.c

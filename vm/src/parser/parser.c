@@ -1,7 +1,7 @@
 #include "vm.h"
 
 
-void ft_fill_header(t_header *tmp, char *line, int i, int error)
+void ft_fill_header(t_header *tmp, char *line, unsigned long i, int error)
 {
   while(++i < COMMENT_LENGTH + sizeof(int) + sizeof(long) + PROG_NAME_LENGTH && !error)
   {
@@ -49,7 +49,7 @@ void ft_init_header(t_vm *env, char *line)
   ft_fill_header(tmp, line, -1, 0);
 }
 
-int read_line(char *line, t_vm *env, int taille, unsigned long position)
+int read_line(char *line, t_vm *env, unsigned long taille, unsigned long position)
 {
   unsigned long cmp;
 
@@ -66,10 +66,10 @@ void ft_print_head(t_vm *env)
   tmp = env->champion;
   while(tmp)
   {
-    printf("\nmagic = %x\n", tmp->magic);
-    printf("name =%s\n", tmp->prog_name);
-    printf("taille = %lu\n", tmp->prog_size);
-    printf("comment = %s\n\n", tmp->comment);
+    ft_printf("\nmagic = %x\n", tmp->magic);
+    ft_printf("name =%s\n", tmp->prog_name);
+    ft_printf("taille = %lu\n", tmp->prog_size);
+    ft_printf("comment = %s\n\n", tmp->comment);
     tmp = tmp->next;
   }
 
