@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/02/13 23:23:29 by vsporer          ###   ########.fr        #
+#    Updated: 2018/02/15 22:25:46 by vsporer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,12 @@ PATH_ASM_SRC =		asm/src/
 #PATH_ASM_PARS =	$(PATH_ASM_SRC)parser/
 
 CC =				gcc -Wall -Werror -Wextra
-INC =				-I includes/ -I libft/includes/
+INC =				-I includes/ -I libft/
 
-VM_SRC =			$(PATH_VM_SRC)corewar.c \
-							$(PATH_VM_SRC)utility.c
+VM_SRC =			$(PATH_VM_SRC)corewar.c\
+					$(PATH_VM_SRC)utility.c
 
 VM_PARS =			$(PATH_VM_PARS)parser.c
-
 #
 #PARS =				$(PATH_PARS)corewar.c
 #
@@ -45,21 +44,21 @@ VM_PARS =			$(PATH_VM_PARS)parser.c
 #
 #VISU =				$(PATH_VISU)corewar.c
 #
-OBJ =				$(patsubst $(PATH_VM_SRC)%.c, $(PATH_OBJ)%.o, $(VM_SRC)) \
-						$(patsubst $(PATH_VM_PARS)%.c, $(PATH_OBJ)%.o, $(VM_PARS))\
+VM_OBJ =			$(patsubst $(PATH_VM_SRC)%.c, $(PATH_VM_OBJ)%.o, $(VM_SRC)) \
+					$(patsubst $(PATH_VM_PARS)%.c, $(PATH_VM_OBJ)%.o, $(VM_PARS))
 #					$(patsubst $(PATH_VM_INST)%.c, $(PATH_OBJ)%.o, $(VM_INST))\
 #					$(patsubst $(PATH_VM_VISU)%.c, $(PATH_OBJ)%.o, $(VM_VISU))\
-#					$(patsubst $(PATH_ASM_SRC)%.c, $(PATH_OBJ)%.o, $(ASM_SRC))\
+#ASM_OBJ			$(patsubst $(PATH_ASM_SRC)%.c, $(PATH_OBJ)%.o, $(ASM_SRC))\
 #					$(patsubst $(PATH_ASM_PARS)%.c, $(PATH_OBJ)%.o, \
 #$(ASM_PARS))
 
 .PHONY: all clean fclean libft
 
-all: libft $(NAME)
+all: libft $(VM) $(ASM)
 
 $(VM): $(LIBFT) $(VM_OBJ)
 	@echo "Compiling $@ ...\033[K"
-	@$(CC) $(INC) -c $< -o $@
+	@$(CC) $(INC) $^ -o $@
 	@echo "$(C_OK)Done !$(C_RESET)"
 
 $(ASM): $(LIBFT) $(ASM_OBJ)
