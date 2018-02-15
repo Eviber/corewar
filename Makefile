@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/02/13 23:23:29 by vsporer          ###   ########.fr        #
+#    Updated: 2018/02/15 18:12:47 by vsporer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,15 +19,17 @@ C_OK =				\033[32m
 C_DEL =				\033[31m
 
 PATH_LIBFT =		libft/
-PATH_VM_OBJ =			vm_objs/
-PATH_ASM_OBJ =			asm_objs/
+PATH_VM_OBJ =		$(PATH_VM)vm_objs/
+PATH_ASM_OBJ =		$(PATH_ASM)asm_objs/
 
-PATH_VM_SRC =		vm/src/
+PATH_VM =			vm/
+PATH_VM_SRC =		$(PATH_VM)src/
 PATH_VM_PARS =		$(PATH_VM_SRC)parser/
 PATH_VM_INST =		$(PATH_VM_SRC)instruction/
 PATH_VM_VISU =		$(PATH_VM_SRC)visu/
 
-PATH_ASM_SRC =		asm/src/
+PATH_ASM =			assembler/
+PATH_ASM_SRC =		$(PATH_ASM)src/
 #PATH_ASM_PARS =	$(PATH_ASM_SRC)parser/
 
 CC =				gcc -Wall -Werror -Wextra
