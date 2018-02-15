@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/02/13 23:23:29 by vsporer          ###   ########.fr        #
+#    Updated: 2018/02/15 23:59:02 by vsporer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,40 +19,42 @@ C_OK =				\033[32m
 C_DEL =				\033[31m
 
 PATH_LIBFT =		libft/
-PATH_VM_OBJ =			vm_objs/
-PATH_ASM_OBJ =			asm_objs/
+PATH_VM_OBJ =		$(PATH_VM)vm_objs/
+PATH_ASM_OBJ =		$(PATH_ASM)asm_objs/
 
-PATH_VM_SRC =		vm/src/
+PATH_VM =			vm/
+PATH_VM_SRC =		$(PATH_VM)src/
 PATH_VM_PARS =		$(PATH_VM_SRC)parser/
 PATH_VM_INST =		$(PATH_VM_SRC)instruction/
 PATH_VM_VISU =		$(PATH_VM_SRC)visu/
 
-PATH_ASM_SRC =		asm/src/
+PATH_ASM =			assembler/
+PATH_ASM_SRC =		$(PATH_ASM)src/
 #PATH_ASM_PARS =	$(PATH_ASM_SRC)parser/
 
 CC =				gcc -Wall -Werror -Wextra
-INC =				-I includes/ -I libft/includes/
+INC =				-I includes/ -I libft/include/
 
-VM_SRC =			$(PATH_VM_SRC)corewar.c
-#					$(PATH_VM_SRC)*.c
+VM_SRC =			$(PATH_VM_SRC)corewar.c\
+					$(PATH_VM_SRC)utility.c
+
+VM_PARS =			$(PATH_VM_PARS)parser.c
 #
-#PARS =				$(PATH_PARS)corewar.c
+#VM_INST =			$(PATH_VM_INST)corewar.c
 #
-#INST =				$(PATH_INST)corewar.c
+#VM_VISU =			$(PATH_VM_VISU)corewar.c
 #
-#VISU =				$(PATH_VISU)corewar.c
-#
-OBJ =				$(patsubst $(PATH_VM_SRC)%.c, $(PATH_OBJ)%.o, $(VM_SRC))
-#					$(patsubst $(PATH_VM_PARS)%.c, $(PATH_OBJ)%.o, $(VM_PARS))\
-#					$(patsubst $(PATH_VM_INST)%.c, $(PATH_OBJ)%.o, $(VM_INST))\
-#					$(patsubst $(PATH_VM_VISU)%.c, $(PATH_OBJ)%.o, $(VM_VISU))\
-#					$(patsubst $(PATH_ASM_SRC)%.c, $(PATH_OBJ)%.o, $(ASM_SRC))\
-#					$(patsubst $(PATH_ASM_PARS)%.c, $(PATH_OBJ)%.o, \
+VM_OBJ =			$(patsubst $(PATH_VM_SRC)%.c, $(PATH_VM_OBJ)%.o, $(VM_SRC))\
+					$(patsubst $(PATH_VM_PARS)%.c, $(PATH_VM_OBJ)%.o, $(VM_PARS))
+#					$(patsubst $(PATH_VM_INST)%.c, $(PATH_VM_OBJ)%.o, $(VM_INST))\
+#					$(patsubst $(PATH_VM_VISU)%.c, $(PATH_VM_OBJ)%.o, $(VM_VISU))\
+#ASM_OBJ =			$(patsubst $(PATH_ASM_SRC)%.c, $(PATH_ASM_OBJ)%.o, $(ASM_SRC))\
+#					$(patsubst $(PATH_ASM_PARS)%.c, $(PATH_ASM_OBJ)%.o, \
 #$(ASM_PARS))
 
 .PHONY: all clean fclean libft
 
-all: libft $(NAME)
+all: libft $(VM) $(ASM)
 
 $(VM): $(LIBFT) $(VM_OBJ)
 	@echo "Compiling $@ ...\033[K"
@@ -74,11 +76,11 @@ $(PATH_VM_OBJ)%.o: $(PATH_VM_SRC)%.c
 	@mkdir -p $(@D)
 	@$(CC) $(INC) -c $< -o $@
 
-#$(PATH_VM_OBJ)%.o: $(PATH_VM_PARS)%.c
-#	@echo "Compiling @\033[K\033[1A\r"
-#	@mkdir -p $(@D)
-#	@$(CC) $(INC) -c $< -o $@
-#
+$(PATH_VM_OBJ)%.o: $(PATH_VM_PARS)%.c
+	@echo "Compiling @\033[K\033[1A\r"
+	@mkdir -p $(@D)
+	@$(CC) $(INC) -c $< -o $@
+
 #$(PATH_VM_OBJ)%.o: $(PATH_VM_INST)%.c
 #	@echo "Compiling @\033[K\033[1A\r"
 #	@mkdir -p $(@D)

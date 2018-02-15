@@ -6,13 +6,17 @@
 #    By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 02:18:15 by ygaude            #+#    #+#              #
-#    Updated: 2017/11/08 16:41:58 by ygaude           ###   ########.fr        #
+#    Updated: 2018/02/15 21:56:29 by ygaude           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I include
+
+INC_DIR = ./include
+SRC_DIR = ./src
+OBJ_DIR = ./obj
 
 SRC = ft_abs.c ft_atoi.c ft_bzero.c ft_imaxtoa.c ft_isalnum.c ft_isalpha.c     \
 	  ft_isascii.c ft_isdigit.c ft_isprint.c ft_isspace.c ft_itoa.c ft_lstadd.c\
@@ -30,28 +34,31 @@ SRC = ft_abs.c ft_atoi.c ft_bzero.c ft_imaxtoa.c ft_isalnum.c ft_isalpha.c     \
 	  ft_tolower.c ft_toupper.c ft_strnlen.c ft_uimaxtoa.c get_next_line.c     \
 	  ft_pr_apply.c ft_pr_convert.c ft_pr_loop.c ft_pr_parse.c ft_printf.c
 
-OBJ = ${SRC:c=o}
+OBJ = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC))
 
 all: $(NAME)
 
-%.o : %.c
-	@printf "Compiling...                                                      \
-	          \rCompiling... $(CC) $(CFLAGS) -c -o $@ $^\r"
-	@$(CC) $(CFLAGS)	-c -o $@ $^
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
+	@printf "Compiling... $(CC) $(CFLAGS) -c -o $@ $^%100c\r" ' '
+	@$(CC) $(CFLAGS) -c -o $@ $^
 
 $(NAME): $(OBJ)
-	@printf "Compiling....\033[32m✔\033[0m                                                     \
-	    \nLinking......\033[32m✔\033[0m\n"
+	@printf "Compiling....\033[32m✔\033[0m%100c\n" ' '
+	@printf "Linking......"
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
+	@printf "\033[32m✔\033[0m\n"
 	@echo "Done !"
 
 clean:
-	@rm -f $(OBJ)
-	@echo "Object files removed."
+	@printf "Object files...\r"
+	@rm -rf $(OBJ_DIR)
+	@printf "Object files removed.\n"
 
 fclean: clean
+	@printf "$(NAME)...\r"
 	@rm -f $(NAME)
-	@echo "$(NAME) removed."
+	@printf "$(NAME) removed.\n"
 
 re: fclean all
