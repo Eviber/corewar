@@ -22,8 +22,8 @@ static void		init(t_vm *env)
 	env->nbr_live = NBR_LIVE;
 	env->c_delta = CYCLE_DELTA;
 	env->c_todie = CYCLE_TO_DIE;
-	env->champion = NULL;
 	ft_bzero((void*)env->memory, MEM_SIZE);
+	env->champion = NULL;
 }
 
 int				main(int ac, char **av)

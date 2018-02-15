@@ -1,1 +1,1 @@
-./resources/asm zork.s && ./resources/asm champion_test_parsing.s
+ gcc vm/src/corewar.c vm/src/parser/parser.c  libft/libft.a -I includes/ -I libft/

@@ -1,4 +1,4 @@
-.name "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque pen"
+.name "z"
 .comment "1"
 
 l2:		sti r1, %:live, %1
