@@ -93,3 +93,9 @@ typedef struct			s_process
 	unsigned int		reg[REG_NUMBER];
 	unsigned int		cooldown;
 }									t_process;
+
+/*
+** Utility.c
+*/
+
+void ft_exit(char *str);
