@@ -24,6 +24,7 @@ static void		init(t_vm *env)
 	env->c_todie = CYCLE_TO_DIE;
 	ft_bzero((void*)env->memory, MEM_SIZE);
 	env->champion = NULL;
+	env->dump = -1;
 }
 
 int				main(int ac, char **av)
@@ -31,6 +32,6 @@ int				main(int ac, char **av)
 	t_vm	env;
 
 	init(&env);
-	parsing(ac, av, &env);
+	parsing(ac, av, &env, 0);
 	return (0);
 }

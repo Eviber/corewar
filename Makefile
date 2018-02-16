@@ -27,16 +27,17 @@ PATH_VM_PARS =		$(PATH_VM_SRC)parser/
 PATH_VM_INST =		$(PATH_VM_SRC)instruction/
 PATH_VM_VISU =		$(PATH_VM_SRC)visu/
 
-PATH_ASM_SRC =		asm/src/
+PATH_ASM_SRC =		assembleur/src/
 #PATH_ASM_PARS =	$(PATH_ASM_SRC)parser/
 
 CC =				gcc -Wall -Werror -Wextra
 INC =				-I includes/ -I libft/include
 
 VM_SRC =			$(PATH_VM_SRC)corewar.c\
-					$(PATH_VM_SRC)utility.c
+							$(PATH_VM_SRC)utility.c
 
-VM_PARS =			$(PATH_VM_PARS)parser.c
+VM_PARS =			$(PATH_VM_PARS)parser.c \
+							$(PATH_VM_PARS)header.c
 #
 #PARS =				$(PATH_PARS)corewar.c
 #
