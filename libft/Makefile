@@ -6,7 +6,7 @@
 #    By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 02:18:15 by ygaude            #+#    #+#              #
-#    Updated: 2018/02/15 21:56:29 by ygaude           ###   ########.fr        #
+#    Updated: 2018/02/16 04:13:07 by ygaude           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,11 +40,11 @@ all: $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
-	@printf "Compiling... $(CC) $(CFLAGS) -c -o $@ $^%100c\r" ' '
+	@printf "Compiling... $(CC) $(CFLAGS) -c -o %-39s\r" "$@ $^"
 	@$(CC) $(CFLAGS) -c -o $@ $^
 
 $(NAME): $(OBJ)
-	@printf "Compiling....\033[32m✔\033[0m%100c\n" ' '
+	@printf "%95c\rCompiling....\033[32m✔\033[0m\n" ' '
 	@printf "Linking......"
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
