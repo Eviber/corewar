@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/13 20:19:17 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/15 22:58:54 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,8 @@ int				main(int ac, char **av)
 	t_vm	env;
 
 	init(&env);
+	visu_init(env);
+	while (1)
+		visu(env);
 	return (0);
 }
