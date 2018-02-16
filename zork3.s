@@ -1,4 +1,4 @@
-.name "z"
+.name "f"
 .comment "1"
 
 l2:		sti r1, %:live, %1

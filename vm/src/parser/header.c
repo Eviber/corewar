@@ -70,51 +70,30 @@ void ft_choose_number_player(t_vm *env, int num_k, int conflict, int max)
 	while(conflict == 1 && !(conflict = 0))
 	{
 		tmp = env->champion;
-		while (tmp->next && (tmp2 = env->champion->next))
+		while (tmp->next && (tmp2 = env->champion))
 		{
-			ft_printf("name = %s :number = %d\n",tmp->prog_name, tmp->number);
-			ft_printf("number = %d | max = %d\n", number, max);
 			if (tmp->number == num_k && (conflict = 1))
 				tmp->number++;
 			number = tmp->number;
 			max = ((max < tmp->number) ? number : max);
 			while (tmp2->next)
 			{
-				if (tmp2 != tmp && (tmp->number == num_k || tmp->number == number) && (conflict = 1))
+				if (tmp != tmp2 && (tmp2->number == num_k || tmp2->number == number) && (conflict = 1))
 					tmp->number++;
 				max = ((max < tmp->number) ? number : max);
 				tmp2 = tmp2->next;
 			}
 			tmp = tmp->next;
-			sleep(1);
 		}
 	}
 	tmp->number = ((num_k) ? num_k : max + 1);
 }
 
-void	ft_init_header(t_vm *env, char *line, int start, char **av, long ccmp)
+void	ft_init_header(t_vm *env, char *line, int start, char **av)
 {
 	t_header *tmp;
 	int number;
 
-	 long cmp;
-	cmp = -1;
-	while(++cmp < ccmp)
-	{
-		if (cmp == 4)
-			ft_printf("/");
-		if (cmp == PROG_NAME_LENGTH + 4)
-			ft_printf("/");
-		if (cmp == PROG_NAME_LENGTH + 4 + 8)
-			ft_printf("/");
-		if (cmp == PROG_NAME_LENGTH + 4 + 8 + COMMENT_LENGTH)
-			ft_printf("#");
-		if (line[cmp] < 0)
-				ft_printf("0");
-		ft_printf("%x ", (unsigned char)line[cmp]);
-
-	}
-	exit(1);
 	number = 0;
 	if (env->champion && (tmp = env->champion))
 	{
