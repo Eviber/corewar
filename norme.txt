@@ -1,0 +1,549 @@
+Norme: ./asm/WIP
+Warning: Not a valid file
+Norme: ./assembleur/WIP
+Warning: Not a valid file
+Norme: ./champion_test_parsing.cor
+Warning: Not a valid file
+Norme: ./champion_test_parsing.s
+Warning: Not a valid file
+Norme: ./compil.sh
+Warning: Not a valid file
+Norme: ./libft/libft.a
+Warning: Not a valid file
+Norme: ./libft/Makefile
+Warning: Not a valid file
+Norme: ./Makefile
+Warning: Not a valid file
+Norme: ./norme.txt
+Warning: Not a valid file
+Norme: ./resources/asm
+Warning: Not a valid file
+Norme: ./resources/autotest.sh
+Warning: Not a valid file
+Norme: ./resources/champions/42.cor
+Warning: Not a valid file
+Norme: ./resources/champions/42.s
+Warning: Not a valid file
+Norme: ./resources/champions/Backward.s
+Warning: Not a valid file
+Norme: ./resources/champions/barriere.cor
+Warning: Not a valid file
+Norme: ./resources/champions/barriere.s
+Warning: Not a valid file
+Norme: ./resources/champions/Car.cor
+Warning: Not a valid file
+Norme: ./resources/champions/Car.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/_.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/_honeybadger.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/Asombra.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/big_feet.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/casimir.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/champ.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/corelol.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/darksasuke.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/doge.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/dubo.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/gedeon.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/jinx.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/justin_bee.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/Kappa.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/littlepuppy.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/live.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/loose.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/Machine-gun.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/mandragore.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/MarineKing.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/meowluigi.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/Misaka_Mikoto.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/Rainbow_dash.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/salamahenagalabadoun.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/sam_2.0.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/skynet.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/terminator.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/THUNDER.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/ultimate-surrender.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/Varimathras.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/Wall.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/all/youforkmytralala.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/bguy/sam_2.0.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/bguy/sam_2.0.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/bjacob/doge.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/bjacob/doge.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/brandazz/Rainbow_dash.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/brandazz/Rainbow_dash.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/cdivry/youforkmytralala.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/cdivry/youforkmytralala.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/clafleur/big_feet.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/clafleur/big_feet.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/dcohen/loose.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/dcohen/loose.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/ekocevar/mandragore.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/ekocevar/mandragore.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/esusseli/gedeon.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/esusseli/gedeon.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/evlasova/terminator.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/evlasova/terminator.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/fcorre/ultimate-surrender.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/fcorre/ultimate-surrender.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/gbir/_.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/gbir/_.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/gjestin/salamahenagalabadoun.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/gjestin/salamahenagalabadoun.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/gleger/Machine-gun.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/gleger/Machine-gun.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/gmange/corelol.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/gmange/corelol.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/gpetrov/MarineKing.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/gpetrov/MarineKing.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/gudepard/Kappa.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/gudepard/Kappa.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/hmichals/Wall.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/hmichals/Wall.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/hmoutaou/Misaka_Mikoto.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/hmoutaou/Misaka_Mikoto.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/kelickel/Varimathras.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/kelickel/Varimathras.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/kmonrose/justin_bee.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/kmonrose/justin_bee.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/ldesgoui/_honeybadger.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/ldesgoui/_honeybadger.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/lseguin/skynet.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/lseguin/skynet.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/lsirigna/live.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/lsirigna/live.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/mbacoux/meowluigi.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/mbacoux/meowluigi.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/mconraux/dubo.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/mconraux/dubo.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/rabid-on/jinx.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/rabid-on/jinx.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/results.txt
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/rmasse/THUNDER.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/rmasse/THUNDER.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/sbuono/Asombra.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/sbuono/Asombra.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/srabah-m/littlepuppy.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/srabah-m/littlepuppy.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/tdemay/champ.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/tdemay/champ.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/vrey/darksasuke.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/vrey/darksasuke.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/ybouvet/casimir.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2014/ybouvet/casimir.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/adenis/Explosive_Kitty.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/agregoir/Kittystrophic.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/agregoir/Kittystrophic.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/all/Douceur_power.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/all/Explosive_Kitty.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/all/gateau.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/all/Kittystrophic.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/all/mise_a_jour_windows95.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/all/overwatch.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/all/run_Kitty_RUN.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/all/ultima.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/gnebie/ultima.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/gnebie/ultima.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/iburel/gateau.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/jaustry/mise_a_jour_windows95.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/nolivier/run_Kitty_RUN.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/pzarmehr/overwatch.cor
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/pzarmehr/overwatch.s
+Warning: Not a valid file
+Norme: ./resources/champions/championships/2017/tbillard/Douceur_power.s
+Warning: Not a valid file
+Norme: ./resources/champions/Death.s
+Warning: Not a valid file
+Norme: ./resources/champions/ex.cor
+Warning: Not a valid file
+Norme: ./resources/champions/ex.s
+Warning: Not a valid file
+Norme: ./resources/champions/examples/bee_gees.cor
+Warning: Not a valid file
+Norme: ./resources/champions/examples/bee_gees.s
+Warning: Not a valid file
+Norme: ./resources/champions/examples/bigzork.cor
+Warning: Not a valid file
+Norme: ./resources/champions/examples/bigzork.s
+Warning: Not a valid file
+Norme: ./resources/champions/examples/fluttershy.cor
+Warning: Not a valid file
+Norme: ./resources/champions/examples/fluttershy.s
+Warning: Not a valid file
+Norme: ./resources/champions/examples/helltrain.cor
+Warning: Not a valid file
+Norme: ./resources/champions/examples/helltrain.s
+Warning: Not a valid file
+Norme: ./resources/champions/examples/turtle.cor
+Warning: Not a valid file
+Norme: ./resources/champions/examples/turtle.s
+Warning: Not a valid file
+Norme: ./resources/champions/examples/zork.cor
+Warning: Not a valid file
+Norme: ./resources/champions/examples/zork.s
+Warning: Not a valid file
+Norme: ./resources/champions/Gagnant.cor
+Warning: Not a valid file
+Norme: ./resources/champions/Gagnant.s
+Warning: Not a valid file
+Norme: ./resources/champions/jumper.cor
+Warning: Not a valid file
+Norme: ./resources/champions/jumper.s
+Warning: Not a valid file
+Norme: ./resources/champions/lde.s
+Warning: Not a valid file
+Norme: ./resources/champions/leeloo.s
+Warning: Not a valid file
+Norme: ./resources/champions/mat.s
+Warning: Not a valid file
+Norme: ./resources/champions/maxidef.cor
+Warning: Not a valid file
+Norme: ./resources/champions/maxidef.s
+Warning: Not a valid file
+Norme: ./resources/champions/mortel.cor
+Warning: Not a valid file
+Norme: ./resources/champions/mortel.s
+Warning: Not a valid file
+Norme: ./resources/champions/new.s
+Warning: Not a valid file
+Norme: ./resources/champions/Octobre_Rouge_V4.2.cor
+Warning: Not a valid file
+Norme: ./resources/champions/Octobre_Rouge_V4.2.s
+Warning: Not a valid file
+Norme: ./resources/champions/sebc.s
+Warning: Not a valid file
+Norme: ./resources/champions/slider2.cor
+Warning: Not a valid file
+Norme: ./resources/champions/slider2.s
+Warning: Not a valid file
+Norme: ./resources/champions/Survivor.s
+Warning: Not a valid file
+Norme: ./resources/champions/tdc2.s
+Warning: Not a valid file
+Norme: ./resources/champions/tdc3.s
+Warning: Not a valid file
+Norme: ./resources/champions/tdc4.s
+Warning: Not a valid file
+Norme: ./resources/champions/Torpille.s
+Warning: Not a valid file
+Norme: ./resources/champions/toto.cor
+Warning: Not a valid file
+Norme: ./resources/champions/toto.s
+Warning: Not a valid file
+Norme: ./resources/champions.zip
+Warning: Not a valid file
+Norme: ./resources/changelog.txt
+Warning: Not a valid file
+Norme: ./resources/corewar
+Warning: Not a valid file
+Norme: ./resources/youva/chunks/expolive.s
+Warning: Not a valid file
+Norme: ./resources/youva/chunks/litrain.cor
+Warning: Not a valid file
+Norme: ./resources/youva/chunks/litrain.s
+Warning: Not a valid file
+Norme: ./resources/youva/chunks/train.cor
+Warning: Not a valid file
+Norme: ./resources/youva/chunks/train.s
+Warning: Not a valid file
+Norme: ./resources/youva/orangg_min.cor
+Warning: Not a valid file
+Norme: ./resources/youva/orangg_min.s
+Warning: Not a valid file
+Norme: ./resources/youva/test.cor
+Warning: Not a valid file
+Norme: ./resources/youva/test.s
+Warning: Not a valid file
+Norme: ./resources/youva/train.cor
+Warning: Not a valid file
+Norme: ./vm/src/instruction/WIP
+Warning: Not a valid file
+Norme: ./vm/src/parser/WIP
+Warning: Not a valid file
+Norme: ./vm/src/visu/WIP
+Warning: Not a valid file
+Norme: ./zork.cor
+Warning: Not a valid file
+Norme: ./zork.s
+Warning: Not a valid file
+Norme: ./compil_champ.c
+Warning: /Users/ygaude/Projects/corewar/compil_champ.c may not compile or is invalid for some reasons.
+Norme: ./includes/vm.h
+Error: 42 header not at top of the file
+Norme: ./includes/op.h
+Error: not protected against double inclusion
+Error (line 22): multiple empty lines
+Error (line 23): wrong number of spaces in preprocessor indentation
+Error (line 24): wrong number of spaces in preprocessor indentation
+Error (line 25): wrong number of spaces in preprocessor indentation
+Error (line 27): multiple empty lines
+Error (line 51): comment not well formatted
+Error (line 62): comment not well formatted
+Error (line 66): wrong number of spaces in preprocessor indentation
+Error (line 67): wrong number of spaces in preprocessor indentation
+Error (line 68): wrong number of spaces in preprocessor indentation
+Error (line 70, col 8): header_s is not well prefixed.
+Error (line 76, col 6): header_t have not a good prefix.
+Norme: ./libft/src/ft_abs.c
+Norme: ./includes/corewar.h
+Error (line 22): multiple empty lines
+Error (line 27): multiple empty lines
+Error (line 51): comment not well formatted
+Error (line 62): comment not well formatted
+Error (line 105, col 4): bad spacing
+Norme: ./libft/src/ft_bzero.c
+Norme: ./libft/include/ft_printf.h
+Norme: ./libft/src/ft_atoi.c
+Norme: ./libft/src/ft_isalnum.c
+Norme: ./libft/src/ft_imaxtoa.c
+Norme: ./libft/src/ft_isalpha.c
+Norme: ./libft/src/ft_isascii.c
+Norme: ./libft/src/ft_isprint.c
+Norme: ./libft/src/ft_isspace.c
+Norme: ./libft/src/ft_lstadd.c
+Norme: ./libft/src/ft_lstaddend.c
+Norme: ./libft/src/ft_lstdel.c
+Norme: ./libft/src/ft_lstdelone.c
+Norme: ./libft/src/ft_itoa.c
+Norme: ./libft/src/ft_lstiter.c
+Norme: ./libft/src/ft_lstmap.c
+Norme: ./libft/src/ft_lstnew.c
+Norme: ./libft/src/ft_magnitude.c
+Norme: ./libft/src/ft_memalloc.c
+Norme: ./libft/src/ft_memccpy.c
+Norme: ./libft/include/libft.h
+Norme: ./libft/src/ft_isdigit.c
+Norme: ./libft/src/ft_memchr.c
+Norme: ./libft/src/ft_lstend.c
+Norme: ./libft/src/ft_memdel.c
+Norme: ./libft/src/ft_memdup.c
+Norme: ./libft/src/ft_memcpy.c
+Norme: ./libft/src/ft_memcmp.c
+Norme: ./libft/src/ft_memjoin.c
+Norme: ./libft/src/ft_memset.c
+Norme: ./libft/src/ft_memmove.c
+Norme: ./libft/src/ft_pr_loop.c
+Norme: ./libft/src/ft_printf.c
+Norme: ./libft/src/ft_putchar.c
+Norme: ./libft/src/ft_putchar_fd.c
+Norme: ./libft/src/ft_pr_parse.c
+Norme: ./libft/src/ft_putendl.c
+Norme: ./libft/src/ft_pr_apply.c
+Norme: ./libft/src/ft_putendl_fd.c
+Norme: ./libft/src/ft_putstr.c
+Norme: ./libft/src/ft_putnbr_fd.c
+Norme: ./libft/src/ft_putstr_fd.c
+Norme: ./libft/src/ft_pr_convert.c
+Norme: ./libft/src/ft_strcat.c
+Norme: ./libft/src/ft_putnbr.c
+Norme: ./libft/src/ft_strchr.c
+Norme: ./libft/src/ft_strappend.c
+Norme: ./libft/src/ft_strclr.c
+Norme: ./libft/src/ft_strcpy.c
+Norme: ./libft/src/ft_strcmp.c
+Norme: ./libft/src/ft_strdel.c
+Norme: ./libft/src/ft_strequ.c
+Norme: ./libft/src/ft_strdup.c
+Norme: ./libft/src/ft_striter.c
+Norme: ./libft/src/ft_striteri.c
+Norme: ./libft/src/ft_strinsert.c
+Norme: ./libft/src/ft_strlen.c
+Norme: ./libft/src/ft_strjoin.c
+Norme: ./libft/src/ft_strlcat.c
+Norme: ./libft/src/ft_strmap.c
+Norme: ./libft/src/ft_strmapi.c
+Norme: ./libft/src/ft_strncat.c
+Norme: ./libft/src/ft_strncpy.c
+Norme: ./libft/src/ft_strncmp.c
+Norme: ./libft/src/ft_strmerge.c
+Norme: ./libft/src/ft_strnew.c
+Norme: ./libft/src/ft_strnequ.c
+Norme: ./libft/src/ft_strnlen.c
+Norme: ./libft/src/ft_strrchr.c
+Norme: ./libft/src/ft_strnstr.c
+Norme: ./libft/src/ft_strsub.c
+Norme: ./libft/src/ft_strstr.c
+Norme: ./libft/src/ft_strtoupper.c
+Norme: ./libft/src/ft_tolower.c
+Norme: ./libft/src/ft_toupper.c
+Norme: ./libft/src/ft_strtrim.c
+Norme: ./libft/src/ft_uimaxtoa.c
+Norme: ./resources/op.h
+Error: not protected against double inclusion
+Error (line 22): multiple empty lines
+Error (line 23): wrong number of spaces in preprocessor indentation
+Error (line 24): wrong number of spaces in preprocessor indentation
+Error (line 25): wrong number of spaces in preprocessor indentation
+Error (line 27): multiple empty lines
+Error (line 51): comment not well formatted
+Error (line 62): comment not well formatted
+Error (line 66): wrong number of spaces in preprocessor indentation
+Error (line 67): wrong number of spaces in preprocessor indentation
+Error (line 68): wrong number of spaces in preprocessor indentation
+Error (line 70, col 8): header_s is not well prefixed.
+Error (line 72): must begin only by tabulations
+Error (line 72): bad indentation
+Error (line 73): must begin only by tabulations
+Error (line 73): bad indentation
+Error (line 74): must begin only by tabulations
+Error (line 74): bad indentation
+Error (line 75): must begin only by tabulations
+Error (line 75): bad indentation
+Error (line 76, col 6): header_t have not a good prefix.
+Norme: ./libft/src/ft_strsplit.c
+Norme: ./resources/op.c
+Error (line 15, col 4): bad spacing
+Error (line 15, col 8): global named op_tab is not well prefixed
+Norme: ./vm/src/corewar.c
+Norme: ./vm/src/utility.c
+Error: 42 header not at top of the file
+Error (line 3): Space before function name
+Error (line 5): bad indentation
+Error (line 5): must begin only by tabulations
+Error (line 6): bad indentation
+Error (line 6): must begin only by tabulations
+Norme: ./libft/src/get_next_line.c
+Norme: ./vm/src/parser/parser.c
+Error: 42 header not at top of the file
+Error (line 3): line has 95 characters
+Error (line 8, col 1): missing space after while
+Error (line 10, col 1): missing space after return
+Error (line 13): declarations in check_arg are bad aligned
+Error (line 38, col 1): missing space after return
+Error (line 50, col 44): missing space around +
+Error (line 55, col 2): missing space after while
+Error (line 57, col 3): missing space after while
+Error (line 61): line has 87 characters
+Norme: ./vm/src/parser/header.c
+Error: 42 header not at top of the file
+Error (line 3): function ft_print_head has 28 lines
+Error (line 3): bad spacing after ft_print_head
+Error (line 10, col 1): missing space after while
+Error (line 19, col 9): missing space around =
+Error (line 20, col 1): missing space after while
+Error (line 27): Empty line
+Error (line 35): multiple empty lines
+Error (line 36): bad spacing before ft_fill_header
+Error (line 38): line has 90 characters
+Error (line 38, col 1): missing space after while
+Error (line 48, col 47): missing space around +
+Error (line 53): line has 89 characters
+Error (line 54): line has 87 characters
+Error (line 71, col 2): missing space after while
+Norme: ./vm/src/visu/visu.c
+Error: 6 functions in the file
+Error (line 87): line has 140 characters
