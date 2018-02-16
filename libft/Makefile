@@ -6,7 +6,7 @@
 #    By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 02:18:15 by ygaude            #+#    #+#              #
-#    Updated: 2018/02/15 21:56:29 by ygaude           ###   ########.fr        #
+#    Updated: 2018/02/16 06:19:24 by ygaude           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,3 +62,5 @@ fclean: clean
 	@printf "$(NAME) removed.\n"
 
 re: fclean all
+
+.PHONY: all clean fclean re
