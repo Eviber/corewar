@@ -19,11 +19,9 @@
 # define REG_SIZE				4
 # define DIR_SIZE				REG_SIZE
 
-
 # define REG_CODE				1
 # define DIR_CODE				2
 # define IND_CODE				3
-
 
 # define MAX_ARGS_NUMBER			4
 # define MAX_PLAYERS				4
@@ -49,8 +47,8 @@
 # define MAX_CHECKS				10
 
 /*
- **
- */
+**
+*/
 
 typedef char	t_arg_type;
 
@@ -60,7 +58,7 @@ typedef char	t_arg_type;
 # define T_LAB					8
 
 /*
- **
+**
  */
 
 # define PROG_NAME_LENGTH		(128)
@@ -102,6 +100,6 @@ typedef struct			s_process
 ** Utility.c
 */
 
-void 					ft_exit(char *str);
+void					ft_exit(char *str);
 
 #endif
