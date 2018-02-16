@@ -10,6 +10,7 @@ void	ft_print_head(t_vm *env)
 	while (tmp)
 	{
 		ft_printf("\nmagic = %x\n", tmp->magic);
+		ft_printf("number = %d\n", tmp->number);
 		ft_printf("name =%s\n", tmp->prog_name);
 		ft_printf("taille = %lu\n", tmp->prog_size);
 		ft_printf("comment = %s\n\n", tmp->comment);
@@ -57,10 +58,64 @@ void	ft_fill_header(t_header *tmp, char *line, unsigned long i, int error)
 		ft_exit("Le champion est trop long\n");
 }
 
-void	ft_init_header(t_vm *env, char *line)
+//rechercher une idée pour ne jamais se retrouver
+
+void ft_choose_number_player(t_vm *env, int num_k, int conflict, int max)
 {
 	t_header *tmp;
+	t_header *tmp2;
+	int number;
 
+	number = 0;
+	while(conflict == 1 && !(conflict = 0))
+	{
+		tmp = env->champion;
+		while (tmp->next && (tmp2 = env->champion->next))
+		{
+			ft_printf("name = %s :number = %d\n",tmp->prog_name, tmp->number);
+			ft_printf("number = %d | max = %d\n", number, max);
+			if (tmp->number == num_k && (conflict = 1))
+				tmp->number++;
+			number = tmp->number;
+			max = ((max < tmp->number) ? number : max);
+			while (tmp2->next)
+			{
+				if (tmp2 != tmp && (tmp->number == num_k || tmp->number == number) && (conflict = 1))
+					tmp->number++;
+				max = ((max < tmp->number) ? number : max);
+				tmp2 = tmp2->next;
+			}
+			tmp = tmp->next;
+			sleep(1);
+		}
+	}
+	tmp->number = ((num_k) ? num_k : max + 1);
+}
+
+void	ft_init_header(t_vm *env, char *line, int start, char **av, long ccmp)
+{
+	t_header *tmp;
+	int number;
+
+	 long cmp;
+	cmp = -1;
+	while(++cmp < ccmp)
+	{
+		if (cmp == 4)
+			ft_printf("/");
+		if (cmp == PROG_NAME_LENGTH + 4)
+			ft_printf("/");
+		if (cmp == PROG_NAME_LENGTH + 4 + 8)
+			ft_printf("/");
+		if (cmp == PROG_NAME_LENGTH + 4 + 8 + COMMENT_LENGTH)
+			ft_printf("#");
+		if (line[cmp] < 0)
+				ft_printf("0");
+		ft_printf("%x ", (unsigned char)line[cmp]);
+
+	}
+	exit(1);
+	number = 0;
 	if (env->champion && (tmp = env->champion))
 	{
 		while (tmp->next)
@@ -73,5 +128,8 @@ void	ft_init_header(t_vm *env, char *line)
 		env->champion = ft_memalloc(sizeof(t_header));
 		tmp = env->champion;
 	}
+	if (start > 2 && !(ft_strcmp(av[start - 2], "-n")))
+			number = ft_atoi(av[start - 1]);
+	ft_choose_number_player(env, number, 1, 0);
 	ft_fill_header(tmp, line, -1, 0);
 }

@@ -57,12 +57,13 @@ void parsing(int ac, char **av, t_vm *env, int cmp)
       while (av[++start][0] == '-')
         start += 1;
       fd = open(av[start], O_RDONLY);
-      if (read(fd, line, taille + 4) < taille) ft_exit((fd <= 0)
+      if ((cmp = read(fd, line, 100000)) < taille) ft_exit((fd <= 0)
       ? "Fichier inacessible\n" : "Fichier trop petit\n");
-      ft_init_header(env, line);
+      ft_init_header(env, line, start, av, cmp);
       cmp = read(fd, line, CHAMP_MAX_SIZE);
       rd(line, env, cmp, (nb_champ - 1) * (MEM_SIZE / (ac - 1)));
       close(fd);
     }
   ft_memdel((void**)&line);
+  ft_print_head(env);
 }
