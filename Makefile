@@ -6,12 +6,16 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/02/16 22:31:53 by vsporer          ###   ########.fr        #
+#    Updated: 2018/02/17 23:55:02 by vsporer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 VM = 				corewar
 ASM = 				asm
+
+C_OK =		\033[32m
+C_DEL =		\033[31m
+C_RESET =	\033[0m
 
 PATH_LIBFT =		libft/
 LIBFT =				libft/libft.a
@@ -33,13 +37,22 @@ $(PATH_VM_VISU):$(PATH_ASM_SRC)
 CC =				gcc -Wall -Werror -Wextra
 INC =				-I include/ -I libft/include/
 
-VM_PARS =			parser.c
+VM_PARS =			parser.c\
+					header.c
 
 VM_INST =			
 
 VM_VISU =			
 
-VM_SRC =			corewar.c $(VM_PARS) $(VM_INST) $(VM_VISU)
+VM_SRC =			$(VM_PARS)\
+					$(VM_INST)\
+					$(VM_VISU)\
+					corewar.c\
+					utility.c\
+					process.c\
+					execute.c\
+					check.c
+
 ASM_SRC =			asm.c
 
 VM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(VM_SRC))
@@ -50,12 +63,12 @@ all: libft $(ASM) $(VM)
 $(VM): $(LIBFT) $(VM_OBJ)
 	@echo "Compiling $@ ...\033[K"
 	@$(CC) $(INC) $^ -o $@
-	@echo "$(C_OK)Done !"
+	@echo "$(C_OK)Done !$(C_RESET)"
 
 $(ASM): $(LIBFT) $(ASM_OBJ)
 	@echo "Compiling $@ ...\033[K"
 	@$(CC) $(INC) $^ -o $@
-	@echo "$(C_OK)Done !"
+	@echo "$(C_OK)Done !$(C_RESET)"
 
 $(LIBFT):
 	make -C $(PATH_LIBFT)
@@ -68,13 +81,13 @@ $(PATH_OBJ)%.o: %.c
 clean:
 	@rm -rf $(PATH_OBJ)
 	@make -C $(PATH_LIBFT) clean
-	@echo "$(C_DEL)Object files removed."
+	@echo "$(C_DEL)Object files removed.$(C_RESET)"
 
 fclean: clean
 	@rm -f $(VM)
 	@rm -f $(ASM)
-	@make -C $(PATH_LIBFT) fclean
-	@echo "$(C_DEL)$(ASM), $(VM) and $(LIBFT) removed."
+	@rm -f $(LIBFT)
+	@echo "$(C_DEL)$(ASM), $(VM) and $(LIBFT) removed.$(C_RESET)"
 
 test: all
 	@echo "\\/\\/\\/\\/\\/\\/\\/BEGIN TEST\\/\\/\\/\\/\\/\\/\\/"

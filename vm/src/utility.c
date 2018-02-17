@@ -1,7 +1,7 @@
 #include "vm.h"
 
-void ft_exit(char *str)
+void	ft_exit(char *str)
 {
-  write(2, str, ft_strlen(str));
-  exit(1);
+	write(2, str, ft_strlen(str));
+	exit(1);
 }
