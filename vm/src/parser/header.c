@@ -7,6 +7,7 @@ void	ft_print_head(t_vm *env)
 	int			nb_line;
 
 	tmp = env->champion;
+	ft_printf("dump = %ld\n", env->dump);
 	while (tmp)
 	{
 		ft_printf("\nmagic = %x\n", tmp->magic);

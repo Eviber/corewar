@@ -24,9 +24,10 @@ unsigned long check_arg(int ac, char **av, t_vm *env)
     if (av[i][0] == '-' &&
     (!ft_strcmp(av[i] + 1, "dump") || !ft_strcmp(av[i] + 1, "n")))
     {
-      i++;
       if (!ft_strcmp(av[i] + 1, "dump"))
-        env->dump = ft_atoi(av[i]);
+        env->dump = ft_atoi(av[++i]);
+      else
+        i++;
     }
     else
       nb_champ++;
@@ -49,9 +50,10 @@ void parsing(int ac, char **av, t_vm *env, int cmp)
   start = 0;
   taille = PROG_NAME_LENGTH + COMMENT_LENGTH + sizeof(int) + sizeof(long);
   line = ft_memalloc(taille);
+  nb_champ = check_arg(ac, av, env) + 1;
   if (ac < 2)
     ft_exit("Usage: ./vm [champion.cor]");
-  else if ((nb_champ = check_arg(ac, av, env) + 1))
+  else if ((ac = nb_champ))
     while (--nb_champ > 0)
     {
       while (av[++start][0] == '-')
