@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" 
-#include "asm.h" 
+#include "libft.h"
+#include "asm.h"
 
 static t_elem		init_tree(void)
 {
@@ -22,6 +22,7 @@ static t_elem		init_tree(void)
 	ret.pos = -1;
 	ret.children = NULL;
 	ret.next = NULL;
+	return (ret);
 }
 
 static void		free_elem(t_elem *elem)

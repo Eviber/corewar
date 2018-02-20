@@ -1,6 +1,10 @@
 #ifndef ASM_H
 # define ASM_H
 
+
+# include "libft.h"
+# include <fcntl.h>
+# include <unistd.h>
 /*
 ** in addition to T_TEG / T_IND / T_DIR in op.h
 */

@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 00:09:48 by ygaude            #+#    #+#             */
-/*   Updated: 2017/10/28 23:57:25 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/02/20 18:31:37 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+void				free_tab(char ***s);
 unsigned int		ft_abs(int n);
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t size);
@@ -96,6 +97,7 @@ char				*ft_strstr(const char *big, const char *small);
 char				*ft_strsub(const char *s, unsigned int start, size_t len);
 char				*ft_strtoupper(char *str);
 char				*ft_strtrim(const char *s);
+char				*ft_strtrimall(char const *s);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 char				*ft_uimaxtoa(uintmax_t n, unsigned int base);

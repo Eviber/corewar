@@ -32,12 +32,12 @@ VPATH = $(PATH_VM_SRC):$(PATH_VM_PARS):$(PATH_VM_INST):$(PATH_VM_VISU):$(PATH_AS
 CC =				gcc -Wall -Werror -Wextra
 INC =				-I include/ -I libft/include/
 
-PARS =				
-INST =				
-VISU =				
+PARS =
+INST =
+VISU =
 
 VM_SRC =			corewar.c $(PARS) $(INST) $(VISU)
-ASM_SRC =			asm.c
+ASM_SRC =			asm.c lexer.c
 
 VM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(VM_SRC))
 ASM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(ASM_SRC))
