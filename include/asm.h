@@ -34,5 +34,8 @@ typedef struct		s_elem
 }			t_elem;
 
 t_op			get_fct_app(void);
+void			lexer(t_elem *tree, char *filename);
+
+void			verif(t_elem *tree); // fonction de verif a supprimer
 
 #endif
