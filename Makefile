@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/02/16 06:40:07 by ygaude           ###   ########.fr        #
+#    Updated: 2018/02/20 19:46:10 by ygaude           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,12 +29,13 @@ PATH_ASM_SRC =		$(PATH_ASM)src/
 
 VPATH = $(PATH_VM_SRC):$(PATH_VM_PARS):$(PATH_VM_INST):$(PATH_VM_VISU):$(PATH_ASM_SRC)
 
-CC =				gcc -Wall -Werror -Wextra
-INC =				-I include/ -I libft/include/
+CC = gcc -Wall -Wextra -Werror
+CFLAGS = -I include/ -I libft/include/ `sdl2-config --cflags`
+LFLAGS = -L $(PATH_LIBFT) -lft `sdl2-config --libs` -lSDL2_gfx -lSDL2_ttf
 
 PARS =				
 INST =				
-VISU =				
+VISU =				visu.c
 
 VM_SRC =			corewar.c $(PARS) $(INST) $(VISU)
 ASM_SRC =			asm.c
@@ -46,12 +47,12 @@ all: libft $(ASM) $(VM)
 
 $(VM): $(LIBFT) $(VM_OBJ)
 	@echo "Compiling $@ ...\033[K"
-	@$(CC) $(INC) $^ -o $@
+	@$(CC) $(LFLAGS) $^ -o $@
 	@echo "$(C_OK)Done !"
 
 $(ASM): $(LIBFT) $(ASM_OBJ)
 	@echo "Compiling $@ ...\033[K"
-	@$(CC) $(INC) $^ -o $@
+	@$(CC) $(LFLAGS) $^ -o $@
 	@echo "$(C_OK)Done !"
 
 $(LIBFT):
@@ -60,7 +61,7 @@ $(LIBFT):
 $(PATH_OBJ)%.o: %.c
 	@echo "Compiling @\033[K\033[1A\r"
 	@mkdir -p $(@D)
-	@$(CC) $(INC) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@rm -rf $(PATH_OBJ)

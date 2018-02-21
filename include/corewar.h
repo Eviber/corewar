@@ -6,11 +6,14 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/02/16 05:52:47 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/02/20 19:40:14 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef COREWAR_H
+# define COREWAR_H
+
+# include "libft.h"
 
 typedef struct			s_vm
 {
@@ -29,3 +32,8 @@ typedef struct			s_process
 	unsigned int		reg[REG_NUMBER];
 	unsigned int		cooldown;
 }						t_process;
+
+int					visu(void);
+void				visu_init(t_vm *vm);
+
+#endif

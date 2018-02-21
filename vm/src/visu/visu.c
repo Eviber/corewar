@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 22:22:52 by ygaude            #+#    #+#             */
-/*   Updated: 2018/02/16 03:10:43 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/02/22 00:22:13 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 #include <SDL.h>
 #include <SDL2_gfxPrimitives.h>
 #include <SDL_ttf.h>
+
 #include "libft.h"
+
+#include "op.h"
+#include "corewar.h"
 #include "visu.h"
 
 void				panic(const char *str, const char *str2)
 {
-	ft_putstr_fd(str, 2);
-	ft_putstr_fd(str2, 2);
-	exit(SDL_EXIT_ERROR);
+	ft_dprintf(2, "%s: %s\n", str, str2);
+	exit(-1);
 }
 
 t_winenv			*getsdlenv(t_vm *vm)
@@ -30,44 +33,95 @@ t_winenv			*getsdlenv(t_vm *vm)
 
 	if (!winenv && vm)
 		if ((winenv = (t_winenv *)ft_memalloc(sizeof(t_winenv))))
+		{
 			winenv->vm = vm;
+			winenv->quit = 0;
+		}
 	return (winenv);
 }
 
-void				visu_initenv(t_vm *vm)
+////////////////////////////////////////////////////////////////////////////////
+void				initsdl(t_winenv *env)
 {
-	t_winenv		*env;
-	t_pos			min;
-	t_pos			max;
-	int				i;
-
-	env = getsdlenv(vm);
 	if (!env || SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS))
-		panic("Error while initializing SDL: ", SDL_GetError());
+		panic("Error while initializing SDL", SDL_GetError());
 	if (SDL_GetDesktopDisplayMode(0, &(env->dispmode)))
-		panic("SDL_GetDesktopDisplayMode failed: ", SDL_GetError());
+		panic("SDL_GetDesktopDisplayMode failed", SDL_GetError());
 	env->win = SDL_CreateWindow("Corewar",
 				SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-				env->dispmode.w, env->dispmode.h, 0);
+				env->dispmode.w, env->dispmode.h, SDL_WINDOW_RESIZABLE);
 	if (!env->win)
-		panic("Error while creating window: ", SDL_GetError());
+		panic("Error while creating window", SDL_GetError());
 	env->render = SDL_CreateRenderer(env->win, -1, SDL_RENDERER_ACCELERATED);
 	if (!env->render)
-		panic("Error while creating renderer: ", SDL_GetError());
+		panic("Error while creating renderer", SDL_GetError());
 	if (TTF_Init() == -1 || !(env->font = TTF_OpenFont("joystix.ttf", 48)))
-		panic("Error while initializing SDL_TTF: ", TTF_GetError());
+		panic("Error while initializing SDL_TTF", TTF_GetError());
 	SDL_SetRenderDrawColor(env->render, 9, 11, 16, SDL_ALPHA_OPAQUE);
 	SDL_RenderClear(env->render);
 }
 
-void				visu_init(t_vm *vm)
+SDL_Texture			*getnewtex(t_winenv *env, int access, int w, int h)
 {
-	visu_initenv(vm);
+	SDL_Texture		*tex;
+
+	tex = SDL_CreateTexture(env->render, env->dispmode.format, access, w, h);
+	if (!tex)
+		panic("Failed creating texture", SDL_GetError());
+	return (tex);
 }
 
-int					quitvisu(t_winenv *env, int quit)
+void				cleartex(SDL_Renderer *render, SDL_Texture *tex)
 {
-	if (!env || quit)
+	SDL_SetRenderTarget(render, tex);
+	SDL_RenderClear(render);
+}
+
+void				visu_update(t_winenv *env)
+{
+	SDL_Rect		rect;
+
+	SDL_SetRenderTarget(env->render, env->wintex);
+	rect = (SDL_Rect){0,0,0,0};
+	SDL_QueryTexture(env->memtex, NULL, NULL, &rect.w, &rect.h);
+	SDL_RenderCopy(env->render, env->memtex, NULL, &rect);
+	rect.x = rect.w;
+	SDL_QueryTexture(env->hudtex, NULL, NULL, &rect.w, &rect.h);
+	SDL_RenderCopy(env->render, env->hudtex, NULL, &rect);
+	SDL_SetRenderTarget(env->render, NULL);
+	SDL_RenderCopy(env->render, env->wintex, NULL, NULL);
+}
+
+void				events(t_winenv *env)
+{
+	(void)env;
+}
+////////////////////////////////////////////////////////////////////////////////
+
+void				visu_init(t_vm *vm)
+{
+	t_winenv		*env;
+	SDL_DisplayMode	dm;
+
+	env = getsdlenv(vm);
+	initsdl(env);
+	SDL_GetDesktopDisplayMode(0, &env->dispmode);
+	dm = env->dispmode;
+	env->wintex = getnewtex(env, TEXTARGET, dm.w, dm.h);
+	env->memtex = getnewtex(env, TEXTARGET, dm.w * 4 / 5, dm.h);
+	env->hudtex = getnewtex(env, TEXTARGET, dm.w * 1 / 5, dm.h);
+	SDL_SetRenderDrawColor(env->render, 100, 50, 50, SDL_ALPHA_OPAQUE);
+	cleartex(env->render, env->wintex);
+	SDL_SetRenderDrawColor(env->render, 50, 100, 50, SDL_ALPHA_OPAQUE);
+	cleartex(env->render, env->memtex);
+	SDL_SetRenderDrawColor(env->render, 50, 50, 100, SDL_ALPHA_OPAQUE);
+	cleartex(env->render, env->hudtex);
+	visu_update(env);
+}
+
+int					quitvisu(t_winenv *env)
+{
+	if (!env || env->quit || SDL_QuitRequested())
 	{
 		SDL_Quit();
 		return (0);
@@ -78,22 +132,14 @@ int					quitvisu(t_winenv *env, int quit)
 int					visu(void)
 {
 	t_winenv		*env;
-	int				quit;
 
 	env = getsdlenv(NULL);
 	env->ticks = SDL_GetTicks();
-	while (SDL_GetTicks() - env->ticks < TURNTIME + 100 && !SDL_QuitRequested())
+	while (!(env->quit |= SDL_QuitRequested()))
 	{
-		if (env)
-		{
-			frameticks = SDL_GetTicks();
-			SDL_SetRenderDrawColor(env->render, 0, 0, 0, 20);
-			SDL_RenderClear(env->render);
-			SDL_SetRenderDrawBlendMode(env->render, SDL_BLENDMODE_NONE);
-			SDL_RenderPresent(env->render);
-		}
+		events(env);
+		visu_update(env);
+		SDL_RenderPresent(env->render);
 	}
-	if (!quit)
-		updatelast(env, *(env->colony));
-	return (quitvisu(env, quit));
+	return (quitvisu(env));
 }
