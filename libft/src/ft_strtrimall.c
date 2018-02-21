@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 07:45:58 by sbrochar          #+#    #+#             */
-/*   Updated: 2018/02/07 16:21:52 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/02/21 20:34:04 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,15 @@ char				*ft_strtrimall(char const *s)
 	char			*ret;
 	size_t			len;
 
-	len = get_len(s);
-	ret = (char *)ft_memalloc(sizeof(char) * (len + 1));
-	if (ret)
+	if (s)
 	{
-		copy_str(s, &ret, len);
-		return (ret);
+		len = get_len(s);
+		ret = (char *)ft_memalloc(sizeof(char) * (len + 1));
+		if (ret)
+		{
+			copy_str(s, &ret, len);
+			return (ret);
+		}
 	}
 	return (NULL);
 }
