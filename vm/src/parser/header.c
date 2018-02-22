@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   header.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
+/*   Updated: 2018/02/20 20:15:37 by ygaude           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 
-void	ft_print_head(t_vm *env)
+void	ft_print_head(t_vm *env, int cmp)
 {
 	t_header	*tmp;
-	int			cmp;
 	int			nb_line;
 
 	tmp = env->champion;
@@ -11,13 +22,12 @@ void	ft_print_head(t_vm *env)
 	while (tmp)
 	{
 		ft_printf("\nmagic = %x\n", tmp->magic);
-		ft_printf("number = %d\n", tmp->number);
-		ft_printf("name =%s\n", tmp->prog_name);
+		ft_printf("num = %d\n", tmp->num);
+		ft_printf("name = %s\n", tmp->prog_name);
 		ft_printf("taille = %lu\n", tmp->prog_size);
 		ft_printf("comment = %s\n\n", tmp->comment);
 		tmp = tmp->next;
 	}
-	cmp = -1;
 	nb_line = 0;
 	while (cmp++ < MEM_SIZE - 1)
 	{
@@ -32,7 +42,7 @@ void	ft_print_head(t_vm *env)
 
 void	ft_fill_header(t_header *tmp, char *line, unsigned long i, int error)
 {
-	while(++i < COMMENT_LENGTH + 4 + 8 + PROG_NAME_LENGTH && !error)
+	while (++i < COMMENT_LENGTH + 4 + 8 + PROG_NAME_LENGTH && !error)
 	{
 		if (i < sizeof(unsigned int))
 			tmp->magic = tmp->magic * 256 + (unsigned char)line[i];
@@ -59,43 +69,41 @@ void	ft_fill_header(t_header *tmp, char *line, unsigned long i, int error)
 		ft_exit("Le champion est trop long\n");
 }
 
-//rechercher une idée pour ne jamais se retrouver
-
-void ft_choose_number_player(t_vm *env, int num_k, int conflict, int max)
+void	ft_choose_num_player(t_vm *env, int num_k, int fail, int max)
 {
-	t_header *tmp;
-	t_header *tmp2;
-	int number;
+	t_header	*tmp;
+	t_header	*tmp2;
+	int			num;
 
-	number = 0;
-	while(conflict == 1 && !(conflict = 0))
+	num = 0;
+	while (fail == 1 && !(fail = 0))
 	{
 		tmp = env->champion;
-		while (tmp->next && (tmp2 = env->champion))
+		while (tmp->next && (tmp2 = env->champion) && (fail == 0))
 		{
-			if (tmp->number == num_k && (conflict = 1))
-				tmp->number++;
-			number = tmp->number;
-			max = ((max < tmp->number) ? number : max);
-			while (tmp2->next)
+			if (tmp->num == num_k && (fail = 1))
+				tmp->num++;
+			num = tmp->num;
+			max = ((max < tmp->num) ? num : max);
+			while (tmp2->next && (fail == 0))
 			{
-				if (tmp != tmp2 && (tmp2->number == num_k || tmp2->number == number) && (conflict = 1))
-					tmp->number++;
-				max = ((max < tmp->number) ? number : max);
+				if (tmp != tmp2 && (tmp2->num == num_k || tmp2->num == num) && (fail = 1))
+					tmp2->num++;
+				max = ((max < tmp->num) ? num : max);
 				tmp2 = tmp2->next;
 			}
 			tmp = tmp->next;
 		}
 	}
-	tmp->number = ((num_k) ? num_k : max + 1);
+	tmp->num = ((num_k) ? num_k : max + 1);
 }
 
 void	ft_init_header(t_vm *env, char *line, int start, char **av)
 {
-	t_header *tmp;
-	int number;
+	t_header	*tmp;
+	int			num;
 
-	number = 0;
+	num = 0;
 	if (env->champion && (tmp = env->champion))
 	{
 		while (tmp->next)
@@ -109,7 +117,7 @@ void	ft_init_header(t_vm *env, char *line, int start, char **av)
 		tmp = env->champion;
 	}
 	if (start > 2 && !(ft_strcmp(av[start - 2], "-n")))
-			number = ft_atoi(av[start - 1]);
-	ft_choose_number_player(env, number, 1, 0);
+		num = ft_atoi(av[start - 1]);
+	ft_choose_num_player(env, num, 1, 0);
 	ft_fill_header(tmp, line, -1, 0);
 }

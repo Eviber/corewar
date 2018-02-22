@@ -67,7 +67,7 @@ typedef char	t_arg_type;
 
 typedef struct			s_header
 {
-	int		number;
+	int		num;
 	unsigned int		magic;
 	char				prog_name[PROG_NAME_LENGTH + 1];
 	unsigned long		prog_size;
