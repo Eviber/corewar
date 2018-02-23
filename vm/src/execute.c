@@ -6,13 +6,13 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 20:19:53 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/17 23:05:38 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/22 21:03:00 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static void		set_cooldown(t_process *process)
+void	set_cooldown(t_process *process, t_vm *env)
 {
 	unsigned int	nb_cycle[16];
 
@@ -32,18 +32,25 @@ static void		set_cooldown(t_process *process)
 	nb_cycle[13] = 50;
 	nb_cycle[14] = 1000;
 	nb_cycle[15] = 2;
-	process->cooldown = nb_cycle[process->inst[0] - 1];
+	if (env->memory[process->pc] <= 16 && env->memory[process->pc] > 0)
+		process->cooldown = nb_cycle[process->inst - 1];
+	else
+		process->cooldown = 0;
 }
 
-void			exec_process(t_process *process, t_op op_tab, t_vm *env)
+void	exec_process(t_process *process, t_op *op_tab, t_vm *env)
 {
-	if (!(--(process->cooldown)) && inst[0] <= 16 && inst[0] > 0)
-		op_tab[inst[0] - 1](process, env);
+	if (!(--(process->cooldown)) && process->inst <= 16 && \
+	process->inst > 0)
+	{
+		op_tab[process->inst - 1](process, env);
+		process->inst = env->memory[process->pc];
+		set_cooldown(process, env);
+	}
 	else if (!process->cooldown)
 	{
 		process->pc = (process->pc + 1) % MEM_SIZE;
-		ft_memcpy((void*)process->inst, (void*)&(env->memory[process->pc]), 16);
-		if (env->memory[process->pc] <= 16 && env->memory[process->pc] > 0)
-			set_cooldown(process);
+		process->inst = env->memory[process->pc];
+		set_cooldown(process, env);
 	}
 }

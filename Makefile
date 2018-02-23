@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/02/17 23:55:02 by vsporer          ###   ########.fr        #
+#    Updated: 2018/02/22 20:51:00 by vsporer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,18 +40,35 @@ INC =				-I include/ -I libft/include/
 VM_PARS =			parser.c\
 					header.c
 
-VM_INST =			
-
-VM_VISU =			
+VM_INST =			vm_st.c\
+					vm_live.c
+#					vm_ld.c\
+#					vm_st.c\
+#					vm_add.c\
+#					vm_sub.c\
+#					vm_or.c\
+#					vm_xor.c\
+#					vm_zjmp.c\
+#					vm_ldi.c\
+#					vm_sti.c\
+#					vm_fork.c\
+#					vm_lld.c\
+#					vm_lldi.c\
+#					vm_lfork.c\
+#					vm_aff.c
+#
+#VM_VISU =			
 
 VM_SRC =			$(VM_PARS)\
 					$(VM_INST)\
 					$(VM_VISU)\
 					corewar.c\
+					cycle.c\
 					utility.c\
 					process.c\
 					execute.c\
-					check.c
+					check.c\
+					params.c
 
 ASM_SRC =			asm.c
 

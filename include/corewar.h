@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/02/17 23:26:20 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/22 15:39:50 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ typedef struct			s_process
 	unsigned int		reg[REG_NUMBER];
 	unsigned int		cooldown;
 	unsigned long		last_live;
-	unsigned char		inst[16];
+	unsigned char		inst;
 	struct s_process	*next;
 }						t_process;
 
@@ -93,6 +93,7 @@ typedef struct			s_vm
 {
 	long				dump;
 	t_header			*champion;
+	t_header			*ll_champ;
 	t_process			*process;
 	unsigned int		nb_player;
 	unsigned char		memory[MEM_SIZE];
@@ -102,6 +103,7 @@ typedef struct			s_vm
 	unsigned long		max_check;
 	unsigned long		check;
 	unsigned long		cycle;
+	unsigned long		nb_process;
 }						t_vm;
 
 /*
