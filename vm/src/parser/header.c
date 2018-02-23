@@ -19,6 +19,7 @@ void	ft_print_head(t_vm *env, int cmp)
 
 	tmp = env->champion;
 	ft_printf("dump = %ld\n", env->dump);
+	ft_printf("nb_player = %ld\n", env->nb_player);
 	while (tmp)
 	{
 		ft_printf("\nmagic = %x\n", tmp->magic);

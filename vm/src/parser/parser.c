@@ -75,6 +75,7 @@ void					parsing(int ac, char **av, t_vm *env, int cmp)
 	start = 0;
 	line = ft_memalloc(CHAMP_MAX_SIZE);
 	nb_champ = check_arg(ac, av, env) + 1;
+	env->nb_player = nb_champ - 1;
 	if (ac < 2)
 		ft_exit("Usage: ./vm [champion.cor]");
 	else if ((ac = nb_champ))
