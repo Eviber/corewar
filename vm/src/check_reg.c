@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_fork.c                                          :+:      :+:    :+:   */
+/*   check_reg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/22 17:26:54 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/24 23:58:19 by vsporer          ###   ########.fr       */
+/*   Created: 2018/02/23 22:12:30 by vsporer           #+#    #+#             */
+/*   Updated: 2018/02/23 22:18:19 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void	vm_fork(t_process *process, t_vm *env)
+int		check_reg(unsigned char peb, t_param *param)
 {
-	short			param;
-	unsigned int	new_pc;
-
-	param = ((short)env->memory[process->pc + 1]) << 8;
-	param += ((short)env->memory[process->pc + 2]);
-	new_pc = process->pc + (param % IDX_MOD);
-	add_process(&env->process, new_process(process, new_pc, env));
-	env->process->inst = env->memory[env->process->pc];
-	set_cooldown(env->process, env);
+	if (PARAM_ONE(peb) == REG_CODE && !(param->one <= 16 && param->one > 0))
+		return (1);
+	if (PARAM_TWO(peb) == REG_CODE && !(param->two <= 16 && param->two > 0))
+		return (1);
+	if (PARAM_THR(peb) == REG_CODE && !(param->thr <= 16 && param->thr > 0))
+		return (1);
+	return (0);
 }

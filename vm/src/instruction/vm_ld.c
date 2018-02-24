@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_st.c                                            :+:      :+:    :+:   */
+/*   vm_ld.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/24 16:12:39 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/24 23:53:20 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static char		**get_st_perm(void)
+static char		**get_ld_perm(void)
 {
 	char	**perm;
 
@@ -22,34 +22,30 @@ static char		**get_st_perm(void)
 		ft_exit(strerror(errno));
 	if (!(perm[1] = ft_strnew(2)))
 		ft_exit(strerror(errno));
-	perm[0][0] = 1;
-	perm[0][1] = 0;
-	perm[0][2] = 0;
+	perm[0][0] = 0;
+	perm[0][1] = 1;
+	perm[0][2] = 1;
 	perm[1][0] = 1;
 	perm[1][1] = 0;
-	perm[1][2] = 1;
+	perm[1][2] = 0;
 	return (perm);
 }
 
-void			vm_st(t_process *process, t_vm *env)
+void			vm_ld(t_process *process, t_vm *env)
 {
 	static char		**perm = NULL;
 	t_param			param;
 
 	if (!perm)
-		perm = get_st_perm();
-	param.mod = 0;
+		perm = get_ld_perm();
+	param.mod = L_DIR | IND_TARG;
+	process->carry = 0;
 	if (!check_peb(env->memory[process->pc + 1], perm, 2))
 	{
 		get_param(&param, process, env);
 		if (!check_reg(env->memory[process->pc + 1], &param))
-		{
-			if ((PARAM_TWO(env->memory[process->pc + 1])) == REG_CODE)
-				process->reg[param.two - 1] = process->reg[param.one - 1];
-			else
-				write_memory(process->reg[param.one - 1], \
-				process->pc + (((int)(short)param.two) % IDX_MOD), env);
-		}
+			if (!(process->reg[param.two - 1] = param.one))
+				process->carry = 1;
 	}
-	process->pc += param_len(env->memory[process->pc + 1], 0, 2) + 2;
+	process->pc += param_len(env->memory[process->pc + 1], 1, 2) + 2;
 }

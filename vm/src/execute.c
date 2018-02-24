@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 20:19:53 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/22 21:03:00 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/23 14:35:03 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ void	exec_process(t_process *process, t_op *op_tab, t_vm *env)
 		process->inst = env->memory[process->pc];
 		set_cooldown(process, env);
 	}
+	process->pc = process->pc % MEM_SIZE;
 }

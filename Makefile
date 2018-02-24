@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/02/22 20:51:00 by vsporer          ###   ########.fr        #
+#    Updated: 2018/02/24 23:48:32 by vsporer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,20 +41,21 @@ VM_PARS =			parser.c\
 					header.c
 
 VM_INST =			vm_st.c\
-					vm_live.c
-#					vm_ld.c\
-#					vm_st.c\
-#					vm_add.c\
-#					vm_sub.c\
-#					vm_or.c\
-#					vm_xor.c\
-#					vm_zjmp.c\
+					vm_and.c\
+					vm_live.c\
+					vm_ld.c\
+					vm_add.c\
+					vm_sub.c\
+					vm_zjmp.c\
+					vm_st.c\
+					vm_or.c\
+					vm_xor.c\
+					vm_fork.c\
+					vm_lfork.c
 #					vm_ldi.c\
-#					vm_sti.c\
-#					vm_fork.c\
+#					vm_sti.c
 #					vm_lld.c\
-#					vm_lldi.c\
-#					vm_lfork.c\
+#					vm_lldi.c
 #					vm_aff.c
 #
 #VM_VISU =			
@@ -68,6 +69,7 @@ VM_SRC =			$(VM_PARS)\
 					process.c\
 					execute.c\
 					check.c\
+					check_reg.c\
 					params.c
 
 ASM_SRC =			asm.c

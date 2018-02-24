@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/02/22 15:39:50 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/25 00:04:54 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef char	t_arg_type;
 
 typedef struct			s_header
 {
-	int					number;
+	int					num;
 	unsigned int		magic;
 	char				prog_name[PROG_NAME_LENGTH + 1];
 	unsigned long		prog_size;
