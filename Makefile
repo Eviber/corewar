@@ -6,14 +6,14 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/02/20 19:46:10 by ygaude           ###   ########.fr        #
+#    Updated: 2018/02/22 05:45:07 by ygaude           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 VM = 				corewar
 ASM = 				asm
 
-PATH_LIBFT =		libft/
+PATH_LIBFT =		libft
 LIBFT =				libft/libft.a
 
 PATH_OBJ =		obj/
@@ -43,11 +43,11 @@ ASM_SRC =			asm.c
 VM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(VM_SRC))
 ASM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(ASM_SRC))
 
-all: libft $(ASM) $(VM)
+all: $(LIBFT) $(ASM) $(VM)
 
-$(VM): $(LIBFT) $(VM_OBJ)
+$(VM): $(VM_OBJ)
 	@echo "Compiling $@ ...\033[K"
-	@$(CC) $(LFLAGS) $^ -o $@
+	@$(CC) $^ $(LFLAGS) -o $@
 	@echo "$(C_OK)Done !"
 
 $(ASM): $(LIBFT) $(ASM_OBJ)

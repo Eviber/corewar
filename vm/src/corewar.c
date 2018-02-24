@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/20 19:47:35 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/02/23 23:08:28 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 static void		init(t_vm *env)
 {
-	int		i;
-
-	i = -1;
 	env->check = 0;
 	env->max_check = MAX_CHECKS;
 	env->nbr_live = NBR_LIVE;

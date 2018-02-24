@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 22:22:52 by ygaude            #+#    #+#             */
-/*   Updated: 2018/02/22 00:22:13 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/02/24 02:50:40 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void				initsdl(t_winenv *env)
 	env->render = SDL_CreateRenderer(env->win, -1, SDL_RENDERER_ACCELERATED);
 	if (!env->render)
 		panic("Error while creating renderer", SDL_GetError());
-	if (TTF_Init() == -1 || !(env->font = TTF_OpenFont("joystix.ttf", 48)))
+	if (TTF_Init() == -1 || !(env->font = TTF_OpenFont("roboto.ttf", 14)))
 		panic("Error while initializing SDL_TTF", TTF_GetError());
 	SDL_SetRenderDrawColor(env->render, 9, 11, 16, SDL_ALPHA_OPAQUE);
 	SDL_RenderClear(env->render);
@@ -77,16 +77,76 @@ void				cleartex(SDL_Renderer *render, SDL_Texture *tex)
 	SDL_RenderClear(render);
 }
 
+void				fillmemstr(char *memstr, t_vm *vm)
+{
+	const char		*digits;
+	unsigned int	i;
+
+	digits = "0123456789abcdef";
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		memstr[i * 3 + 0] = digits[vm->memory[i] / 16];
+		memstr[i * 3 + 1] = digits[vm->memory[i] % 16];
+		memstr[i * 3 + 2] = ((i + 1) % 64) ? ' ' : '\n';
+		i++;
+	}
+	memstr[MEM_SIZE * 3] = '\0';
+}
+
+SDL_Texture			*strtotex(char *str, t_winenv *env, SDL_Color color)
+{
+	SDL_Texture		*tex;
+	SDL_Surface		*surf;
+
+	surf = TTF_RenderText_Blended(env->font, str, color);
+	if (!surf)
+		panic("Failed creating text surface", SDL_GetError());
+	tex = SDL_CreateTextureFromSurface(env->render, surf);
+	if (!tex)
+		panic("Failed converting surface to texture", SDL_GetError());
+	SDL_FreeSurface(surf);
+	return (tex);
+}
+
+void				memdisp(t_winenv *env)
+{
+	char			memstr[MEM_SIZE * 3 + 1];
+	char			tmp[64 * 3 + 1];
+	SDL_Rect		dst;
+	SDL_Texture		*tex;
+	int				i;
+
+	i = 0;
+	dst = (SDL_Rect){0,0,0,0};
+	SDL_QueryTexture(env->memtex, NULL, NULL, &dst.w, &dst.h);
+	dst.h /= 63;
+	fillmemstr(memstr, env->vm);
+	SDL_SetRenderDrawColor(env->render, 10, 10, 10, SDL_ALPHA_OPAQUE);
+	cleartex(env->render, env->memtex);
+	tmp[64 * 3] = '\0';
+	ft_putstr(memstr);
+	while (i < MEM_SIZE / 64)
+	{
+		tex = strtotex(ft_strncpy(tmp, memstr + i * 64 * 3, 64 * 3), env, (SDL_Color){150, 150, 150, 255});
+		SDL_RenderCopy(env->render, tex, NULL, &dst);
+		SDL_DestroyTexture(tex);
+		i++;
+		dst.y = env->dispmode.h * i / 64;
+	}
+}
+
 void				visu_update(t_winenv *env)
 {
 	SDL_Rect		rect;
 
 	SDL_SetRenderTarget(env->render, env->wintex);
 	rect = (SDL_Rect){0,0,0,0};
-	SDL_QueryTexture(env->memtex, NULL, NULL, &rect.w, &rect.h);
+	rect.h = env->dispmode.h;
+	rect.w = env->dispmode.w * 4 / 5;
 	SDL_RenderCopy(env->render, env->memtex, NULL, &rect);
 	rect.x = rect.w;
-	SDL_QueryTexture(env->hudtex, NULL, NULL, &rect.w, &rect.h);
+	rect.w =  env->dispmode.w * 1 / 5;
 	SDL_RenderCopy(env->render, env->hudtex, NULL, &rect);
 	SDL_SetRenderTarget(env->render, NULL);
 	SDL_RenderCopy(env->render, env->wintex, NULL, NULL);
@@ -135,6 +195,7 @@ int					visu(void)
 
 	env = getsdlenv(NULL);
 	env->ticks = SDL_GetTicks();
+	memdisp(env);
 	while (!(env->quit |= SDL_QuitRequested()))
 	{
 		events(env);
