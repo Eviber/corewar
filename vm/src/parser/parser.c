@@ -67,26 +67,26 @@ static char 			*get_header(int fd)
 
 void					parsing(int ac, char **av, t_vm *env, int cmp)
 {
-	unsigned long	nb_champ;
+	long	nm_champ;
 	char			*line;
 	int				fd;
 	int				start;
 
 	start = 0;
 	line = ft_memalloc(CHAMP_MAX_SIZE);
-	nb_champ = check_arg(ac, av, env) + 1;
-	env->nb_player = nb_champ - 1;
+	env->nb_player = check_arg(ac, av, env);
+	nm_champ = -1;
 	if (ac < 2)
 		ft_exit("Usage: ./vm [champion.cor]");
-	else if ((ac = nb_champ))
-		while (--nb_champ > 0)
+	else if ((ac = env->nb_player + 1))
+		while (--ac)
 		{
 			while (av[++start][0] == '-')
 				start += 1;
 			fd = open(av[start], O_RDONLY);
 			ft_init_header(env, get_header(fd), start, av);
 			cmp = read(fd, line, CHAMP_MAX_SIZE);
-			rd(line, env, cmp, (nb_champ - 1) * (MEM_SIZE / (ac - 1)));
+			rd(line, env, cmp, ++nm_champ * (MEM_SIZE / (env->nb_player)));
 			close(fd);
 		}
 	ft_memdel((void**)&line);
