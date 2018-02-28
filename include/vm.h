@@ -11,6 +11,7 @@
 # define PARAM_THR(x)	((x >> 2) & IND_CODE)
 # define L_DIR			1
 # define IND_TARG		2
+# define IMOD			4
 
 typedef struct	s_param
 {
@@ -31,7 +32,7 @@ void			parsing(int ac, char **av, t_vm *vm, int cmp);
 ** VM core
 */
 int				check_peb(unsigned char peb, char **perm, int nb_param);
-int				check_reg(unsigned char peb, t_param *param);
+int				check_reg(unsigned char peb, int nb_param, t_param *param);
 int				param_len(unsigned char peb, int mod, int nb_param);
 int				get_param_value(unsigned int at, int len, int *ret, t_vm *env);
 unsigned int	read_memory(unsigned int address, t_vm *env);
@@ -54,11 +55,16 @@ void			vm_st(t_process *process, t_vm *env);
 void			vm_fork(t_process *process, t_vm *env);
 void			vm_lfork(t_process *process, t_vm *env);
 void			vm_ld(t_process *process, t_vm *env);
+void			vm_lld(t_process *process, t_vm *env);
 void			vm_add(t_process *process, t_vm *env);
 void			vm_sub(t_process *process, t_vm *env);
 void			vm_zjmp(t_process *process, t_vm *env);
 void			vm_and(t_process *process, t_vm *env);
 void			vm_or(t_process *process, t_vm *env);
 void			vm_xor(t_process *process, t_vm *env);
+void			vm_aff(t_process *process, t_vm *env);
+void			vm_sti(t_process *process, t_vm *env);
+void			vm_ldi(t_process *process, t_vm *env);
+void			vm_lldi(t_process *process, t_vm *env);
 
 #endif

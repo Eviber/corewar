@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_and.c                                           :+:      :+:    :+:   */
+/*   vm_sti.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/28 20:30:39 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/28 18:35:48 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static char		**get_and_perm(void)
+static char		**get_sti_perm(void)
 {
 	char	**perm;
 
@@ -25,43 +25,39 @@ static char		**get_and_perm(void)
 	if (!(perm[2] = ft_strnew(2)))
 		ft_exit(strerror(errno));
 	perm[0][0] = 1;
-	perm[0][1] = 1;
-	perm[0][2] = 1;
+	perm[0][1] = 0;
+	perm[0][2] = 0;
 	perm[1][0] = 1;
 	perm[1][1] = 1;
 	perm[1][2] = 1;
 	perm[2][0] = 1;
-	perm[2][1] = 0;
+	perm[2][1] = 1;
 	perm[2][2] = 0;
 	return (perm);
 }
 
-void			vm_and(t_process *process, t_vm *env)
+void			vm_sti(t_process *process, t_vm *env)
 {
 	static char		**perm = NULL;
 	t_param			param;
-	int				result;
 	char			peb;
 
 	peb = env->memory[process->pc + 1];
 	if (!perm)
-		perm = get_and_perm();
-	param.mod = L_DIR | IND_TARG | IMOD;
+		perm = get_sti_perm();
+	param.mod = IND_TARG | IMOD;
 	if (!check_peb(peb, perm, 3))
 	{
-		process->carry = 0;
 		get_param(&param, process, env);
 		if (!check_reg(peb, 3, &param))
 		{
-			if (PARAM_ONE(peb) == REG_CODE)
-				param.one = process->reg[param.one - 1];
 			if (PARAM_TWO(peb) == REG_CODE)
 				param.two = process->reg[param.two - 1];
-			result = param.one & param.two;
-			if (!result)
-				process->carry = 1;
-			process->reg[param.thr - 1] = (unsigned int)result;
+			if (PARAM_THR(peb) == REG_CODE)
+				param.thr = process->reg[param.thr - 1];
+			write_memory(process->reg[param.one - 1], \
+			process->pc + ((param.two + param.thr) % IDX_MOD), env);
 		}
 	}
-	process->pc += param_len(peb, 1, 3) + 2;
+	process->pc += param_len(peb, 0, 3) + 2;
 }

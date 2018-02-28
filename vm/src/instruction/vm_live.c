@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:40:00 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/24 23:52:56 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/28 15:56:59 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	vm_live(t_process *process, t_vm *env)
 
 	get_param_value(process->pc + 1, 4, &player, env);
 	tmp = env->champion;
-	while (tmp && tmp->number != player)
+	while (tmp && tmp->num != player)
 		tmp = tmp->next;
 	if (tmp)
 	{

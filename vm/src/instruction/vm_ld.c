@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/24 23:53:20 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/28 20:32:50 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,19 @@ void			vm_ld(t_process *process, t_vm *env)
 {
 	static char		**perm = NULL;
 	t_param			param;
+	char			peb;
 
+	peb = env->memory[process->pc + 1];
 	if (!perm)
 		perm = get_ld_perm();
-	param.mod = L_DIR | IND_TARG;
-	process->carry = 0;
-	if (!check_peb(env->memory[process->pc + 1], perm, 2))
+	param.mod = L_DIR | IND_TARG | IMOD;
+	if (!check_peb(peb, perm, 2))
 	{
+		process->carry = 0;
 		get_param(&param, process, env);
-		if (!check_reg(env->memory[process->pc + 1], &param))
+		if (!check_reg(peb, 2, &param))
 			if (!(process->reg[param.two - 1] = param.one))
 				process->carry = 1;
 	}
-	process->pc += param_len(env->memory[process->pc + 1], 1, 2) + 2;
+	process->pc += param_len(peb, 1, 2) + 2;
 }

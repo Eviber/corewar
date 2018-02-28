@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/24 16:30:14 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/28 20:43:35 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,21 @@ void			vm_or(t_process *process, t_vm *env)
 	static char		**perm = NULL;
 	t_param			param;
 	int				result;
+	char			peb;
 
+	peb = env->memory[process->pc + 1];
 	if (!perm)
 		perm = get_or_perm();
-	param.mod = L_DIR | IND_TARG;
-	process->carry = 0;
-	if (!check_peb(env->memory[process->pc + 1], perm, 3))
+	param.mod = L_DIR | IND_TARG | IMOD;
+	if (!check_peb(peb, perm, 3))
 	{
+		process->carry = 0;
 		get_param(&param, process, env);
-		if (!check_reg(env->memory[process->pc + 1], &param))
+		if (!check_reg(peb, 3, &param))
 		{
-			if ((PARAM_ONE(env->memory[process->pc + 1])) == REG_CODE)
+			if (PARAM_ONE(peb) == REG_CODE)
 				param.one = process->reg[param.one - 1];
-			if ((PARAM_TWO(env->memory[process->pc + 1])) == REG_CODE)
+			if (PARAM_TWO(peb) == REG_CODE)
 				param.two = process->reg[param.two - 1];
 			result = param.one | param.two;
 			if (!result)
@@ -61,5 +63,5 @@ void			vm_or(t_process *process, t_vm *env)
 			process->reg[param.thr - 1] = (unsigned int)result;
 		}
 	}
-	process->pc += param_len(env->memory[process->pc + 1], 1, 3) + 2;
+	process->pc += param_len(peb, 1, 3) + 2;
 }

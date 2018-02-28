@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 
 .name "Overwatch"
-.comment "Reinhardt, Pharah, Mercy, Mei, Symmetra & Torbjorn"
+.comment "Reinhardt Pharah Mercy Mei Symmetra Torbjorn"
 
 # ------------------------------------------------------------------------------
 # Defend objective A -----------------------------------------------------------

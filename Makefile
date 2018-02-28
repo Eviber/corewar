@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/02/24 23:48:32 by vsporer          ###   ########.fr        #
+#    Updated: 2018/02/26 19:00:23 by vsporer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ VM_INST =			vm_st.c\
 					vm_and.c\
 					vm_live.c\
 					vm_ld.c\
+					vm_lld.c\
 					vm_add.c\
 					vm_sub.c\
 					vm_zjmp.c\
@@ -51,15 +52,14 @@ VM_INST =			vm_st.c\
 					vm_or.c\
 					vm_xor.c\
 					vm_fork.c\
-					vm_lfork.c
-#					vm_ldi.c\
-#					vm_sti.c
-#					vm_lld.c\
-#					vm_lldi.c
-#					vm_aff.c
-#
-#VM_VISU =			
+					vm_lfork.c\
+					vm_sti.c\
+					vm_aff.c\
+					vm_ldi.c\
+					vm_lldi.c
 
+#VM_VISU =			
+#
 VM_SRC =			$(VM_PARS)\
 					$(VM_INST)\
 					$(VM_VISU)\

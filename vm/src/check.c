@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 23:06:13 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/20 14:15:20 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/28 21:05:28 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,12 @@ void	check_process(unsigned long *last_period, t_process *process, t_vm *env)
 
 	while (process)
 	{
-		if (env->cycle - process->last_live >= env->c_todie)
+		if (process->last_live < *last_period || !process->last_live || \
+		env->c_todie <= 0)
+		{
 			del_process(&env->process, process);
+			(env->nb_process)--;
+		}
 		process = process->next;
 	}
 	if (env->nbr_live - old_nbr_live >= NBR_LIVE)

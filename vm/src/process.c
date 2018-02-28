@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 18:29:25 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/22 18:08:15 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/28 15:14:50 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,20 @@ void		add_process(t_process **lst, t_process *new)
 void		del_process(t_process **lst, t_process *todel)
 {
 	unsigned long	i;
+	t_process		*tmp;
 
 	i = 0;
+	tmp = *lst;
 	if (todel)
 	{
 		if (*lst == todel)
 			*lst = todel->next;
 		else
 		{
-			while (*lst && (*lst)->next != todel)
-				*lst = (*lst)->next;
-			if (*lst)
-				(*lst)->next = todel->next;
+			while (tmp && tmp->next != todel)
+				tmp = tmp->next;
+			if (tmp)
+				tmp->next = todel->next;
 		}
 		ft_memdel((void**)&todel);
 	}
