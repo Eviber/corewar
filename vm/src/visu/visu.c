@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 22:22:52 by ygaude            #+#    #+#             */
-/*   Updated: 2018/02/24 02:50:40 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/02/28 22:15:00 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,11 @@ void				fillmemstr(char *memstr, t_vm *vm)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		memstr[i * 3 + 0] = digits[vm->memory[i] / 16];
-		memstr[i * 3 + 1] = digits[vm->memory[i] % 16];
-		memstr[i * 3 + 2] = ((i + 1) % 64) ? ' ' : '\n';
+		memstr[i * 2 + 0] = digits[vm->memory[i] / 16];
+		memstr[i * 2 + 1] = digits[vm->memory[i] % 16];
 		i++;
 	}
-	memstr[MEM_SIZE * 3] = '\0';
+	memstr[MEM_SIZE * 2] = '\0';
 }
 
 SDL_Texture			*strtotex(char *str, t_winenv *env, SDL_Color color)
@@ -109,30 +108,43 @@ SDL_Texture			*strtotex(char *str, t_winenv *env, SDL_Color color)
 	return (tex);
 }
 
-void				memdisp(t_winenv *env)
+void				dispmemline(t_winenv *env, char *memstr, int line)
 {
-	char			memstr[MEM_SIZE * 3 + 1];
-	char			tmp[64 * 3 + 1];
-	SDL_Rect		dst;
+	char			tmp[3];
 	SDL_Texture		*tex;
+	SDL_Rect		dst;
 	int				i;
+	int				wunit;
 
+	tmp[2] = '\0';
 	i = 0;
-	dst = (SDL_Rect){0,0,0,0};
-	SDL_QueryTexture(env->memtex, NULL, NULL, &dst.w, &dst.h);
-	dst.h /= 63;
-	fillmemstr(memstr, env->vm);
-	SDL_SetRenderDrawColor(env->render, 10, 10, 10, SDL_ALPHA_OPAQUE);
-	cleartex(env->render, env->memtex);
-	tmp[64 * 3] = '\0';
-	ft_putstr(memstr);
-	while (i < MEM_SIZE / 64)
+	SDL_QueryTexture(env->memtex, NULL, NULL, &wunit, NULL);
+	dst.y = env->dispmode.h * line / 64;
+	dst.h = env->dispmode.h / 64;
+	while (i < 64)
 	{
-		tex = strtotex(ft_strncpy(tmp, memstr + i * 64 * 3, 64 * 3), env, (SDL_Color){150, 150, 150, 255});
+		dst.x = wunit * i / 64;
+		tex = strtotex(ft_strncpy(tmp, memstr + line * 64 * 2 + i * 2, 2), env, (SDL_Color){150, 150, 150, 255});
+		SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
 		SDL_RenderCopy(env->render, tex, NULL, &dst);
 		SDL_DestroyTexture(tex);
 		i++;
-		dst.y = env->dispmode.h * i / 64;
+	}
+}
+
+void				memdisp(t_winenv *env)
+{
+	char			memstr[MEM_SIZE * 2 + 1];
+	int				i;
+
+	i = 0;
+	fillmemstr(memstr, env->vm);
+	SDL_SetRenderDrawColor(env->render, 10, 10, 10, SDL_ALPHA_OPAQUE);
+	cleartex(env->render, env->memtex);
+	while (i < MEM_SIZE / 64)
+	{
+		dispmemline(env, memstr, i);
+		i++;
 	}
 }
 
