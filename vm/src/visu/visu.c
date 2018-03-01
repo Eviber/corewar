@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 22:22:52 by ygaude            #+#    #+#             */
-/*   Updated: 2018/02/28 22:15:00 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/01 02:51:35 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ void				initsdl(t_winenv *env)
 		panic("SDL_GetDesktopDisplayMode failed", SDL_GetError());
 	env->win = SDL_CreateWindow("Corewar",
 				SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-				env->dispmode.w, env->dispmode.h, SDL_WINDOW_RESIZABLE);
+				env->dispmode.w, env->dispmode.h, SDL_WINDOW_FULLSCREEN);
 	if (!env->win)
 		panic("Error while creating window", SDL_GetError());
 	env->render = SDL_CreateRenderer(env->win, -1, SDL_RENDERER_ACCELERATED);
 	if (!env->render)
 		panic("Error while creating renderer", SDL_GetError());
-	if (TTF_Init() == -1 || !(env->font = TTF_OpenFont("roboto.ttf", 14)))
+	if (TTF_Init() == -1 || !(env->font = TTF_OpenFont("roboto.ttf", 15)))
 		panic("Error while initializing SDL_TTF", TTF_GetError());
 	SDL_SetRenderDrawColor(env->render, 9, 11, 16, SDL_ALPHA_OPAQUE);
 	SDL_RenderClear(env->render);
@@ -77,22 +77,6 @@ void				cleartex(SDL_Renderer *render, SDL_Texture *tex)
 	SDL_RenderClear(render);
 }
 
-void				fillmemstr(char *memstr, t_vm *vm)
-{
-	const char		*digits;
-	unsigned int	i;
-
-	digits = "0123456789abcdef";
-	i = 0;
-	while (i < MEM_SIZE)
-	{
-		memstr[i * 2 + 0] = digits[vm->memory[i] / 16];
-		memstr[i * 2 + 1] = digits[vm->memory[i] % 16];
-		i++;
-	}
-	memstr[MEM_SIZE * 2] = '\0';
-}
-
 SDL_Texture			*strtotex(char *str, t_winenv *env, SDL_Color color)
 {
 	SDL_Texture		*tex;
@@ -108,15 +92,25 @@ SDL_Texture			*strtotex(char *str, t_winenv *env, SDL_Color color)
 	return (tex);
 }
 
-void				dispmemline(t_winenv *env, char *memstr, int line)
+SDL_Texture			*memtotex(t_winenv *env, int line, int col)
 {
-	char			tmp[3];
+	const char		*digits;
+	char			str[3];
+
+	digits = "0123456789abcdef";
+	str[0] = digits[env->vm->memory[line * 64 + col] / 16];
+	str[1] = digits[env->vm->memory[line * 64 + col] % 16];
+	str[2] = '\0';
+	return (strtotex(str, env, (SDL_Color){150, 150, 150, 255}));
+}
+
+void				dispmemline(t_winenv *env, int line)
+{
 	SDL_Texture		*tex;
 	SDL_Rect		dst;
 	int				i;
 	int				wunit;
 
-	tmp[2] = '\0';
 	i = 0;
 	SDL_QueryTexture(env->memtex, NULL, NULL, &wunit, NULL);
 	dst.y = env->dispmode.h * line / 64;
@@ -124,7 +118,7 @@ void				dispmemline(t_winenv *env, char *memstr, int line)
 	while (i < 64)
 	{
 		dst.x = wunit * i / 64;
-		tex = strtotex(ft_strncpy(tmp, memstr + line * 64 * 2 + i * 2, 2), env, (SDL_Color){150, 150, 150, 255});
+		tex = memtotex(env, line, i);
 		SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
 		SDL_RenderCopy(env->render, tex, NULL, &dst);
 		SDL_DestroyTexture(tex);
@@ -132,18 +126,39 @@ void				dispmemline(t_winenv *env, char *memstr, int line)
 	}
 }
 
+void				dispproc(t_winenv *env)
+{
+	SDL_Rect	rect;
+	t_process	*cur;
+
+	SDL_QueryTexture(env->memtex, NULL, NULL, &rect.w, &rect.h);
+	rect.w = rect.w / 64;
+	rect.h = rect.h / 64;
+	cur = env->vm->process;
+	while (cur)
+	{
+		rect.x = (cur->pc % 64) * rect.w;
+		rect.y = cur->pc / 64 * rect.h;
+		if (cur->champ == env->vm->champion)
+			SDL_SetRenderDrawColor(env->render, 50, 100, 50, SDL_ALPHA_OPAQUE);
+		else
+			SDL_SetRenderDrawColor(env->render, 50, 50, 100, SDL_ALPHA_OPAQUE);
+		SDL_RenderFillRect(env->render, &rect);
+		cur = cur->next;
+	}
+}
+
 void				memdisp(t_winenv *env)
 {
-	char			memstr[MEM_SIZE * 2 + 1];
 	int				i;
 
 	i = 0;
-	fillmemstr(memstr, env->vm);
 	SDL_SetRenderDrawColor(env->render, 10, 10, 10, SDL_ALPHA_OPAQUE);
 	cleartex(env->render, env->memtex);
+	dispproc(env);
 	while (i < MEM_SIZE / 64)
 	{
-		dispmemline(env, memstr, i);
+		dispmemline(env, i);
 		i++;
 	}
 }
@@ -208,11 +223,12 @@ int					visu(void)
 	env = getsdlenv(NULL);
 	env->ticks = SDL_GetTicks();
 	memdisp(env);
-	while (!(env->quit |= SDL_QuitRequested()))
-	{
+	SDL_RenderPresent(env->render);
+	while (!(env->quit |= SDL_QuitRequested()) && SDL_GetTicks() < env->ticks + 50)
+	{}
 		events(env);
 		visu_update(env);
 		SDL_RenderPresent(env->render);
-	}
+	//}
 	return (quitvisu(env));
 }

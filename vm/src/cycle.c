@@ -6,11 +6,12 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:12:20 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/28 18:44:51 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/28 23:47:27 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+#include "visu.h"
 
 static void		dump_memory(unsigned char memory[], t_process *process)
 {
@@ -51,6 +52,7 @@ void			run_cycle(t_op *op_tab, t_vm *env)
 	c_todie = CYCLE_TO_DIE;
 	while (env->process)
 	{
+		visu();
 		c_todie--;
 		if (env->dump >= 0 && env->cycle == (unsigned long)env->dump)
 			dump_memory(env->memory, env->process);
