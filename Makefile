@@ -6,56 +6,78 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/02/15 22:25:46 by vsporer          ###   ########.fr        #
+#    Updated: 2018/02/26 19:00:23 by vsporer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 VM = 				corewar
 ASM = 				asm
-LIBFT =				libft/libft.a
 
-C_RESET =			\033[0m
-C_OK =				\033[32m
-C_DEL =				\033[31m
+C_OK =		\033[32m
+C_DEL =		\033[31m
+C_RESET =	\033[0m
 
 PATH_LIBFT =		libft/
-PATH_VM_OBJ =			vm_objs/
-PATH_ASM_OBJ =			asm_objs/
+LIBFT =				libft/libft.a
 
-PATH_VM_SRC =		vm/src/
+PATH_OBJ =			obj/
+
+PATH_VM =			vm/
+PATH_VM_SRC =		$(PATH_VM)src/
 PATH_VM_PARS =		$(PATH_VM_SRC)parser/
 PATH_VM_INST =		$(PATH_VM_SRC)instruction/
 PATH_VM_VISU =		$(PATH_VM_SRC)visu/
 
-PATH_ASM_SRC =		assembleur/src/
-#PATH_ASM_PARS =	$(PATH_ASM_SRC)parser/
+PATH_ASM =			assembler/
+PATH_ASM_SRC =		$(PATH_ASM)src/
+
+VPATH =				$(PATH_VM_SRC):$(PATH_VM_PARS):$(PATH_VM_INST):\
+$(PATH_VM_VISU):$(PATH_ASM_SRC)
 
 CC =				gcc -Wall -Werror -Wextra
-INC =				-I includes/ -I libft/include
+INC =				-I include/ -I libft/include/
 
-VM_SRC =			$(PATH_VM_SRC)corewar.c\
-							$(PATH_VM_SRC)utility.c
+VM_PARS =			parser.c\
+					header.c
 
-VM_PARS =			$(PATH_VM_PARS)parser.c \
-							$(PATH_VM_PARS)header.c
-#
-#PARS =				$(PATH_PARS)corewar.c
-#
-#INST =				$(PATH_INST)corewar.c
-#
-#VISU =				$(PATH_VISU)corewar.c
-#
-VM_OBJ =			$(patsubst $(PATH_VM_SRC)%.c, $(PATH_VM_OBJ)%.o, $(VM_SRC)) \
-					$(patsubst $(PATH_VM_PARS)%.c, $(PATH_VM_OBJ)%.o, $(VM_PARS))
-#					$(patsubst $(PATH_VM_INST)%.c, $(PATH_OBJ)%.o, $(VM_INST))\
-#					$(patsubst $(PATH_VM_VISU)%.c, $(PATH_OBJ)%.o, $(VM_VISU))\
-#ASM_OBJ			$(patsubst $(PATH_ASM_SRC)%.c, $(PATH_OBJ)%.o, $(ASM_SRC))\
-#					$(patsubst $(PATH_ASM_PARS)%.c, $(PATH_OBJ)%.o, \
-#$(ASM_PARS))
+VM_INST =			vm_st.c\
+					vm_and.c\
+					vm_live.c\
+					vm_ld.c\
+					vm_lld.c\
+					vm_add.c\
+					vm_sub.c\
+					vm_zjmp.c\
+					vm_st.c\
+					vm_or.c\
+					vm_xor.c\
+					vm_fork.c\
+					vm_lfork.c\
+					vm_sti.c\
+					vm_aff.c\
+					vm_ldi.c\
+					vm_lldi.c
 
-.PHONY: all clean fclean libft
+#VM_VISU =			
+#
+VM_SRC =			$(VM_PARS)\
+					$(VM_INST)\
+					$(VM_VISU)\
+					corewar.c\
+					cycle.c\
+					utility.c\
+					process.c\
+					execute.c\
+					check.c\
+					check_reg.c\
+					params.c
 
-all: libft $(VM) $(ASM)
+ASM_SRC =			asm.c
+
+VM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(VM_SRC))
+ASM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(ASM_SRC))
+
+all: libft $(ASM) $(VM)
 
 $(VM): $(LIBFT) $(VM_OBJ)
 	@echo "Compiling $@ ...\033[K"
@@ -67,45 +89,17 @@ $(ASM): $(LIBFT) $(ASM_OBJ)
 	@$(CC) $(INC) $^ -o $@
 	@echo "$(C_OK)Done !$(C_RESET)"
 
-$(LIBFT): libft
+$(LIBFT):
+	make -C $(PATH_LIBFT)
 
-libft:
-	@cd $(PATH_LIBFT) && $(MAKE)
-
-$(PATH_VM_OBJ)%.o: $(PATH_VM_SRC)%.c
+$(PATH_OBJ)%.o: %.c
 	@echo "Compiling @\033[K\033[1A\r"
 	@mkdir -p $(@D)
 	@$(CC) $(INC) -c $< -o $@
 
-$(PATH_VM_OBJ)%.o: $(PATH_VM_PARS)%.c
-	@echo "Compiling @\033[K\033[1A\r"
-	@mkdir -p $(@D)
-	@$(CC) $(INC) -c $< -o $@
-
-#$(PATH_VM_OBJ)%.o: $(PATH_VM_INST)%.c
-#	@echo "Compiling @\033[K\033[1A\r"
-#	@mkdir -p $(@D)
-#	@$(CC) $(INC) -c $< -o $@
-#
-#$(PATH_VM_OBJ)%.o: $(PATH_VM_VISU)%.c
-#	@echo "Compiling @\033[K\033[1A\r"
-#	@mkdir -p $(@D)
-#	@$(CC) $(INC) -c $< -o $@
-#
-#$(PATH_ASM_OBJ)%.o: $(PATH_ASM_SRC)%.c
-#	@echo "Compiling @\033[K\033[1A\r"
-#	@mkdir -p $(@D)
-#	@$(CC) $(INC) -c $< -o $@
-#
-#$(PATH_ASM_OBJ)%.o: $(PATH_ASM_PARS)%.c
-#	@echo "Compiling @\033[K\033[1A\r"
-#	@mkdir -p $(@D)
-#	@$(CC) $(INC) -c $< -o $@
-#
 clean:
-	@rm -rf $(PATH_VM_OBJ)
-	@rm -rf $(PATH_ASM_OBJ)
-	@cd $(PATH_LIBFT) && $(MAKE) clean
+	@rm -rf $(PATH_OBJ)
+	@make -C $(PATH_LIBFT) clean
 	@echo "$(C_DEL)Object files removed.$(C_RESET)"
 
 fclean: clean
@@ -122,3 +116,5 @@ test: all
 	@echo "/\\/\\/\\/\\/\\/\\/\\END TEST/\\/\\/\\/\\/\\/\\/\\"
 
 re: fclean all
+
+.PHONY: all clean fclean libft

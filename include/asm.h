@@ -1,55 +1,50 @@
-#ifndef ASM_H
-# define ASM_H
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <libft.h>
+#include <corewar.h>
 
+typedef struct s_roquet
+{
+  int type;
+  long pos;
+  long value;
+  int i;
+  int j;
+  int size_max;
+  struct s_roquet *next;
+} t_roquet;
 
-# include "libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-/*
-** in addition to T_TEG / T_IND / T_DIR in op.h
-*/
-
-# define T_INS		16
-# define T_ATT		32
-
-/*
-** faire la liaison entre les nodes
-*/
+typedef struct s_label
+{
+  char *name;
+  long index;
+  t_roquet *appel;
+  struct s_label *next;
+} t_label;
 
 typedef struct		s_op
 {
 	char		*name;
 	int		nb_params;
-	int		*type;
-	char		opcode;
-	int		nb_cycles;
-	char		*desc;
+	short		type;
 	int		has_octal;
-	int		unknown;
+	int		half_dir_size;
+  int opcode;
 }			t_op;
 
 
-typedef struct s_res
+typedef struct s_env
 {
-  char *name;
-  unsigned long long ant_left;
-  t_path *path;
-  struct s_res *next;
-} t_res;
-
-
-typedef struct		s_elem
-{
- 	char		*name;
-	int		type;
-	unsigned long	pos;
-	struct s_elem	**children; // si label: insts - si inst: params
-	struct s_elem	*next; // si label: next label - sinon null
-}			t_elem;
-
-t_op			get_fct_app(void);
-void			lexer(t_elem *tree, char *filename);
-
-void			verif(t_elem *tree); // fonction de verif a supprimer
-
-#endif
+  char *res;
+  char *champ;
+  long pos;
+  long pos_last_inst;
+  long index;
+  int state;
+  long line;
+  size_t taille;
+  t_label *label;
+  t_op *op;
+  struct s_env *next;
+} t_env;
