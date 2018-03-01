@@ -12,6 +12,11 @@
 # define L_DIR			1
 # define IND_TARG		2
 # define IMOD			4
+# define SHOW_LIVE		1
+# define SHOW_CYCL		2
+# define SHOW_OPER		4
+# define SHOW_DEAT		8
+# define SHOW_MOVE		16
 
 typedef struct	s_param
 {
@@ -25,9 +30,13 @@ typedef void (*t_op)(t_process *, t_vm *);
 /*
 ** Parser
 */
+t_opt			*get_opt(void);
 void			ft_print_head(t_vm *env, int cmp);
 void			ft_init_header(t_vm *env, char *line, int start, char **av);
 void			parsing(int ac, char **av, t_vm *vm, int cmp);
+int				opt_have_value(int pos, char **av, int cmp, t_vm *env);
+int				search_opt(char *str, t_vm *env);
+int				check_opt(int pos, char **av, t_vm *env);
 /*
 ** VM core
 */
@@ -36,11 +45,11 @@ int				check_reg(unsigned char peb, int nb_param, t_param *param);
 int				param_len(unsigned char peb, int mod, int nb_param);
 int				get_param_value(unsigned int at, int len, int *ret, t_vm *env);
 unsigned int	read_memory(unsigned int address, t_vm *env);
-t_process		*new_process(t_process *src, unsigned int new_pc, t_vm *env);
+t_process		*new_process(t_process *src, unsigned int new_pc);
+t_process		*exec_process(t_process *process, t_op *op_tab, t_vm *env);
 void			get_param(t_param *param, t_process *process, t_vm *env);
 void			add_process(t_process **lst, t_process *new);
 void			del_process(t_process **lst, t_process * todel);
-void			exec_process(t_process *process, t_op *op_tab, t_vm *env);
 void			check_process(unsigned long *last_period, t_process *process, \
 				t_vm *env);
 void			run_cycle(t_op *op_tab, t_vm *env);

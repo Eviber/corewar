@@ -15,7 +15,6 @@
 void	ft_print_head(t_vm *env, int cmp)
 {
 	t_header	*tmp;
-	int			nb_line;
 
 	tmp = env->champion;
 	ft_printf("dump = %ld\n", env->dump);
@@ -29,10 +28,9 @@ void	ft_print_head(t_vm *env, int cmp)
 		ft_printf("comment = %s\n\n", tmp->comment);
 		tmp = tmp->next;
 	}
-	nb_line = 0;
 	while (cmp++ < MEM_SIZE - 1)
 	{
-		if (cmp && !(cmp % 64) && (nb_line += 1))
+		if (cmp && !(cmp % 64))
 			ft_printf("\n");
 		if (env->memory[cmp] < 16)
 			ft_printf("0");
@@ -49,16 +47,16 @@ void	ft_fill_header(t_header *tmp, char *line, unsigned long i, int error)
 			tmp->magic = tmp->magic * 256 + (unsigned char)line[i];
 		else if (i < PROG_NAME_LENGTH + sizeof(unsigned int))
 		{
-			if (!ft_strchr(LABEL_CHARS, line[i]) && (error = 1))
-				ft_dprintf(2, "Character %c non valide dans le nom\n", line[i]);
+			//if (!ft_strchr(LABEL_CHARS, line[i]) && (error = 1))
+				//ft_dprintf(2, "Character %c non valide dans le nom\n", line[i]);
 			tmp->prog_name[i - sizeof(unsigned int)] = line[i];
 		}
 		else if (i < PROG_NAME_LENGTH + sizeof(long) + sizeof(unsigned int))
 			tmp->prog_size = tmp->prog_size * 256 + (unsigned char)line[i];
 		else
 		{
-			if (!ft_strchr(LABEL_CHARS, line[i]) && (error = 1))
-				ft_dprintf(2, "Character %c non valide = commentaire\n", line[i]);
+			//if (!ft_strchr(LABEL_CHARS, line[i]) && (error = 1))
+				//ft_dprintf(2, "Character %c non valide dans le commentaire\n", line[i]);
 			tmp->comment[i - 4 - 8 - PROG_NAME_LENGTH] = line[i];
 		}
 	}

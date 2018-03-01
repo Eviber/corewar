@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/02/26 19:00:23 by vsporer          ###   ########.fr        #
+#    Updated: 2018/03/01 18:09:12 by vsporer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ CC =				gcc -Wall -Werror -Wextra
 INC =				-I include/ -I libft/include/
 
 VM_PARS =			parser.c\
+					option.c\
 					header.c
 
 VM_INST =			vm_st.c\

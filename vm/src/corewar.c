@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/28 21:06:58 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/01 19:11:29 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ static void				init(t_vm *env)
 	env->max_check = MAX_CHECKS;
 	env->nbr_live = 0;
 	env->c_delta = CYCLE_DELTA;
+	env->curr_c_todie = CYCLE_TO_DIE;
 	env->c_todie = CYCLE_TO_DIE;
 	ft_bzero((void*)env->memory, MEM_SIZE);
 	env->nb_player = 0;
 	env->process = NULL;
 	env->ll_champ = NULL;
 	env->champion = NULL;
+	env->option = get_opt();
 	env->dump = -1;
 }
 
@@ -58,7 +60,7 @@ static void				init_process(t_header *champ, t_vm *env)
 	{
 		if (env->process)
 			pc = (MEM_SIZE / env->nb_player) + env->process->pc;
-		add_process(&env->process, new_process(env->process, pc, env));
+		add_process(&env->process, new_process(env->process, pc));
 		(env->nb_process)++;
 		env->process->champ = champ;
 		env->process->reg[0] = champ->num;
