@@ -22,6 +22,27 @@ static int				rd(char *line, t_vm *env, unsigned long max, unsigned long pos)
 	return (0);
 }
 
+static int check_opt(int pos, int max,char **av, t_vm *env)
+{
+	int cmp;
+	int i;
+
+	i = -1:
+	cmp = -1:
+	while(cmp < 4 && ft_strcmp(av[pos] + 1, env->option[++cmp]))
+		;
+	if (cmp != 4)
+	{
+		if (env->option[cmp].has_value)
+		{
+			if (av[po])
+			while (av[pos + 1][++] && ++posft_isdigit(av[pos + 1]))
+		}
+	}
+	return(1);
+}
+
+
 static unsigned long	check_arg(int ac, char **av, t_vm *env)
 {
 	unsigned long	nb_champ;
@@ -33,14 +54,8 @@ static unsigned long	check_arg(int ac, char **av, t_vm *env)
 	nb_champ = 0;
 	while (++i < ac)
 	{
-		if (av[i][0] == '-' &&
-				(!ft_strcmp(av[i] + 1, "dump") || !ft_strcmp(av[i] + 1, "n")))
-		{
-			if (!ft_strcmp(av[i] + 1, "dump"))
-				env->dump = ft_atoi(av[++i]);
-			else
-				i++;
-		}
+		if (av[i][0] == '-' && check_opt_number(i, ac, av, env))
+			i++;
 		else
 			nb_champ++;
 	}
@@ -60,8 +75,21 @@ static char 			*get_header(int fd)
 
 	taille = PROG_NAME_LENGTH + COMMENT_LENGTH + sizeof(int) + sizeof(long);
 	line = ft_memalloc(taille + 1);
-	if ((cmp = read(fd, line, taille + 4)) < taille)
+	if (read(fd, line, taille + 4) < taille)
 		ft_exit((fd <= 0) ? "Fichier inacessible\n" : "Fichier trop petit\n");
+	cmp = -1;
+	while (++cmp < taille )
+	{
+		if (cmp == sizeof(COREWAR_EXEC_MAGIC) || cmp == sizeof(int) + PROG_NAME_LENGTH ||
+				cmp == sizeof(int) + PROG_NAME_LENGTH + sizeof(long))
+			ft_printf("/");
+		if (cmp && !(cmp % 64))
+			ft_printf("\n");
+		if (line[cmp] < 16)
+			ft_printf("0");
+		ft_printf("%x ", (unsigned char)line[cmp]);
+	}
+	ft_printf("\n\n");
 	return (line);
 }
 

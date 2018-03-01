@@ -23,6 +23,7 @@ static void		init(t_vm *env)
 	env->c_delta = CYCLE_DELTA;
 	env->c_todie = CYCLE_TO_DIE;
 	ft_bzero((void*)env->memory, MEM_SIZE);
+	env->option = get_opt();
 	env->champion = NULL;
 	env->dump = -1;
 }
