@@ -95,6 +95,7 @@ typedef struct 			s_opt
 	char has_value;
 	char value_needed;
 	char store_value;
+	char value_can_be_negative;
 }	t_opt;
 
 typedef struct			s_vm
