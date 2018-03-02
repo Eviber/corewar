@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 22:22:52 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/01 02:51:35 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/01 16:36:23 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 #include "libft.h"
 
-#include "op.h"
 #include "corewar.h"
 #include "visu.h"
 
@@ -129,16 +128,17 @@ void				dispmemline(t_winenv *env, int line)
 void				dispproc(t_winenv *env)
 {
 	SDL_Rect	rect;
+	SDL_Rect	memrect;
 	t_process	*cur;
 
-	SDL_QueryTexture(env->memtex, NULL, NULL, &rect.w, &rect.h);
-	rect.w = rect.w / 64;
-	rect.h = rect.h / 64;
+	SDL_QueryTexture(env->memtex, NULL, NULL, &memrect.w, &memrect.h);
+	rect.w = memrect.w / 64;
+	rect.h = memrect.h / 64;
 	cur = env->vm->process;
 	while (cur)
 	{
-		rect.x = (cur->pc % 64) * rect.w;
-		rect.y = cur->pc / 64 * rect.h;
+		rect.x = (cur->pc % 64) * memrect.w / 64;
+		rect.y = cur->pc / 64 * memrect.h / 64;
 		if (cur->champ == env->vm->champion)
 			SDL_SetRenderDrawColor(env->render, 50, 100, 50, SDL_ALPHA_OPAQUE);
 		else
@@ -224,7 +224,7 @@ int					visu(void)
 	env->ticks = SDL_GetTicks();
 	memdisp(env);
 	SDL_RenderPresent(env->render);
-	while (!(env->quit |= SDL_QuitRequested()) && SDL_GetTicks() < env->ticks + 50)
+	while (!(env->quit |= SDL_QuitRequested()) && SDL_GetTicks() < env->ticks)
 	{}
 		events(env);
 		visu_update(env);
