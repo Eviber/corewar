@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/28 20:29:09 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/02 15:51:01 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void			vm_aff(t_process *process, t_vm *env)
 	if (!check_peb(peb, perm, 1))
 	{
 		get_param(&param, process, env);
+		if ((env->verbose & SHOW_MOVE))
+			show_pc_mov(process->pc, process->pc + param.len, param.len, env);
 		if (!check_reg(peb, 1, &param))
 			ft_putchar((unsigned char)process->reg[param.one - 1]);
 	}

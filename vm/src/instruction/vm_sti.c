@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/28 18:35:48 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/02 15:55:27 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void			vm_sti(t_process *process, t_vm *env)
 	if (!check_peb(peb, perm, 3))
 	{
 		get_param(&param, process, env);
+		if ((env->verbose & SHOW_MOVE))
+			show_pc_mov(process->pc, process->pc + param.len, param.len, env);
 		if (!check_reg(peb, 3, &param))
 		{
 			if (PARAM_TWO(peb) == REG_CODE)

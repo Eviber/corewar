@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 18:29:25 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/01 19:07:10 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/02 15:14:15 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_process	*new_process(t_process *src, unsigned int new_pc)
 		new->last_live = 0;
 		new->next = NULL;
 	}
-	new->id = id++;
+	new->id = ++id;
 	return (new);
 }
 

@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/03/01 18:09:12 by vsporer          ###   ########.fr        #
+#    Updated: 2018/03/02 16:00:35 by vsporer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,7 @@ VM_SRC =			$(VM_PARS)\
 					execute.c\
 					check.c\
 					check_reg.c\
+					verbose.c\
 					params.c
 
 ASM_SRC =			asm.c

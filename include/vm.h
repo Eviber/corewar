@@ -14,9 +14,8 @@
 # define IMOD			4
 # define SHOW_LIVE		1
 # define SHOW_CYCL		2
-# define SHOW_OPER		4
-# define SHOW_DEAT		8
-# define SHOW_MOVE		16
+# define SHOW_DEAT		4
+# define SHOW_MOVE		8
 
 typedef struct	s_param
 {
@@ -24,6 +23,7 @@ typedef struct	s_param
 	int			one;
 	int			two;
 	int			thr;
+	int			len;
 }				t_param;
 
 typedef void (*t_op)(t_process *, t_vm *);
@@ -55,6 +55,8 @@ void			check_process(unsigned long *last_period, t_process *process, \
 void			run_cycle(t_op *op_tab, t_vm *env);
 void			set_cooldown(t_process *process, t_vm *env);
 void			write_memory(unsigned int value, unsigned int address, \
+				t_vm *env);
+void			show_pc_mov(unsigned int old_pc, unsigned int new_pc, int len,\
 				t_vm *env);
 /*
 ** Instructions
