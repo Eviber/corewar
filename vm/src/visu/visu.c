@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 22:22:52 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/02 18:06:36 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/03 04:22:33 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,7 +300,8 @@ int					visu(void)
 
 	env = getsdlenv(NULL);
 	env->ticks = SDL_GetTicks();
-	memdisp(env);
+	if (env->vm->mem_mov)
+		memdisp(env);
 	huddisp(env);
 	SDL_RenderPresent(env->render);
 	while (!(env->quit |= SDL_QuitRequested()) && SDL_GetTicks() < env->ticks)
