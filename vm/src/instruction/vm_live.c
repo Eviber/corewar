@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:40:00 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/28 15:56:59 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/02 15:54:50 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	vm_live(t_process *process, t_vm *env)
 	t_header		*tmp;
 	int				player;
 
+	if ((env->verbose & SHOW_MOVE))
+		show_pc_mov(process->pc, process->pc + 5, 5, env);
 	get_param_value(process->pc + 1, 4, &player, env);
 	tmp = env->champion;
 	while (tmp && tmp->num != player)
@@ -26,6 +28,9 @@ void	vm_live(t_process *process, t_vm *env)
 		tmp->last_live = env->cycle;
 		tmp->nb_live += 1;
 		env->ll_champ = tmp;
+		if ((env->verbose & SHOW_LIVE))
+			ft_printf("Player %d (%s) is said to be alive\n", \
+			tmp->num, tmp->prog_name);
 	}
 	env->nbr_live += 1;
 	process->last_live = env->cycle;

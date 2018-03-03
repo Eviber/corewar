@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_zjmp.c                                          :+:      :+:    :+:   */
+/*   verbose.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/23 14:23:05 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/02 15:58:52 by vsporer          ###   ########.fr       */
+/*   Created: 2018/03/02 15:17:42 by vsporer           #+#    #+#             */
+/*   Updated: 2018/03/02 16:01:43 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void	vm_zjmp(t_process *process, t_vm *env)
+void	show_pc_mov(unsigned int old_pc, unsigned int new_pc, int len, \
+t_vm *env)
 {
-	int		p_one;
+	int		i;
 
-	if (process->carry == 1)
+	i = -1;
+	ft_printf("ADV %d (%#06x -> %#06x)", len, old_pc, new_pc);
+	while (++i < len)
 	{
-		get_param_value(process->pc + 1, 2, &p_one, env);
-		if ((env->verbose & SHOW_MOVE))
-			show_pc_mov(process->pc, process->pc + (short)p_one, 3, env);
-		process->pc += (((short)p_one) % IDX_MOD);
-	}
-	else
-	{
-		if ((env->verbose & SHOW_MOVE))
-			show_pc_mov(process->pc, process->pc + 3, 3, env);
-		process->pc += 3;
+		if (i + 1 >= len)
+			ft_printf(" %02x\n", env->memory[(old_pc + i) % MEM_SIZE]);
+		else
+			ft_printf(" %02x", env->memory[(old_pc + i) % MEM_SIZE]);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 16:03:33 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/28 16:48:27 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/02 15:45:20 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static void		load_param(t_param *param, t_process *process, t_vm *env)
 		pc += get_param_value(pc, 2, &param->thr, env);
 	else if (PARAM_THR(peb))
 		pc += get_param_value(pc, 4, &param->thr, env);
+	param->len = pc - process->pc;
 }
 
 void			get_param(t_param *param, t_process *process, t_vm *env)

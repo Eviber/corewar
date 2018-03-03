@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/02/28 23:00:25 by ygaude           ###   ########.fr        #
+#    Updated: 2018/03/03 04:06:33 by ygaude           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ CFLAGS = -I include/ -I libft/include/ `sdl2-config --cflags`
 LFLAGS = -L $(PATH_LIBFT) -lft `sdl2-config --libs` -lSDL2_gfx -lSDL2_ttf
 
 VM_PARS =			parser.c\
+					option.c\
 					header.c
 
 VM_INST =			vm_st.c\
@@ -70,6 +71,7 @@ VM_SRC =			$(VM_PARS)\
 					execute.c\
 					check.c\
 					check_reg.c\
+					verbose.c\
 					params.c
 
 ASM_SRC =			asm.c

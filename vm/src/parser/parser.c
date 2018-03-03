@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/02/20 20:15:37 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/02 16:26:46 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,9 @@ static unsigned long	check_arg(int ac, char **av, t_vm *env)
 	nb_champ = 0;
 	while (++i < ac)
 	{
-		if (av[i][0] == '-' &&
-				(!ft_strcmp(av[i] + 1, "dump") || !ft_strcmp(av[i] + 1, "n")))
+		if (av[i][0] == '-')
 		{
-			if (!ft_strcmp(av[i] + 1, "dump"))
-				env->dump = ft_atoi(av[++i]);
-			else
+			if (check_opt(i, av, env))
 				i++;
 		}
 		else
@@ -60,8 +57,9 @@ static char 			*get_header(int fd)
 
 	taille = PROG_NAME_LENGTH + COMMENT_LENGTH + sizeof(int) + sizeof(long);
 	line = ft_memalloc(taille + 1);
-	if ((cmp = read(fd, line, taille + 4)) < taille)
+	if (read(fd, line, taille + 4) < taille)
 		ft_exit((fd <= 0) ? "Fichier inacessible\n" : "Fichier trop petit\n");
+	cmp = -1;
 	return (line);
 }
 
@@ -82,7 +80,7 @@ void					parsing(int ac, char **av, t_vm *env, int cmp)
 		while (--ac)
 		{
 			while (av[++start][0] == '-')
-				start += 1;
+				start += ((opt_have_value(start, av, search_opt(av[start], env), env)) ? 1 : 0);
 			fd = open(av[start], O_RDONLY);
 			ft_init_header(env, get_header(fd), start, av);
 			cmp = read(fd, line, CHAMP_MAX_SIZE);

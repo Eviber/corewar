@@ -6,13 +6,13 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 20:19:53 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/28 17:28:18 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/01 17:41:00 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void	set_cooldown(t_process *process, t_vm *env)
+void		set_cooldown(t_process *process, t_vm *env)
 {
 	unsigned int	nb_cycle[16];
 
@@ -39,7 +39,7 @@ void	set_cooldown(t_process *process, t_vm *env)
 		process->cooldown = 0;
 }
 
-void	exec_process(t_process *process, t_op *op_tab, t_vm *env)
+t_process	*exec_process(t_process *process, t_op *op_tab, t_vm *env)
 {
 	if (process->inst == -1)
 	{
@@ -51,12 +51,14 @@ void	exec_process(t_process *process, t_op *op_tab, t_vm *env)
 	{
 		op_tab[process->inst - 1](process, env);
 		process->inst = -1;
+		env->mem_mov = 1;
 	}
 	else if (process->cooldown <= 0)
 	{
 		process->pc = (process->pc + 1) % MEM_SIZE;
-		process->inst = env->memory[process->pc];
-		set_cooldown(process, env);
+		process->inst = -1;
+		env->mem_mov = 1;
 	}
 	process->pc = process->pc % MEM_SIZE;
+	return (process->next);
 }

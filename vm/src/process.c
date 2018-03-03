@@ -6,16 +6,17 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 18:29:25 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/28 15:14:50 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/02 15:14:15 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-t_process	*new_process(t_process *src, unsigned int new_pc, t_vm *env)
+t_process	*new_process(t_process *src, unsigned int new_pc)
 {
-	int		i;
-	t_process	*new;
+	int				i;
+	t_process		*new;
+	static long		id = 0;
 
 	i = -1;
 	if (!(new = (t_process*)malloc(sizeof(t_process))))
@@ -29,14 +30,13 @@ t_process	*new_process(t_process *src, unsigned int new_pc, t_vm *env)
 	{
 		while (++i < REG_NUMBER)
 			new->reg[i] = 0;
-		new->champ = NULL;
 		new->pc = new_pc % MEM_SIZE;
 		new->carry = 0;
 		new->cooldown = 0;
 		new->last_live = 0;
-		new->inst = env->memory[new->pc];
 		new->next = NULL;
 	}
+	new->id = ++id;
 	return (new);
 }
 

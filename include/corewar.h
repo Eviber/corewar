@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/02/28 22:36:12 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/03 04:07:47 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct			s_header
 typedef struct			s_process
 {
 	t_header			*champ;
+	long				id;
 	unsigned int		pc;
 	unsigned int		carry;
 	unsigned int		reg[REG_NUMBER];
@@ -89,28 +90,39 @@ typedef struct			s_process
 	struct s_process	*next;
 }						t_process;
 
+typedef struct			s_opt
+{
+	char				*name;
+	char				has_value;
+	char				value_needed;
+	char				store_value;
+}						t_opt;
+
 typedef struct			s_vm
 {
+	int					verbose;
 	long				dump;
+	t_opt				*option;
 	t_header			*champion;
 	t_header			*ll_champ;
 	t_process			*process;
 	unsigned int		nb_player;
 	unsigned char		memory[MEM_SIZE];
 	long				c_todie;
+	long				curr_c_todie;
 	unsigned long		c_delta;
 	unsigned long		nbr_live;
 	unsigned long		max_check;
 	unsigned long		check;
 	unsigned long		cycle;
 	unsigned long		nb_process;
+	int					mem_mov;
 }						t_vm;
 
 /*
 ** Utility.c
 */
 
-void					visu_init(t_vm *vm);
 void					ft_exit(char *str);
 
 #endif

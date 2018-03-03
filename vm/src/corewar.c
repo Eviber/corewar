@@ -6,26 +6,30 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/02/28 23:47:13 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/03 04:15:23 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+#include "visu.h"
 
 static void				init(t_vm *env)
 {
+	env->verbose = 0;
 	env->nb_process = 0;
 	env->cycle = 0;
 	env->check = 0;
 	env->max_check = MAX_CHECKS;
 	env->nbr_live = 0;
 	env->c_delta = CYCLE_DELTA;
+	env->curr_c_todie = CYCLE_TO_DIE;
 	env->c_todie = CYCLE_TO_DIE;
 	ft_bzero((void*)env->memory, MEM_SIZE);
 	env->nb_player = 0;
 	env->process = NULL;
 	env->ll_champ = NULL;
 	env->champion = NULL;
+	env->option = get_opt();
 	env->dump = -1;
 }
 
@@ -58,7 +62,7 @@ static void				init_process(t_header *champ, t_vm *env)
 	{
 		if (env->process)
 			pc = (MEM_SIZE / env->nb_player) + env->process->pc;
-		add_process(&env->process, new_process(env->process, pc, env));
+		add_process(&env->process, new_process(env->process, pc));
 		(env->nb_process)++;
 		env->process->champ = champ;
 		env->process->reg[0] = champ->num;
