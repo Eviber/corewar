@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/02 15:55:36 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/03 18:24:11 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void			vm_xor(t_process *process, t_vm *env)
 {
 	static char		**perm = NULL;
 	t_param			param;
-	int				result;
 	char			peb;
 
 	peb = env->memory[process->pc + 1];
@@ -49,7 +48,6 @@ void			vm_xor(t_process *process, t_vm *env)
 	param.mod = L_DIR | IND_TARG;
 	if (!check_peb(peb, perm, 3))
 	{
-		process->carry = 0;
 		get_param(&param, process, env);
 		if ((env->verbose & SHOW_MOVE))
 			show_pc_mov(process->pc, process->pc + param.len, param.len, env);
@@ -59,10 +57,8 @@ void			vm_xor(t_process *process, t_vm *env)
 				param.one = process->reg[param.one - 1];
 			if (PARAM_TWO(peb) == REG_CODE)
 				param.two = process->reg[param.two - 1];
-			result = param.one ^ param.two;
-			if (!result)
-				process->carry = 1;
-			process->reg[param.thr - 1] = (unsigned int)result;
+			process->carry = \
+			!(process->reg[param.thr - 1] = param.one ^ param.two) ? 1 : 0;
 		}
 	}
 	process->pc += param_len(peb, 1, 3) + 2;

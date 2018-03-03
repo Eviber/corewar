@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/03/01 18:48:37 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/02 19:14:03 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct			s_opt
 	char				has_value;
 	char				value_needed;
 	char				store_value;
+	char				value_can_be_negative;
 }						t_opt;
 
 typedef struct			s_vm
