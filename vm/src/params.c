@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 16:03:33 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/02 15:45:20 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/03 17:08:03 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int				get_param_value(unsigned int at, int len, int *ret, t_vm *env)
 	i = -1;
 	*ret = 0;
 	while (++i < len)
-		*ret = ((*ret) << 8) + env->memory[at + i];
+		*ret = ((*ret) << 8) + env->memory[(at + i) % MEM_SIZE];
 	if (len == 2)
 		*ret = (int)(short)*ret;
 	return (len);
