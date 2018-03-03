@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 22:47:24 by ygaude            #+#    #+#             */
-/*   Updated: 2018/02/21 23:31:56 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/03 12:13:30 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ typedef struct			s_winenv
 	SDL_Texture			*memtex;
 	SDL_Texture			*hudtex;
 	t_vm				*vm;
+	SDL_Texture			*bytetex[256];
+	Uint32				lastticks;
 	Uint32				ticks;
 	int					quit;
+	unsigned int		cps;
 }						t_winenv;
 
 void					visu_init(t_vm *vm);

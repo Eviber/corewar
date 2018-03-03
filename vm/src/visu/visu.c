@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 22:22:52 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/03 04:22:33 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/03 12:16:54 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void				initsdl(t_winenv *env)
 	env->render = SDL_CreateRenderer(env->win, -1, SDL_RENDERER_ACCELERATED);
 	if (!env->render)
 		panic("Error while creating renderer", SDL_GetError());
-	if (TTF_Init() == -1 || !(env->font = TTF_OpenFont("roboto.ttf", 15)))
+	if (TTF_Init() == -1 || !(env->font = TTF_OpenFont("roboto.ttf", 20)))
 		panic("Error while initializing SDL_TTF", TTF_GetError());
 	SDL_SetRenderDrawColor(env->render, 9, 11, 16, SDL_ALPHA_OPAQUE);
 	SDL_RenderClear(env->render);
@@ -91,18 +91,6 @@ SDL_Texture			*strtotex(char *str, t_winenv *env, SDL_Color color)
 	return (tex);
 }
 
-SDL_Texture			*memtotex(t_winenv *env, int line, int col)
-{
-	const char		*digits;
-	char			str[3];
-
-	digits = "0123456789abcdef";
-	str[0] = digits[env->vm->memory[line * 64 + col] / 16];
-	str[1] = digits[env->vm->memory[line * 64 + col] % 16];
-	str[2] = '\0';
-	return (strtotex(str, env, (SDL_Color){150, 150, 150, 255}));
-}
-
 void				dispmemline(t_winenv *env, int line)
 {
 	SDL_Texture		*tex;
@@ -117,10 +105,9 @@ void				dispmemline(t_winenv *env, int line)
 	while (i < 64)
 	{
 		dst.x = wunit * i / 64;
-		tex = memtotex(env, line, i);
+		tex = env->bytetex[env->vm->memory[line * 64 + i]];
 		SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
 		SDL_RenderCopy(env->render, tex, NULL, &dst);
-		SDL_DestroyTexture(tex);
 		i++;
 	}
 }
@@ -224,6 +211,7 @@ void				huddisp(t_winenv *env)
 	SDL_Rect	dst;
 	char		*str;
 
+	env->cps = (env->cps + 1000 / (env->ticks - env->lastticks + !(env->ticks - env->lastticks))) / 2;
 	dst = (SDL_Rect){0,0,0,0};
 	SDL_SetRenderDrawColor(env->render, 10, 10, 90, SDL_ALPHA_OPAQUE);
 	cleartex(env->render, env->hudtex);
@@ -238,6 +226,8 @@ void				huddisp(t_winenv *env)
 	ft_asprintf(&str, "NBR_LIVE : %lu%c", NBR_LIVE, 0);
 	dst = hudputstr(env, str, dst);
 	ft_asprintf(&str, "MAX_CHECKS : %lu%c", MAX_CHECKS, 0);
+	dst = hudputstr(env, str, dst);
+	ft_asprintf(&str, "CPS : %4lu%c", env->cps, 0);
 	dst = hudputstr(env, str, dst);
 }
 
@@ -261,6 +251,31 @@ void				events(t_winenv *env)
 {
 	(void)env;
 }
+
+SDL_Texture			*valtotex(t_winenv *env, int val, int base)
+{
+	const char		*digits;
+	char			str[3];
+
+	digits = "0123456789abcdef";
+	str[0] = digits[val / base];
+	str[1] = digits[val % base];
+	str[2] = '\0';
+	return (strtotex(str, env, (SDL_Color){150, 150, 150, 255}));
+}
+
+void				loadbytetex(t_winenv *env)
+{
+	int		i;
+
+	i = 0;
+	while (i < 256)
+	{
+		env->bytetex[i] = valtotex(env, i, 16);
+		i++;
+	}
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 
 void				visu_init(t_vm *vm)
@@ -275,6 +290,7 @@ void				visu_init(t_vm *vm)
 	env->wintex = getnewtex(env, TEXTARGET, dm.w, dm.h);
 	env->memtex = getnewtex(env, TEXTARGET, dm.w * 4 / 5, dm.h);
 	env->hudtex = getnewtex(env, TEXTARGET, dm.w * 1 / 5, dm.h);
+	loadbytetex(env);
 	SDL_SetRenderDrawColor(env->render, 100, 50, 50, SDL_ALPHA_OPAQUE);
 	cleartex(env->render, env->wintex);
 	SDL_SetRenderDrawColor(env->render, 50, 100, 50, SDL_ALPHA_OPAQUE);
@@ -299,12 +315,13 @@ int					visu(void)
 	t_winenv		*env;
 
 	env = getsdlenv(NULL);
+	env->lastticks = env->ticks;
 	env->ticks = SDL_GetTicks();
 	if (env->vm->mem_mov)
 		memdisp(env);
 	huddisp(env);
 	SDL_RenderPresent(env->render);
-	while (!(env->quit |= SDL_QuitRequested()) && SDL_GetTicks() < env->ticks)
+	while (!(env->quit |= SDL_QuitRequested()) && SDL_GetTicks() < env->ticks + 0)
 	{}
 		events(env);
 		visu_update(env);
