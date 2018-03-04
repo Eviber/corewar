@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 23:06:13 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/01 19:31:16 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/04 16:39:23 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ static void		check_cycle_todie(t_vm *env)
 
 void			check_process(unsigned long *last_period, t_process *process, t_vm *env)
 {
+	t_process	*next;
+
 	while (process)
 	{
+		next = process->next;
 		if (process->last_live < *last_period || !process->last_live || \
 		env->c_todie <= 0)
 		{
@@ -46,7 +49,7 @@ void			check_process(unsigned long *last_period, t_process *process, t_vm *env)
 			del_process(&env->process, process);
 			(env->nb_process)--;
 		}
-		process = process->next;
+		process = next;
 	}
 	check_cycle_todie(env);
 	*last_period = env->cycle;
