@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/03/03 04:06:33 by ygaude           ###   ########.fr        #
+#    Updated: 2018/03/04 21:32:01 by ygaude           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,8 @@ VM_INST =			vm_st.c\
 					vm_ldi.c\
 					vm_lldi.c
 
-VM_VISU =			visu.c
+VM_VISU =			visu.c\
+					hsl.c
 
 VM_SRC =			$(VM_PARS)\
 					$(VM_INST)\

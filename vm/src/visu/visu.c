@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 22:22:52 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/03 12:16:54 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/04 21:36:13 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void				initsdl(t_winenv *env)
 		panic("SDL_GetDesktopDisplayMode failed", SDL_GetError());
 	env->win = SDL_CreateWindow("Corewar",
 				SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-				env->dispmode.w, env->dispmode.h, SDL_WINDOW_FULLSCREEN);
+				env->dispmode.w, env->dispmode.h, 0);//SDL_WINDOW_FULLSCREEN);
 	if (!env->win)
 		panic("Error while creating window", SDL_GetError());
 	env->render = SDL_CreateRenderer(env->win, -1, SDL_RENDERER_ACCELERATED);
@@ -105,7 +105,7 @@ void				dispmemline(t_winenv *env, int line)
 	while (i < 64)
 	{
 		dst.x = wunit * i / 64;
-		tex = env->bytetex[env->vm->memory[line * 64 + i]];
+		tex = env->bytetex[0][env->vm->memory[line * 64 + i]];
 		SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
 		SDL_RenderCopy(env->render, tex, NULL, &dst);
 		i++;
@@ -271,7 +271,7 @@ void				loadbytetex(t_winenv *env)
 	i = 0;
 	while (i < 256)
 	{
-		env->bytetex[i] = valtotex(env, i, 16);
+		env->bytetex[0][i] = valtotex(env, i, 16);
 		i++;
 	}
 }

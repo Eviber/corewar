@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/02/20 20:15:37 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/04 14:52:46 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static char 			*get_header(int fd)
 	if (fd <= 0)
 		ft_exit("Fichier inacessible\n");
 	taille = PROG_NAME_LENGTH + COMMENT_LENGTH + sizeof(int) + sizeof(long);
-	line = ft_memalloc(taille + 1);
+	line = ft_memalloc(taille + 4);
 	if ((cmp = read(fd, line, taille + 4)) < taille)
 		ft_exit((cmp <= 0) ?  "Erreur de read\n" : "Fichier trop petit\n");
 	return (line);

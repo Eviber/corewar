@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 22:47:24 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/03 12:13:30 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/04 13:51:21 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 
 typedef struct			s_winenv
 {
+	char				colormap[MEM_SIZE];
+	SDL_Texture			*bytetex[MAX_PLAYERS + 1][256];
+	SDL_Color			palette[MAX_PLAYERS + 1];
 	SDL_DisplayMode		dispmode;
 	SDL_Window			*win;
 	SDL_Renderer		*render;
@@ -30,13 +33,13 @@ typedef struct			s_winenv
 	SDL_Texture			*memtex;
 	SDL_Texture			*hudtex;
 	t_vm				*vm;
-	SDL_Texture			*bytetex[256];
 	Uint32				lastticks;
 	Uint32				ticks;
 	int					quit;
 	unsigned int		cps;
 }						t_winenv;
 
+SDL_Color				hsl(int h, double s, double l);
 void					visu_init(t_vm *vm);
 int						visu(void);
 
