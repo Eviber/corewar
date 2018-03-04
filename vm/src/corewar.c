@@ -6,11 +6,12 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/02 17:36:35 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/04 17:35:08 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+#include "visu.h"
 
 static void				init(t_vm *env)
 {
@@ -79,6 +80,7 @@ int						main(int ac, char **av)
 	if (!(op_tab = (t_op*)ft_memalloc(sizeof(t_op) * 16)))
 		ft_exit(strerror(errno));
 	init(&env);
+//	visu_init(&env);
 	init_op_tab(op_tab);
 	parsing(ac, av, &env, 0);
 	init_process(env.champion, &env);
@@ -88,5 +90,7 @@ int						main(int ac, char **av)
 		env.ll_champ->num, env.ll_champ->prog_name, env.cycle);
 	else
 		ft_putendl("Nobody win, no live");
+/*	while (visu())
+		;*/
 	return (0);
 }

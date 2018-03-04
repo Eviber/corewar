@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/03 18:25:09 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/04 18:31:48 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,10 @@ void			vm_or(t_process *process, t_vm *env)
 	if (!perm)
 		perm = get_or_perm();
 	param.mod = L_DIR | IND_TARG | IMOD;
+	param.len = param_len(peb, 1, 3) + 2;
 	if (!check_peb(peb, perm, 3))
 	{
 		get_param(&param, process, env);
-		if ((env->verbose & SHOW_MOVE))
-			show_pc_mov(process->pc, process->pc + param.len, param.len, env);
 		if (!check_reg(peb, 3, &param))
 		{
 			if (PARAM_ONE(peb) == REG_CODE)
@@ -61,5 +60,7 @@ void			vm_or(t_process *process, t_vm *env)
 			!(process->reg[param.thr - 1] = param.one | param.two) ? 1 : 0;
 		}
 	}
-	process->pc += param_len(peb, 1, 3) + 2;
+	if ((env->verbose & SHOW_MOVE))
+		show_pc_mov(process->pc, process->pc + param.len, param.len, env);
+	process->pc += param.len;
 }
