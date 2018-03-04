@@ -6,11 +6,33 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/02 16:26:46 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/20 20:15:37 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+static void 	intro_champ(t_vm *env)
+{
+	t_header *tmp;
+
+	tmp = env->champion;
+	if (env->nb_player > 1)
+		ft_printf("Introducing constestants\n");
+	while(tmp->next)
+	{
+		ft_printf("* Player %d, weighing %d bytes,", tmp->num, tmp->prog_size);
+		ft_printf(", \"%s\" (\"%s\") !\n", tmp->prog_name, tmp->comment);
+		tmp = tmp->next;
+	}
+	if (env->nb_player > 1)
+		ft_printf("and the last constestants is...\n......\n");
+	else
+		ft_printf("The only and sad contestant is\n");
+	ft_printf("* Player %d, weighing %d bytes,", tmp->num, tmp->prog_size);
+	ft_printf(" \"%s\" (\"%s\") !\n", tmp->prog_name, tmp->comment);
+	ft_printf("Lets ready to the rumble \n\n");
+}
 
 static int				rd(char *line, t_vm *env, unsigned long max, unsigned long pos)
 {
@@ -51,15 +73,15 @@ static unsigned long	check_arg(int ac, char **av, t_vm *env)
 static char 			*get_header(int fd)
 {
 	long	taille;
-	long	cmp;
 	char	*line;
+	int cmp;
 
-
+	if (fd <= 0)
+		ft_exit("Fichier inacessible\n");
 	taille = PROG_NAME_LENGTH + COMMENT_LENGTH + sizeof(int) + sizeof(long);
 	line = ft_memalloc(taille + 1);
-	if (read(fd, line, taille + 4) < taille)
-		ft_exit((fd <= 0) ? "Fichier inacessible\n" : "Fichier trop petit\n");
-	cmp = -1;
+	if ((cmp = read(fd, line, taille + 4)) < taille)
+		ft_exit((cmp <= 0) ?  "Erreur de read\n" : "Fichier trop petit\n");
 	return (line);
 }
 
@@ -86,7 +108,7 @@ void					parsing(int ac, char **av, t_vm *env, int cmp)
 			cmp = read(fd, line, CHAMP_MAX_SIZE);
 			rd(line, env, cmp, ++nm_champ * (MEM_SIZE / (env->nb_player)));
 			close(fd);
+			intro_champ(env);
 		}
 	ft_memdel((void**)&line);
-	ft_print_head(env, -1);
 }

@@ -15,10 +15,10 @@
 t_opt *get_opt(void)
 {
   static t_opt    opt_tab[4] = {
-  	{"dump", 1, 1, 1},
-  	{"n", 1, 1, 0},
-  	{"v", 1, 0, 1},
-  	{0, 0, 0, 0} };
+  	{"dump", 1, 1, 1, 0},
+  	{"n", 1, 1, 0, 1},
+  	{"v", 1, 0, 1, 0},
+  	{0, 0, 0, 0, 0} };
 
   return(opt_tab);
 }
@@ -40,8 +40,10 @@ int opt_have_value(int pos, char **av, int cmp, t_vm *env)
 	int i;
 
 	i = -1;
-	if (env->option[cmp].has_value)
+	if (env->option[cmp].has_value && av[pos + 1])
 	{
+    if (env->option[cmp].value_can_be_negative && av[pos + 1][i + 1] == '-')
+      ++i;
 		while (av[pos + 1] && av[pos + 1][++i] && ft_isdigit(av[pos + 1][i]))
 			;
 		if ( av[pos + 1] && !(av[pos + 1][i]))
@@ -67,6 +69,5 @@ int check_opt(int pos, char **av, t_vm *env)
 		exit(1);
 	else if (cmp == 2)
 		env->verbose = 1;
-		ft_printf("cmp = %d\n", cmp);
 	return(0);
 }

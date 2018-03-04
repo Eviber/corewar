@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/02 15:54:57 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/03 18:59:54 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,11 @@ void			vm_lld(t_process *process, t_vm *env)
 	param.mod = L_DIR | IND_TARG;
 	if (!check_peb(peb, perm, 2))
 	{
-		process->carry = 0;
 		get_param(&param, process, env);
 		if ((env->verbose & SHOW_MOVE))
 			show_pc_mov(process->pc, process->pc + param.len, param.len, env);
 		if (!check_reg(peb, 2, &param))
-			if (!(process->reg[param.two - 1] = param.one))
-				process->carry = 1;
+			process->carry = !(process->reg[param.two - 1] = param.one) ? 1 : 0;
 	}
 	process->pc += param_len(peb, 1, 2) + 2;
 }

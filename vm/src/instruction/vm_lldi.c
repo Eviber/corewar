@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/02 15:55:07 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/03 18:57:45 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void			vm_lldi(t_process *process, t_vm *env)
 	param.mod = IND_TARG | IMOD;
 	if (!check_peb(peb, perm, 3))
 	{
-		process->carry = 0;
 		get_param(&param, process, env);
 		if ((env->verbose & SHOW_MOVE))
 			show_pc_mov(process->pc, process->pc + param.len, param.len, env);
@@ -58,9 +57,8 @@ void			vm_lldi(t_process *process, t_vm *env)
 				param.one = process->reg[param.one - 1];
 			if (PARAM_TWO(peb) == REG_CODE)
 				param.two = process->reg[param.two - 1];
-			if ((process->reg[param.thr - 1] = \
-			read_memory(process->pc + (param.one + param.two), env)))
-				process->carry = 1;
+			process->carry = !(process->reg[param.thr - 1] = \
+			read_memory(process->pc + (param.one + param.two), env)) ? 1 : 0;
 		}
 	}
 	process->pc += param_len(peb, 0, 3) + 2;

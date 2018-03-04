@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:12:20 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/03 04:14:30 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/04 09:44:38 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static void		dump_memory(unsigned char memory[], t_process *process)
 	}
 	while (process)
 	{
-		ft_printf("Player: %d, PC = %d\nCarry = %d\n", process->champ->num, process->pc, process->carry);
-		process = process->next;
+		ft_printf("Process ID: %d, Instruction = %d, PC = %d, PLayer = %d, Carry = %d\n", process->id, process->inst, process->pc, process->champ->num, process->carry);
+		process= process->next;
 	}
 	exit(0);
 }

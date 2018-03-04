@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/02 15:51:01 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/03 19:35:45 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void			vm_aff(t_process *process, t_vm *env)
 		if (!check_reg(peb, 1, &param))
 			ft_putchar((unsigned char)process->reg[param.one - 1]);
 	}
-	process->pc += param_len(peb, 0, 1) + 2;
+	process->pc += param_len(peb, 1, 1) + 2;
 }

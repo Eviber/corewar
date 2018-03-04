@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/02 16:27:26 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/02/20 20:15:37 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,11 @@ void	ft_fill_header(t_header *tmp, char *line, unsigned long i, int error)
 		if (i < sizeof(unsigned int))
 			tmp->magic = tmp->magic * 256 + (unsigned char)line[i];
 		else if (i < PROG_NAME_LENGTH + sizeof(unsigned int))
-		{
-			//if (!ft_strchr(LABEL_CHARS, line[i]) && (error = 1))
-				//ft_dprintf(2, "Character %c non valide dans le nom\n", line[i]);
 			tmp->prog_name[i - sizeof(unsigned int)] = line[i];
-		}
 		else if (i < PROG_NAME_LENGTH + sizeof(long) + sizeof(unsigned int))
 			tmp->prog_size = tmp->prog_size * 256 + (unsigned char)line[i];
 		else
-		{
-			//if (!ft_strchr(LABEL_CHARS, line[i]) && (error = 1))
-				//ft_dprintf(2, "Character %c non valide dans le commentaire\n", line[i]);
 			tmp->comment[i - 4 - 8 - PROG_NAME_LENGTH] = line[i];
-		}
 	}
 	if (error)
 		exit(1);
