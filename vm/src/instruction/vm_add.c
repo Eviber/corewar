@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/04 18:23:00 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/05 15:04:05 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void			vm_add(t_process *process, t_vm *env)
 			process->carry = !(process->reg[param.thr - 1] = \
 			process->reg[param.one - 1] + process->reg[param.two - 1]) ? 1 : 0;
 	}
-	if ((env->verbose & SHOW_MOVE))
+	if ((env->option->verbose & SHOW_MOVE))
 		show_pc_mov(process->pc, process->pc + param.len, param.len, env);
 	process->pc += param.len;
 }

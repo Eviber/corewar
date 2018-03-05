@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/04 18:28:48 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/05 15:05:06 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void			vm_ldi(t_process *process, t_vm *env)
 			read_memory(process->pc + ((param.one + param.two) % IDX_MOD), env);
 		}
 	}
-	if ((env->verbose & SHOW_MOVE))
+	if ((env->option->verbose & SHOW_MOVE))
 		show_pc_mov(process->pc, process->pc + param.len, param.len, env);
 	process->pc += param.len;
 }

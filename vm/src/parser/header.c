@@ -17,7 +17,8 @@ void	ft_print_head(t_vm *env, int cmp)
 	t_header	*tmp;
 
 	tmp = env->champion;
-	ft_printf("dump = %ld\n", env->dump);
+	ft_printf("dump = %ld\n", env->option->dump);
+	ft_printf("visu = %ld\n", env->option->visu);
 	ft_printf("nb_player = %ld\n", env->nb_player);
 	while (tmp)
 	{

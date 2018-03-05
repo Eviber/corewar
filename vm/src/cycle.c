@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:12:20 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/04 18:43:01 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/05 15:48:28 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,19 @@ static void		dump_memory(unsigned char memory[], t_process *process)
 
 void			run_cycle(t_op *op_tab, t_vm *env)
 {
-	int				v;
 	t_process		*current;
 	unsigned long	last_period;
 
 	last_period = 0;
-//	v = env->visu;
-	v = 1;
 	while (env->process)
 	{
-		if ((env->verbose & SHOW_CYCL))
+		if ((env->option->verbose & SHOW_CYCL))
 			ft_printf("It is now cycle %d\n", env->cycle + 1);
 		env->mem_mov = 0;
-/*		if (v)
-			v = visu();*/
-		if (env->dump >= 0 && env->cycle == (unsigned long)env->dump)
+		if (env->option->visu)
+			env->option->visu = visu();
+		if (env->option->dump >= 0 && \
+		env->cycle == (unsigned long)env->option->dump)
 			dump_memory(env->memory, env->process);
 		current = env->process;
 		while (current)

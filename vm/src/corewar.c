@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/04 17:35:08 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/05 15:45:48 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 static void				init(t_vm *env)
 {
-	env->verbose = 0;
 	env->nb_process = 0;
 	env->cycle = 0;
 	env->check = 0;
@@ -29,8 +28,9 @@ static void				init(t_vm *env)
 	env->process = NULL;
 	env->ll_champ = NULL;
 	env->champion = NULL;
-	env->option = get_opt();
-	env->dump = -1;
+	env->opt = get_opt();
+	env->option = (t_option*)ft_memalloc_exit(sizeof(t_option));
+	env->option->dump = -1;
 }
 
 static void				init_op_tab(t_op *op_tab)
@@ -80,17 +80,16 @@ int						main(int ac, char **av)
 	if (!(op_tab = (t_op*)ft_memalloc(sizeof(t_op) * 16)))
 		ft_exit(strerror(errno));
 	init(&env);
-//	visu_init(&env);
 	init_op_tab(op_tab);
 	parsing(ac, av, &env, 0);
 	init_process(env.champion, &env);
+	if (env.option->visu)
+		visu_init(&env);
 	run_cycle(op_tab, &env);
 	if (env.ll_champ)
 		ft_printf("Player %d(%s) win !\nThe game was finish at cycle %ld.\n", \
 		env.ll_champ->num, env.ll_champ->prog_name, env.cycle);
 	else
 		ft_putendl("Nobody win, no live");
-/*	while (visu())
-		;*/
 	return (0);
 }

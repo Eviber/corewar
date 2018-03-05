@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 22:22:52 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/03 12:16:54 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/05 09:14:51 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,76 +20,7 @@
 #include "corewar.h"
 #include "visu.h"
 
-void				panic(const char *str, const char *str2)
-{
-	ft_dprintf(2, "%s: %s\n", str, str2);
-	exit(-1);
-}
-
-t_winenv			*getsdlenv(t_vm *vm)
-{
-	static t_winenv	*winenv = NULL;
-
-	if (!winenv && vm)
-		if ((winenv = (t_winenv *)ft_memalloc(sizeof(t_winenv))))
-		{
-			winenv->vm = vm;
-			winenv->quit = 0;
-		}
-	return (winenv);
-}
-
 ////////////////////////////////////////////////////////////////////////////////
-void				initsdl(t_winenv *env)
-{
-	if (!env || SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS))
-		panic("Error while initializing SDL", SDL_GetError());
-	if (SDL_GetDesktopDisplayMode(0, &(env->dispmode)))
-		panic("SDL_GetDesktopDisplayMode failed", SDL_GetError());
-	env->win = SDL_CreateWindow("Corewar",
-				SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-				env->dispmode.w, env->dispmode.h, SDL_WINDOW_FULLSCREEN);
-	if (!env->win)
-		panic("Error while creating window", SDL_GetError());
-	env->render = SDL_CreateRenderer(env->win, -1, SDL_RENDERER_ACCELERATED);
-	if (!env->render)
-		panic("Error while creating renderer", SDL_GetError());
-	if (TTF_Init() == -1 || !(env->font = TTF_OpenFont("roboto.ttf", 20)))
-		panic("Error while initializing SDL_TTF", TTF_GetError());
-	SDL_SetRenderDrawColor(env->render, 9, 11, 16, SDL_ALPHA_OPAQUE);
-	SDL_RenderClear(env->render);
-}
-
-SDL_Texture			*getnewtex(t_winenv *env, int access, int w, int h)
-{
-	SDL_Texture		*tex;
-
-	tex = SDL_CreateTexture(env->render, env->dispmode.format, access, w, h);
-	if (!tex)
-		panic("Failed creating texture", SDL_GetError());
-	return (tex);
-}
-
-void				cleartex(SDL_Renderer *render, SDL_Texture *tex)
-{
-	SDL_SetRenderTarget(render, tex);
-	SDL_RenderClear(render);
-}
-
-SDL_Texture			*strtotex(char *str, t_winenv *env, SDL_Color color)
-{
-	SDL_Texture		*tex;
-	SDL_Surface		*surf;
-
-	surf = TTF_RenderText_Blended(env->font, str, color);
-	if (!surf)
-		panic("Failed creating text surface", SDL_GetError());
-	tex = SDL_CreateTextureFromSurface(env->render, surf);
-	if (!tex)
-		panic("Failed converting surface to texture", SDL_GetError());
-	SDL_FreeSurface(surf);
-	return (tex);
-}
 
 void				dispmemline(t_winenv *env, int line)
 {
@@ -105,7 +36,7 @@ void				dispmemline(t_winenv *env, int line)
 	while (i < 64)
 	{
 		dst.x = wunit * i / 64;
-		tex = env->bytetex[env->vm->memory[line * 64 + i]];
+		tex = env->bytetex[0][env->vm->memory[line * 64 + i]];
 		SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
 		SDL_RenderCopy(env->render, tex, NULL, &dst);
 		i++;
@@ -231,84 +162,12 @@ void				huddisp(t_winenv *env)
 	dst = hudputstr(env, str, dst);
 }
 
-void				visu_update(t_winenv *env)
-{
-	SDL_Rect		rect;
-
-	SDL_SetRenderTarget(env->render, env->wintex);
-	rect = (SDL_Rect){0,0,0,0};
-	rect.h = env->dispmode.h;
-	rect.w = env->dispmode.w * 4 / 5;
-	SDL_RenderCopy(env->render, env->memtex, NULL, &rect);
-	rect.x = rect.w;
-	rect.w =  env->dispmode.w * 1 / 5;
-	SDL_RenderCopy(env->render, env->hudtex, NULL, &rect);
-	SDL_SetRenderTarget(env->render, NULL);
-	SDL_RenderCopy(env->render, env->wintex, NULL, NULL);
-}
-
 void				events(t_winenv *env)
 {
 	(void)env;
 }
 
-SDL_Texture			*valtotex(t_winenv *env, int val, int base)
-{
-	const char		*digits;
-	char			str[3];
-
-	digits = "0123456789abcdef";
-	str[0] = digits[val / base];
-	str[1] = digits[val % base];
-	str[2] = '\0';
-	return (strtotex(str, env, (SDL_Color){150, 150, 150, 255}));
-}
-
-void				loadbytetex(t_winenv *env)
-{
-	int		i;
-
-	i = 0;
-	while (i < 256)
-	{
-		env->bytetex[i] = valtotex(env, i, 16);
-		i++;
-	}
-}
-
 ////////////////////////////////////////////////////////////////////////////////
-
-void				visu_init(t_vm *vm)
-{
-	t_winenv		*env;
-	SDL_DisplayMode	dm;
-
-	env = getsdlenv(vm);
-	initsdl(env);
-	SDL_GetDesktopDisplayMode(0, &env->dispmode);
-	dm = env->dispmode;
-	env->wintex = getnewtex(env, TEXTARGET, dm.w, dm.h);
-	env->memtex = getnewtex(env, TEXTARGET, dm.w * 4 / 5, dm.h);
-	env->hudtex = getnewtex(env, TEXTARGET, dm.w * 1 / 5, dm.h);
-	loadbytetex(env);
-	SDL_SetRenderDrawColor(env->render, 100, 50, 50, SDL_ALPHA_OPAQUE);
-	cleartex(env->render, env->wintex);
-	SDL_SetRenderDrawColor(env->render, 50, 100, 50, SDL_ALPHA_OPAQUE);
-	cleartex(env->render, env->memtex);
-	SDL_SetRenderDrawColor(env->render, 50, 50, 100, SDL_ALPHA_OPAQUE);
-	cleartex(env->render, env->hudtex);
-	visu_update(env);
-}
-
-int					quitvisu(t_winenv *env)
-{
-	if (!env || env->quit || SDL_QuitRequested())
-	{
-		SDL_Quit();
-		return (0);
-	}
-	return (1);
-}
 
 int					visu(void)
 {

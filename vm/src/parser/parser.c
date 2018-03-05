@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
+// si pas assez argument exit c'est vraiment bon ?
+
 #include "vm.h"
 
 static void 	intro_champ(t_vm *env)
@@ -17,21 +20,24 @@ static void 	intro_champ(t_vm *env)
 	t_header *tmp;
 
 	tmp = env->champion;
-	if (env->nb_player > 1)
-		ft_printf("Introducing constestants\n");
-	while(tmp->next)
+	if (tmp)
 	{
+		if (env->nb_player > 1)
+			ft_printf("Introducing constestants\n");
+		while(tmp->next)
+		{
+			ft_printf("* Player %d, weighing %d bytes,", tmp->num, tmp->prog_size);
+			ft_printf(", \"%s\" (\"%s\") !\n", tmp->prog_name, tmp->comment);
+			tmp = tmp->next;
+		}
+		if (env->nb_player > 1)
+			ft_printf("and the last constestants is...\n......\n");
+		else
+			ft_printf("The only and sad contestant is\n");
 		ft_printf("* Player %d, weighing %d bytes,", tmp->num, tmp->prog_size);
-		ft_printf(", \"%s\" (\"%s\") !\n", tmp->prog_name, tmp->comment);
-		tmp = tmp->next;
+		ft_printf(" \"%s\" (\"%s\") !\n", tmp->prog_name, tmp->comment);
+		ft_printf("Lets ready to the rumble \n\n");
 	}
-	if (env->nb_player > 1)
-		ft_printf("and the last constestants is...\n......\n");
-	else
-		ft_printf("The only and sad contestant is\n");
-	ft_printf("* Player %d, weighing %d bytes,", tmp->num, tmp->prog_size);
-	ft_printf(" \"%s\" (\"%s\") !\n", tmp->prog_name, tmp->comment);
-	ft_printf("Lets ready to the rumble \n\n");
 }
 
 static int				rd(char *line, t_vm *env, unsigned long max, unsigned long pos)
@@ -79,7 +85,7 @@ static char 			*get_header(int fd)
 	if (fd <= 0)
 		ft_exit("Fichier inacessible\n");
 	taille = PROG_NAME_LENGTH + COMMENT_LENGTH + sizeof(int) + sizeof(long);
-	line = ft_memalloc(taille + 1);
+	line = ft_memalloc(taille + 5);
 	if ((cmp = read(fd, line, taille + 4)) < taille)
 		ft_exit((cmp <= 0) ?  "Erreur de read\n" : "Fichier trop petit\n");
 	return (line);
@@ -108,7 +114,8 @@ void					parsing(int ac, char **av, t_vm *env, int cmp)
 			cmp = read(fd, line, CHAMP_MAX_SIZE);
 			rd(line, env, cmp, ++nm_champ * (MEM_SIZE / (env->nb_player)));
 			close(fd);
-			intro_champ(env);
 		}
 	ft_memdel((void**)&line);
+	ft_print_head(env, -1);
+	intro_champ(env);
 }
