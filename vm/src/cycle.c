@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:12:20 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/05 20:00:40 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/05 20:55:51 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void			run_cycle(t_op *op_tab, t_vm *env)
 	{
 		if ((env->option->verbose & SHOW_CYCL))
 			ft_printf("It is now cycle %d\n", env->cycle + 1);
-		env->mem_mov = 0;
 		if (env->option->visu)
 			env->option->visu = visu();
+		env->mem_mov = 0;
 		if (env->option->dump >= 0 && \
 		env->cycle == (unsigned long)env->option->dump)
 			dump_memory(env->memory, env->process);

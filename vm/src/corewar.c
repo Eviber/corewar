@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/05 20:07:22 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/05 20:55:19 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 static void				init(t_vm *env)
 {
+	env->mem_mov = 1;
 	env->nb_process = 0;
 	env->cycle = 0;
 	env->check = 0;
