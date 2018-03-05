@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 17:26:54 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/02 15:53:06 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/05 15:04:48 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	vm_fork(t_process *process, t_vm *env)
 	short			param;
 	unsigned int	new_pc;
 
-	if ((env->verbose & SHOW_MOVE))
+	if ((env->option->verbose & SHOW_MOVE))
 		show_pc_mov(process->pc, process->pc + 3, 3, env);
 	param = ((short)env->memory[process->pc + 1]) << 8;
 	param += ((short)env->memory[process->pc + 2]);

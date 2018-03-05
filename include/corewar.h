@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/03/04 09:44:00 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/05 19:58:51 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,17 @@ typedef struct			s_opt
 	char				value_can_be_negative;
 }						t_opt;
 
-typedef struct			s_vm
+typedef struct			s_option
 {
 	int					verbose;
+	char				visu;
 	long				dump;
-	t_opt				*option;
+}						t_option;
+
+typedef struct			s_vm
+{
+	t_opt				*opt;
+	t_option			*option;
 	t_header			*champion;
 	t_header			*ll_champ;
 	t_process			*process;
@@ -125,5 +131,6 @@ typedef struct			s_vm
 */
 
 void					ft_exit(char *str);
+void					*ft_memalloc_exit(size_t size);
 
 #endif

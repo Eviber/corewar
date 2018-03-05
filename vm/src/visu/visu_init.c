@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:36:55 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/05 19:23:27 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/05 20:33:28 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void			initsdl(t_winenv *env)
 		panic("SDL_GetDesktopDisplayMode failed", SDL_GetError());
 	env->win = SDL_CreateWindow("Corewar",
 				SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-				env->dispmode.w, env->dispmode.h, SDL_WINDOW_FULLSCREEN);
+				env->dispmode.w, env->dispmode.h, 0);//SDL_WINDOW_FULLSCREEN);
 	if (!env->win)
 		panic("Error while creating window", SDL_GetError());
 	env->render = SDL_CreateRenderer(env->win, -1, SDL_RENDERER_ACCELERATED);
@@ -106,5 +106,8 @@ void				visu_init(t_vm *vm)
 	cleartex(env->render, env->memtex);
 	SDL_SetRenderDrawColor(env->render, 50, 50, 100, SDL_ALPHA_OPAQUE);
 	cleartex(env->render, env->hudtex);
+	SDL_Rect wtff;
+	SDL_QueryTexture(env->memtex, NULL, NULL, &wtff.w, &wtff.h);
+	ft_printf("\n\nARGGG %d %d\n\n", wtff.w, wtff.h);
 	visu_update(env);
 }

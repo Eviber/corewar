@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:12:20 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/04 09:44:38 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/05 20:00:40 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,19 @@ void			run_cycle(t_op *op_tab, t_vm *env)
 	last_period = 0;
 	while (env->process)
 	{
-		visu();
-		if ((env->verbose & SHOW_CYCL))
+		if ((env->option->verbose & SHOW_CYCL))
 			ft_printf("It is now cycle %d\n", env->cycle + 1);
 		env->mem_mov = 0;
-		if (env->dump >= 0 && env->cycle == (unsigned long)env->dump)
+		if (env->option->visu)
+			env->option->visu = visu();
+		if (env->option->dump >= 0 && \
+		env->cycle == (unsigned long)env->option->dump)
 			dump_memory(env->memory, env->process);
-		if (--(env->curr_c_todie) <= 0)
-			check_process(&last_period, env->process, env);
 		current = env->process;
 		while (current)
 			current = exec_process(current, op_tab, env);
+		if (--(env->curr_c_todie) <= 0)
+			check_process(&last_period, env->process, env);
 		(env->cycle)++;
 	}
 }

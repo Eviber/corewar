@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:03:43 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/05 10:08:59 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/05 20:39:02 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void				visu_update(t_winenv *env)
 	rect.w = env->dispmode.w * 4 / 5;
 	SDL_RenderCopy(env->render, env->memtex, NULL, &rect);
 	rect.x = rect.w;
-	rect.w =  env->dispmode.w * 1 / 5;
+	rect.w = env->dispmode.w * 1 / 5;
 	SDL_RenderCopy(env->render, env->hudtex, NULL, &rect);
 	SDL_SetRenderTarget(env->render, NULL);
 	SDL_RenderCopy(env->render, env->wintex, NULL, NULL);
