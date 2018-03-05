@@ -28,17 +28,18 @@ PATH_VM_PARS =		$(PATH_VM_SRC)parser/
 PATH_VM_INST =		$(PATH_VM_SRC)instruction/
 PATH_VM_VISU =		$(PATH_VM_SRC)visu/
 
-PATH_ASM =			assembler/
+PATH_ASM =			assembleur/
 PATH_ASM_SRC =		$(PATH_ASM)src/
 
 VPATH =				$(PATH_VM_SRC):$(PATH_VM_PARS):$(PATH_VM_INST):\
 $(PATH_VM_VISU):$(PATH_ASM_SRC)
 
-CC =				gcc -Wall -Werror -Wextra
+CC =				gcc -Wall -Werror -Wextra -fsanitize=address
 INC =				-I include/ -I libft/include/
 
 VM_PARS =			parser.c\
-					header.c
+					header.c		\
+					option.c
 
 VM_INST =			vm_st.c\
 					vm_and.c\
@@ -58,7 +59,7 @@ VM_INST =			vm_st.c\
 					vm_ldi.c\
 					vm_lldi.c
 
-#VM_VISU =			
+#VM_VISU =
 #
 VM_SRC =			$(VM_PARS)\
 					$(VM_INST)\
@@ -77,7 +78,7 @@ ASM_SRC =			asm.c
 VM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(VM_SRC))
 ASM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(ASM_SRC))
 
-all: libft $(ASM) $(VM)
+all: libft $(VM) $(ASM)
 
 $(VM): $(LIBFT) $(VM_OBJ)
 	@echo "Compiling $@ ...\033[K"

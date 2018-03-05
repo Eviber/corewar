@@ -37,8 +37,10 @@ typedef struct		s_op
 typedef struct s_env
 {
   char *name;
+  long size_champ;
   char *res;
   char *champ;
+  int error;
   long pos;
   long pos_last_inst;
   long index;
