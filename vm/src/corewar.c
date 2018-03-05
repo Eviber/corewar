@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/03 04:15:23 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/05 16:48:21 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ int						main(int ac, char **av)
 	if (!(op_tab = (t_op*)ft_memalloc(sizeof(t_op) * 16)))
 		ft_exit(strerror(errno));
 	init(&env);
-	visu_init(&env);
 	init_op_tab(op_tab);
 	parsing(ac, av, &env, 0);
+	visu_init(&env);
 	init_process(env.champion, &env);
 	run_cycle(op_tab, &env);
 	if (env.ll_champ)

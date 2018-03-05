@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:03:43 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/05 09:13:52 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/05 10:08:59 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void				visu_update(t_winenv *env)
 	SDL_RenderCopy(env->render, env->wintex, NULL, NULL);
 }
 
-SDL_Texture			*valtotex(t_winenv *env, int val, int base)
+SDL_Texture			*valtotex(t_winenv *env, int val, int base, SDL_Color color)
 {
 	const char		*digits;
 	char			str[3];
@@ -40,7 +40,7 @@ SDL_Texture			*valtotex(t_winenv *env, int val, int base)
 	str[0] = digits[val / base];
 	str[1] = digits[val % base];
 	str[2] = '\0';
-	return (strtotex(str, env, (SDL_Color){150, 150, 150, 255}));
+	return (strtotex(str, env, color));
 }
 
 int					quitvisu(t_winenv *env)

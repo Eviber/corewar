@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 22:47:24 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/05 09:09:57 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/05 19:44:51 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ SDL_Texture				*strtotex(char *str, t_winenv *env, SDL_Color color);
 **	Specific tools
 */
 void					visu_update(t_winenv *env);
-SDL_Texture				*valtotex(t_winenv *env, int val, int base);
+SDL_Texture				*valtotex(t_winenv *env, int val, int base, SDL_Color color);
 int						quitvisu(t_winenv *env);
 SDL_Color				hsl(int h, double s, double l);
 
@@ -61,5 +61,6 @@ SDL_Color				hsl(int h, double s, double l);
 */
 void					visu_init(t_vm *vm);
 int						visu(void);
+void					putinvisu(unsigned int addr, t_header *champ);
 
 #endif

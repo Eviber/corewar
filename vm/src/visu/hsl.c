@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 10:34:44 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/04 13:47:27 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/05 15:31:31 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ SDL_Color	hsl(int h, double s, double l)
 	double		t1;
 	double		t2;
 
-	s /= 100;
-	l /= 100;
-	t1 = (l < 0.5) ? l * (1 + s) : s - l * s;
+	h %= 360;
+	s = s / 100.0;
+	l = l / 100.0;
+	t1 = (l < 0.5) ? l * (1 + s) : l + s - l * s;
 	t2 = 2 * l - t1;
 	res.a = 255;
 	res.r = tmptorgb((double)((h + 120) % 360) / 360, t1, t2);
