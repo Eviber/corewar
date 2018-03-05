@@ -98,11 +98,17 @@ typedef struct 			s_opt
 	char value_can_be_negative;
 }	t_opt;
 
+typedef struct s_option
+{
+	int verbose;
+	char visu;
+	long dump;
+}	t_option;
+
 typedef struct			s_vm
 {
-	int					verbose;
-	long				dump;
-	t_opt			*option;
+	t_opt					*opt;
+	t_option			*option;
 	t_header			*champion;
 	t_header			*ll_champ;
 	t_process			*process;
@@ -122,5 +128,6 @@ typedef struct			s_vm
 */
 
 void					ft_exit(char *str);
+void					*ft_memalloc_exit(size_t size);
 
 #endif

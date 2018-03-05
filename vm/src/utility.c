@@ -24,3 +24,14 @@ unsigned int	read_memory(unsigned int address, t_vm *env)
 	value += env->memory[(address + 3) % MEM_SIZE];
 	return (value);
 }
+
+void *ft_memalloc_exit(size_t size)
+{
+	void *mem;
+	if (!(mem = ft_memalloc(size)))
+	{
+		ft_dprintf(2, "Malloc has failed in this execution\n");
+		exit(1);
+	}
+	return(mem);
+}
