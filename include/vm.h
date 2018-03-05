@@ -55,7 +55,7 @@ void			check_process(unsigned long *last_period, t_process *process, \
 void			run_cycle(t_op *op_tab, t_vm *env);
 void			set_cooldown(t_process *process, t_vm *env);
 void			write_memory(unsigned int value, unsigned int address, \
-				t_vm *env);
+				t_vm *env, t_header *champ);
 void			show_pc_mov(unsigned int old_pc, unsigned int new_pc, int len,\
 				t_vm *env);
 /*

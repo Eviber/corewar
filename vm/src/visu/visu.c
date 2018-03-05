@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 22:22:52 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/05 20:38:04 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/05 21:29:55 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void				dispmemline(t_winenv *env, int line)
 	while (i < 64)
 	{
 		dst.x = wunit * i / 64;
-		tex = env->bytetex[(int)env->colormap[line * 64 + i]][env->vm->memory[line * 64 + i]];
+		tex = env->bytetex[(int)env->colormap[line * 64 + i]]
+							[env->vm->memory[line * 64 + i]];
 		SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
 		SDL_RenderCopy(env->render, tex, NULL, &dst);
 		i++;
@@ -183,10 +184,10 @@ void				putinvisu(unsigned int addr, t_header *champ)
 		cur = cur->next;
 		i++;
 	}
-	env->colormap[addr % MEM_SIZE] = i;
-	env->colormap[addr + 1 % MEM_SIZE] = i;
-	env->colormap[addr + 2 % MEM_SIZE] = i;
-	env->colormap[addr + 3 % MEM_SIZE] = i;
+	env->colormap[(addr + 0) % MEM_SIZE] = i;
+	env->colormap[(addr + 1) % MEM_SIZE] = i;
+	env->colormap[(addr + 2) % MEM_SIZE] = i;
+	env->colormap[(addr + 3) % MEM_SIZE] = i;
 }
 
 int					visu(void)
