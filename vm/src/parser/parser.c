@@ -116,5 +116,6 @@ void					parsing(int ac, char **av, t_vm *env, int cmp)
 			close(fd);
 		}
 	ft_memdel((void**)&line);
+	ft_print_head(env, -1);
 	intro_champ(env);
 }

@@ -139,12 +139,12 @@ int main(int argc, char **argv)
 		while(--argc > 0)
 		{
 			switch_extension(env, argv[argc], ".cor");
-			fd = open(env->name, O_RDWR|O_CREAT|O_TRUNC, 0666);
 			if (fd < 0 && (env->error = 1))
 				ft_dprintf(2, "Open error for creation of %s\n", env->name);
 			read_file(argv[argc], env);
 			if (env->state == 3 && !env->error)
 			{
+				fd = open(env->name, O_RDWR|O_CREAT|O_TRUNC, 0666);
 				ft_printf("Writing output program to %s\n", env->name);
 				write(fd, env->res, env->taille);
 				write(fd, env->champ, env->pos);

@@ -90,7 +90,7 @@ void memory_manager(t_env *env, int size)
 		cmp = -1;
 		save = env->champ;
 		env->champ = ft_memalloc_exit(env->pos + 40);
-		while(++cmp < env->pos)
+		while(++cmp < env->size_champ)
 			env->champ[cmp] = save[cmp];
 		ft_memdel((void**)&save);
 		env->size_champ = env->pos + 40;
