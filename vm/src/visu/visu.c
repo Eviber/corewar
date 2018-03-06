@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 22:22:52 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/06 11:30:49 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/06 12:54:38 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,8 @@ void				huddisp(t_winenv *env)
 	char		*str;
 
 	env->cps = (env->cps + 1000 / (env->ticks - env->lastticks + !(env->ticks - env->lastticks))) / 2;
-	dst = (SDL_Rect){0,0,0,0};
+	dst.x = env->hudrect.w / 10;
+	dst.y = env->hudrect.w / 10;
 	cleartex(env->render, env->hudtex,  env->palette[0]);
 	ft_asprintf(&str, "Cycle : %lu%c", env->vm->cycle, 0);
 	dst = hudputstr(env, str, dst);
