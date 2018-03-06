@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/05 20:55:19 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/06 15:14:09 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void				init(t_vm *env)
 	env->cycle = 0;
 	env->check = 0;
 	env->max_check = MAX_CHECKS;
+	env->old_nbr_live = 0;
 	env->nbr_live = 0;
 	env->c_delta = CYCLE_DELTA;
 	env->curr_c_todie = CYCLE_TO_DIE;

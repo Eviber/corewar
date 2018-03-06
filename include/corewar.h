@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/03/05 19:58:51 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/06 15:13:45 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ typedef struct			s_vm
 	long				curr_c_todie;
 	unsigned long		c_delta;
 	unsigned long		nbr_live;
+	unsigned long		old_nbr_live;
 	unsigned long		max_check;
 	unsigned long		check;
 	unsigned long		cycle;

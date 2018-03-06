@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 23:06:13 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/05 15:11:51 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/06 15:14:27 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 static void		check_cycle_todie(t_vm *env)
 {
-	static unsigned long	old_nbr_live = 0;
-
-	if (env->nbr_live - old_nbr_live >= NBR_LIVE)
+	if (env->nbr_live - env->old_nbr_live >= NBR_LIVE)
 	{
 		env->c_todie -= CYCLE_DELTA;
 		env->max_check = MAX_CHECKS;
@@ -30,7 +28,7 @@ static void		check_cycle_todie(t_vm *env)
 		if ((env->option->verbose & SHOW_CYCL))
 			ft_printf("Cycle to die is now %d\n", env->c_todie);
 	}
-	old_nbr_live = env->nbr_live;
+	env->old_nbr_live = env->nbr_live;
 }
 
 void			check_process(unsigned long *last_period, t_process *process, t_vm *env)
