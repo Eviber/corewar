@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 22:22:52 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/05 21:29:55 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/06 11:30:49 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void				dispproc(t_winenv *env)
 	t_process	*cur;
 
 	SDL_QueryTexture(env->memtex, NULL, NULL, &memrect.w, &memrect.h);
-	rect.w = memrect.w / 64;
 	rect.h = memrect.h / 64;
+	SDL_QueryTexture(env->bytetex[0][0], NULL, NULL, &rect.w, NULL);
 	cur = env->vm->process;
 	while (cur)
 	{
@@ -72,8 +72,7 @@ void				memdisp(t_winenv *env)
 	int				i;
 
 	i = 0;
-	SDL_SetRenderDrawColor(env->render, 10, 10, 10, SDL_ALPHA_OPAQUE);
-	cleartex(env->render, env->memtex);
+	cleartex(env->render, env->memtex, (SDL_Color){10, 10, 10, 255});
 	dispproc(env);
 	while (i < MEM_SIZE / 64)
 	{
@@ -145,8 +144,7 @@ void				huddisp(t_winenv *env)
 
 	env->cps = (env->cps + 1000 / (env->ticks - env->lastticks + !(env->ticks - env->lastticks))) / 2;
 	dst = (SDL_Rect){0,0,0,0};
-	SDL_SetRenderDrawColor(env->render, 10, 10, 90, SDL_ALPHA_OPAQUE);
-	cleartex(env->render, env->hudtex);
+	cleartex(env->render, env->hudtex,  env->palette[0]);
 	ft_asprintf(&str, "Cycle : %lu%c", env->vm->cycle, 0);
 	dst = hudputstr(env, str, dst);
 	ft_asprintf(&str, "Processes : %lu%c", env->vm->nb_process, 0);
@@ -197,7 +195,7 @@ int					visu(void)
 	env = getsdlenv(NULL);
 	env->lastticks = env->ticks;
 	env->ticks = SDL_GetTicks();
-	//if (env->vm->mem_mov)
+	if (env->vm->mem_mov)
 		memdisp(env);
 	huddisp(env);
 	SDL_RenderPresent(env->render);

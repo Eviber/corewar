@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:42:23 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/05 08:45:29 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/06 08:22:44 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 #include "corewar.h"
 #include "visu.h"
 
-void				panic(const char *str, const char *str2)
+void			panic(const char *str, const char *str2)
 {
 	ft_dprintf(2, "%s: %s\n", str, str2);
 	exit(-1);
 }
 
-t_winenv			*getsdlenv(t_vm *vm)
+t_winenv		*getsdlenv(t_vm *vm)
 {
 	static t_winenv	*winenv = NULL;
 
@@ -36,7 +36,7 @@ t_winenv			*getsdlenv(t_vm *vm)
 	return (winenv);
 }
 
-SDL_Texture			*getnewtex(t_winenv *env, int access, int w, int h)
+SDL_Texture		*getnewtex(t_winenv *env, int access, int w, int h)
 {
 	SDL_Texture		*tex;
 
@@ -46,13 +46,14 @@ SDL_Texture			*getnewtex(t_winenv *env, int access, int w, int h)
 	return (tex);
 }
 
-void				cleartex(SDL_Renderer *render, SDL_Texture *tex)
+void			cleartex(SDL_Renderer *render, SDL_Texture *tex, SDL_Color col)
 {
+	SDL_SetRenderDrawColor(render, col.r, col.g, col.b, col.a);
 	SDL_SetRenderTarget(render, tex);
 	SDL_RenderClear(render);
 }
 
-SDL_Texture			*strtotex(char *str, t_winenv *env, SDL_Color color)
+SDL_Texture		*strtotex(char *str, t_winenv *env, SDL_Color color)
 {
 	SDL_Texture		*tex;
 	SDL_Surface		*surf;

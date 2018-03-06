@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:36:55 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/05 22:18:10 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/06 12:43:51 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 #include "corewar.h"
 #include "visu.h"
 
-static void			initsdl(t_winenv *env)
+static void			initsdl(t_winenv *env, const char *name, Uint32 flags)
 {
 	if (!env || SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS))
 		panic("Error while initializing SDL", SDL_GetError());
 	if (SDL_GetDesktopDisplayMode(0, &(env->dispmode)))
 		panic("SDL_GetDesktopDisplayMode failed", SDL_GetError());
-	env->win = SDL_CreateWindow("Corewar",
+	env->win = SDL_CreateWindow(name,
 				SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-				env->dispmode.w, env->dispmode.h, SDL_WINDOW_FULLSCREEN);
+				env->dispmode.w, env->dispmode.h, flags);
 	if (!env->win)
 		panic("Error while creating window", SDL_GetError());
 	env->render = SDL_CreateRenderer(env->win, -1, SDL_RENDERER_ACCELERATED);
@@ -86,26 +86,40 @@ void				set_colormap(t_winenv *env)
 	}
 }
 
+SDL_Rect			setrect(int x, int y, int w, int h)
+{
+	SDL_Rect	ret;
+
+	ret.x = x;
+	ret.y = y;
+	ret.w = w;
+	ret.h = h;
+	return (ret);
+}
+
 void				visu_init(t_vm *vm)
 {
 	t_winenv		*env;
 	SDL_DisplayMode	dm;
+	SDL_Color		bg;
 
 	env = getsdlenv(vm);
-	initsdl(env);
+	initsdl(env, "Corewar", SDL_WINDOW_FULLSCREEN);
 	SDL_GetDesktopDisplayMode(0, &env->dispmode);
 	dm = env->dispmode;
+	SDL_QueryTexture(env->bytetex[0][0], NULL, NULL, &env->charrect.w, &env->charrect.h);
+	env->memrect = setrect(env->charrect.w / 8, 0, dm.w * 4 / 5, dm.h);
+	env->hudrect = setrect(env->memrect.w + dm.w / 50, dm.w / 50,
+							dm.w * 4 / 25, dm.h - dm.w / 25);
 	env->wintex = getnewtex(env, TEXTARGET, dm.w, dm.h);
-	env->memtex = getnewtex(env, TEXTARGET, dm.w * 4 / 5, dm.h);
-	env->hudtex = getnewtex(env, TEXTARGET, dm.w * 1 / 5, dm.h);
+	env->memtex = getnewtex(env, TEXTARGET, env->memrect.w, env->memrect.h);
+	env->hudtex = getnewtex(env, TEXTARGET, env->hudrect.w, env->hudrect.h);
 	loadpalette(env);
 	loadbytetex(env);
 	set_colormap(env);
-	SDL_SetRenderDrawColor(env->render, 100, 50, 50, SDL_ALPHA_OPAQUE);
-	cleartex(env->render, env->wintex);
-	SDL_SetRenderDrawColor(env->render, 50, 100, 50, SDL_ALPHA_OPAQUE);
-	cleartex(env->render, env->memtex);
-	SDL_SetRenderDrawColor(env->render, 50, 50, 100, SDL_ALPHA_OPAQUE);
-	cleartex(env->render, env->hudtex);
+	bg = (SDL_Color){10, 10, 10, SDL_ALPHA_OPAQUE};
+	cleartex(env->render, env->wintex, bg);
+	cleartex(env->render, env->memtex, bg);
+	cleartex(env->render, env->hudtex, env->palette[0]);
 	visu_update(env);
 }

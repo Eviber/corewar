@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 22:47:24 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/05 19:59:18 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/06 12:43:53 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ typedef struct			s_winenv
 	SDL_Texture			*bytetex[MAX_PLAYERS + 1][256];
 	SDL_Color			palette[MAX_PLAYERS + 1];
 	SDL_DisplayMode		dispmode;
+	SDL_Rect			winrect;
+	SDL_Rect			memrect;
+	SDL_Rect			hudrect;
+	SDL_Rect			charrect;
 	SDL_Window			*win;
 	SDL_Renderer		*render;
 	TTF_Font			*font;
@@ -45,7 +49,7 @@ typedef struct			s_winenv
 void					panic(const char *str, const char *str2);
 t_winenv				*getsdlenv(t_vm *vm);
 SDL_Texture				*getnewtex(t_winenv *env, int access, int w, int h);
-void					cleartex(SDL_Renderer *render, SDL_Texture *tex);
+void					cleartex(SDL_Renderer *render, SDL_Texture *tex, SDL_Color col);
 SDL_Texture				*strtotex(char *str, t_winenv *env, SDL_Color color);
 
 /*
