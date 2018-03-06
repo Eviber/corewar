@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 22:22:52 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/06 12:54:38 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/06 15:25:18 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,33 +94,18 @@ typedef struct			s_header
 	struct s_header		*next;
 }						t_header;
 
-typedef struct			s_process
-{
-	t_header			*champ;
-	unsigned int		pc;
-	unsigned int		carry;
-	unsigned int		reg[REG_NUMBER];
-	int					cooldown;
-	unsigned long		last_live;
-	int					inst;
-	struct s_process	*next;
-}						t_process;
-
 typedef struct			s_vm
 {
-	long				dump;
-	t_header			*champion;
-	t_header			*ll_champ;
-	t_process			*process;
 	unsigned int		nb_player;
-	unsigned char		memory[MEM_SIZE];
 	long				c_todie;
+	long				curr_c_todie;
 	unsigned long		c_delta;
 	unsigned long		nbr_live;
 	unsigned long		max_check;
 	unsigned long		check;
 	unsigned long		cycle;
 	unsigned long		nb_process;
+	int					mem_mov;
 }						t_vm;
 */
 
@@ -131,6 +116,7 @@ SDL_Rect			hudputstr(t_winenv *env, char *str, SDL_Rect dst)
 	tex = strtotex(str, env, (SDL_Color){255, 255, 255, 255});
 	free(str);
 	SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
+	dst.x = (env->hudrect.w - dst.w) / 2;
 	SDL_RenderCopy(env->render, tex, NULL, &dst);
 	SDL_DestroyTexture(tex);
 	dst.y += dst.h * 2;
@@ -143,22 +129,21 @@ void				huddisp(t_winenv *env)
 	char		*str;
 
 	env->cps = (env->cps + 1000 / (env->ticks - env->lastticks + !(env->ticks - env->lastticks))) / 2;
-	dst.x = env->hudrect.w / 10;
 	dst.y = env->hudrect.w / 10;
 	cleartex(env->render, env->hudtex,  env->palette[0]);
-	ft_asprintf(&str, "Cycle : %lu%c", env->vm->cycle, 0);
+	ft_asprintf(&str, "Cycle :         %14lu%c", env->vm->cycle, 0);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "Processes : %lu%c", env->vm->nb_process, 0);
+	ft_asprintf(&str, "Processes :     %14lu%c", env->vm->nb_process, 0);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "CYCLE_TO_DIE : %lu%c", env->vm->c_todie, 0);
+	ft_asprintf(&str, "Cycles to die : %9lu/%lu%c", env->vm->curr_c_todie, env->vm->c_todie, 0);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "CYCLE_DELTA : %lu%c", env->vm->c_delta, 0);
+	ft_asprintf(&str, "Cycle delta :   %14lu%c", env->vm->c_delta, 0);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "NBR_LIVE : %lu%c", NBR_LIVE, 0);
+	ft_asprintf(&str, "NBR_LIVE :      %11lu/%lu%c", env->vm->nbr_live - env->vm->old_nbr_live, NBR_LIVE, 0);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "MAX_CHECKS : %lu%c", MAX_CHECKS, 0);
+	ft_asprintf(&str, "Checks :        %11lu/%lu%c", env->vm->check, MAX_CHECKS, 0);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "CPS : %4lu%c", env->cps, 0);
+	ft_asprintf(&str, "CPS :           %14lu%c", env->cps, 0);
 	dst = hudputstr(env, str, dst);
 }
 
