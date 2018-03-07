@@ -8,13 +8,14 @@ void			ft_exit(char *str)
 }
 
 void			write_memory(unsigned int value, unsigned int address,
-							t_vm *env, t_header *champ)
+t_vm *env, t_header *champ)
 {
 	env->memory[address % MEM_SIZE] = value >> 24;
 	env->memory[(address + 1) % MEM_SIZE] = value >> 16 & 255;
 	env->memory[(address + 2) % MEM_SIZE] = value >> 8 & 255;
 	env->memory[(address + 3) % MEM_SIZE] = value & 255;
-	putinvisu(address, champ);
+	if (env->option->visu)
+		putinvisu(address, champ);
 }
 
 unsigned int	read_memory(unsigned int address, t_vm *env)
