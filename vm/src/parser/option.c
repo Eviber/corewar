@@ -31,7 +31,7 @@ int search_opt(char *str, t_vm *env)
 
 	cmp = -1;
   if (str + 1)
-	 while(++cmp < NB_OPTION + 1 && ft_strcmp(str + 1, env->opt[cmp].name))
+	 while(++cmp < NB_OPTION  && ft_strcmp(str + 1, env->opt[cmp].name))
 		 ;
 	if ((!(str + 1) || cmp > NB_OPTION - 1) && ft_dprintf(2, "%s is not a valid n\n", str))
 		exit(1);
