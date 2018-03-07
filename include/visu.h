@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 22:47:24 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/07 09:34:56 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/07 17:10:03 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include "corewar.h"
 
 # define TEXTARGET SDL_TEXTUREACCESS_TARGET
+# define EVENT_STEP 1
+# define EVENT_STOP_P 2
+# define EVENT_STOP_R 4
+# define EVENT_STOP 6
 
 typedef struct			s_winenv
 {
@@ -59,7 +63,7 @@ void					visu_update(t_winenv *env);
 SDL_Texture				*valtotex(t_winenv *env, int val, int base, SDL_Color color);
 int						quitvisu(t_winenv *env);
 SDL_Color				hsl(int h, double s, double l);
-
+void					event_manager(t_winenv *env);
 /*
 **	Subfunctions
 */

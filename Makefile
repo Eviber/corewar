@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/03/07 09:43:40 by ygaude           ###   ########.fr        #
+#    Updated: 2018/03/07 17:02:23 by ygaude           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,14 @@ VM_INST =			vm_st.c\
 					vm_ldi.c\
 					vm_lldi.c
 
-VM_VISU =			visu.c visu_init.c hud.c matrix.c visutools.c hsl.c sdltools.c
+VM_VISU =			visu.c\
+					visu_init.c\
+					hud.c\
+					matrix.c\
+					visutools.c\
+					hsl.c\
+					sdltools.c\
+					event_manager.c
 
 VM_SRC =			$(VM_PARS)\
 					$(VM_INST)\
