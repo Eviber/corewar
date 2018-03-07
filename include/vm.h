@@ -12,6 +12,7 @@
 # define L_DIR			1
 # define IND_TARG		2
 # define IMOD			4
+# define NB_OPTION 5
 
 typedef struct	s_param
 {
@@ -30,7 +31,7 @@ void			ft_init_header(t_vm *env, char *line, int start, char **av);
 void			parsing(int ac, char **av, t_vm *vm, int cmp);
 int				opt_have_value(int pos, char **av, int cmp, t_vm *env);
 int 			search_opt(char *str, t_vm *env);
-int				check_opt(int pos, char **av, t_vm *env);	
+int				check_opt(int pos, char **av, t_vm *env);
 t_opt *get_opt(void);
 /*
 ** VM core

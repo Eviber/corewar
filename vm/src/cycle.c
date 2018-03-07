@@ -52,7 +52,7 @@ void			run_cycle(t_op *op_tab, t_vm *env)
 	while (env->process)
 	{
 		c_todie--;
-		if (env->dump >= 0 && env->cycle == (unsigned long)env->dump)
+		if (env->option->dump >= 0 && env->cycle == (unsigned long)env->option->dump)
 			dump_memory(env->memory, env->process);
 		if (c_todie <= 0)
 		{

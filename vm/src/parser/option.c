@@ -14,11 +14,12 @@
 
 t_opt *get_opt(void)
 {
-  static t_opt    opt_tab[5] = {
+  static t_opt    opt_tab[NB_OPTION + 1] = {
   	{"dump", 1, 1, 1, 0},
   	{"n", 1, 1, 0, 1},
   	{"v", 1, 0, 1, 0},
     {"g", 0, 0, 0, 0},
+    {"f", 0, 0, 0, 0},
   	{0, 0, 0, 0, 0} };
 
   return(opt_tab);
@@ -29,9 +30,10 @@ int search_opt(char *str, t_vm *env)
 	int cmp;
 
 	cmp = -1;
-	while(++cmp < 4 && ft_strcmp(str + 1, env->opt[cmp].name))
-		;
-	if (cmp > 3 && ft_dprintf(2, "%s is not a valid n\n", str))
+  if (str + 1)
+	 while(++cmp < NB_OPTION + 1 && ft_strcmp(str + 1, env->opt[cmp].name))
+		 ;
+	if ((!(str + 1) || cmp > NB_OPTION - 1) && ft_dprintf(2, "%s is not a valid n\n", str))
 		exit(1);
 	return(cmp);
 }
@@ -68,6 +70,8 @@ int check_opt(int pos, char **av, t_vm *env)
 	}
   if (cmp == 3)
     env->option->visu = 1;
+  if (cmp == 4)
+    env->option->visu = 2;
 	if (env->opt[cmp].value_needed && ft_dprintf(2, "option %s need a value\n", env->opt[cmp].name))
 		exit(1);
 	else if (cmp == 2)

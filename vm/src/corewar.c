@@ -50,7 +50,7 @@ static void				init_op_tab(t_op *op_tab)
 	op_tab[14] = &vm_lfork;
 	op_tab[15] = &vm_aff;
 }
-/*
+
 static void				init_process(t_header *champ, t_vm *env)
 {
 	unsigned int	pc;
@@ -69,7 +69,7 @@ static void				init_process(t_header *champ, t_vm *env)
 		champ = champ->next;
 	}
 }
-*/
+
 int						main(int ac, char **av)
 {
 	t_vm			env;
@@ -80,12 +80,12 @@ int						main(int ac, char **av)
 	init(&env);
 	init_op_tab(op_tab);
 	parsing(ac, av, &env, 0);
-	/*init_process(env.champion, &env);
+	init_process(env.champion, &env);
 	run_cycle(op_tab, &env);
 	if (env.ll_champ)
 		ft_printf("Player %d(%s) win !\nThe game was finish at cycle %ld.\n", \
 		env.ll_champ->num, env.ll_champ->prog_name, env.cycle);
 	else
-		ft_putendl("Nobody win, no live");*/
+		ft_putendl("Nobody win, no live");
 	return (0);
 }
