@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 22:47:24 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/06 12:43:53 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/07 09:34:56 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,12 @@ void					visu_update(t_winenv *env);
 SDL_Texture				*valtotex(t_winenv *env, int val, int base, SDL_Color color);
 int						quitvisu(t_winenv *env);
 SDL_Color				hsl(int h, double s, double l);
+
+/*
+**	Subfunctions
+*/
+void					memdisp(t_winenv *env);
+void					huddisp(t_winenv *env);
 
 /*
 **	Main functions
