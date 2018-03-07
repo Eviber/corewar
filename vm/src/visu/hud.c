@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 09:37:09 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/07 16:30:38 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/07 17:45:59 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static void			hudchamp(t_winenv *env, t_vm *vm, t_header *champ, int i)
 	ft_asprintf(&str, "Last live : %17s%c", tmp, 0);
 	free(tmp);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "Nb lives : %18lu%c", champ->nb_live, 0);
+	ft_asprintf(&str, "Lives : %21lu%c", champ->nb_live_p, 0);
 	dst = hudputstr(env, str, dst);
 	ft_asprintf(&str, "#############################%c", 0);
 	dst = hudputstr(env, str, dst);
