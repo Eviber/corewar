@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 09:37:09 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/07 17:45:59 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/07 20:07:16 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void			hudvm(t_winenv *env, t_vm *vm)
 	dst = hudputstr(env, str, dst);
 	ft_asprintf(&str, "NBR_LIVE :      %11lu/%lu%c", vm->nbr_live - vm->old_nbr_live, NBR_LIVE, 0);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "Checks :        %11lu/%lu%c", vm->check, MAX_CHECKS, 0);
+	ft_asprintf(&str, "Checks :        %11lu/%lu%c", MAX_CHECKS - vm->max_check, MAX_CHECKS, 0);
 	dst = hudputstr(env, str, dst);
 	ft_asprintf(&str, "CPS :           %14lu%c", env->cps, 0);
 	dst = hudputstr(env, str, dst);
