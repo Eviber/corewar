@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:36:55 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/06 13:35:37 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/07 16:19:44 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,17 +107,15 @@ void				visu_init(t_vm *vm)
 	initsdl(env, "Corewar", SDL_WINDOW_FULLSCREEN);
 	SDL_GetDesktopDisplayMode(0, &env->dispmode);
 	dm = env->dispmode;
-	SDL_QueryTexture(env->bytetex[0][0], NULL, NULL, &env->charrect.w, &env->charrect.h);
+	loadpalette(env);
+	loadbytetex(env);
+	set_colormap(env);
+	SDL_QueryTexture(env->bytetex[0][0], NULL, NULL, &(env->charrect.w), &(env->charrect.h));
 	env->memrect = setrect(env->charrect.w / 8, 0, dm.w * 4 / 5, dm.h);
-	//env->hudrect = setrect(env->memrect.w + dm.w / 50, dm.w / 50,
-	//						dm.w * 4 / 25, dm.h - dm.w / 25);
 	env->hudrect = setrect(env->memrect.w, 0, dm.w / 5, dm.h);
 	env->wintex = getnewtex(env, TEXTARGET, dm.w, dm.h);
 	env->memtex = getnewtex(env, TEXTARGET, env->memrect.w, env->memrect.h);
 	env->hudtex = getnewtex(env, TEXTARGET, env->hudrect.w, env->hudrect.h);
-	loadpalette(env);
-	loadbytetex(env);
-	set_colormap(env);
 	bg = (SDL_Color){10, 10, 10, SDL_ALPHA_OPAQUE};
 	cleartex(env->render, env->wintex, bg);
 	cleartex(env->render, env->memtex, bg);
