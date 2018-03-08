@@ -16,6 +16,7 @@
 # define SHOW_CYCL		2
 # define SHOW_DEAT		4
 # define SHOW_MOVE		8
+# define NB_OPTION 5
 
 typedef struct	s_param
 {
@@ -37,6 +38,9 @@ void			parsing(int ac, char **av, t_vm *vm, int cmp);
 int				opt_have_value(int pos, char **av, int cmp, t_vm *env);
 int				search_opt(char *str, t_vm *env);
 int				check_opt(int pos, char **av, t_vm *env);
+int 			search_opt(char *str, t_vm *env);
+int				check_opt(int pos, char **av, t_vm *env);
+t_opt			*get_opt(void);
 /*
 ** VM core
 */

@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/05 20:01:14 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/08 09:11:49 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 // si pas assez argument exit c'est vraiment bon ?
 
 #include "vm.h"
+#include "corewar.h"
 
 static void 	intro_champ(t_vm *env)
 {
@@ -116,6 +117,6 @@ void					parsing(int ac, char **av, t_vm *env, int cmp)
 			close(fd);
 		}
 	ft_memdel((void**)&line);
-	ft_print_head(env, -1);
+	//ft_print_head(env, -1);
 	intro_champ(env);
 }
