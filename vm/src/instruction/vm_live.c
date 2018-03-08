@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:40:00 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/05 15:06:37 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/08 08:28:15 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	vm_live(t_process *process, t_vm *env)
 	{
 		tmp->last_live = env->cycle;
 		tmp->nb_live += 1;
+		tmp->nb_live_p += 1;
 		env->ll_champ = tmp;
 		if ((env->option->verbose & SHOW_LIVE))
 			ft_printf("Player %d (%s) is said to be alive\n", \
