@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:36:55 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/07 16:19:44 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/08 09:21:33 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void				visu_init(t_vm *vm)
 	SDL_Color		bg;
 
 	env = getsdlenv(vm);
-	initsdl(env, "Corewar", SDL_WINDOW_FULLSCREEN);
+	initsdl(env, "Corewar", (vm->option->visu == 1) * SDL_WINDOW_FULLSCREEN);
 	SDL_GetDesktopDisplayMode(0, &env->dispmode);
 	dm = env->dispmode;
 	loadpalette(env);
