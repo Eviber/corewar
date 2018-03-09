@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/03/08 09:14:32 by ygaude           ###   ########.fr        #
+#    Updated: 2018/03/09 20:51:52 by ygaude           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ VPATH = $(PATH_VM_SRC):$(PATH_VM_PARS):$(PATH_VM_INST):$(PATH_VM_VISU):$(PATH_AS
 
 CC =				gcc -g -fsanitize=address -Wall -Werror -Wextra
 CFLAGS =			-I include/ -I libft/include/ `sdl2-config --cflags`
-LFLAGS =			-L $(PATH_LIBFT) -lft `sdl2-config --libs` -lSDL2_gfx -lSDL2_ttf
+LFLAGS =			-L $(PATH_LIBFT) -lft `sdl2-config --libs` -lSDL2_gfx -lSDL2_ttf -lm
 
 VM_PARS =			parser.c\
 					option.c\
@@ -90,12 +90,12 @@ all: $(LIBFT) $(ASM) $(VM)
 
 $(VM): $(VM_OBJ)
 	@echo "Compiling $@ ...\033[K"
-	@$(CC) $(LFLAGS) $^ -o $@
+	@$(CC) $^ -o $@ $(LFLAGS)
 	@echo "$(C_OK)Done !$(C_RESET)"
 
 $(ASM): $(LIBFT) $(ASM_OBJ)
 	@echo "Compiling $@ ...\033[K"
-	@$(CC) $(LFLAGS) $^ -o $@
+	@$(CC) $^ -o $@ $(LFLAGS)
 	@echo "$(C_OK)Done !$(C_RESET)"
 
 $(LIBFT):

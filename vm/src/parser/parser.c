@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/08 09:11:49 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/09 20:44:59 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,9 @@ static int				rd(char *line, t_vm *env, unsigned long max, unsigned long pos)
 static unsigned long	check_arg(int ac, char **av, t_vm *env)
 {
 	unsigned long	nb_champ;
-	int				error;
 	int				i;
 
 	i = 0;
-	error = 0;
 	nb_champ = 0;
 	while (++i < ac)
 	{

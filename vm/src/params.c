@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 16:03:33 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/04 18:09:50 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/09 20:45:53 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 int				check_peb(unsigned char peb, char **perm, int nb_param)
 {
 	int		param;
-	int		len;
 	char	current;
 
 	param = -1;
-	len = 0;
 	while (++param < nb_param)
 	{
 		current = (peb >> (8 - ((param + 1) * 2))) & IND_CODE;
