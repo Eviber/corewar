@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 23:06:13 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/06 15:14:27 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/10 17:42:11 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ static void		check_cycle_todie(t_vm *env)
 	env->old_nbr_live = env->nbr_live;
 }
 
+static void		reset_live_p(t_header *champs)
+{
+	while (champs)
+	{
+		champs->nb_live_p = 0;
+		champs = champs->next;
+	}
+}
+
 void			check_process(unsigned long *last_period, t_process *process, t_vm *env)
 {
 	t_process	*next;
@@ -38,7 +47,7 @@ void			check_process(unsigned long *last_period, t_process *process, t_vm *env)
 	while (process)
 	{
 		next = process->next;
-		if (process->last_live < *last_period || !process->last_live || \
+		if (process->last_live <= *last_period || !process->last_live || \
 		env->c_todie <= 0)
 		{
 			if ((env->option->verbose & SHOW_DEAT))
@@ -49,6 +58,7 @@ void			check_process(unsigned long *last_period, t_process *process, t_vm *env)
 		}
 		process = next;
 	}
+	reset_live_p(env->champion);
 	check_cycle_todie(env);
 	*last_period = env->cycle;
 	env->curr_c_todie = env->c_todie;

@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/05 15:07:36 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/09 20:02:37 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void			vm_sub(t_process *process, t_vm *env)
 	t_param			param;
 	char			peb;
 
-	peb = env->memory[process->pc + 1];
+	peb = env->memory[(process->pc + 1) % MEM_SIZE];
 	if (!perm)
 		perm = get_sub_perm();
 	param.mod = 0;

@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/03/06 15:13:45 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/07 16:19:01 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ typedef char	t_arg_type;
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
 
+# define CPS_LIMIT				100
+
 typedef struct			s_header
 {
 	int					num;
@@ -74,6 +76,7 @@ typedef struct			s_header
 	char				comment[COMMENT_LENGTH + 1];
 	unsigned long		last_live;
 	unsigned long		nb_live;
+	unsigned long		nb_live_p;
 	struct s_header		*next;
 }						t_header;
 

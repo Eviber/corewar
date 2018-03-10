@@ -8,7 +8,7 @@ void			ft_exit(char *str)
 }
 
 void			write_memory(unsigned int value, unsigned int address,
-							t_vm *env, t_header *champ)
+t_vm *env, t_header *champ)
 {
 	env->memory[address % MEM_SIZE] = value >> 24;
 	env->memory[(address + 1) % MEM_SIZE] = value >> 16 & 255;
