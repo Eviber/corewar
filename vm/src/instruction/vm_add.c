@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/05 15:04:05 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/09 19:56:58 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void			vm_add(t_process *process, t_vm *env)
 	t_param			param;
 	char			peb;
 
-	peb = env->memory[process->pc + 1];
+	peb = env->memory[(process->pc + 1) % MEM_SIZE];
 	if (!perm)
 		perm = get_add_perm();
 	param.mod = 0;

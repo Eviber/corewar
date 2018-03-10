@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 14:23:05 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/05 15:07:57 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/09 20:03:34 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	vm_zjmp(t_process *process, t_vm *env)
 
 	if (process->carry == 1)
 	{
-		get_param_value(process->pc + 1, 2, &p_one, env);
+		get_param_value((process->pc + 1) % MEM_SIZE, 2, &p_one, env);
 		process->pc += (((short)p_one) % IDX_MOD);
 	}
 	else

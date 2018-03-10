@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/03/07 16:17:13 by vsporer          ###   ########.fr        #
+#    Updated: 2018/03/08 17:51:09 by vsporer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ $(LIBFT):
 	make -C $(PATH_LIBFT)
 
 $(PATH_OBJ)%.o: %.c
-	@echo "Compiling @\033[K\033[1A\r"
+	@echo "Compiling $@\033[K\033[1A\r"
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
