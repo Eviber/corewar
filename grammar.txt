@@ -1,0 +1,28 @@
+# Terminals
+
+cmd_name -> NAME_CMD_STRING "<name>"
+cmd_cmt -> COMMENT_CMD_STRING "<comment>"
+label -> <LABEL_CHARS>:
+fct -> <LABEL_CHARS>
+reg -> r<digit>
+dir -> %<digit> | %:<LABEL_CHARS>
+ind -> <digit> | :<LABEL_CHARS>
+sep -> ,
+
+# Non-terminals
+
+prog
+header
+code
+line
+inst
+param
+
+# Rules
+
+prog -> header code
+header -> cmd_name cmd_cmt | cmd_cmt cmd_name
+code -> line code | EOF
+line -> label | label inst | inst
+inst -> fct param
+param -> param sep param | reg | dir | ind
