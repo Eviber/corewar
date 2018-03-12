@@ -25,16 +25,14 @@ static void 	intro_champ(t_vm *env)
 	{
 		if (env->nb_player > 1)
 			ft_printf("Introducing constestants\n");
+		else
+			ft_printf("The only and sad contestant is\n");
 		while(tmp->next)
 		{
-			ft_printf("* Player %d, weighing %d bytes,", tmp->num, tmp->prog_size);
+			ft_printf("* Player %d, weighing %d bytes", tmp->num, tmp->prog_size);
 			ft_printf(", \"%s\" (\"%s\") !\n", tmp->prog_name, tmp->comment);
 			tmp = tmp->next;
 		}
-		if (env->nb_player > 1)
-			ft_printf("and the last constestants is...\n......\n");
-		else
-			ft_printf("The only and sad contestant is\n");
 		ft_printf("* Player %d, weighing %d bytes,", tmp->num, tmp->prog_size);
 		ft_printf(" \"%s\" (\"%s\") !\n", tmp->prog_name, tmp->comment);
 		ft_printf("Lets ready to the rumble \n\n");
