@@ -5,7 +5,7 @@ cmd_cmt -> COMMENT_CMD_STRING "<comment>"
 label -> <LABEL_CHARS>:
 fct -> <LABEL_CHARS>
 reg -> r<digit>
-dir -> %<digit> | %:<LABEL_CHARS>
+direct -> %<digit> | %:<LABEL_CHARS>
 ind -> <digit> | :<LABEL_CHARS>
 sep -> ,
 

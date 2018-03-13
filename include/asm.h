@@ -1,103 +1,51 @@
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   asm.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/13 16:11:14 by sbrochar          #+#    #+#             */
+/*   Updated: 2018/03/13 16:58:14 by sbrochar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <libft.h>
-#include <corewar.h>
 
-typedef struct s_roquet
+typedef enum		e_token
 {
-  int type;
-  long pos;
-  long value;
-  int i;
-  int j;
-  int size_max;
-  struct s_roquet *next;
-} t_roquet;
+	PROG,
+	HEADER,
+	CODE,
+	LINE,
+	INST,
+	PARAM,
+	CMD_NAME,
+	CMD_CMT,
+	LABEL,
+	FCT,
+	SEP,
+	REG,
+	DIRECT,
+	IND
+}
 
-typedef struct s_label
+typedef struct		s_node
 {
-  char *name;
-  long index;
-  t_roquet *appel;
-  struct s_label *next;
-} t_label;
+	struct s_node	*parent;
+	struct s_list	*children;
+	t_token			type;
+}					t_node;
 
-typedef struct		s_op
+typedef struct		s_list
 {
-	char		*name;
-	int		nb_params;
-	short		type;
-	int		has_octal;
-	int		half_dir_size;
-  int opcode;
-}			t_op;
+//	t_node			*start;
+	t_node			*elem;
+	t_node			*next;
+}					t_list;
 
-
-typedef struct s_env
+typedef struct		s_rules
 {
-  char *name;
-  long size_champ;
-  char *res;
-  char *champ;
-  int error;
-  long pos;
-  long pos_last_inst;
-  long index;
-  int state;
-  long line;
-  size_t taille;
-  t_label *label;
-  t_op *op;
-  struct s_env *next;
-} t_env;
-
-/*
-** attribut
-*/
-
-int ft_fill_attr(char *line, t_env *env, char state);
-char   search_attr(char *line, t_env *env, char state);
-void read_attribut(t_env *env, char *line);
-
-/*
-** param
-*/
-
-t_op *get_opt();
-void get_param(t_op op, char *src, t_env *env);
-
-/*
-** attribut
-*/
-
-void read_attribut(t_env *env, char *line);
-
-/*
-** label
-*/
-
-int get_label(char *name, t_env *env, int i, int size);
-void new_label(t_env *env, char *src, size_t end_src, t_label *tmp);
-int is_label(char *src, int start);
-void check_label(t_env *env, t_label *tmp);
-
-/*
-** struct_tool
-*/
-
-void switch_extension(t_env *env, char *src, char *new_extension);
-void fill_length_file(t_env *env);
-int find_next(char *src, char car);
-int find_next_instruction(char *src);
-void check_error(t_env *env);
-
-/*
-** tool
-*/
-
-void ft_error(t_env *env, char *name, int error);
-void load_new_roquet(t_label *target, t_env *env, int size);
-void fill_memory(char *mem, long value, int size, int start);
-void *ft_memalloc_exit(size_t size);
-void memory_manager(t_env *env, int size);
+	t_token			orig;
+	t_token			*res;
+}					t_rules;
