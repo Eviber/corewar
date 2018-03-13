@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 16:11:14 by sbrochar          #+#    #+#             */
-/*   Updated: 2018/03/13 16:58:14 by sbrochar         ###   ########.fr       */
+/*   Updated: 2018/03/13 17:01:10 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_node
 	struct s_node	*parent;
 	struct s_list	*children;
 	t_token			type;
+	char			*name;
 }					t_node;
 
 typedef struct		s_list
