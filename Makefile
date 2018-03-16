@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/03/09 20:51:52 by ygaude           ###   ########.fr        #
+#    Updated: 2018/03/16 15:04:32 by sbrochar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,9 @@ VM_SRC =			$(VM_PARS)\
 					verbose.c\
 					params.c
 
-ASM_SRC =			asm.c
+ASM_SRC =			asm.c\
+					lexer.c\
+					tree_funcs.c
 
 VM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(VM_SRC))
 ASM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(ASM_SRC))
