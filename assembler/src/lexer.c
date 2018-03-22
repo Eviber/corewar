@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 14:52:56 by sbrochar          #+#    #+#             */
-/*   Updated: 2018/03/16 20:24:08 by sbrochar         ###   ########.fr       */
+/*   Updated: 2018/03/22 14:36:15 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void			get_cmd(char *line)
 	ft_strdel(&cmd);
 }
 
-static void			check_header(/*char *prog, t_node *root,*/ int fd)
+static void			check_header(/*t_node *root,*/ int fd)
 {
 	int				gnl;
 	char			*line;
@@ -64,7 +64,7 @@ t_node				*lexer(char *prog, int fd)
 	tree = create_node(PROG, prog);
 	if (tree)
 	{
-		check_header(/*prog, tree,*/ fd);
+		check_header(/*tree,*/ fd);
 //		check_code(tree);
 		return (tree);
 	}
