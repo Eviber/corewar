@@ -22,6 +22,17 @@
 	}
 }*/
 
+void 		add_next_child(t_node *parent, t_node *children)
+{
+	t_child 		*tmp_child;
+
+	tmp_child = parent->children;
+	while (tmp_child->next)
+		tmp_child = tmp_child->next;
+	tmp_child->next = (t_child *)ft_memalloc(sizeof(t_child));
+	tmp_child->next->elem = children;
+}
+
 t_node				*create_node(t_token type, char *name)
 {
 	t_node			*node;
@@ -38,5 +49,20 @@ t_node				*create_node(t_token type, char *name)
 			node->name = NULL;
 		return (node);
 	}
+	pexit("Malloc returned null\n", 1);
 	return (NULL);
+}
+
+void				create_child(t_node *parent, t_node *children)
+{
+	t_child			*child;
+
+	child = (t_child *)ft_memalloc(sizeof(t_child));
+	if (child)
+	{
+		parent->children = child;
+		child->elem = children;
+		child->next = NULL;
+	}
+	pexit("Malloc returned null\n", 1);
 }

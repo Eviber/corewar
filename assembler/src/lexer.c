@@ -13,41 +13,20 @@
 #include <libft.h>
 #include <asm.h>
 
-static void			get_cmd(char *line)
-{
-	int				i;
-	char			*cmd;
-	t_node			*header;
-
-	i = 1;
-	header = create_node(HEADER, NULL);
-	while (line[i] != ' ' && line[i] != '\t')
-		i++;
-	cmd = ft_strsub(line, 1, i - 1);
-	if (!cmd)
-		pexit(NULL, -1);
-	if (!ft_strcmp(cmd, "name")) { }
-//		register_name_command();
-	else if (!ft_strcmp(cmd, "comment")) { }
-//		register_comment_command();
-	ft_strdel(&cmd);
-}
-
-static void			check_header(/*t_node *root,*/ int fd)
+static void			check_header(t_node *root, int fd)
 {
 	int				gnl;
 	char			*line;
+	t_node			*header;
 
 	line = NULL;
+	header = create_node(HEADER, NULL);
+
+	create_child(root, header);
 	while ((gnl = get_next_line(fd, &line)) > 0)
 	{
-		if (line && !line[0])
-		{
-			ft_strdel(&line);
-			continue ;
-		}
 		if (line && line[0] == '.')
-			get_cmd(line);
+			get_cmd(header, line, fd);
 		ft_strdel(&line);
 	}
 /*	if (gnl == -1)
@@ -64,8 +43,9 @@ t_node				*lexer(char *prog, int fd)
 	tree = create_node(PROG, prog);
 	if (tree)
 	{
-		check_header(/*tree,*/ fd);
-//		check_code(tree);
+		check_header(tree, fd);
+		check_code(tree);
+		print_tree(tree);
 		return (tree);
 	}
 	return (NULL);

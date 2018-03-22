@@ -50,9 +50,8 @@ typedef struct		s_node
 
 typedef struct		s_child
 {
-//	t_node			*start;
 	t_node			*elem;
-	t_node			*next;
+	struct s_child			*next;
 }					t_child;
 
 typedef struct		s_rules
@@ -64,7 +63,15 @@ typedef struct		s_rules
 t_node				*lexer(char *prog, int fd);
 
 t_node				*create_node(t_token type, char *name);
+void				create_child(t_node *parent, t_node *children);
+void 				add_next_child(t_node *parent, t_node *children);
 
 void				pexit(char *s, int i);
+
+void			get_cmd(t_node *header,char *line, int fd);
+
+void	print_tree(t_node *tree);
+
+void check_code(t_node *tree);
 
 #endif

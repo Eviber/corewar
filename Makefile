@@ -81,9 +81,14 @@ VM_SRC =			$(VM_PARS)\
 					verbose.c\
 					params.c
 
-ASM_SRC =			asm.c\
-					lexer.c\
-					tree_funcs.c
+ASM_SRC =		asm.c							\
+						lexer.c						\
+						tree_funcs.c 			\
+						print_tree.c			\
+						register_header.c	\
+						checK_code.c
+
+
 
 VM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(VM_SRC))
 ASM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(ASM_SRC))
