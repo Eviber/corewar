@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 17:26:54 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/05 15:05:12 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/08 20:06:33 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void			vm_lfork(t_process *process, t_vm *env)
 
 	if ((env->option->verbose & SHOW_MOVE))
 		show_pc_mov(process->pc, process->pc + 3, 3, env);
-	param = ((short)env->memory[process->pc + 1]) << 8;
-	param += ((short)env->memory[process->pc + 2]);
+	param = ((short)env->memory[(process->pc + 1) % MEM_SIZE]) << 8;
+	param += ((short)env->memory[(process->pc + 2) % MEM_SIZE]);
 	new_pc = process->pc + param;
 	add_process(&env->process, new_process(process, new_pc));
 	env->process->inst = -1;

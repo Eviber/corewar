@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 18:29:25 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/09 20:45:29 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/02 15:14:15 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ void		add_process(t_process **lst, t_process *new)
 
 void		del_process(t_process **lst, t_process *todel)
 {
+	unsigned long	i;
 	t_process		*tmp;
 
+	i = 0;
 	tmp = *lst;
 	if (todel)
 	{

@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 16:03:33 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/09 20:45:53 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/09 21:54:48 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 int				check_peb(unsigned char peb, char **perm, int nb_param)
 {
 	int		param;
+	int		len;
 	char	current;
 
 	param = -1;
+	len = 0;
 	while (++param < nb_param)
 	{
 		current = (peb >> (8 - ((param + 1) * 2))) & IND_CODE;
@@ -46,7 +48,7 @@ static void		load_param(t_param *param, t_process *process, t_vm *env)
 	unsigned char	peb;
 
 	pc = process->pc + 2;
-	peb = env->memory[process->pc + 1];
+	peb = env->memory[(process->pc + 1) %MEM_SIZE];
 	if ((PARAM_ONE(peb)) == REG_CODE)
 		pc += get_param_value(pc, 1, &param->one, env);
 	else if ((PARAM_ONE(peb)) == IND_CODE || !(param->mod & L_DIR))
@@ -71,7 +73,7 @@ void			get_param(t_param *param, t_process *process, t_vm *env)
 {
 	unsigned char	peb;
 
-	peb = env->memory[process->pc + 1];
+	peb = env->memory[(process->pc + 1) % MEM_SIZE];
 	load_param(param, process, env);
 	if ((param->mod & IND_TARG))
 	{
