@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/09 20:02:12 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/23 14:50:52 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,31 @@ static char		**get_lldi_perm(void)
 	return (perm);
 }
 
-void			vm_lldi(t_process *process, t_vm *env)
+void			vm_lldi(t_process *prc, t_vm *env)
 {
 	static char		**perm = NULL;
-	t_param			param;
+	t_param			p;
 	char			peb;
 
-	peb = env->memory[(process->pc + 1) % MEM_SIZE];
+	peb = env->memory[(prc->pc + 1) % MEM_SIZE];
 	if (!perm)
 		perm = get_lldi_perm();
-	param.mod = IND_TARG | IMOD;
-	param.len = param_len(peb, 0, 3) + 2;
+	p.mod = IND_TARG | IMOD;
+	p.len = param_len(peb, 0, 3) + 2;
 	if (!check_peb(peb, perm, 3))
 	{
-		get_param(&param, process, env);
-		if (!check_reg(peb, 3, &param))
+		get_param(&p, prc, env);
+		if (!check_reg(peb, 3, &p))
 		{
 			if (PARAM_ONE(peb) == REG_CODE)
-				param.one = process->reg[param.one - 1];
+				p.one = prc->reg[p.one - 1];
 			if (PARAM_TWO(peb) == REG_CODE)
-				param.two = process->reg[param.two - 1];
-			process->carry = !(process->reg[param.thr - 1] = \
-			read_memory(process->pc + (param.one + param.two), env)) ? 1 : 0;
+				p.two = prc->reg[p.two - 1];
+			prc->reg[p.thr - 1] = read_memory(prc->pc + p.one + p.two, env);
+			prc->carry = !(prc->reg[p.thr - 1]) ? 1 : 0;
 		}
 	}
 	if ((env->option->verbose & SHOW_MOVE))
-		show_pc_mov(process->pc, process->pc + param.len, param.len, env);
-	process->pc += param.len;
+		show_pc_mov(prc->pc, prc->pc + p.len, p.len, env);
+	prc->pc += p.len;
 }

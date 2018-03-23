@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/09 21:55:04 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/23 14:56:12 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,28 @@ static char		**get_sti_perm(void)
 void			vm_sti(t_process *process, t_vm *env)
 {
 	static char		**perm = NULL;
-	t_param			param;
+	t_param			prm;
 	char			peb;
 
 	peb = env->memory[(process->pc + 1) % MEM_SIZE];
 	if (!perm)
 		perm = get_sti_perm();
-	param.mod = IND_TARG | IMOD;
-	param.len = param_len(peb, 0, 3) + 2;
+	prm.mod = IND_TARG | IMOD;
+	prm.len = param_len(peb, 0, 3) + 2;
 	if (!check_peb(peb, perm, 3))
 	{
-		get_param(&param, process, env);
-		if (!check_reg(peb, 3, &param))
+		get_param(&prm, process, env);
+		if (!check_reg(peb, 3, &prm))
 		{
 			if (PARAM_TWO(peb) == REG_CODE)
-				param.two = process->reg[param.two - 1];
+				prm.two = process->reg[prm.two - 1];
 			if (PARAM_THR(peb) == REG_CODE)
-				param.thr = process->reg[param.thr - 1];
-			write_memory(process->reg[param.one - 1], \
-			process->pc + ((param.two + param.thr) % IDX_MOD), env,
-			process->champ);
+				prm.thr = process->reg[prm.thr - 1];
+			write_memory(process->reg[prm.one - 1], \
+			process->pc + ((prm.two + prm.thr) % IDX_MOD), env, process->champ);
 		}
 	}
 	if ((env->option->verbose & SHOW_MOVE))
-		show_pc_mov(process->pc, process->pc + param.len, param.len, env);
-	process->pc += param.len;
+		show_pc_mov(process->pc, process->pc + prm.len, prm.len, env);
+	process->pc += prm.len;
 }

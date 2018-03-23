@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 18:33:32 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/09 20:02:26 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/23 14:54:53 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,8 @@ void			vm_st(t_process *process, t_vm *env)
 			if (PARAM_TWO(peb) == REG_CODE)
 				process->reg[param.two - 1] = process->reg[param.one - 1];
 			else
-			{
-				write_memory(process->reg[param.one - 1], \
-				process->pc + (((int)(short)param.two) % IDX_MOD), env, process->champ);
-			}
+				write_memory(process->reg[param.one - 1], process->pc + \
+				(((int)(short)param.two) % IDX_MOD), env, process->champ);
 		}
 	}
 	if ((env->option->verbose & SHOW_MOVE))
