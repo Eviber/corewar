@@ -86,7 +86,9 @@ ASM_SRC =		asm.c							\
 						tree_funcs.c 			\
 						print_tree.c			\
 						register_header.c	\
-						checK_code.c
+						check_param.c			\
+						check_line.c			\
+						parser.c					\
 
 
 
