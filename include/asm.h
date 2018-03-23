@@ -57,8 +57,8 @@ typedef struct		s_child
 
 typedef struct		s_rules
 {
-	t_token			orig;
-	t_token			res[4];
+	int 				possibility;
+	t_token			res[5];
 }					t_rules;
 
 t_node				*lexer(char *prog, int fd);
@@ -71,8 +71,11 @@ void				pexit(char *s, int i);
 void			get_cmd(t_node *header,char *line, int fd);
 
 void	print_tree(t_node *tree);
+void print_token(int index, int deepness);
 
 void check_line(t_node *node_line, char *line);
 void check_param(t_node *node_param, char *param);
+
+void parser(t_node *root);
 
 #endif

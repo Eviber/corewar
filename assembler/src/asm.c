@@ -62,8 +62,8 @@ int					main(int argc, char **argv)
 			tree = lexer(argv[i], fd);
 			if (!tree)
 				pexit(argv[i], -1);
-//			parser();
-//			free_root(&root);
+			parser(tree);
+//		free_root(&root);
 			close(fd);
 			i++;
 		}

@@ -10,43 +10,68 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static t_rules	*get_rules(void)
-{
-	static t_rules	rules[] = {
-	{ PROG, { HEADER, CODE, 0, 0 } },
-	{ HEADER, { CMD_NAME, CMD_CMT, 0, 0 } },
-	{ HEADER, { CMD_CMT, CMD_NAME, 0, 0 } },
-	{ CODE, { LINE, CODE, 0, 0 } },
-	{ CODE, { ENDCODE, 0, 0, 0 } },
-	{ LINE, { LABEL, 0, 0, 0 } },
-	{ LINE, { INST, 0, 0, 0 } },
-	{ LINE, { LABEL, INST, 0, 0 } },
-	{ PARAM, { PARAM, SEP, PARAM, 0 } },
-	{ PARAM, { REG, 0, 0, 0 } },
-	{ PARAM, { DIRECT, 0, 0, 0 } },
-	{ PARAM, { IND, 0, 0, 0 } },
-	{ 0, { 0, 0, 0, 0 } },
-	};
-
-	return (rules);
-}
-
 #include <asm.h>
 
-void check_grammar(t_node *root)
+static t_rules	get_rules(t_token type)
 {
-  t_rules *rule;
-  t_node *tmp_tree;
-  int i;
+	static t_rules	rules[13] = {
+	{ 0, {PROG, HEADER, CODE, 0, 0}},
+	{ 1, {HEADER, CMD_NAME, CMD_CMT, 0, 0 } },
+	{ 0, {HEADER, CMD_CMT, CMD_NAME, 0, 0 }},
+	{ 1, {CODE, LINE, CODE, 0, 0 }},
+	{ 0, {CODE, ENDCODE, 0, 0, 0 }},
+	{ 2, {LINE, LABEL, 0, 0, 0 }},
+	{ 1, {LINE, INST, 0, 0, 0 }},
+	{ 0, {LINE, LABEL, INST, 0, 0 }},
+	{ 3, {PARAM, PARAM, SEP, PARAM, 0 }},
+	{ 2, {PARAM, REG, 0, 0, 0 }},
+	{ 1, {PARAM, DIRECT, 0, 0, 0 }},
+	{ 0, {PARAM, IND, 0, 0, 0 }},
+	{ 0, { 0, 0, 0, 0, 0 }},
+	};
+	int i;
 
-  tmp_tree = root;
-  rule = get_rules();
+	i = 0;
+	while (rules[i].res[0] && rules[i].res[0] != type)
+		i++;
+	return (rules[i]);
+}
+
+void check_grammar(t_node *root, t_rules rules, int deep, t_child *tmp_child)
+{
+	int i;
+
+	i = 0;
+	if (root->type == rules.res[i])
+	{
+		ft_printf("Analyse type : ");
+		print_token(root->type, deep);
+		while (tmp_child->children)
+		{
+			print_token(tmp_child->elem->type, deep + 2);
+			if (tmp_child->elem->type != rules.res[++i])
+				pexit("Tree error", -4);
+			if (tmp_child->elem->type == HEADER ||
+				tmp_child->elem->type == CODE ||
+				tmp_child->elem->type == LINE ||
+				tmp_child->elem->type == PARAM)
+				check_grammar(tmp_child->elem, get_rules(tmp_child->elem->type), deep + 4, root->children->next);
+			tmp_child = tmp_child->next;
+		}
+	}
+	else if (rules.possibility == 0)
+		pexit("Tree error", -4);
+	else
+		check_grammar(root, *((&rules) + 1), deep);
 }
 
 void parser(t_node *root)
 {
-  check_grammar(root);
-  reduce_tree(root);
-  check_fct_params(root);
-  translate(root);
+	t_node *tmp_tree;
+
+	tmp_tree = root;
+  check_grammar(tmp_tree, get_rules(root->type), 0, tmp_tree->child);
+  //reduce_tree(root);
+  //check_fct_params(root);
+  //translate(root);
 }
