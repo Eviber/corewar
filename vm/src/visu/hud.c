@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 09:37:09 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/07 20:07:16 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/23 14:44:55 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,14 @@ static SDL_Rect		hudputstr(t_winenv *env, char *str, SDL_Rect dst)
 	return (dst);
 }
 
-/*
-typedef struct			s_vm
-{
-	unsigned int		nb_player;
-	long				c_todie;
-	long				curr_c_todie;
-	unsigned long		c_delta;
-	unsigned long		nbr_live;
-	unsigned long		max_check;
-	unsigned long		check;
-	unsigned long		cycle;
-	unsigned long		nb_process;
-	int					mem_mov;
-}						t_vm;
-*/
-
 static void			hudvm(t_winenv *env, t_vm *vm)
 {
 	SDL_Rect	dst;
 	char		*str;
 	char		*tmp;
 
-	env->cps = (env->cps + 1000 / (env->ticks - env->lastticks + !(env->ticks - env->lastticks))) / 2;
+	env->cps = (env->cps + 1000 / (env->ticks - env->lastticks + \
+	!(env->ticks - env->lastticks))) / 2;
 	dst.y = env->hudrect.w / 10;
 	ft_asprintf(&str, "Cycle :         %14lu%c", vm->cycle, 0);
 	dst = hudputstr(env, str, dst);
@@ -64,27 +49,16 @@ static void			hudvm(t_winenv *env, t_vm *vm)
 	dst = hudputstr(env, str, dst);
 	ft_asprintf(&str, "Cycle delta :   %14lu%c", vm->c_delta, 0);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "NBR_LIVE :      %11lu/%lu%c", vm->nbr_live - vm->old_nbr_live, NBR_LIVE, 0);
+	ft_asprintf(&str, "NBR_LIVE :      %11lu/%lu%c", vm->nbr_live - \
+	vm->old_nbr_live, NBR_LIVE, 0);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "Checks :        %11lu/%lu%c", MAX_CHECKS - vm->max_check, MAX_CHECKS, 0);
+	ft_asprintf(&str, "Checks :        %11lu/%lu%c", MAX_CHECKS - \
+	vm->max_check, MAX_CHECKS, 0);
 	dst = hudputstr(env, str, dst);
 	ft_asprintf(&str, "CPS :           %14lu%c", env->cps, 0);
 	dst = hudputstr(env, str, dst);
 }
 
-/*
-typedef struct			s_header
-{
-	int					num;
-	unsigned int		magic;
-	char				prog_name[PROG_NAME_LENGTH + 1];
-	unsigned long		prog_size;
-	char				comment[COMMENT_LENGTH + 1];
-	unsigned long		last_live;
-	unsigned long		nb_live;
-	struct s_header		*next;
-}						t_header;
-*/
 static void			hudchamp(t_winenv *env, t_vm *vm, t_header *champ, int i)
 {
 	SDL_Rect	dst;
@@ -92,12 +66,14 @@ static void			hudchamp(t_winenv *env, t_vm *vm, t_header *champ, int i)
 	char		*tmp;
 
 	dst.y = env->hudrect.w / 10 + env->hudrect.h * i / 5;
-	dst.y = env->hudrect.h + env->charrect.h - (4 - i) * (env->charrect.h * 7 + env->hudrect.w / 20);
+	dst.y = env->hudrect.h + env->charrect.h - (4 - i) * \
+	(env->charrect.h * 7 + env->hudrect.w / 20);
 	ft_asprintf(&str, "Champion %d : %16s%c", champ->num, champ->prog_name, 0);
 	dst = hudputstr(env, str, dst);
 	ft_asprintf(&str, "Size : %22lu%c", champ->prog_size, 0);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&tmp, "%lu (%lu)%c", vm->cycle - champ->last_live, champ->last_live, 0);
+	ft_asprintf(&tmp, "%lu (%lu)%c", vm->cycle - \
+	champ->last_live, champ->last_live, 0);
 	ft_asprintf(&str, "Last live : %17s%c", tmp, 0);
 	free(tmp);
 	dst = hudputstr(env, str, dst);

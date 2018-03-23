@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/03/09 20:51:52 by ygaude           ###   ########.fr        #
+#    Updated: 2018/03/23 15:34:18 by vsporer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ PATH_VM_PARS =		$(PATH_VM_SRC)parser/
 PATH_VM_INST =		$(PATH_VM_SRC)instruction/
 PATH_VM_VISU =		$(PATH_VM_SRC)visu/
 
-PATH_ASM =			assembler/
+PATH_ASM =			assembleur/
 PATH_ASM_SRC =		$(PATH_ASM)src/
 
 VPATH = $(PATH_VM_SRC):$(PATH_VM_PARS):$(PATH_VM_INST):$(PATH_VM_VISU):$(PATH_ASM_SRC)
@@ -88,7 +88,7 @@ ASM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(ASM_SRC))
 
 all: $(LIBFT) $(ASM) $(VM)
 
-$(VM): $(VM_OBJ)
+$(VM): $(LIBFT) $(VM_OBJ)
 	@echo "Compiling $@ ...\033[K"
 	@$(CC) $^ -o $@ $(LFLAGS)
 	@echo "$(C_OK)Done !$(C_RESET)"
@@ -102,7 +102,7 @@ $(LIBFT):
 	make -C $(PATH_LIBFT)
 
 $(PATH_OBJ)%.o: %.c
-	@echo "Compiling @\033[K\033[1A\r"
+	@echo "Compiling $@\033[K\033[1A\r"
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
@@ -115,7 +115,7 @@ fclean: clean
 	@rm -f $(VM)
 	@rm -f $(ASM)
 	@make -C $(PATH_LIBFT) fclean
-	@echo "$(C_DEL)$(ASM), $(VM) and $(LIBFT) removed."
+	@echo "$(C_DEL)$(ASM), $(VM) and $(LIBFT) removed.$(C_RESET)"
 
 test: all
 	@echo "\\/\\/\\/\\/\\/\\/\\/BEGIN TEST\\/\\/\\/\\/\\/\\/\\/"

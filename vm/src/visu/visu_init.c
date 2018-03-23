@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:36:55 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/23 11:22:21 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/23 15:03:34 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,21 +80,11 @@ void				set_colormap(t_winenv *env)
 	memset(env->colormap, 0, MEM_SIZE);
 	while (cur)
 	{
-		memset(env->colormap + (i * MEM_SIZE / env->vm->nb_player), i + 1, cur->prog_size);
+		memset(env->colormap + (i * MEM_SIZE / env->vm->nb_player), i + 1, \
+		cur->prog_size);
 		i++;
 		cur = cur->next;
 	}
-}
-
-SDL_Rect			setrect(int x, int y, int w, int h)
-{
-	SDL_Rect	ret;
-
-	ret.x = x;
-	ret.y = y;
-	ret.w = w;
-	ret.h = h;
-	return (ret);
 }
 
 void				visu_init(t_vm *vm)
@@ -110,9 +100,10 @@ void				visu_init(t_vm *vm)
 	loadpalette(env);
 	loadbytetex(env);
 	set_colormap(env);
-	SDL_QueryTexture(env->bytetex[0][0], NULL, NULL, &(env->charrect.w), &(env->charrect.h));
-	env->memrect = setrect(env->charrect.w / 8, 0, dm.w * 4 / 5, dm.h);
-	env->hudrect = setrect(env->memrect.w, 0, dm.w / 5, dm.h);
+	SDL_QueryTexture(env->bytetex[0][0], NULL, NULL, &(env->charrect.w), \
+	&(env->charrect.h));
+	env->memrect = (SDL_Rect){env->charrect.w / 8, 0, dm.w * 4 / 5, dm.h};
+	env->hudrect = (SDL_Rect){env->memrect.w, 0, dm.w / 5, dm.h};
 	env->wintex = getnewtex(env, TEXTARGET, dm.w, dm.h);
 	env->memtex = getnewtex(env, TEXTARGET, env->memrect.w, env->memrect.h);
 	env->hudtex = getnewtex(env, TEXTARGET, env->hudrect.w, env->hudrect.h);
