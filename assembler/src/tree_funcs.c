@@ -53,16 +53,22 @@ t_node				*create_node(t_token type, char *name)
 	return (NULL);
 }
 
-void				create_child(t_node *parent, t_node *children)
+void				add_child(t_node *parent, t_node *children)
 {
 	t_child			*child;
 
-	child = (t_child *)ft_memalloc(sizeof(t_child));
-	if (child)
+	if (parent->children)
+		add_next_child(parent, children);
+	else
 	{
-		parent->children = child;
-		child->elem = children;
-		child->next = NULL;
+		child = (t_child *)ft_memalloc(sizeof(t_child));
+		if (child)
+		{
+			parent->children = child;
+			child->elem = children;
+			child->next = NULL;
+		}
+		else
+			pexit("Malloc returned null\n", 1);
 	}
-	pexit("Malloc returned null\n", 1);
 }

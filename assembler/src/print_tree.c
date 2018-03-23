@@ -14,9 +14,9 @@
 #include <libft.h>
 #include <asm.h>
 
-static void print_token(int index)
+static void print_token(int index, int deepness)
 {
-  ft_printf("Type = ");
+  ft_printf("%*Type = ", deepness);
   if (index == NONE)
    ft_printf("NONE\n");
   else if (index == PROG)
@@ -56,12 +56,12 @@ static void print_token(int index)
 
 static void recursive_tree(t_node *elem, int deepness)
 {
+  print_token(elem->type, deepness);
   ft_printf("%*Name = |%s|\n", deepness, elem->name);
-  print_token(elem->type);
   if (elem->children)
     recursive_tree(elem->children->elem, deepness + 4);
-  if (elem->children->next)
-      recursive_tree(elem->children->elem, deepness);
+  if (elem->children && elem->children->next)
+      recursive_tree(elem->children->next->elem, deepness + 4);
 }
 
 void	print_tree(t_node *tree)

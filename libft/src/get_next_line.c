@@ -52,7 +52,7 @@ int			get_next_line(const int fd, char **line)
 	ret = 1;
 	buf = getbuf(fd + 1, 0);
 	if (!buf || !line || fd < 0 || read(fd, buf, 0) < 0)
-		return (-1);
+		return ((!buf) ? 0 : -1); // youvq go faire un truc plus propre pour non  bbuff
 	*line = NULL;
 	tmp = ft_strdup(buf);
 	while (tmp && !ft_strchr(tmp, '\n') && (ret = read(fd, buf, BUFF_SIZE)) > 0)

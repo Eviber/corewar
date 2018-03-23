@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <corewar.h>
 
 typedef enum		e_token
 {
@@ -63,8 +64,7 @@ typedef struct		s_rules
 t_node				*lexer(char *prog, int fd);
 
 t_node				*create_node(t_token type, char *name);
-void				create_child(t_node *parent, t_node *children);
-void 				add_next_child(t_node *parent, t_node *children);
+void				add_child(t_node *parent, t_node *children);
 
 void				pexit(char *s, int i);
 
@@ -72,6 +72,6 @@ void			get_cmd(t_node *header,char *line, int fd);
 
 void	print_tree(t_node *tree);
 
-void check_code(t_node *tree);
+void check_line(t_node *code, char *line);
 
 #endif

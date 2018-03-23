@@ -46,7 +46,7 @@ int					main(int argc, char **argv)
 	int				i;
 
 	if (argc <= 1)
-		ft_printf("usage: ./asm.h <champion.s>\n");
+		ft_dprintf(2, "usage: ./asm <champion.s>\n");
 	else
 	{
 		tree = NULL;

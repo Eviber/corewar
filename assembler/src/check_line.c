@@ -13,11 +13,16 @@
 #include <libft.h>
 #include <asm.h>
 
-void check_code(t_node *tree)
+void  check_line(t_node *code, char *line)
 {
-  char			*line;
+  t_node *node_line;
+  int i;
 
-  line = NULL;
-  ft_printf("tree = %p\n", tree);
-
+  i = -1;
+  node_line = create_node(LINE, NULL);
+  add_child(code, node_line);
+  while (line[++i] && line[i] != COMMENT_CHAR)
+  {
+    
+  }
 }

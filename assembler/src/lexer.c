@@ -13,6 +13,31 @@
 #include <libft.h>
 #include <asm.h>
 
+static void			check_code(t_node *root, int fd)
+{
+	int				gnl;
+	char			*line;
+	t_node		*code;
+	t_node		*new_code;
+
+	line = NULL;
+	code = create_node(CODE, NULL);
+	add_child(root, code);
+	while ((gnl = get_next_line(fd, &line)) > 0)
+	{
+		check_line(code, line);
+		ft_strdel(&line);
+		new_code = create_node(CODE, NULL);
+		add_child(code, new_code);
+		code = new_code;
+	}
+	ft_printf("gnl = %d\n", gnl);
+	if (gnl < 0)
+		pexit("Erreur de read", -2);
+	new_code = create_node(ENDCODE, NULL);
+	add_child(code, new_code);
+}
+
 static void			check_header(t_node *root, int fd)
 {
 	int				gnl;
@@ -21,19 +46,17 @@ static void			check_header(t_node *root, int fd)
 
 	line = NULL;
 	header = create_node(HEADER, NULL);
-
-	create_child(root, header);
+	add_child(root, header);
 	while ((gnl = get_next_line(fd, &line)) > 0)
 	{
 		if (line && line[0] == '.')
 			get_cmd(header, line, fd);
 		ft_strdel(&line);
+		if (header->children && header->children->next)
+			break;
 	}
-/*	if (gnl == -1)
-	{
-		ft_printf("gnl error\n");
-		perror(prog);
-	}*/
+	if (gnl < 0)
+		pexit("Erreur de read", -2);
 }
 
 t_node				*lexer(char *prog, int fd)
@@ -44,7 +67,7 @@ t_node				*lexer(char *prog, int fd)
 	if (tree)
 	{
 		check_header(tree, fd);
-		check_code(tree);
+		check_code(tree, fd);
 		print_tree(tree);
 		return (tree);
 	}
