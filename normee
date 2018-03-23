@@ -1,0 +1,2220 @@
+Norme: ./assembleur/src/asm.c
+Error: global scope bad aligned
+Error (line 15): declarations in search_inst are bad aligned
+Error (line 15): Space before function name
+Error (line 25, col 8): missing space around =
+Error (line 27): line has 83 characters
+Error (line 34, col 2): missing space after return
+Error (line 38, col 1): missing space after return
+Error (line 41): declarations in read_champ are bad aligned
+Error (line 41): Space before function name
+Error (line 50): line has 96 characters
+Error (line 56): line has 95 characters
+Error (line 67): declarations in init_env are bad aligned
+Error (line 67): Space before function name
+Error (line 86): line has 101 characters
+Error (line 95): comment not well formatted
+Error (line 102): declarations in read_file are bad aligned
+Error (line 102): Space before function name
+Error (line 111, col 12): space before )
+Error (line 128, col 1): missing space after return
+Error (line 131): declarations in main are bad aligned
+Error (line 131): Space before function name
+Error (line 139, col 2): missing space after while
+Error (line 147, col 31): missing space around |
+Error (line 147, col 39): missing space around |
+Error (line 155, col 1): missing space after return
+--
+Norme: ./assembleur/src/attribut.c
+Error: global scope bad aligned
+Error (line 15): comment not well formatted
+Error (line 27): Space before function name
+Error (line 29, col 1): missing space after while
+Error (line 35): line has 107 characters
+Error (line 35, col 99): space before )
+Error (line 37): line has 139 characters
+Error (line 39): line has 186 characters
+Error (line 41): line has 83 characters
+Error (line 46, col 1): missing space after return
+Error (line 49): Space before function name
+Error (line 49): Space before function name
+Error (line 49): Space before function name
+Error (line 49, col 4): bad spacing
+Error (line 51): line has 82 characters
+Error (line 65): line has 85 characters
+Error (line 75): Space before function name
+Error (line 81): line has 136 characters
+Error (line 81, col 63): bad spacing
+--
+Norme: ./assembleur/src/label.c
+Error: global scope bad aligned
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14): comment not well formatted
+Error (line 14): must begin only by tabulations
+Error (line 38): Space before function name
+Error (line 41, col 5): bad spacing
+Error (line 67): Space before function name
+Error (line 75): line has 101 characters
+Error (line 75, col 2): missing space after while
+Error (line 77): line has 85 characters
+Error (line 96): Space before function name
+Error (line 98, col 1): missing space after while
+Error (line 103, col 3): missing space after return
+Error (line 105, col 3): missing space after return
+Error (line 108, col 1): missing space after return
+Error (line 111): Space before function name
+Error (line 116, col 1): missing space after while
+Error (line 125, col 2): missing space after while
+Error (line 127): line has 89 characters
+Error (line 127, col 51): bad character after ,
+--
+Norme: ./assembleur/src/param.c
+Error: global scope bad aligned
+Error (line 15): Space before function name
+Error (line 15): missing void in function get_opt
+Error (line 17, col 12): bad spacing
+Error (line 18, col 20): space before ,
+Error (line 23): line has 95 characters
+Error (line 24): line has 94 characters
+Error (line 25): line has 95 characters
+Error (line 27): line has 88 characters
+Error (line 28): line has 90 characters
+Error (line 31): line has 89 characters
+Error (line 36, col 1): missing space after return
+Error (line 39): Space before function name
+Error (line 41, col 1): missing space after while
+Error (line 41, col 25): missing space around !=
+Error (line 42): must begin only by tabulations
+Error (line 45, col 1): missing space after return
+Error (line 48): declarations in check_param are bad aligned
+Error (line 48): Space before function name
+Error (line 48): bad spacing after check_param
+Error (line 58): line has 110 characters
+Error (line 66, col 30): space before ,
+Error (line 76): multiple empty lines
+Error (line 77): declarations in get_param are bad aligned
+Error (line 77): Space before function name
+Error (line 77): function get_param has 38 lines
+Error (line 77): bad spacing before get_param
+Error (line 93, col 1): missing space after while
+Error (line 96): bad indentation
+Error (line 96): must begin only by tabulations
+Error (line 97): bad indentation
+Error (line 97): must begin only by tabulations
+Error (line 99): line has 82 characters
+Error (line 112, col 2): missing space after while
+Error (line 116): bad indentation
+--
+Norme: ./assembleur/src/struct_tool.c
+Error: global scope bad aligned
+Error (line 15): declarations in switch_extension are bad aligned
+Error (line 15): Space before function name
+Error (line 15): bad spacing after switch_extension
+Error (line 29, col 1): missing space after while
+Error (line 34): multiple empty lines
+Error (line 35): Space before function name
+Error (line 35): bad spacing before fill_length_file
+Error (line 35): bad spacing after fill_length_file
+Error (line 42): line has 93 characters
+Error (line 45): multiple empty lines
+Error (line 46): Space before function name
+Error (line 46): bad spacing before find_next
+Error (line 59): Space before function name
+Error (line 64): line has 147 characters
+Error (line 69, col 2): missing space after return
+Error (line 72): Space before function name
+Error (line 79): line has 82 characters
+--
+Norme: ./assembleur/src/tools.c
+Error (line 15): Space before function name
+Error (line 23, col 53): bad spacing
+Error (line 25): line has 123 characters
+Error (line 25, col 96): bad spacing
+Error (line 27): line has 84 characters
+Error (line 29): line has 87 characters
+Error (line 31): line has 125 characters
+Error (line 31, col 98): bad spacing
+Error (line 35): line has 137 characters
+Error (line 41): Space before function name
+Error (line 61): Space before function name
+Error (line 65, col 20): missing space around =
+Error (line 70): Space before function name
+Error (line 70): declarations must be followed by one empty line in ft_memalloc_exit
+Error (line 78, col 1): missing space after return
+Error (line 81): Space before function name
+Error (line 93, col 2): missing space after while
+--
+Norme: ./assembleur/src/asm.c
+Error: global scope bad aligned
+Error (line 15): declarations in search_inst are bad aligned
+Error (line 15): Space before function name
+Error (line 25, col 8): missing space around =
+Error (line 27): line has 83 characters
+Error (line 34, col 2): missing space after return
+Error (line 38, col 1): missing space after return
+Error (line 41): declarations in read_champ are bad aligned
+Error (line 41): Space before function name
+Error (line 50): line has 96 characters
+Error (line 56): line has 95 characters
+Error (line 67): declarations in init_env are bad aligned
+Error (line 67): Space before function name
+Error (line 86): line has 101 characters
+Error (line 95): comment not well formatted
+Error (line 102): declarations in read_file are bad aligned
+Error (line 102): Space before function name
+Error (line 111, col 12): space before )
+Error (line 128, col 1): missing space after return
+Error (line 131): declarations in main are bad aligned
+Error (line 131): Space before function name
+Error (line 139, col 2): missing space after while
+Error (line 147, col 31): missing space around |
+Error (line 147, col 39): missing space around |
+Error (line 155, col 1): missing space after return
+--
+Norme: ./assembleur/src/attribut.c
+Error: global scope bad aligned
+Error (line 15): comment not well formatted
+Error (line 27): Space before function name
+Error (line 29, col 1): missing space after while
+Error (line 35): line has 107 characters
+Error (line 35, col 99): space before )
+Error (line 37): line has 139 characters
+Error (line 39): line has 186 characters
+Error (line 41): line has 83 characters
+Error (line 46, col 1): missing space after return
+Error (line 49): Space before function name
+Error (line 49): Space before function name
+Error (line 49): Space before function name
+Error (line 49, col 4): bad spacing
+Error (line 51): line has 82 characters
+Error (line 65): line has 85 characters
+Error (line 75): Space before function name
+Error (line 81): line has 136 characters
+Error (line 81, col 63): bad spacing
+--
+Norme: ./assembleur/src/label.c
+Error: global scope bad aligned
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14): comment not well formatted
+Error (line 14): must begin only by tabulations
+Error (line 38): Space before function name
+Error (line 41, col 5): bad spacing
+Error (line 67): Space before function name
+Error (line 75): line has 101 characters
+Error (line 75, col 2): missing space after while
+Error (line 77): line has 85 characters
+Error (line 96): Space before function name
+Error (line 98, col 1): missing space after while
+Error (line 103, col 3): missing space after return
+Error (line 105, col 3): missing space after return
+Error (line 108, col 1): missing space after return
+Error (line 111): Space before function name
+Error (line 116, col 1): missing space after while
+Error (line 125, col 2): missing space after while
+Error (line 127): line has 89 characters
+Error (line 127, col 51): bad character after ,
+--
+Norme: ./assembleur/src/param.c
+Error: global scope bad aligned
+Error (line 15): Space before function name
+Error (line 15): missing void in function get_opt
+Error (line 17, col 12): bad spacing
+Error (line 18, col 20): space before ,
+Error (line 23): line has 95 characters
+Error (line 24): line has 94 characters
+Error (line 25): line has 95 characters
+Error (line 27): line has 88 characters
+Error (line 28): line has 90 characters
+Error (line 31): line has 89 characters
+Error (line 36, col 1): missing space after return
+Error (line 39): Space before function name
+Error (line 41, col 1): missing space after while
+Error (line 41, col 25): missing space around !=
+Error (line 42): must begin only by tabulations
+Error (line 45, col 1): missing space after return
+Error (line 48): declarations in check_param are bad aligned
+Error (line 48): Space before function name
+Error (line 48): bad spacing after check_param
+Error (line 58): line has 110 characters
+Error (line 66, col 30): space before ,
+Error (line 76): multiple empty lines
+Error (line 77): declarations in get_param are bad aligned
+Error (line 77): Space before function name
+Error (line 77): function get_param has 38 lines
+Error (line 77): bad spacing before get_param
+Error (line 93, col 1): missing space after while
+Error (line 96): bad indentation
+Error (line 96): must begin only by tabulations
+Error (line 97): bad indentation
+Error (line 97): must begin only by tabulations
+Error (line 99): line has 82 characters
+Error (line 112, col 2): missing space after while
+Error (line 116): bad indentation
+--
+Norme: ./assembleur/src/struct_tool.c
+Error: global scope bad aligned
+Error (line 15): declarations in switch_extension are bad aligned
+Error (line 15): Space before function name
+Error (line 15): bad spacing after switch_extension
+Error (line 29, col 1): missing space after while
+Error (line 34): multiple empty lines
+Error (line 35): Space before function name
+Error (line 35): bad spacing before fill_length_file
+Error (line 35): bad spacing after fill_length_file
+Error (line 42): line has 93 characters
+Error (line 45): multiple empty lines
+Error (line 46): Space before function name
+Error (line 46): bad spacing before find_next
+Error (line 59): Space before function name
+Error (line 64): line has 147 characters
+Error (line 69, col 2): missing space after return
+Error (line 72): Space before function name
+Error (line 79): line has 82 characters
+--
+Norme: ./assembleur/src/tools.c
+Error (line 15): Space before function name
+Error (line 23, col 53): bad spacing
+Error (line 25): line has 123 characters
+Error (line 25, col 96): bad spacing
+Error (line 27): line has 84 characters
+Error (line 29): line has 87 characters
+Error (line 31): line has 125 characters
+Error (line 31, col 98): bad spacing
+Error (line 35): line has 137 characters
+Error (line 41): Space before function name
+Error (line 61): Space before function name
+Error (line 65, col 20): missing space around =
+Error (line 70): Space before function name
+Error (line 70): declarations must be followed by one empty line in ft_memalloc_exit
+Error (line 78, col 1): missing space after return
+Error (line 81): Space before function name
+Error (line 93, col 2): missing space after while
+--
+Norme: ./assembleur/src/asm.c
+Error: global scope bad aligned
+Error (line 15): declarations in search_inst are bad aligned
+Error (line 15): Space before function name
+Error (line 25, col 8): missing space around =
+Error (line 27): line has 83 characters
+Error (line 34, col 2): missing space after return
+Error (line 38, col 1): missing space after return
+Error (line 41): declarations in read_champ are bad aligned
+Error (line 41): Space before function name
+Error (line 50): line has 96 characters
+Error (line 56): line has 95 characters
+Error (line 67): declarations in init_env are bad aligned
+Error (line 67): Space before function name
+Error (line 86): line has 101 characters
+Error (line 95): comment not well formatted
+Error (line 102): declarations in read_file are bad aligned
+Error (line 102): Space before function name
+Error (line 111, col 12): space before )
+Error (line 128, col 1): missing space after return
+Error (line 131): declarations in main are bad aligned
+Error (line 131): Space before function name
+Error (line 139, col 2): missing space after while
+Error (line 147, col 31): missing space around |
+Error (line 147, col 39): missing space around |
+Error (line 155, col 1): missing space after return
+--
+Norme: ./assembleur/src/attribut.c
+Error: global scope bad aligned
+Error (line 15): comment not well formatted
+Error (line 27): Space before function name
+Error (line 29, col 1): missing space after while
+Error (line 35): line has 107 characters
+Error (line 35, col 99): space before )
+Error (line 37): line has 139 characters
+Error (line 39): line has 186 characters
+Error (line 41): line has 83 characters
+Error (line 46, col 1): missing space after return
+Error (line 49): Space before function name
+Error (line 49): Space before function name
+Error (line 49): Space before function name
+Error (line 49, col 4): bad spacing
+Error (line 51): line has 82 characters
+Error (line 65): line has 85 characters
+Error (line 75): Space before function name
+Error (line 81): line has 136 characters
+Error (line 81, col 63): bad spacing
+--
+Norme: ./assembleur/src/label.c
+Error: global scope bad aligned
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14): comment not well formatted
+Error (line 14): must begin only by tabulations
+Error (line 38): Space before function name
+Error (line 41, col 5): bad spacing
+Error (line 67): Space before function name
+Error (line 75): line has 101 characters
+Error (line 75, col 2): missing space after while
+Error (line 77): line has 85 characters
+Error (line 96): Space before function name
+Error (line 98, col 1): missing space after while
+Error (line 103, col 3): missing space after return
+Error (line 105, col 3): missing space after return
+Error (line 108, col 1): missing space after return
+Error (line 111): Space before function name
+Error (line 116, col 1): missing space after while
+Error (line 125, col 2): missing space after while
+Error (line 127): line has 89 characters
+Error (line 127, col 51): bad character after ,
+--
+Norme: ./assembleur/src/param.c
+Error: global scope bad aligned
+Error (line 15): Space before function name
+Error (line 15): missing void in function get_opt
+Error (line 17, col 12): bad spacing
+Error (line 18, col 20): space before ,
+Error (line 23): line has 95 characters
+Error (line 24): line has 94 characters
+Error (line 25): line has 95 characters
+Error (line 27): line has 88 characters
+Error (line 28): line has 90 characters
+Error (line 31): line has 89 characters
+Error (line 36, col 1): missing space after return
+Error (line 39): Space before function name
+Error (line 41, col 1): missing space after while
+Error (line 41, col 25): missing space around !=
+Error (line 42): must begin only by tabulations
+Error (line 45, col 1): missing space after return
+Error (line 48): declarations in check_param are bad aligned
+Error (line 48): Space before function name
+Error (line 48): bad spacing after check_param
+Error (line 58): line has 110 characters
+Error (line 66, col 30): space before ,
+Error (line 76): multiple empty lines
+Error (line 77): declarations in get_param are bad aligned
+Error (line 77): Space before function name
+Error (line 77): function get_param has 38 lines
+Error (line 77): bad spacing before get_param
+Error (line 93, col 1): missing space after while
+Error (line 96): bad indentation
+Error (line 96): must begin only by tabulations
+Error (line 97): bad indentation
+Error (line 97): must begin only by tabulations
+Error (line 99): line has 82 characters
+Error (line 112, col 2): missing space after while
+Error (line 116): bad indentation
+--
+Norme: ./assembleur/src/struct_tool.c
+Error: global scope bad aligned
+Error (line 15): declarations in switch_extension are bad aligned
+Error (line 15): Space before function name
+Error (line 15): bad spacing after switch_extension
+Error (line 29, col 1): missing space after while
+Error (line 34): multiple empty lines
+Error (line 35): Space before function name
+Error (line 35): bad spacing before fill_length_file
+Error (line 35): bad spacing after fill_length_file
+Error (line 42): line has 93 characters
+Error (line 45): multiple empty lines
+Error (line 46): Space before function name
+Error (line 46): bad spacing before find_next
+Error (line 59): Space before function name
+Error (line 64): line has 147 characters
+Error (line 69, col 2): missing space after return
+Error (line 72): Space before function name
+Error (line 79): line has 82 characters
+--
+Norme: ./assembleur/src/tools.c
+Error (line 15): Space before function name
+Error (line 23, col 53): bad spacing
+Error (line 25): line has 123 characters
+Error (line 25, col 96): bad spacing
+Error (line 27): line has 84 characters
+Error (line 29): line has 87 characters
+Error (line 31): line has 125 characters
+Error (line 31, col 98): bad spacing
+Error (line 35): line has 137 characters
+Error (line 41): Space before function name
+Error (line 61): Space before function name
+Error (line 65, col 20): missing space around =
+Error (line 70): Space before function name
+Error (line 70): declarations must be followed by one empty line in ft_memalloc_exit
+Error (line 78, col 1): missing space after return
+Error (line 81): Space before function name
+Error (line 93, col 2): missing space after while
+--
+Norme: ./assembleur/src/asm.c
+Error: global scope bad aligned
+Error (line 15): declarations in search_inst are bad aligned
+Error (line 15): Space before function name
+Error (line 25, col 8): missing space around =
+Error (line 27): line has 83 characters
+Error (line 34, col 2): missing space after return
+Error (line 38, col 1): missing space after return
+Error (line 41): declarations in read_champ are bad aligned
+Error (line 41): Space before function name
+Error (line 50): line has 96 characters
+Error (line 56): line has 95 characters
+Error (line 67): declarations in init_env are bad aligned
+Error (line 67): Space before function name
+Error (line 86): line has 101 characters
+Error (line 95): comment not well formatted
+Error (line 102): declarations in read_file are bad aligned
+Error (line 102): Space before function name
+Error (line 111, col 12): space before )
+Error (line 128, col 1): missing space after return
+Error (line 131): declarations in main are bad aligned
+Error (line 131): Space before function name
+Error (line 139, col 2): missing space after while
+Error (line 147, col 31): missing space around |
+Error (line 147, col 39): missing space around |
+Error (line 155, col 1): missing space after return
+--
+Norme: ./assembleur/src/asm.c
+Error: global scope bad aligned
+Error (line 15): declarations in search_inst are bad aligned
+Error (line 15): Space before function name
+Error (line 25, col 8): missing space around =
+Error (line 27): line has 83 characters
+Error (line 34, col 2): missing space after return
+Error (line 38, col 1): missing space after return
+Error (line 41): declarations in read_champ are bad aligned
+Error (line 41): Space before function name
+Error (line 50): line has 96 characters
+Error (line 56): line has 95 characters
+Error (line 67): declarations in init_env are bad aligned
+Error (line 67): Space before function name
+Error (line 86): line has 101 characters
+Error (line 95): comment not well formatted
+Error (line 102): declarations in read_file are bad aligned
+Error (line 102): Space before function name
+Error (line 111, col 12): space before )
+Error (line 128, col 1): missing space after return
+Error (line 131): declarations in main are bad aligned
+Error (line 131): Space before function name
+Error (line 139, col 2): missing space after while
+Error (line 147, col 31): missing space around |
+Error (line 147, col 39): missing space around |
+Error (line 155, col 1): missing space after return
+--
+Norme: ./assembleur/src/asm.c
+Error: global scope bad aligned
+Error (line 15): declarations in search_inst are bad aligned
+Error (line 15): Space before function name
+Error (line 25, col 8): missing space around =
+Error (line 27): line has 83 characters
+Error (line 34, col 2): missing space after return
+Error (line 38, col 1): missing space after return
+Error (line 41): declarations in read_champ are bad aligned
+Error (line 41): Space before function name
+Error (line 50): line has 96 characters
+Error (line 56): line has 95 characters
+Error (line 67): declarations in init_env are bad aligned
+Error (line 67): Space before function name
+Error (line 86): line has 101 characters
+Error (line 95): comment not well formatted
+Error (line 102): declarations in read_file are bad aligned
+Error (line 102): Space before function name
+Error (line 111, col 12): space before )
+Error (line 128, col 1): missing space after return
+Error (line 131): declarations in main are bad aligned
+Error (line 131): Space before function name
+Error (line 139, col 2): missing space after while
+Error (line 147, col 31): missing space around |
+Error (line 147, col 39): missing space around |
+Error (line 155, col 1): missing space after return
+--
+Norme: ./assembleur/src/attribut.c
+Error: global scope bad aligned
+Error (line 15): comment not well formatted
+Error (line 27): Space before function name
+Error (line 29, col 1): missing space after while
+Error (line 35): line has 107 characters
+Error (line 35, col 99): space before )
+Error (line 37): line has 139 characters
+Error (line 39): line has 186 characters
+Error (line 41): line has 83 characters
+Error (line 46, col 1): missing space after return
+Error (line 49): Space before function name
+Error (line 49): Space before function name
+Error (line 49): Space before function name
+Error (line 49, col 4): bad spacing
+Error (line 51): line has 82 characters
+Error (line 65): line has 85 characters
+Error (line 75): Space before function name
+Error (line 81): line has 136 characters
+Error (line 81, col 63): bad spacing
+--
+Norme: ./assembleur/src/attribut.c
+Error: global scope bad aligned
+Error (line 15): comment not well formatted
+Error (line 27): Space before function name
+Error (line 29, col 1): missing space after while
+Error (line 35): line has 107 characters
+Error (line 35, col 99): space before )
+Error (line 37): line has 139 characters
+Error (line 39): line has 186 characters
+Error (line 41): line has 83 characters
+Error (line 46, col 1): missing space after return
+Error (line 49): Space before function name
+Error (line 49): Space before function name
+Error (line 49): Space before function name
+Error (line 49, col 4): bad spacing
+Error (line 51): line has 82 characters
+Error (line 65): line has 85 characters
+Error (line 75): Space before function name
+Error (line 81): line has 136 characters
+Error (line 81, col 63): bad spacing
+--
+Norme: ./assembleur/src/attribut.c
+Error: global scope bad aligned
+Error (line 15): comment not well formatted
+Error (line 27): Space before function name
+Error (line 29, col 1): missing space after while
+Error (line 35): line has 107 characters
+Error (line 35, col 99): space before )
+Error (line 37): line has 139 characters
+Error (line 39): line has 186 characters
+Error (line 41): line has 83 characters
+Error (line 46, col 1): missing space after return
+Error (line 49): Space before function name
+Error (line 49): Space before function name
+Error (line 49): Space before function name
+Error (line 49, col 4): bad spacing
+Error (line 51): line has 82 characters
+Error (line 65): line has 85 characters
+Error (line 75): Space before function name
+Error (line 81): line has 136 characters
+Error (line 81, col 63): bad spacing
+--
+Norme: ./assembleur/src/label.c
+Error: global scope bad aligned
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14): comment not well formatted
+Error (line 14): must begin only by tabulations
+Error (line 38): Space before function name
+Error (line 41, col 5): bad spacing
+Error (line 67): Space before function name
+Error (line 75): line has 101 characters
+Error (line 75, col 2): missing space after while
+Error (line 77): line has 85 characters
+Error (line 96): Space before function name
+Error (line 98, col 1): missing space after while
+Error (line 103, col 3): missing space after return
+Error (line 105, col 3): missing space after return
+Error (line 108, col 1): missing space after return
+Error (line 111): Space before function name
+Error (line 116, col 1): missing space after while
+Error (line 125, col 2): missing space after while
+Error (line 127): line has 89 characters
+Error (line 127, col 51): bad character after ,
+--
+Norme: ./assembleur/src/label.c
+Error: global scope bad aligned
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14): comment not well formatted
+Error (line 14): must begin only by tabulations
+Error (line 38): Space before function name
+Error (line 41, col 5): bad spacing
+Error (line 67): Space before function name
+Error (line 75): line has 101 characters
+Error (line 75, col 2): missing space after while
+Error (line 77): line has 85 characters
+Error (line 96): Space before function name
+Error (line 98, col 1): missing space after while
+Error (line 103, col 3): missing space after return
+Error (line 105, col 3): missing space after return
+Error (line 108, col 1): missing space after return
+Error (line 111): Space before function name
+Error (line 116, col 1): missing space after while
+Error (line 125, col 2): missing space after while
+Error (line 127): line has 89 characters
+Error (line 127, col 51): bad character after ,
+--
+Norme: ./assembleur/src/label.c
+Error: global scope bad aligned
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14): comment not well formatted
+Error (line 14): must begin only by tabulations
+Error (line 38): Space before function name
+Error (line 41, col 5): bad spacing
+Error (line 67): Space before function name
+Error (line 75): line has 101 characters
+Error (line 75, col 2): missing space after while
+Error (line 77): line has 85 characters
+Error (line 96): Space before function name
+Error (line 98, col 1): missing space after while
+Error (line 103, col 3): missing space after return
+Error (line 105, col 3): missing space after return
+Error (line 108, col 1): missing space after return
+Error (line 111): Space before function name
+Error (line 116, col 1): missing space after while
+Error (line 125, col 2): missing space after while
+Error (line 127): line has 89 characters
+Error (line 127, col 51): bad character after ,
+--
+Norme: ./assembleur/src/param.c
+Error: global scope bad aligned
+Error (line 15): Space before function name
+Error (line 15): missing void in function get_opt
+Error (line 17, col 12): bad spacing
+Error (line 18, col 20): space before ,
+Error (line 23): line has 95 characters
+Error (line 24): line has 94 characters
+Error (line 25): line has 95 characters
+Error (line 27): line has 88 characters
+Error (line 28): line has 90 characters
+Error (line 31): line has 89 characters
+Error (line 36, col 1): missing space after return
+Error (line 39): Space before function name
+Error (line 41, col 1): missing space after while
+Error (line 41, col 25): missing space around !=
+Error (line 42): must begin only by tabulations
+Error (line 45, col 1): missing space after return
+Error (line 48): declarations in check_param are bad aligned
+Error (line 48): Space before function name
+Error (line 48): bad spacing after check_param
+Error (line 58): line has 110 characters
+Error (line 66, col 30): space before ,
+Error (line 76): multiple empty lines
+Error (line 77): declarations in get_param are bad aligned
+Error (line 77): Space before function name
+Error (line 77): function get_param has 38 lines
+Error (line 77): bad spacing before get_param
+Error (line 93, col 1): missing space after while
+Error (line 96): bad indentation
+Error (line 96): must begin only by tabulations
+Error (line 97): bad indentation
+Error (line 97): must begin only by tabulations
+Error (line 99): line has 82 characters
+Error (line 112, col 2): missing space after while
+Error (line 116): bad indentation
+--
+Norme: ./assembleur/src/param.c
+Error: global scope bad aligned
+Error (line 15): Space before function name
+Error (line 15): missing void in function get_opt
+Error (line 17, col 12): bad spacing
+Error (line 18, col 20): space before ,
+Error (line 23): line has 95 characters
+Error (line 24): line has 94 characters
+Error (line 25): line has 95 characters
+Error (line 27): line has 88 characters
+Error (line 28): line has 90 characters
+Error (line 31): line has 89 characters
+Error (line 36, col 1): missing space after return
+Error (line 39): Space before function name
+Error (line 41, col 1): missing space after while
+Error (line 41, col 25): missing space around !=
+Error (line 42): must begin only by tabulations
+Error (line 45, col 1): missing space after return
+Error (line 48): declarations in check_param are bad aligned
+Error (line 48): Space before function name
+Error (line 48): bad spacing after check_param
+Error (line 58): line has 110 characters
+Error (line 66, col 30): space before ,
+Error (line 76): multiple empty lines
+Error (line 77): declarations in get_param are bad aligned
+Error (line 77): Space before function name
+Error (line 77): function get_param has 38 lines
+Error (line 77): bad spacing before get_param
+Error (line 93, col 1): missing space after while
+Error (line 96): bad indentation
+Error (line 96): must begin only by tabulations
+Error (line 97): bad indentation
+Error (line 97): must begin only by tabulations
+Error (line 99): line has 82 characters
+Error (line 112, col 2): missing space after while
+Error (line 116): bad indentation
+--
+Norme: ./assembleur/src/param.c
+Error: global scope bad aligned
+Error (line 15): Space before function name
+Error (line 15): missing void in function get_opt
+Error (line 17, col 12): bad spacing
+Error (line 18, col 20): space before ,
+Error (line 23): line has 95 characters
+Error (line 24): line has 94 characters
+Error (line 25): line has 95 characters
+Error (line 27): line has 88 characters
+Error (line 28): line has 90 characters
+Error (line 31): line has 89 characters
+Error (line 36, col 1): missing space after return
+Error (line 39): Space before function name
+Error (line 41, col 1): missing space after while
+Error (line 41, col 25): missing space around !=
+Error (line 42): must begin only by tabulations
+Error (line 45, col 1): missing space after return
+Error (line 48): declarations in check_param are bad aligned
+Error (line 48): Space before function name
+Error (line 48): bad spacing after check_param
+Error (line 58): line has 110 characters
+Error (line 66, col 30): space before ,
+Error (line 76): multiple empty lines
+Error (line 77): declarations in get_param are bad aligned
+Error (line 77): Space before function name
+Error (line 77): function get_param has 38 lines
+Error (line 77): bad spacing before get_param
+Error (line 93, col 1): missing space after while
+Error (line 96): bad indentation
+Error (line 96): must begin only by tabulations
+Error (line 97): bad indentation
+Error (line 97): must begin only by tabulations
+Error (line 99): line has 82 characters
+Error (line 112, col 2): missing space after while
+Error (line 116): bad indentation
+--
+Norme: ./assembleur/src/struct_tool.c
+Error: global scope bad aligned
+Error (line 15): declarations in switch_extension are bad aligned
+Error (line 15): Space before function name
+Error (line 15): bad spacing after switch_extension
+Error (line 29, col 1): missing space after while
+Error (line 34): multiple empty lines
+Error (line 35): Space before function name
+Error (line 35): bad spacing before fill_length_file
+Error (line 35): bad spacing after fill_length_file
+Error (line 42): line has 93 characters
+Error (line 45): multiple empty lines
+Error (line 46): Space before function name
+Error (line 46): bad spacing before find_next
+Error (line 59): Space before function name
+Error (line 64): line has 147 characters
+Error (line 69, col 2): missing space after return
+Error (line 72): Space before function name
+Error (line 79): line has 82 characters
+--
+Norme: ./assembleur/src/struct_tool.c
+Error: global scope bad aligned
+Error (line 15): declarations in switch_extension are bad aligned
+Error (line 15): Space before function name
+Error (line 15): bad spacing after switch_extension
+Error (line 29, col 1): missing space after while
+Error (line 34): multiple empty lines
+Error (line 35): Space before function name
+Error (line 35): bad spacing before fill_length_file
+Error (line 35): bad spacing after fill_length_file
+Error (line 42): line has 93 characters
+Error (line 45): multiple empty lines
+Error (line 46): Space before function name
+Error (line 46): bad spacing before find_next
+Error (line 59): Space before function name
+Error (line 64): line has 147 characters
+Error (line 69, col 2): missing space after return
+Error (line 72): Space before function name
+Error (line 79): line has 82 characters
+--
+Norme: ./assembleur/src/struct_tool.c
+Error: global scope bad aligned
+Error (line 15): declarations in switch_extension are bad aligned
+Error (line 15): Space before function name
+Error (line 15): bad spacing after switch_extension
+Error (line 29, col 1): missing space after while
+Error (line 34): multiple empty lines
+Error (line 35): Space before function name
+Error (line 35): bad spacing before fill_length_file
+Error (line 35): bad spacing after fill_length_file
+Error (line 42): line has 93 characters
+Error (line 45): multiple empty lines
+Error (line 46): Space before function name
+Error (line 46): bad spacing before find_next
+Error (line 59): Space before function name
+Error (line 64): line has 147 characters
+Error (line 69, col 2): missing space after return
+Error (line 72): Space before function name
+Error (line 79): line has 82 characters
+--
+Norme: ./assembleur/src/tools.c
+Error (line 15): Space before function name
+Error (line 23, col 53): bad spacing
+Error (line 25): line has 123 characters
+Error (line 25, col 96): bad spacing
+Error (line 27): line has 84 characters
+Error (line 29): line has 87 characters
+Error (line 31): line has 125 characters
+Error (line 31, col 98): bad spacing
+Error (line 35): line has 137 characters
+Error (line 41): Space before function name
+Error (line 61): Space before function name
+Error (line 65, col 20): missing space around =
+Error (line 70): Space before function name
+Error (line 70): declarations must be followed by one empty line in ft_memalloc_exit
+Error (line 78, col 1): missing space after return
+Error (line 81): Space before function name
+Error (line 93, col 2): missing space after while
+--
+Norme: ./assembleur/src/tools.c
+Error (line 15): Space before function name
+Error (line 23, col 53): bad spacing
+Error (line 25): line has 123 characters
+Error (line 25, col 96): bad spacing
+Error (line 27): line has 84 characters
+Error (line 29): line has 87 characters
+Error (line 31): line has 125 characters
+Error (line 31, col 98): bad spacing
+Error (line 35): line has 137 characters
+Error (line 41): Space before function name
+Error (line 61): Space before function name
+Error (line 65, col 20): missing space around =
+Error (line 70): Space before function name
+Error (line 70): declarations must be followed by one empty line in ft_memalloc_exit
+Error (line 78, col 1): missing space after return
+Error (line 81): Space before function name
+Error (line 93, col 2): missing space after while
+--
+Norme: ./assembleur/src/tools.c
+Error (line 15): Space before function name
+Error (line 23, col 53): bad spacing
+Error (line 25): line has 123 characters
+Error (line 25, col 96): bad spacing
+Error (line 27): line has 84 characters
+Error (line 29): line has 87 characters
+Error (line 31): line has 125 characters
+Error (line 31, col 98): bad spacing
+Error (line 35): line has 137 characters
+Error (line 41): Space before function name
+Error (line 61): Space before function name
+Error (line 65, col 20): missing space around =
+Error (line 70): Space before function name
+Error (line 70): declarations must be followed by one empty line in ft_memalloc_exit
+Error (line 78, col 1): missing space after return
+Error (line 81): Space before function name
+Error (line 93, col 2): missing space after while
+--
+Norme: ./include/asm.h
+Error: global scope bad aligned
+Error: not protected against double inclusion
+Error: 42 header not at top of the file
+Error (line 7): Struct s_roquet bad aligned
+Error (line 7): s_roquet and t_roquet not aligned.
+Error (line 7): must have only tabulations between struct and s_roquet.
+Error (line 9): must begin only by tabulations
+Error (line 9): bad indentation
+Error (line 10): must begin only by tabulations
+Error (line 10): bad indentation
+Error (line 11): must begin only by tabulations
+Error (line 11): bad indentation
+Error (line 12): must begin only by tabulations
+Error (line 12): bad indentation
+Error (line 13): must begin only by tabulations
+Error (line 13): bad indentation
+Error (line 14): must begin only by tabulations
+Error (line 14): bad indentation
+Error (line 15): must begin only by tabulations
+Error (line 15): bad indentation
+Error (line 18): Struct s_label bad aligned
+Error (line 18): s_label and t_label not aligned.
+Error (line 18): must have only tabulations between struct and s_label.
+Error (line 20): must begin only by tabulations
+Error (line 20): bad indentation
+Error (line 21): must begin only by tabulations
+Error (line 21): bad indentation
+Error (line 22): must begin only by tabulations
+Error (line 22): bad indentation
+Error (line 23): must begin only by tabulations
+Error (line 23): bad indentation
+Error (line 26): Struct s_op bad aligned
+Error (line 26): s_op and t_op not aligned.
+Error (line 33): must begin only by tabulations
+Error (line 33): bad indentation
+Error (line 36): multiple empty lines
+Error (line 37): Struct s_env bad aligned
+Error (line 37): s_env and t_env not aligned.
+Error (line 37): must have only tabulations between struct and s_env.
+Error (line 39): must begin only by tabulations
+Error (line 39): bad indentation
+Error (line 40): must begin only by tabulations
+Error (line 40): bad indentation
+Error (line 41): must begin only by tabulations
+Error (line 41): bad indentation
+Error (line 42): must begin only by tabulations
+Error (line 42): bad indentation
+Error (line 43): must begin only by tabulations
+Error (line 43): bad indentation
+Error (line 44): must begin only by tabulations
+Error (line 44): bad indentation
+Error (line 45): must begin only by tabulations
+Error (line 45): bad indentation
+Error (line 46): must begin only by tabulations
+Error (line 46): bad indentation
+Error (line 47): must begin only by tabulations
+Error (line 47): bad indentation
+Error (line 48): must begin only by tabulations
+Error (line 48): bad indentation
+Error (line 49): must begin only by tabulations
+Error (line 49): bad indentation
+Error (line 50): must begin only by tabulations
+Error (line 50): bad indentation
+Error (line 51): must begin only by tabulations
+Error (line 51): bad indentation
+Error (line 52): must begin only by tabulations
+Error (line 52): bad indentation
+Error (line 60, col 4): bad spacing
+--
+Norme: ./include/corewar.h
+Error (line 37): line has 102 characters
+Error (line 49): comment not well formatted
+Error (line 60): comment not well formatted
+--
+Norme: ./include/op.h
+Error: not protected against double inclusion
+Error (line 22): multiple empty lines
+Error (line 23): wrong number of spaces in preprocessor indentation
+Error (line 24): wrong number of spaces in preprocessor indentation
+Error (line 25): wrong number of spaces in preprocessor indentation
+Error (line 27): multiple empty lines
+Error (line 51): comment not well formatted
+Error (line 62): comment not well formatted
+Error (line 66): wrong number of spaces in preprocessor indentation
+Error (line 67): wrong number of spaces in preprocessor indentation
+Error (line 68): wrong number of spaces in preprocessor indentation
+Error (line 70, col 8): header_s is not well prefixed.
+Error (line 76, col 6): header_t have not a good prefix.
+--
+Norme: ./include/visu.h
+Error (line 56): line has 89 characters
+Error (line 63): line has 86 characters
+--
+Norme: ./include/vm.h
+Error: 42 header not at top of the file
+Error (line 30): must have tabulations between VOID and t_op
+Error (line 41, col 3): bad spacing
+Error (line 56, col 46): space after pointer
+--
+Norme: ./include/asm.h
+Error: global scope bad aligned
+Error: not protected against double inclusion
+Error: 42 header not at top of the file
+Error (line 7): Struct s_roquet bad aligned
+Error (line 7): s_roquet and t_roquet not aligned.
+Error (line 7): must have only tabulations between struct and s_roquet.
+Error (line 9): must begin only by tabulations
+Error (line 9): bad indentation
+Error (line 10): must begin only by tabulations
+Error (line 10): bad indentation
+Error (line 11): must begin only by tabulations
+Error (line 11): bad indentation
+Error (line 12): must begin only by tabulations
+Error (line 12): bad indentation
+Error (line 13): must begin only by tabulations
+Error (line 13): bad indentation
+Error (line 14): must begin only by tabulations
+Error (line 14): bad indentation
+Error (line 15): must begin only by tabulations
+Error (line 15): bad indentation
+Error (line 18): Struct s_label bad aligned
+Error (line 18): s_label and t_label not aligned.
+Error (line 18): must have only tabulations between struct and s_label.
+Error (line 20): must begin only by tabulations
+Error (line 20): bad indentation
+Error (line 21): must begin only by tabulations
+Error (line 21): bad indentation
+Error (line 22): must begin only by tabulations
+Error (line 22): bad indentation
+Error (line 23): must begin only by tabulations
+Error (line 23): bad indentation
+Error (line 26): Struct s_op bad aligned
+Error (line 26): s_op and t_op not aligned.
+Error (line 33): must begin only by tabulations
+Error (line 33): bad indentation
+Error (line 36): multiple empty lines
+Error (line 37): Struct s_env bad aligned
+Error (line 37): s_env and t_env not aligned.
+Error (line 37): must have only tabulations between struct and s_env.
+Error (line 39): must begin only by tabulations
+Error (line 39): bad indentation
+Error (line 40): must begin only by tabulations
+Error (line 40): bad indentation
+Error (line 41): must begin only by tabulations
+Error (line 41): bad indentation
+Error (line 42): must begin only by tabulations
+Error (line 42): bad indentation
+Error (line 43): must begin only by tabulations
+Error (line 43): bad indentation
+Error (line 44): must begin only by tabulations
+Error (line 44): bad indentation
+Error (line 45): must begin only by tabulations
+Error (line 45): bad indentation
+Error (line 46): must begin only by tabulations
+Error (line 46): bad indentation
+Error (line 47): must begin only by tabulations
+Error (line 47): bad indentation
+Error (line 48): must begin only by tabulations
+Error (line 48): bad indentation
+Error (line 49): must begin only by tabulations
+Error (line 49): bad indentation
+Error (line 50): must begin only by tabulations
+Error (line 50): bad indentation
+Error (line 51): must begin only by tabulations
+Error (line 51): bad indentation
+Error (line 52): must begin only by tabulations
+Error (line 52): bad indentation
+Error (line 60, col 4): bad spacing
+--
+Norme: ./include/asm.h
+Error: global scope bad aligned
+Error: not protected against double inclusion
+Error: 42 header not at top of the file
+Error (line 7): Struct s_roquet bad aligned
+Error (line 7): s_roquet and t_roquet not aligned.
+Error (line 7): must have only tabulations between struct and s_roquet.
+Error (line 9): must begin only by tabulations
+Error (line 9): bad indentation
+Error (line 10): must begin only by tabulations
+Error (line 10): bad indentation
+Error (line 11): must begin only by tabulations
+Error (line 11): bad indentation
+Error (line 12): must begin only by tabulations
+Error (line 12): bad indentation
+Error (line 13): must begin only by tabulations
+Error (line 13): bad indentation
+Error (line 14): must begin only by tabulations
+Error (line 14): bad indentation
+Error (line 15): must begin only by tabulations
+Error (line 15): bad indentation
+Error (line 18): Struct s_label bad aligned
+Error (line 18): s_label and t_label not aligned.
+Error (line 18): must have only tabulations between struct and s_label.
+Error (line 20): must begin only by tabulations
+Error (line 20): bad indentation
+Error (line 21): must begin only by tabulations
+Error (line 21): bad indentation
+Error (line 22): must begin only by tabulations
+Error (line 22): bad indentation
+Error (line 23): must begin only by tabulations
+Error (line 23): bad indentation
+Error (line 26): Struct s_op bad aligned
+Error (line 26): s_op and t_op not aligned.
+Error (line 33): must begin only by tabulations
+Error (line 33): bad indentation
+Error (line 36): multiple empty lines
+Error (line 37): Struct s_env bad aligned
+Error (line 37): s_env and t_env not aligned.
+Error (line 37): must have only tabulations between struct and s_env.
+Error (line 39): must begin only by tabulations
+Error (line 39): bad indentation
+Error (line 40): must begin only by tabulations
+Error (line 40): bad indentation
+Error (line 41): must begin only by tabulations
+Error (line 41): bad indentation
+Error (line 42): must begin only by tabulations
+Error (line 42): bad indentation
+Error (line 43): must begin only by tabulations
+Error (line 43): bad indentation
+Error (line 44): must begin only by tabulations
+Error (line 44): bad indentation
+Error (line 45): must begin only by tabulations
+Error (line 45): bad indentation
+Error (line 46): must begin only by tabulations
+Error (line 46): bad indentation
+Error (line 47): must begin only by tabulations
+Error (line 47): bad indentation
+Error (line 48): must begin only by tabulations
+Error (line 48): bad indentation
+Error (line 49): must begin only by tabulations
+Error (line 49): bad indentation
+Error (line 50): must begin only by tabulations
+Error (line 50): bad indentation
+Error (line 51): must begin only by tabulations
+Error (line 51): bad indentation
+Error (line 52): must begin only by tabulations
+Error (line 52): bad indentation
+Error (line 60, col 4): bad spacing
+--
+Norme: ./include/corewar.h
+Error (line 37): line has 102 characters
+Error (line 49): comment not well formatted
+Error (line 60): comment not well formatted
+--
+Norme: ./include/corewar.h
+Error (line 37): line has 102 characters
+Error (line 49): comment not well formatted
+Error (line 60): comment not well formatted
+--
+Norme: ./include/op.h
+Error: not protected against double inclusion
+Error (line 22): multiple empty lines
+Error (line 23): wrong number of spaces in preprocessor indentation
+Error (line 24): wrong number of spaces in preprocessor indentation
+Error (line 25): wrong number of spaces in preprocessor indentation
+Error (line 27): multiple empty lines
+Error (line 51): comment not well formatted
+Error (line 62): comment not well formatted
+Error (line 66): wrong number of spaces in preprocessor indentation
+Error (line 67): wrong number of spaces in preprocessor indentation
+Error (line 68): wrong number of spaces in preprocessor indentation
+Error (line 70, col 8): header_s is not well prefixed.
+Error (line 76, col 6): header_t have not a good prefix.
+--
+Norme: ./include/op.h
+Error: not protected against double inclusion
+Error (line 22): multiple empty lines
+Error (line 23): wrong number of spaces in preprocessor indentation
+Error (line 24): wrong number of spaces in preprocessor indentation
+Error (line 25): wrong number of spaces in preprocessor indentation
+Error (line 27): multiple empty lines
+Error (line 51): comment not well formatted
+Error (line 62): comment not well formatted
+Error (line 66): wrong number of spaces in preprocessor indentation
+Error (line 67): wrong number of spaces in preprocessor indentation
+Error (line 68): wrong number of spaces in preprocessor indentation
+Error (line 70, col 8): header_s is not well prefixed.
+Error (line 76, col 6): header_t have not a good prefix.
+--
+Norme: ./include/visu.h
+Error (line 56): line has 89 characters
+Error (line 63): line has 86 characters
+--
+Norme: ./include/visu.h
+Error (line 56): line has 89 characters
+Error (line 63): line has 86 characters
+--
+Norme: ./include/vm.h
+Error: 42 header not at top of the file
+Error (line 30): must have tabulations between VOID and t_op
+Error (line 41, col 3): bad spacing
+Error (line 56, col 46): space after pointer
+--
+Norme: ./include/vm.h
+Error: 42 header not at top of the file
+Error (line 30): must have tabulations between VOID and t_op
+Error (line 41, col 3): bad spacing
+Error (line 56, col 46): space after pointer
+--
+Norme: ./resources/op.c
+Error (line 15, col 4): bad spacing
+Error (line 15, col 8): global named op_tab is not well prefixed
+--
+Norme: ./resources/op.h
+Error: not protected against double inclusion
+Error (line 22): multiple empty lines
+Error (line 23): wrong number of spaces in preprocessor indentation
+Error (line 24): wrong number of spaces in preprocessor indentation
+Error (line 25): wrong number of spaces in preprocessor indentation
+Error (line 27): multiple empty lines
+Error (line 51): comment not well formatted
+Error (line 62): comment not well formatted
+Error (line 66): wrong number of spaces in preprocessor indentation
+Error (line 67): wrong number of spaces in preprocessor indentation
+Error (line 68): wrong number of spaces in preprocessor indentation
+Error (line 70, col 8): header_s is not well prefixed.
+Error (line 72): must begin only by tabulations
+Error (line 72): bad indentation
+Error (line 73): must begin only by tabulations
+Error (line 73): bad indentation
+Error (line 74): must begin only by tabulations
+Error (line 74): bad indentation
+Error (line 75): must begin only by tabulations
+Error (line 75): bad indentation
+Error (line 76, col 6): header_t have not a good prefix.
+--
+Norme: ./resources/op.c
+Error (line 15, col 4): bad spacing
+Error (line 15, col 8): global named op_tab is not well prefixed
+--
+Norme: ./resources/op.c
+Error (line 15, col 4): bad spacing
+Error (line 15, col 8): global named op_tab is not well prefixed
+--
+Norme: ./resources/op.h
+Error: not protected against double inclusion
+Error (line 22): multiple empty lines
+Error (line 23): wrong number of spaces in preprocessor indentation
+Error (line 24): wrong number of spaces in preprocessor indentation
+Error (line 25): wrong number of spaces in preprocessor indentation
+Error (line 27): multiple empty lines
+Error (line 51): comment not well formatted
+Error (line 62): comment not well formatted
+Error (line 66): wrong number of spaces in preprocessor indentation
+Error (line 67): wrong number of spaces in preprocessor indentation
+Error (line 68): wrong number of spaces in preprocessor indentation
+Error (line 70, col 8): header_s is not well prefixed.
+Error (line 72): must begin only by tabulations
+Error (line 72): bad indentation
+Error (line 73): must begin only by tabulations
+Error (line 73): bad indentation
+Error (line 74): must begin only by tabulations
+Error (line 74): bad indentation
+Error (line 75): must begin only by tabulations
+Error (line 75): bad indentation
+Error (line 76, col 6): header_t have not a good prefix.
+--
+Norme: ./resources/op.h
+Error: not protected against double inclusion
+Error (line 22): multiple empty lines
+Error (line 23): wrong number of spaces in preprocessor indentation
+Error (line 24): wrong number of spaces in preprocessor indentation
+Error (line 25): wrong number of spaces in preprocessor indentation
+Error (line 27): multiple empty lines
+Error (line 51): comment not well formatted
+Error (line 62): comment not well formatted
+Error (line 66): wrong number of spaces in preprocessor indentation
+Error (line 67): wrong number of spaces in preprocessor indentation
+Error (line 68): wrong number of spaces in preprocessor indentation
+Error (line 70, col 8): header_s is not well prefixed.
+Error (line 72): must begin only by tabulations
+Error (line 72): bad indentation
+Error (line 73): must begin only by tabulations
+Error (line 73): bad indentation
+Error (line 74): must begin only by tabulations
+Error (line 74): bad indentation
+Error (line 75): must begin only by tabulations
+Error (line 75): bad indentation
+Error (line 76, col 6): header_t have not a good prefix.
+--
+Norme: ./vm/src/check.c
+Error (line 43): line has 89 characters
+--
+Norme: ./vm/src/cycle.c
+Error (line 39): line has 169 characters
+Error (line 40, col 9): missing space around =
+--
+Norme: ./vm/src/instruction/vm_add.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_ld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lldi.c
+Error (line 59): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_st.c
+Error (line 34): function vm_st has 26 lines
+Error (line 55): line has 89 characters
+--
+Norme: ./vm/src/instruction/vm_sti.c
+Error (line 39): function vm_sti has 26 lines
+--
+Norme: ./vm/src/instruction/vm_sub.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/parser/header.c
+Error (line 82): line has 91 characters
+--
+Norme: ./vm/src/parser/option.c
+Error: global scope bad aligned
+Error (line 16): Space before function name
+Error (line 18, col 13): bad spacing
+Error (line 26, col 1): missing space after return
+Error (line 29): Space before function name
+Error (line 35, col 2): missing space after while
+Error (line 35, col 25): bad spacing
+Error (line 37): line has 92 characters
+Error (line 39, col 1): missing space after return
+Error (line 42): Space before function name
+Error (line 53, col 5): space after (
+Error (line 54, col 3): missing space after return
+Error (line 56, col 1): missing space after return
+Error (line 59): Space before function name
+Error (line 76): line has 101 characters
+Error (line 80, col 1): missing space after return
+--
+Norme: ./vm/src/parser/parser.c
+Error: global scope bad aligned
+Error (line 13): multiple empty lines
+Error (line 14): C++ comment
+Error (line 19): Space before function name
+Error (line 19, col 11): bad spacing
+Error (line 30, col 2): missing space after while
+Error (line 32): line has 83 characters
+Error (line 42): line has 88 characters
+Error (line 76): declarations in get_header are bad aligned
+Error (line 76): Space before function name
+Error (line 76, col 11): bad spacing
+Error (line 87, col 22): bad spacing
+Error (line 91): declarations in parsing are bad aligned
+Error (line 108): line has 97 characters
+Error (line 116): C++ comment
+--
+Norme: ./vm/src/utility.c
+Error: global scope bad aligned
+Error: 42 header not at top of the file
+Error (line 32): Space before function name
+Error (line 32): declarations must be followed by one empty line in ft_memalloc_exit
+Error (line 40, col 1): missing space after return
+--
+Norme: ./vm/src/visu/hsl.c
+Error (line 27, col 29): missing space around /
+--
+Norme: ./vm/src/visu/hud.c
+Error (line 33): comment not well formatted
+Error (line 55): line has 103 characters
+Error (line 67): line has 100 characters
+Error (line 69): line has 97 characters
+Error (line 75): comment not well formatted
+Error (line 88): bad spacing before hudchamp
+Error (line 95): line has 102 characters
+Error (line 100): line has 89 characters
+--
+Norme: ./vm/src/visu/visu.c
+Error (line 59): line has 83 characters
+Error (line 60, col 1): no newline after block
+Error (line 60, col 2): no newline before block
+Error (line 61): bad indentation
+Error (line 62): bad indentation
+Error (line 63): bad indentation
+Error (line 64): bad indentation
+Error (line 65): C++ comment
+--
+Norme: ./vm/src/visu/visu_init.c
+Error: 6 functions in the file
+Error (line 83): line has 92 characters
+Error (line 113): line has 94 characters
+--
+Norme: ./vm/src/check.c
+Error (line 43): line has 89 characters
+--
+Norme: ./vm/src/cycle.c
+Error (line 39): line has 169 characters
+Error (line 40, col 9): missing space around =
+--
+Norme: ./vm/src/instruction/vm_add.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_ld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lldi.c
+Error (line 59): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_st.c
+Error (line 34): function vm_st has 26 lines
+Error (line 55): line has 89 characters
+--
+Norme: ./vm/src/instruction/vm_sti.c
+Error (line 39): function vm_sti has 26 lines
+--
+Norme: ./vm/src/instruction/vm_sub.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/parser/header.c
+Error (line 82): line has 91 characters
+--
+Norme: ./vm/src/parser/option.c
+Error: global scope bad aligned
+Error (line 16): Space before function name
+Error (line 18, col 13): bad spacing
+Error (line 26, col 1): missing space after return
+Error (line 29): Space before function name
+Error (line 35, col 2): missing space after while
+Error (line 35, col 25): bad spacing
+Error (line 37): line has 92 characters
+Error (line 39, col 1): missing space after return
+Error (line 42): Space before function name
+Error (line 53, col 5): space after (
+Error (line 54, col 3): missing space after return
+Error (line 56, col 1): missing space after return
+Error (line 59): Space before function name
+Error (line 76): line has 101 characters
+Error (line 80, col 1): missing space after return
+--
+Norme: ./vm/src/parser/parser.c
+Error: global scope bad aligned
+Error (line 13): multiple empty lines
+Error (line 14): C++ comment
+Error (line 19): Space before function name
+Error (line 19, col 11): bad spacing
+Error (line 30, col 2): missing space after while
+Error (line 32): line has 83 characters
+Error (line 42): line has 88 characters
+Error (line 76): declarations in get_header are bad aligned
+Error (line 76): Space before function name
+Error (line 76, col 11): bad spacing
+Error (line 87, col 22): bad spacing
+Error (line 91): declarations in parsing are bad aligned
+Error (line 108): line has 97 characters
+Error (line 116): C++ comment
+--
+Norme: ./vm/src/utility.c
+Error: global scope bad aligned
+Error: 42 header not at top of the file
+Error (line 32): Space before function name
+Error (line 32): declarations must be followed by one empty line in ft_memalloc_exit
+Error (line 40, col 1): missing space after return
+--
+Norme: ./vm/src/visu/hsl.c
+Error (line 27, col 29): missing space around /
+--
+Norme: ./vm/src/visu/hud.c
+Error (line 33): comment not well formatted
+Error (line 55): line has 103 characters
+Error (line 67): line has 100 characters
+Error (line 69): line has 97 characters
+Error (line 75): comment not well formatted
+Error (line 88): bad spacing before hudchamp
+Error (line 95): line has 102 characters
+Error (line 100): line has 89 characters
+--
+Norme: ./vm/src/visu/visu.c
+Error (line 59): line has 83 characters
+Error (line 60, col 1): no newline after block
+Error (line 60, col 2): no newline before block
+Error (line 61): bad indentation
+Error (line 62): bad indentation
+Error (line 63): bad indentation
+Error (line 64): bad indentation
+Error (line 65): C++ comment
+--
+Norme: ./vm/src/visu/visu_init.c
+Error: 6 functions in the file
+Error (line 83): line has 92 characters
+Error (line 113): line has 94 characters
+--
+Norme: ./vm/src/check.c
+Error (line 43): line has 89 characters
+--
+Norme: ./vm/src/cycle.c
+Error (line 39): line has 169 characters
+Error (line 40, col 9): missing space around =
+--
+Norme: ./vm/src/instruction/vm_add.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_ld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lldi.c
+Error (line 59): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_st.c
+Error (line 34): function vm_st has 26 lines
+Error (line 55): line has 89 characters
+--
+Norme: ./vm/src/instruction/vm_sti.c
+Error (line 39): function vm_sti has 26 lines
+--
+Norme: ./vm/src/instruction/vm_sub.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/parser/header.c
+Error (line 82): line has 91 characters
+--
+Norme: ./vm/src/parser/option.c
+Error: global scope bad aligned
+Error (line 16): Space before function name
+Error (line 18, col 13): bad spacing
+Error (line 26, col 1): missing space after return
+Error (line 29): Space before function name
+Error (line 35, col 2): missing space after while
+Error (line 35, col 25): bad spacing
+Error (line 37): line has 92 characters
+Error (line 39, col 1): missing space after return
+Error (line 42): Space before function name
+Error (line 53, col 5): space after (
+Error (line 54, col 3): missing space after return
+Error (line 56, col 1): missing space after return
+Error (line 59): Space before function name
+Error (line 76): line has 101 characters
+Error (line 80, col 1): missing space after return
+--
+Norme: ./vm/src/parser/parser.c
+Error: global scope bad aligned
+Error (line 13): multiple empty lines
+Error (line 14): C++ comment
+Error (line 19): Space before function name
+Error (line 19, col 11): bad spacing
+Error (line 30, col 2): missing space after while
+Error (line 32): line has 83 characters
+Error (line 42): line has 88 characters
+Error (line 76): declarations in get_header are bad aligned
+Error (line 76): Space before function name
+Error (line 76, col 11): bad spacing
+Error (line 87, col 22): bad spacing
+Error (line 91): declarations in parsing are bad aligned
+Error (line 108): line has 97 characters
+Error (line 116): C++ comment
+--
+Norme: ./vm/src/utility.c
+Error: global scope bad aligned
+Error: 42 header not at top of the file
+Error (line 32): Space before function name
+Error (line 32): declarations must be followed by one empty line in ft_memalloc_exit
+Error (line 40, col 1): missing space after return
+--
+Norme: ./vm/src/visu/hsl.c
+Error (line 27, col 29): missing space around /
+--
+Norme: ./vm/src/visu/hud.c
+Error (line 33): comment not well formatted
+Error (line 55): line has 103 characters
+Error (line 67): line has 100 characters
+Error (line 69): line has 97 characters
+Error (line 75): comment not well formatted
+Error (line 88): bad spacing before hudchamp
+Error (line 95): line has 102 characters
+Error (line 100): line has 89 characters
+--
+Norme: ./vm/src/visu/visu.c
+Error (line 59): line has 83 characters
+Error (line 60, col 1): no newline after block
+Error (line 60, col 2): no newline before block
+Error (line 61): bad indentation
+Error (line 62): bad indentation
+Error (line 63): bad indentation
+Error (line 64): bad indentation
+Error (line 65): C++ comment
+--
+Norme: ./vm/src/visu/visu_init.c
+Error: 6 functions in the file
+Error (line 83): line has 92 characters
+Error (line 113): line has 94 characters
+--
+Norme: ./vm/src/check.c
+Error (line 43): line has 89 characters
+--
+Norme: ./vm/src/check.c
+Error (line 43): line has 89 characters
+--
+Norme: ./vm/src/check.c
+Error (line 43): line has 89 characters
+--
+Norme: ./vm/src/cycle.c
+Error (line 39): line has 169 characters
+Error (line 40, col 9): missing space around =
+--
+Norme: ./vm/src/cycle.c
+Error (line 39): line has 169 characters
+Error (line 40, col 9): missing space around =
+--
+Norme: ./vm/src/cycle.c
+Error (line 39): line has 169 characters
+Error (line 40, col 9): missing space around =
+--
+Norme: ./vm/src/instruction/vm_add.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_ld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lldi.c
+Error (line 59): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_st.c
+Error (line 34): function vm_st has 26 lines
+Error (line 55): line has 89 characters
+--
+Norme: ./vm/src/instruction/vm_sti.c
+Error (line 39): function vm_sti has 26 lines
+--
+Norme: ./vm/src/instruction/vm_sub.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_add.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_ld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lldi.c
+Error (line 59): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_st.c
+Error (line 34): function vm_st has 26 lines
+Error (line 55): line has 89 characters
+--
+Norme: ./vm/src/instruction/vm_sti.c
+Error (line 39): function vm_sti has 26 lines
+--
+Norme: ./vm/src/instruction/vm_sub.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_add.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_ld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lldi.c
+Error (line 59): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_st.c
+Error (line 34): function vm_st has 26 lines
+Error (line 55): line has 89 characters
+--
+Norme: ./vm/src/instruction/vm_sti.c
+Error (line 39): function vm_sti has 26 lines
+--
+Norme: ./vm/src/instruction/vm_sub.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_add.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_add.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_add.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_add.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_ld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_ld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_ld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_ld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lld.c
+Error (line 49): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lldi.c
+Error (line 59): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lldi.c
+Error (line 59): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lldi.c
+Error (line 59): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_lldi.c
+Error (line 59): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_st.c
+Error (line 34): function vm_st has 26 lines
+Error (line 55): line has 89 characters
+--
+Norme: ./vm/src/instruction/vm_st.c
+Error (line 34): function vm_st has 26 lines
+Error (line 55): line has 89 characters
+--
+Norme: ./vm/src/instruction/vm_st.c
+Error (line 34): function vm_st has 26 lines
+Error (line 55): line has 89 characters
+--
+Norme: ./vm/src/instruction/vm_st.c
+Error (line 34): function vm_st has 26 lines
+Error (line 55): line has 89 characters
+--
+Norme: ./vm/src/instruction/vm_sti.c
+Error (line 39): function vm_sti has 26 lines
+--
+Norme: ./vm/src/instruction/vm_sti.c
+Error (line 39): function vm_sti has 26 lines
+--
+Norme: ./vm/src/instruction/vm_sti.c
+Error (line 39): function vm_sti has 26 lines
+--
+Norme: ./vm/src/instruction/vm_sti.c
+Error (line 39): function vm_sti has 26 lines
+--
+Norme: ./vm/src/instruction/vm_sub.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_sub.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_sub.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/instruction/vm_sub.c
+Error (line 54): 2 assignations
+--
+Norme: ./vm/src/parser/header.c
+Error (line 82): line has 91 characters
+--
+Norme: ./vm/src/parser/option.c
+Error: global scope bad aligned
+Error (line 16): Space before function name
+Error (line 18, col 13): bad spacing
+Error (line 26, col 1): missing space after return
+Error (line 29): Space before function name
+Error (line 35, col 2): missing space after while
+Error (line 35, col 25): bad spacing
+Error (line 37): line has 92 characters
+Error (line 39, col 1): missing space after return
+Error (line 42): Space before function name
+Error (line 53, col 5): space after (
+Error (line 54, col 3): missing space after return
+Error (line 56, col 1): missing space after return
+Error (line 59): Space before function name
+Error (line 76): line has 101 characters
+Error (line 80, col 1): missing space after return
+--
+Norme: ./vm/src/parser/parser.c
+Error: global scope bad aligned
+Error (line 13): multiple empty lines
+Error (line 14): C++ comment
+Error (line 19): Space before function name
+Error (line 19, col 11): bad spacing
+Error (line 30, col 2): missing space after while
+Error (line 32): line has 83 characters
+Error (line 42): line has 88 characters
+Error (line 76): declarations in get_header are bad aligned
+Error (line 76): Space before function name
+Error (line 76, col 11): bad spacing
+Error (line 87, col 22): bad spacing
+Error (line 91): declarations in parsing are bad aligned
+Error (line 108): line has 97 characters
+Error (line 116): C++ comment
+--
+Norme: ./vm/src/parser/header.c
+Error (line 82): line has 91 characters
+--
+Norme: ./vm/src/parser/option.c
+Error: global scope bad aligned
+Error (line 16): Space before function name
+Error (line 18, col 13): bad spacing
+Error (line 26, col 1): missing space after return
+Error (line 29): Space before function name
+Error (line 35, col 2): missing space after while
+Error (line 35, col 25): bad spacing
+Error (line 37): line has 92 characters
+Error (line 39, col 1): missing space after return
+Error (line 42): Space before function name
+Error (line 53, col 5): space after (
+Error (line 54, col 3): missing space after return
+Error (line 56, col 1): missing space after return
+Error (line 59): Space before function name
+Error (line 76): line has 101 characters
+Error (line 80, col 1): missing space after return
+--
+Norme: ./vm/src/parser/parser.c
+Error: global scope bad aligned
+Error (line 13): multiple empty lines
+Error (line 14): C++ comment
+Error (line 19): Space before function name
+Error (line 19, col 11): bad spacing
+Error (line 30, col 2): missing space after while
+Error (line 32): line has 83 characters
+Error (line 42): line has 88 characters
+Error (line 76): declarations in get_header are bad aligned
+Error (line 76): Space before function name
+Error (line 76, col 11): bad spacing
+Error (line 87, col 22): bad spacing
+Error (line 91): declarations in parsing are bad aligned
+Error (line 108): line has 97 characters
+Error (line 116): C++ comment
+--
+Norme: ./vm/src/parser/header.c
+Error (line 82): line has 91 characters
+--
+Norme: ./vm/src/parser/option.c
+Error: global scope bad aligned
+Error (line 16): Space before function name
+Error (line 18, col 13): bad spacing
+Error (line 26, col 1): missing space after return
+Error (line 29): Space before function name
+Error (line 35, col 2): missing space after while
+Error (line 35, col 25): bad spacing
+Error (line 37): line has 92 characters
+Error (line 39, col 1): missing space after return
+Error (line 42): Space before function name
+Error (line 53, col 5): space after (
+Error (line 54, col 3): missing space after return
+Error (line 56, col 1): missing space after return
+Error (line 59): Space before function name
+Error (line 76): line has 101 characters
+Error (line 80, col 1): missing space after return
+--
+Norme: ./vm/src/parser/parser.c
+Error: global scope bad aligned
+Error (line 13): multiple empty lines
+Error (line 14): C++ comment
+Error (line 19): Space before function name
+Error (line 19, col 11): bad spacing
+Error (line 30, col 2): missing space after while
+Error (line 32): line has 83 characters
+Error (line 42): line has 88 characters
+Error (line 76): declarations in get_header are bad aligned
+Error (line 76): Space before function name
+Error (line 76, col 11): bad spacing
+Error (line 87, col 22): bad spacing
+Error (line 91): declarations in parsing are bad aligned
+Error (line 108): line has 97 characters
+Error (line 116): C++ comment
+--
+Norme: ./vm/src/parser/header.c
+Error (line 82): line has 91 characters
+--
+Norme: ./vm/src/parser/header.c
+Error (line 82): line has 91 characters
+--
+Norme: ./vm/src/parser/header.c
+Error (line 82): line has 91 characters
+--
+Norme: ./vm/src/parser/header.c
+Error (line 82): line has 91 characters
+--
+Norme: ./vm/src/parser/option.c
+Error: global scope bad aligned
+Error (line 16): Space before function name
+Error (line 18, col 13): bad spacing
+Error (line 26, col 1): missing space after return
+Error (line 29): Space before function name
+Error (line 35, col 2): missing space after while
+Error (line 35, col 25): bad spacing
+Error (line 37): line has 92 characters
+Error (line 39, col 1): missing space after return
+Error (line 42): Space before function name
+Error (line 53, col 5): space after (
+Error (line 54, col 3): missing space after return
+Error (line 56, col 1): missing space after return
+Error (line 59): Space before function name
+Error (line 76): line has 101 characters
+Error (line 80, col 1): missing space after return
+--
+Norme: ./vm/src/parser/option.c
+Error: global scope bad aligned
+Error (line 16): Space before function name
+Error (line 18, col 13): bad spacing
+Error (line 26, col 1): missing space after return
+Error (line 29): Space before function name
+Error (line 35, col 2): missing space after while
+Error (line 35, col 25): bad spacing
+Error (line 37): line has 92 characters
+Error (line 39, col 1): missing space after return
+Error (line 42): Space before function name
+Error (line 53, col 5): space after (
+Error (line 54, col 3): missing space after return
+Error (line 56, col 1): missing space after return
+Error (line 59): Space before function name
+Error (line 76): line has 101 characters
+Error (line 80, col 1): missing space after return
+--
+Norme: ./vm/src/parser/option.c
+Error: global scope bad aligned
+Error (line 16): Space before function name
+Error (line 18, col 13): bad spacing
+Error (line 26, col 1): missing space after return
+Error (line 29): Space before function name
+Error (line 35, col 2): missing space after while
+Error (line 35, col 25): bad spacing
+Error (line 37): line has 92 characters
+Error (line 39, col 1): missing space after return
+Error (line 42): Space before function name
+Error (line 53, col 5): space after (
+Error (line 54, col 3): missing space after return
+Error (line 56, col 1): missing space after return
+Error (line 59): Space before function name
+Error (line 76): line has 101 characters
+Error (line 80, col 1): missing space after return
+--
+Norme: ./vm/src/parser/option.c
+Error: global scope bad aligned
+Error (line 16): Space before function name
+Error (line 18, col 13): bad spacing
+Error (line 26, col 1): missing space after return
+Error (line 29): Space before function name
+Error (line 35, col 2): missing space after while
+Error (line 35, col 25): bad spacing
+Error (line 37): line has 92 characters
+Error (line 39, col 1): missing space after return
+Error (line 42): Space before function name
+Error (line 53, col 5): space after (
+Error (line 54, col 3): missing space after return
+Error (line 56, col 1): missing space after return
+Error (line 59): Space before function name
+Error (line 76): line has 101 characters
+Error (line 80, col 1): missing space after return
+--
+Norme: ./vm/src/parser/parser.c
+Error: global scope bad aligned
+Error (line 13): multiple empty lines
+Error (line 14): C++ comment
+Error (line 19): Space before function name
+Error (line 19, col 11): bad spacing
+Error (line 30, col 2): missing space after while
+Error (line 32): line has 83 characters
+Error (line 42): line has 88 characters
+Error (line 76): declarations in get_header are bad aligned
+Error (line 76): Space before function name
+Error (line 76, col 11): bad spacing
+Error (line 87, col 22): bad spacing
+Error (line 91): declarations in parsing are bad aligned
+Error (line 108): line has 97 characters
+Error (line 116): C++ comment
+--
+Norme: ./vm/src/parser/parser.c
+Error: global scope bad aligned
+Error (line 13): multiple empty lines
+Error (line 14): C++ comment
+Error (line 19): Space before function name
+Error (line 19, col 11): bad spacing
+Error (line 30, col 2): missing space after while
+Error (line 32): line has 83 characters
+Error (line 42): line has 88 characters
+Error (line 76): declarations in get_header are bad aligned
+Error (line 76): Space before function name
+Error (line 76, col 11): bad spacing
+Error (line 87, col 22): bad spacing
+Error (line 91): declarations in parsing are bad aligned
+Error (line 108): line has 97 characters
+Error (line 116): C++ comment
+--
+Norme: ./vm/src/parser/parser.c
+Error: global scope bad aligned
+Error (line 13): multiple empty lines
+Error (line 14): C++ comment
+Error (line 19): Space before function name
+Error (line 19, col 11): bad spacing
+Error (line 30, col 2): missing space after while
+Error (line 32): line has 83 characters
+Error (line 42): line has 88 characters
+Error (line 76): declarations in get_header are bad aligned
+Error (line 76): Space before function name
+Error (line 76, col 11): bad spacing
+Error (line 87, col 22): bad spacing
+Error (line 91): declarations in parsing are bad aligned
+Error (line 108): line has 97 characters
+Error (line 116): C++ comment
+--
+Norme: ./vm/src/parser/parser.c
+Error: global scope bad aligned
+Error (line 13): multiple empty lines
+Error (line 14): C++ comment
+Error (line 19): Space before function name
+Error (line 19, col 11): bad spacing
+Error (line 30, col 2): missing space after while
+Error (line 32): line has 83 characters
+Error (line 42): line has 88 characters
+Error (line 76): declarations in get_header are bad aligned
+Error (line 76): Space before function name
+Error (line 76, col 11): bad spacing
+Error (line 87, col 22): bad spacing
+Error (line 91): declarations in parsing are bad aligned
+Error (line 108): line has 97 characters
+Error (line 116): C++ comment
+--
+Norme: ./vm/src/utility.c
+Error: global scope bad aligned
+Error: 42 header not at top of the file
+Error (line 32): Space before function name
+Error (line 32): declarations must be followed by one empty line in ft_memalloc_exit
+Error (line 40, col 1): missing space after return
+--
+Norme: ./vm/src/utility.c
+Error: global scope bad aligned
+Error: 42 header not at top of the file
+Error (line 32): Space before function name
+Error (line 32): declarations must be followed by one empty line in ft_memalloc_exit
+Error (line 40, col 1): missing space after return
+--
+Norme: ./vm/src/utility.c
+Error: global scope bad aligned
+Error: 42 header not at top of the file
+Error (line 32): Space before function name
+Error (line 32): declarations must be followed by one empty line in ft_memalloc_exit
+Error (line 40, col 1): missing space after return
+--
+Norme: ./vm/src/visu/hsl.c
+Error (line 27, col 29): missing space around /
+--
+Norme: ./vm/src/visu/hud.c
+Error (line 33): comment not well formatted
+Error (line 55): line has 103 characters
+Error (line 67): line has 100 characters
+Error (line 69): line has 97 characters
+Error (line 75): comment not well formatted
+Error (line 88): bad spacing before hudchamp
+Error (line 95): line has 102 characters
+Error (line 100): line has 89 characters
+--
+Norme: ./vm/src/visu/visu.c
+Error (line 59): line has 83 characters
+Error (line 60, col 1): no newline after block
+Error (line 60, col 2): no newline before block
+Error (line 61): bad indentation
+Error (line 62): bad indentation
+Error (line 63): bad indentation
+Error (line 64): bad indentation
+Error (line 65): C++ comment
+--
+Norme: ./vm/src/visu/visu_init.c
+Error: 6 functions in the file
+Error (line 83): line has 92 characters
+Error (line 113): line has 94 characters
+--
+Norme: ./vm/src/visu/hsl.c
+Error (line 27, col 29): missing space around /
+--
+Norme: ./vm/src/visu/hud.c
+Error (line 33): comment not well formatted
+Error (line 55): line has 103 characters
+Error (line 67): line has 100 characters
+Error (line 69): line has 97 characters
+Error (line 75): comment not well formatted
+Error (line 88): bad spacing before hudchamp
+Error (line 95): line has 102 characters
+Error (line 100): line has 89 characters
+--
+Norme: ./vm/src/visu/visu.c
+Error (line 59): line has 83 characters
+Error (line 60, col 1): no newline after block
+Error (line 60, col 2): no newline before block
+Error (line 61): bad indentation
+Error (line 62): bad indentation
+Error (line 63): bad indentation
+Error (line 64): bad indentation
+Error (line 65): C++ comment
+--
+Norme: ./vm/src/visu/visu_init.c
+Error: 6 functions in the file
+Error (line 83): line has 92 characters
+Error (line 113): line has 94 characters
+--
+Norme: ./vm/src/visu/hsl.c
+Error (line 27, col 29): missing space around /
+--
+Norme: ./vm/src/visu/hud.c
+Error (line 33): comment not well formatted
+Error (line 55): line has 103 characters
+Error (line 67): line has 100 characters
+Error (line 69): line has 97 characters
+Error (line 75): comment not well formatted
+Error (line 88): bad spacing before hudchamp
+Error (line 95): line has 102 characters
+Error (line 100): line has 89 characters
+--
+Norme: ./vm/src/visu/visu.c
+Error (line 59): line has 83 characters
+Error (line 60, col 1): no newline after block
+Error (line 60, col 2): no newline before block
+Error (line 61): bad indentation
+Error (line 62): bad indentation
+Error (line 63): bad indentation
+Error (line 64): bad indentation
+Error (line 65): C++ comment
+--
+Norme: ./vm/src/visu/visu_init.c
+Error: 6 functions in the file
+Error (line 83): line has 92 characters
+Error (line 113): line has 94 characters
+--
+Norme: ./vm/src/visu/hsl.c
+Error (line 27, col 29): missing space around /
+--
+Norme: ./vm/src/visu/hsl.c
+Error (line 27, col 29): missing space around /
+--
+Norme: ./vm/src/visu/hsl.c
+Error (line 27, col 29): missing space around /
+--
+Norme: ./vm/src/visu/hsl.c
+Error (line 27, col 29): missing space around /
+--
+Norme: ./vm/src/visu/hud.c
+Error (line 33): comment not well formatted
+Error (line 55): line has 103 characters
+Error (line 67): line has 100 characters
+Error (line 69): line has 97 characters
+Error (line 75): comment not well formatted
+Error (line 88): bad spacing before hudchamp
+Error (line 95): line has 102 characters
+Error (line 100): line has 89 characters
+--
+Norme: ./vm/src/visu/hud.c
+Error (line 33): comment not well formatted
+Error (line 55): line has 103 characters
+Error (line 67): line has 100 characters
+Error (line 69): line has 97 characters
+Error (line 75): comment not well formatted
+Error (line 88): bad spacing before hudchamp
+Error (line 95): line has 102 characters
+Error (line 100): line has 89 characters
+--
+Norme: ./vm/src/visu/hud.c
+Error (line 33): comment not well formatted
+Error (line 55): line has 103 characters
+Error (line 67): line has 100 characters
+Error (line 69): line has 97 characters
+Error (line 75): comment not well formatted
+Error (line 88): bad spacing before hudchamp
+Error (line 95): line has 102 characters
+Error (line 100): line has 89 characters
+--
+Norme: ./vm/src/visu/hud.c
+Error (line 33): comment not well formatted
+Error (line 55): line has 103 characters
+Error (line 67): line has 100 characters
+Error (line 69): line has 97 characters
+Error (line 75): comment not well formatted
+Error (line 88): bad spacing before hudchamp
+Error (line 95): line has 102 characters
+Error (line 100): line has 89 characters
+--
+Norme: ./vm/src/visu/visu.c
+Error (line 59): line has 83 characters
+Error (line 60, col 1): no newline after block
+Error (line 60, col 2): no newline before block
+Error (line 61): bad indentation
+Error (line 62): bad indentation
+Error (line 63): bad indentation
+Error (line 64): bad indentation
+Error (line 65): C++ comment
+--
+Norme: ./vm/src/visu/visu.c
+Error (line 59): line has 83 characters
+Error (line 60, col 1): no newline after block
+Error (line 60, col 2): no newline before block
+Error (line 61): bad indentation
+Error (line 62): bad indentation
+Error (line 63): bad indentation
+Error (line 64): bad indentation
+Error (line 65): C++ comment
+--
+Norme: ./vm/src/visu/visu.c
+Error (line 59): line has 83 characters
+Error (line 60, col 1): no newline after block
+Error (line 60, col 2): no newline before block
+Error (line 61): bad indentation
+Error (line 62): bad indentation
+Error (line 63): bad indentation
+Error (line 64): bad indentation
+Error (line 65): C++ comment
+--
+Norme: ./vm/src/visu/visu.c
+Error (line 59): line has 83 characters
+Error (line 60, col 1): no newline after block
+Error (line 60, col 2): no newline before block
+Error (line 61): bad indentation
+Error (line 62): bad indentation
+Error (line 63): bad indentation
+Error (line 64): bad indentation
+Error (line 65): C++ comment
+--
+Norme: ./vm/src/visu/visu_init.c
+Error: 6 functions in the file
+Error (line 83): line has 92 characters
+Error (line 113): line has 94 characters
+--
+Norme: ./vm/src/visu/visu_init.c
+Error: 6 functions in the file
+Error (line 83): line has 92 characters
+Error (line 113): line has 94 characters
+--
+Norme: ./vm/src/visu/visu_init.c
+Error: 6 functions in the file
+Error (line 83): line has 92 characters
+Error (line 113): line has 94 characters
+--
+Norme: ./vm/src/visu/visu_init.c
+Error: 6 functions in the file
+Error (line 83): line has 92 characters
+Error (line 113): line has 94 characters
