@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:12:20 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/23 15:54:07 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/23 17:38:56 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void		dump_memory(unsigned char mem[], t_process *process, t_vm *env)
 	ft_printf("nb process: %d\n", env->nb_process);
 	while (process)
 	{
-		dump_process(t_process *process);
+		dump_process(process);
 		process = process->next;
 	}
 	exit(0);
