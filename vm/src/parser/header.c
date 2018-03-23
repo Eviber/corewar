@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/23 11:45:25 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/23 14:11:48 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	ft_fill_header(t_header *tmp, char *line, unsigned long i, int error)
 	}
 	if (error)
 		exit(1);
+	ft_printf("tmp->name = %s\n", tmp->prog_name);
 	if (tmp->magic != COREWAR_EXEC_MAGIC)
 		ft_exit("MAGIC ne correspond pas\n");
 	if (tmp->prog_size > CHAMP_MAX_SIZE)

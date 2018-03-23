@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utility.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/23 16:27:31 by vsporer           #+#    #+#             */
+/*   Updated: 2018/03/23 16:29:52 by vsporer          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "vm.h"
 #include "visu.h"
 
@@ -29,13 +41,14 @@ unsigned int	read_memory(unsigned int address, t_vm *env)
 	return (value);
 }
 
-void *ft_memalloc_exit(size_t size)
+void			*ft_memalloc_exit(size_t size)
 {
-	void *mem;
+	void	*mem;
+
 	if (!(mem = ft_memalloc(size)))
 	{
 		ft_dprintf(2, "Malloc has failed in this execution\n");
 		exit(1);
 	}
-	return(mem);
+	return (mem);
 }

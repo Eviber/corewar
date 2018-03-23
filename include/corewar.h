@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/03/23 15:42:51 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/23 16:09:06 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@
 # define DIRECT_CHAR			'%'
 # define SEPARATOR_CHAR			','
 
-# define LABEL_CHARS			\
-"!' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_0123456789."
+# define LABEL_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789."
 
 # define NAME_CMD_STRING		".name"
 # define COMMENT_CMD_STRING		".comment"

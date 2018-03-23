@@ -6,19 +6,17 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/09 20:44:59 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/23 16:26:04 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 // si pas assez argument exit c'est vraiment bon ?
-
 #include "vm.h"
 #include "corewar.h"
 
-static void 	intro_champ(t_vm *env)
+static void				intro_champ(t_vm *env)
 {
-	t_header *tmp;
+	t_header	*tmp;
 
 	tmp = env->champion;
 	if (tmp)
@@ -27,9 +25,10 @@ static void 	intro_champ(t_vm *env)
 			ft_printf("Introducing constestants\n");
 		else
 			ft_printf("The only and sad contestant is\n");
-		while(tmp->next)
+		while (tmp->next)
 		{
-			ft_printf("* Player %d, weighing %d bytes", tmp->num, tmp->prog_size);
+			ft_printf("* Player %d, weighing %d bytes", \
+			tmp->num, tmp->prog_size);
 			ft_printf(", \"%s\" (\"%s\") !\n", tmp->prog_name, tmp->comment);
 			tmp = tmp->next;
 		}
@@ -39,7 +38,8 @@ static void 	intro_champ(t_vm *env)
 	}
 }
 
-static int				rd(char *line, t_vm *env, unsigned long max, unsigned long pos)
+static int				rd(char *line, t_vm *env, unsigned long max, \
+unsigned long pos)
 {
 	unsigned long cmp;
 
@@ -66,6 +66,7 @@ static unsigned long	check_arg(int ac, char **av, t_vm *env)
 		else
 			nb_champ++;
 	}
+	ft_printf("nb_champ = %d | CHAM_MAX = %d\n ", nb_champ, MAX_PLAYERS);
 	if (nb_champ > MAX_PLAYERS)
 		ft_exit("Too many player\n");
 	if (nb_champ == 0)
@@ -73,27 +74,27 @@ static unsigned long	check_arg(int ac, char **av, t_vm *env)
 	return (nb_champ);
 }
 
-static char 			*get_header(int fd)
+static char				*get_header(int fd)
 {
 	long	taille;
 	char	*line;
-	int cmp;
+	int		cmp;
 
 	if (fd <= 0)
 		ft_exit("Fichier inacessible\n");
 	taille = PROG_NAME_LENGTH + COMMENT_LENGTH + sizeof(int) + sizeof(long);
 	line = ft_memalloc(taille + 5);
 	if ((cmp = read(fd, line, taille + 4)) < taille)
-		ft_exit((cmp <= 0) ?  "Erreur de read\n" : "Fichier trop petit\n");
+		ft_exit((cmp <= 0) ? "Erreur de read\n" : "Fichier trop petit\n");
 	return (line);
 }
 
 void					parsing(int ac, char **av, t_vm *env, int cmp)
 {
 	long	nm_champ;
-	char			*line;
-	int				fd;
-	int				start;
+	char	*line;
+	int		fd;
+	int		start;
 
 	start = 0;
 	line = ft_memalloc(CHAMP_MAX_SIZE);
@@ -105,7 +106,8 @@ void					parsing(int ac, char **av, t_vm *env, int cmp)
 		while (--ac)
 		{
 			while (av[++start][0] == '-')
-				start += ((opt_have_value(start, av, search_opt(av[start], env), env)) ? 1 : 0);
+				start += ((opt_have_value(start, av, search_opt(av[start], \
+				env), env)) ? 1 : 0);
 			fd = open(av[start], O_RDONLY);
 			ft_init_header(env, get_header(fd), start, av);
 			cmp = read(fd, line, CHAMP_MAX_SIZE);
@@ -113,6 +115,5 @@ void					parsing(int ac, char **av, t_vm *env, int cmp)
 			close(fd);
 		}
 	ft_memdel((void**)&line);
-	//ft_print_head(env, -1);
 	intro_champ(env);
 }
