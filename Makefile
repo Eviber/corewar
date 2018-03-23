@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/03/16 15:04:32 by sbrochar         ###   ########.fr        #
+#    Updated: 2018/03/23 10:41:05 by vsporer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ CC =				gcc -g -fsanitize=address -Wall -Werror -Wextra
 CFLAGS =			-I include/ -I libft/include/ `sdl2-config --cflags`
 LFLAGS =			-L $(PATH_LIBFT) -lft `sdl2-config --libs` -lSDL2_gfx -lSDL2_ttf -lm
 
-VM_PARS =			parser.c\
+VM_PARS =			vm_parser.c\
 					option.c\
 					header.c
 
@@ -81,14 +81,14 @@ VM_SRC =			$(VM_PARS)\
 					verbose.c\
 					params.c
 
-ASM_SRC =		asm.c							\
-						lexer.c						\
-						tree_funcs.c 			\
-						print_tree.c			\
-						register_header.c	\
-						check_param.c			\
-						check_line.c			\
-						parser.c					\
+ASM_SRC =			asm.c\
+					lexer.c\
+					tree_funcs.c\
+					print_tree.c\
+					register_header.c\
+					check_param.c\
+					check_line.c\
+					ass_parser.c
 
 
 
@@ -97,7 +97,7 @@ ASM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(ASM_SRC))
 
 all: $(LIBFT) $(ASM) $(VM)
 
-$(VM): $(VM_OBJ)
+$(VM): $(LIBFT) $(VM_OBJ)
 	@echo "Compiling $@ ...\033[K"
 	@$(CC) $^ -o $@ $(LFLAGS)
 	@echo "$(C_OK)Done !$(C_RESET)"
@@ -111,7 +111,7 @@ $(LIBFT):
 	make -C $(PATH_LIBFT)
 
 $(PATH_OBJ)%.o: %.c
-	@echo "Compiling @\033[K\033[1A\r"
+	@echo "Compiling $@\033[K\033[1A\r"
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
@@ -124,7 +124,7 @@ fclean: clean
 	@rm -f $(VM)
 	@rm -f $(ASM)
 	@make -C $(PATH_LIBFT) fclean
-	@echo "$(C_DEL)$(ASM), $(VM) and $(LIBFT) removed."
+	@echo "$(C_DEL)$(ASM), $(VM) and $(LIBFT) removed.$(C_RESET)"
 
 test: all
 	@echo "\\/\\/\\/\\/\\/\\/\\/BEGIN TEST\\/\\/\\/\\/\\/\\/\\/"
