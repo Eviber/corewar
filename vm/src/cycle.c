@@ -6,14 +6,25 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:12:20 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/10 17:36:49 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/23 15:54:07 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 #include "visu.h"
 
-static void		dump_memory(unsigned char memory[], t_process *process, t_vm *env)
+static int		dump_process(t_process *process)
+{
+	ft_printf("Player: %3d, ", process->champ->num);
+	ft_printf("process ID: %7d, ", process->id);
+	ft_printf("PC: %#08x, ", process->pc);
+	ft_printf("inst: %2d, ", process->inst);
+	ft_printf("carry : %d, ", process->carry);
+	ft_printf("last_live: %d\n", process->last_live);
+	return (1);
+}
+
+static void		dump_memory(unsigned char mem[], t_process *process, t_vm *env)
 {
 	unsigned long	i;
 	t_process		*tmp;
@@ -30,9 +41,9 @@ static void		dump_memory(unsigned char memory[], t_process *process, t_vm *env)
 		else if (i % 64 == 0)
 			ft_printf("%#06x : ", i);
 		if (tmp)
-			ft_printf("\033[31;42m%02x\033[0m", (int)memory[i]);
+			ft_printf("\033[31;42m%02x\033[0m", (int)mem[i]);
 		else
-			ft_printf("%02x", (int)memory[i]);
+			ft_printf("%02x", (int)mem[i]);
 		i++;
 		if (i % 64 == 0)
 			ft_putchar('\n');
@@ -42,9 +53,7 @@ static void		dump_memory(unsigned char memory[], t_process *process, t_vm *env)
 	ft_printf("nb process: %d\n", env->nb_process);
 	while (process)
 	{
-		ft_printf(\
-"Player: %2d, process ID: %3d, PC: %#06x, inst: %2d, carry : %d, last_live: %d\n", \
-process->champ->num, process->id, process->pc, process->inst, process->carry, process->last_live);
+		dump_process(t_process *process);
 		process = process->next;
 	}
 	exit(0);

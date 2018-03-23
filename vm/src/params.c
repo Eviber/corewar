@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 16:03:33 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/09 21:54:48 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/23 15:57:26 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void		load_param(t_param *param, t_process *process, t_vm *env)
 	unsigned char	peb;
 
 	pc = process->pc + 2;
-	peb = env->memory[(process->pc + 1) %MEM_SIZE];
+	peb = env->memory[(process->pc + 1) % MEM_SIZE];
 	if ((PARAM_ONE(peb)) == REG_CODE)
 		pc += get_param_value(pc, 1, &param->one, env);
 	else if ((PARAM_ONE(peb)) == IND_CODE || !(param->mod & L_DIR))

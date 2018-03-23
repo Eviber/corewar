@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 23:06:13 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/10 17:42:11 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/23 15:07:41 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static void		reset_live_p(t_header *champs)
 	}
 }
 
-void			check_process(unsigned long *last_period, t_process *process, t_vm *env)
+void			check_process(unsigned long *last_period, t_process *process, \
+				t_vm *env)
 {
 	t_process	*next;
 
