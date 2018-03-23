@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm.h                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/23 15:43:38 by vsporer           #+#    #+#             */
+/*   Updated: 2018/03/23 15:55:20 by vsporer          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef VM_H
 # define VM_H
 
@@ -16,7 +28,7 @@
 # define SHOW_CYCL		2
 # define SHOW_DEAT		4
 # define SHOW_MOVE		8
-# define NB_OPTION 5
+# define NB_OPTION		5
 
 typedef struct	s_param
 {
@@ -27,7 +39,7 @@ typedef struct	s_param
 	int			len;
 }				t_param;
 
-typedef void (*t_op)(t_process *, t_vm *);
+typedef void	(*t_op)(t_process *, t_vm *);
 /*
 ** Parser
 */
@@ -38,7 +50,7 @@ void			parsing(int ac, char **av, t_vm *vm, int cmp);
 int				opt_have_value(int pos, char **av, int cmp, t_vm *env);
 int				search_opt(char *str, t_vm *env);
 int				check_opt(int pos, char **av, t_vm *env);
-int 			search_opt(char *str, t_vm *env);
+int				search_opt(char *str, t_vm *env);
 int				check_opt(int pos, char **av, t_vm *env);
 t_opt			*get_opt(void);
 /*
@@ -53,7 +65,7 @@ t_process		*new_process(t_process *src, unsigned int new_pc);
 t_process		*exec_process(t_process *process, t_op *op_tab, t_vm *env);
 void			get_param(t_param *param, t_process *process, t_vm *env);
 void			add_process(t_process **lst, t_process *new);
-void			del_process(t_process **lst, t_process * todel);
+void			del_process(t_process **lst, t_process *todel);
 void			check_process(unsigned long *last_period, t_process *process, \
 				t_vm *env);
 void			run_cycle(t_op *op_tab, t_vm *env);

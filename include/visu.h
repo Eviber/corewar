@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 22:47:24 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/07 17:10:03 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/23 15:43:31 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,16 @@ typedef struct			s_winenv
 void					panic(const char *str, const char *str2);
 t_winenv				*getsdlenv(t_vm *vm);
 SDL_Texture				*getnewtex(t_winenv *env, int access, int w, int h);
-void					cleartex(SDL_Renderer *render, SDL_Texture *tex, SDL_Color col);
+void					cleartex(SDL_Renderer *render, SDL_Texture *tex, \
+						SDL_Color col);
 SDL_Texture				*strtotex(char *str, t_winenv *env, SDL_Color color);
 
 /*
 **	Specific tools
 */
 void					visu_update(t_winenv *env);
-SDL_Texture				*valtotex(t_winenv *env, int val, int base, SDL_Color color);
+SDL_Texture				*valtotex(t_winenv *env, int val, int base, \
+						SDL_Color color);
 int						quitvisu(t_winenv *env);
 SDL_Color				hsl(int h, double s, double l);
 void					event_manager(t_winenv *env);
