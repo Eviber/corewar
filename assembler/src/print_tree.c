@@ -60,8 +60,11 @@ static void recursive_tree(t_node *elem, int deepness)
   ft_printf("%*Name = |%s|\n", deepness, elem->name);
   if (elem->children)
     recursive_tree(elem->children->elem, deepness + 4);
-  if (elem->children && elem->children->next)
+  while (elem->children && elem->children->next)
+  {
       recursive_tree(elem->children->next->elem, deepness + 4);
+      elem->children = elem->children->next;
+  }
 }
 
 void	print_tree(t_node *tree)

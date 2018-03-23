@@ -72,6 +72,7 @@ void			get_cmd(t_node *header,char *line, int fd);
 
 void	print_tree(t_node *tree);
 
-void check_line(t_node *code, char *line);
+void check_line(t_node *node_line, char *line);
+void check_param(t_node *node_param, char *param);
 
 #endif

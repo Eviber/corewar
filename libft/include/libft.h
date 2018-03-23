@@ -87,6 +87,7 @@ char				*ft_strmerge(char **str, int space, int size);
 char				*ft_strncat(char *s1, char *s2, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
+char				*ft_strndup(const char *s1, size_t n);
 int					ft_strnequ(const char *s1, const char *s2, size_t n);
 char				*ft_strnew(size_t size);
 size_t				ft_strnlen(char *str, size_t size);

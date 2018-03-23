@@ -13,29 +13,43 @@
 #include <libft.h>
 #include <asm.h>
 
+static int line_not_empty(char *line)
+{
+	int i;
+
+	i = -1;
+	while (line && line[++i] && ft_isspace(line[i]))
+		;
+	return(i);
+}
+
 static void			check_code(t_node *root, int fd)
 {
 	int				gnl;
+	int 			i;
 	char			*line;
 	t_node		*code;
 	t_node		*new_code;
+	t_node		*node_line;
 
+	i = 0;
 	line = NULL;
 	code = create_node(CODE, NULL);
 	add_child(root, code);
 	while ((gnl = get_next_line(fd, &line)) > 0)
-	{
-		check_line(code, line);
-		ft_strdel(&line);
-		new_code = create_node(CODE, NULL);
-		add_child(code, new_code);
-		code = new_code;
-	}
-	ft_printf("gnl = %d\n", gnl);
+		if ((i = line_not_empty(line)) != -1 && (line[i] && line[i] != '#'))
+		{
+		  node_line = create_node(LINE, NULL);
+		  add_child(code, node_line);
+			check_line(node_line, line + i);
+			ft_strdel(&line);
+			new_code = create_node(CODE, NULL);
+			add_child(code, new_code);
+			code = new_code;
+		}
 	if (gnl < 0)
 		pexit("Erreur de read", -2);
-	new_code = create_node(ENDCODE, NULL);
-	add_child(code, new_code);
+	add_child(code, create_node(ENDCODE, NULL));
 }
 
 static void			check_header(t_node *root, int fd)
