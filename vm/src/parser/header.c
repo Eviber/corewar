@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/02/20 20:15:37 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/23 11:45:25 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,5 @@ void	ft_init_header(t_vm *env, char *line, int start, char **av)
 		num = ft_atoi(av[start - 1]);
 	ft_choose_num_player(env, num, 1, 0);
 	ft_fill_header(tmp, line, -1, 0);
+	ft_strdel(&line);
 }
