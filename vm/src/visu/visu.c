@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 22:22:52 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/07 15:58:34 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/23 11:13:20 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int					visu(void)
 		events(env);
 		visu_update(env);
 		SDL_RenderPresent(env->render);
+		event_manager(env);
 	//}
 	return (quitvisu(env));
 }
