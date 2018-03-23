@@ -6,10 +6,11 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/08 09:09:06 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/23 11:20:01 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <SDL.h>
 #include "vm.h"
 
 t_opt *get_opt(void)
@@ -69,9 +70,9 @@ int check_opt(int pos, char **av, t_vm *env)
 		return (1);
 	}
 	if (cmp == 3)
-		env->option->visu = 1;
+		env->option->visu = SDL_WINDOW_FULLSCREEN;
 	if (cmp == 4)
-		env->option->visu = 2;
+		env->option->visu = SDL_WINDOW_RESIZABLE;
 	if (env->opt[cmp].value_needed && ft_dprintf(2, "option %s need a value\n", env->opt[cmp].name))
 		exit(1);
 	else if (cmp == 2)
