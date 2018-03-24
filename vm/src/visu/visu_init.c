@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:36:55 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/24 16:11:51 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 20:16:37 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,27 @@ static void			loadpalette(t_winenv *env)
 	unsigned int		i;
 	int					step;
 
+	if (env->vm->nb_player == 4)
+	{
+		env->palette[0 + 1] = hsl(9, 100, 66);
+		env->proc_palette[0] = hsl(9, 100, 66 + 20);
+		env->palette[1 + 1] = hsl(215, 68, 56);
+		env->proc_palette[1] = hsl(215, 68, 56 + 20);
+		env->palette[2 + 1] = hsl(151, 59, 48);
+		env->proc_palette[2] = hsl(151, 59, 48 + 20);
+		env->palette[3 + 1] = hsl(274, 55, 60);
+		env->proc_palette[3] = hsl(274, 55, 60 + 20);
+		return ;
+	}
+	i = 0;
 	step = 360 / ((env->vm->nb_player > 3) ? env->vm->nb_player + 1 : 3);
 	env->palette[0] = hsl(0, 0, 10);
-	i = 0;
-	while (i < MAX_PLAYERS)
+	while (i < env->vm->nb_player)
 	{
 		env->palette[i + 1] = hsl(120 + i * step, 100, 60);
 		env->proc_palette[i] = hsl(120 + i * step, 100, 80);
-		ft_printf("i = %d r = %hd g = %hd b = %hd\n",i, env->proc_palette[i].r, env->proc_palette[i].g, env->proc_palette[i].b);
 		i++;
 	}
-	ft_printf("r = %hd g = %hd b = %hd\n",env->proc_palette[0].r, env->proc_palette[0].g, env->proc_palette[0].b);
 }
 
 void				set_colormap(t_winenv *env)
