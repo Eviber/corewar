@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:43:38 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/24 19:02:15 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 19:29:00 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void			get_param(t_param *param, t_process *process, t_vm *env);
 void			add_process(t_process **lst, t_process *new);
 void			del_process(t_process **lst, t_process *todel);
 void			store_process(t_process **lst, t_process *todel, \
-				t_process **st);
+				t_process **st, t_process *prev);
 void			check_process(unsigned long *last_period, t_process *process, \
 				t_vm *env);
 void			run_cycle(t_op *op_tab, t_vm *env);

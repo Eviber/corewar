@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 18:29:25 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/24 19:00:36 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 19:28:39 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,15 @@ void		add_process(t_process **lst, t_process *new)
 	}
 }
 
-void		store_process(t_process **lst, t_process *todel, t_process **st)
+void		store_process(t_process **lst, t_process *todel, t_process **st, \
+t_process *prev)
 {
-	unsigned long	i;
-	t_process		*tmp;
-
-	i = 0;
-	tmp = *lst;
 	if (todel)
 	{
 		if (*lst == todel)
 			*lst = todel->next;
-		else
-		{
-			while (tmp && tmp->next != todel)
-				tmp = tmp->next;
-			if (tmp)
-				tmp->next = todel->next;
-		}
+		else if (prev)
+			prev->next = todel->next;
 		add_process(st, todel);
 	}
 }
