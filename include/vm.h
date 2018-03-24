@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:43:38 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/23 15:55:20 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 16:37:29 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void			write_memory(unsigned int value, unsigned int address, \
 				t_vm *env, t_header *champ);
 void			show_pc_mov(unsigned int old_pc, unsigned int new_pc, int len,\
 				t_vm *env);
+t_rgb			vm_hsl(int h, double s, double l);
 /*
 ** Instructions
 */

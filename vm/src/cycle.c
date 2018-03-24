@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:12:20 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/24 16:23:46 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 17:06:30 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,14 @@
 #include "visu.h"
 #include <math.h>
 
-static void		get_rgb(t_rgb *color, )
+static t_rgb	get_rgb(t_process *process, t_vm *env)
 {
-	color->r += 10;
-	if (color->r < 50)
-		color->r += 50;
-	color->g += 20;
-	if (color->g < 65)
-		color->g += 65;
-	color->b += 30;
-	if (color->b < 80)
-		color->b += 800;
-/*	if (color->r < 255)
-		color->r = color->r + 25 > 255 ? 255 : color->r + 25;
-	if (color->r >= 255 && color->g < 255)
-		color->r = color->g + 25 > 255 ? 255 : color->r + 25;
-	if (color->g >= 255 && color->b < 255)
-		color->r = color->b + 25 > 255 ? 255 : color->r + 25;
-	if (color->g == 255 && color->b == 255 && color->r > 50)
-		color->r = color->r - 25 < 50 ? 50 : color->r - 25;
-	else if (color->r == 50 && color->b == 255 && color->g > 50)
-		color->g = color->g - 25 < 50 ? 50 : color->g - 25;
-	else if (color->r == 50 && color->g == 50 && color->b > 50)
-		color->b = color->b - 25 < 50 ? 50 : color->b - 25;*/
+	t_rgb	color;
+	int		step;
+
+	step = 360 / ((env->nb_player > 3) ? env->nb_player + 1 : 3);
+	color = vm_hsl(120 + process->champ->index_color * step, 75, 50);
+	return (color);
 }
 
 static void		dump_process(t_process *process, t_vm *env)
@@ -51,7 +36,7 @@ static void		dump_process(t_process *process, t_vm *env)
 		ft_putstr("\033[0m");
 		while (process)
 		{
-			get_rgb(&color);
+			color = get_rgb(process, env);
 			ft_printf("\033[38;2;%d;%d;%dm", color.r, color.g, color.b);
 			ft_printf("%-6d | ", process->champ->num);
 			ft_printf("%10d | ", process->id);
@@ -70,6 +55,7 @@ static void		dump_process(t_process *process, t_vm *env)
 static void		dump_memory(unsigned char mem[], t_process *process, t_vm *env)
 {
 	unsigned long	i;
+	t_rgb			color;
 	t_process		*tmp;
 
 	i = 0;
@@ -83,8 +69,9 @@ static void		dump_memory(unsigned char mem[], t_process *process, t_vm *env)
 			ft_putstr("0x000000 : ");
 		else if (i % 32 == 0)
 			ft_printf("%#08x : ", i);
-		if (tmp)
-			ft_printf("\033[31;42m%02x\033[0m", (int)mem[i]);
+		if (tmp && (color = get_rgb(tmp, env)).r)
+			ft_printf("\033[48;2;%d;%d;%dm%02x\033[0m", color.r, color.g, \
+			color.b, (int)mem[i]);
 		else
 			ft_printf("%02x", (int)mem[i]);
 		i++;
