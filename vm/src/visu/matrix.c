@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 09:25:26 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/07 09:31:22 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/24 15:17:43 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void			dispproc(t_winenv *env)
 	SDL_Rect	rect;
 	SDL_Rect	memrect;
 	t_process	*cur;
+	SDL_Color	color;
 
 	SDL_QueryTexture(env->memtex, NULL, NULL, &memrect.w, &memrect.h);
 	rect.h = memrect.h / 64;
@@ -51,10 +52,8 @@ static void			dispproc(t_winenv *env)
 	{
 		rect.x = (cur->pc % 64) * memrect.w / 64;
 		rect.y = cur->pc / 64 * memrect.h / 64;
-		if (cur->champ == env->vm->champion)
-			SDL_SetRenderDrawColor(env->render, 50, 100, 50, SDL_ALPHA_OPAQUE);
-		else
-			SDL_SetRenderDrawColor(env->render, 50, 50, 100, SDL_ALPHA_OPAQUE);
+		color = env->proc_palette[cur->champ->index_color];
+		SDL_SetRenderDrawColor(env->render, color.r, color.g, color.b, 0);
 		SDL_RenderFillRect(env->render, &rect);
 		cur = cur->next;
 	}

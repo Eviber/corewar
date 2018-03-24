@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 09:37:09 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/23 14:44:55 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 12:55:17 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ static void			hudchamp(t_winenv *env, t_vm *vm, t_header *champ, int i)
 
 void				putrect(t_winenv *env)
 {
-	SDL_Rect	rect;
+	SDL_Rect		rect;
+	unsigned int	i;
 
 	SDL_SetRenderDrawColor(env->render, 50, 50, 50, 255);
 	rect.w = env->hudrect.w - env->hudrect.w / 10;
@@ -94,18 +95,16 @@ void				putrect(t_winenv *env)
 	rect.y = env->hudrect.w / 20;
 	SDL_RenderFillRect(env->render, &rect);
 	rect.h = env->charrect.h * 7;
-	rect.y = env->hudrect.h - 4 * (rect.h + rect.x);
-	SDL_SetRenderDrawColor(env->render, 60, 60, 60, 255);
-	SDL_RenderFillRect(env->render, &rect);
-	rect.y = env->hudrect.h - 3 * (rect.h + rect.x);
-	SDL_SetRenderDrawColor(env->render, 70, 70, 70, 255);
-	SDL_RenderFillRect(env->render, &rect);
-	rect.y = env->hudrect.h - 2 * (rect.h + rect.x);
-	SDL_SetRenderDrawColor(env->render, 80, 80, 80, 255);
-	SDL_RenderFillRect(env->render, &rect);
-	rect.y = env->hudrect.h - 1 * (rect.h + rect.x);
-	SDL_SetRenderDrawColor(env->render, 90, 90, 90, 255);
-	SDL_RenderFillRect(env->render, &rect);
+	i = 0;
+	while (i < env->vm->nb_player)
+	{
+		rect.y = env->hudrect.h - (4 - i) * (rect.h + rect.x);
+		SDL_SetRenderDrawColor(env->render, 60 + 10 * i,
+											60 + 10 * i,
+											60 + 10 * i, 255);
+		SDL_RenderFillRect(env->render, &rect);
+		i++;
+	}
 }
 
 void				huddisp(t_winenv *env)

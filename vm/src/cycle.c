@@ -6,22 +6,30 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:12:20 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/23 17:38:56 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 12:39:47 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 #include "visu.h"
 
-static int		dump_process(t_process *process)
+static void		dump_process(t_process *process, t_vm *env)
 {
-	ft_printf("Player: %3d, ", process->champ->num);
-	ft_printf("process ID: %7d, ", process->id);
-	ft_printf("PC: %#08x, ", process->pc);
-	ft_printf("inst: %2d, ", process->inst);
-	ft_printf("carry : %d, ", process->carry);
-	ft_printf("last_live: %d\n", process->last_live);
-	return (1);
+	if (env->option->dump_all >= 0)
+	{
+		ft_printf("nb process: %d\n", env->nb_process);
+		while (process)
+		{
+			ft_printf("Player: %3d, ", process->champ->num);
+			ft_printf("process ID: %7d, ", process->id);
+			ft_printf("PC: %#08x, ", process->pc);
+			ft_printf("inst: %2d, ", process->inst);
+			ft_printf("carry : %d, ", process->carry);
+			ft_printf("last_live: %d\n", process->last_live);
+			process = process->next;
+		}
+	}
+	exit(0);
 }
 
 static void		dump_memory(unsigned char mem[], t_process *process, t_vm *env)
@@ -38,25 +46,19 @@ static void		dump_memory(unsigned char mem[], t_process *process, t_vm *env)
 			tmp = tmp->next;
 		if (i == 0)
 			ft_putstr("0x0000 : ");
-		else if (i % 64 == 0)
+		else if (i % 32 == 0)
 			ft_printf("%#06x : ", i);
 		if (tmp)
 			ft_printf("\033[31;42m%02x\033[0m", (int)mem[i]);
 		else
 			ft_printf("%02x", (int)mem[i]);
 		i++;
-		if (i % 64 == 0)
+		if (i % 32 == 0)
 			ft_putchar('\n');
 		else
 			ft_putchar(' ');
 	}
-	ft_printf("nb process: %d\n", env->nb_process);
-	while (process)
-	{
-		dump_process(process);
-		process = process->next;
-	}
-	exit(0);
+	dump_process(process, env);
 }
 
 void			run_cycle(t_op *op_tab, t_vm *env)

@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 22:47:24 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/23 15:43:31 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 14:42:13 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct			s_winenv
 	char				colormap[MEM_SIZE];
 	SDL_Texture			*bytetex[MAX_PLAYERS + 1][256];
 	SDL_Color			palette[MAX_PLAYERS + 1];
+	SDL_Color			proc_palette[MAX_PLAYERS];
 	SDL_DisplayMode		dispmode;
 	SDL_Rect			winrect;
 	SDL_Rect			memrect;
