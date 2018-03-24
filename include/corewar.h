@@ -76,6 +76,7 @@ typedef struct			s_process
 {
 	t_header			*champ;
 	long				id;
+	long				id_lock;
 	unsigned int		pc;
 	unsigned int		carry;
 	unsigned int		reg[REG_NUMBER];
@@ -99,6 +100,7 @@ typedef struct			s_option
 	int					verbose;
 	char				visu;
 	long				dump;
+	long				dump_all;
 }						t_option;
 
 typedef struct			s_vm
