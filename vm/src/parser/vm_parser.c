@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/24 17:33:07 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/03/24 19:12:44 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void					parsing(int ac, char **av, t_vm *env, int cmp)
 			rd(line, env, cmp, ++nm_champ * (MEM_SIZE / (env->nb_player)));
 			close(fd);
 		}
-	ft_confirm_num_player(env);
+//	ft_confirm_num_player(env);
 	ft_memdel((void**)&line);
 	intro_champ(env);
 }

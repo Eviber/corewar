@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/03/24 16:02:02 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 19:01:38 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct			s_vm
 	t_header			*champion;
 	t_header			*ll_champ;
 	t_process			*process;
+	t_process			*killed_process;
 	unsigned int		nb_player;
 	unsigned char		memory[MEM_SIZE];
 	long				c_todie;

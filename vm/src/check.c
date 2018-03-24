@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 23:06:13 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/23 15:07:41 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/24 19:01:34 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void			check_process(unsigned long *last_period, t_process *process, \
 			if ((env->option->verbose & SHOW_DEAT))
 				ft_printf("Process %ld hasn't lived for %d cycles (CTD %d)\n",\
 				process->id, env->cycle - process->last_live, env->c_todie);
-			del_process(&env->process, process);
+//			del_process(&env->process, process);
+			store_process(&env->process, process, &env->killed_process);
 			(env->nb_process)--;
 		}
 		process = next;
