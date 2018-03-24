@@ -61,7 +61,7 @@ int find_next_instruction(char *src)
 	int i;
 
 	i = -1;
-	while (src[++i] && src[i] != LABEL_CHAR && src[i] != DIRECT_CHAR && src[i] != COMMENT_CHAR && src[i] != SEPARATOR_CHAR && !ft_isspace(src[i]))
+	while (src[++i] && src[i] != LABEL_CHAR && src[i] != DIRECT_CHAR && src[i] != COMMENT_CHAR && src[i] != SEPARATOR_CHAR && !ft_isspace(src[i]) && src[i] != OTHER_COMMENT_CHAR)
 		;
 	if (src[i])
 		return (i);

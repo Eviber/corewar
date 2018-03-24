@@ -86,7 +86,8 @@ ASM_SRC =			asm.c 				\
 							label.c				\
 							param.c				\
 							struct_tool.c \
-							tools.c					
+							tools.c				\
+							error.c
 
 VM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(VM_SRC))
 ASM_OBJ =			$(patsubst %.c, $(PATH_OBJ)%.o, $(ASM_SRC))

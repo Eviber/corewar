@@ -90,7 +90,7 @@ void get_param(t_op op, char *src, t_env *env)
 	env->champ[env->pos++] = op.opcode;
 	if (op.has_octal)
 		pos = env->pos++;
-	while(src[env->index] && src[env->index] != COMMENT_CHAR && !env->error)
+	while(src[env->index] && src[env->index] != COMMENT_CHAR && !env->error && src[env->index] != OTHER_COMMENT_CHAR)
 	{
 		if (ft_isspace(src[env->index]))
       ;
@@ -113,5 +113,7 @@ void get_param(t_op op, char *src, t_env *env)
 			octal *= 4;
 		memory_manager(env, 1);
 		env->champ[pos] = octal;
-		}
+	}
+	if (!src[env->index])
+		--env->index;
 }

@@ -55,8 +55,6 @@ typedef struct s_env
 /*
 ** attribut
 */
-
-int ft_fill_attr(char *line, t_env *env, char state);
 char   search_attr(char *line, t_env *env, char state);
 void read_attribut(t_env *env, char *line);
 
