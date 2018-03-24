@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/03/24 12:26:47 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/24 15:38:26 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct			s_header
 	unsigned long		nb_live;
 	unsigned long		nb_live_p;
 	struct s_header		*next;
+	int					index_color;
 }						t_header;
 
 typedef struct			s_process

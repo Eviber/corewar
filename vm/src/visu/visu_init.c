@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:36:55 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/23 15:03:34 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 15:31:39 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,14 @@ static void			loadpalette(t_winenv *env)
 	step = 360 / ((env->vm->nb_player > 3) ? env->vm->nb_player + 1 : 3);
 	env->palette[0] = hsl(0, 0, 10);
 	i = 0;
-	while (i < MAX_PLAYERS + 1)
+	while (i < MAX_PLAYERS)
 	{
 		env->palette[i + 1] = hsl(120 + i * step, 100, 60);
+		env->proc_palette[i] = hsl(120 + i * step, 100, 80);
+		ft_printf("i = %d r = %hd g = %hd b = %hd\n",i, env->proc_palette[i].r, env->proc_palette[i].g, env->proc_palette[i].b);
 		i++;
 	}
+	ft_printf("r = %hd g = %hd b = %hd\n",env->proc_palette[0].r, env->proc_palette[0].g, env->proc_palette[0].b);
 }
 
 void				set_colormap(t_winenv *env)
@@ -82,6 +85,7 @@ void				set_colormap(t_winenv *env)
 	{
 		memset(env->colormap + (i * MEM_SIZE / env->vm->nb_player), i + 1, \
 		cur->prog_size);
+		cur->index_color = i;
 		i++;
 		cur = cur->next;
 	}
