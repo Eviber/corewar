@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/07 15:39:43 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 16:11:31 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ static void				init_op_tab(t_op *op_tab)
 static void				init_process(t_header *champ, t_vm *env)
 {
 	unsigned int	pc;
+	int				i;
 
+	i = 0;
 	pc = 0;
 	while (champ)
 	{
@@ -72,6 +74,7 @@ static void				init_process(t_header *champ, t_vm *env)
 		env->process->reg[0] = champ->num;
 		env->process->inst = env->memory[env->process->pc];
 		set_cooldown(env->process, env);
+		champ->index_color = i++;
 		champ = champ->next;
 	}
 }

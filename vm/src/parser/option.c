@@ -6,12 +6,11 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/08 09:09:06 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/24 15:33:18 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
-#include "libft.h"
 
 t_opt *get_opt(void)
 {
@@ -70,8 +69,8 @@ int check_opt(int pos, char **av, t_vm *env)
 			env->option->verbose = ft_atoi(av[pos + 1]);
 		else if (cmp == 5)
 		{
-			env->option->dump = 1;
-				env->option->dump_all = ft_atol(av[pos + 1]);
+			env->option->dump = ft_atol(av[pos + 1]);
+			env->option->dump_all = 1;
 		}
 		return (1);
 	}
