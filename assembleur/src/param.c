@@ -6,56 +6,61 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/02/20 20:15:37 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/24 16:57:56 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_op *get_opt()
+t_op			*get_opt(t_op *op_tab)
 {
-	static t_op    op_tab[17] = {
-		{"live", 1, T_DIR , 0, 0, 1},
-		{"ld", 2, T_DIR + T_IND + T_REG * 8, 1, 0, 2},
-		{"st", 2, T_REG + (T_IND + T_REG) * 8, 1, 0, 3},
-		{"add", 3, T_REG + (T_REG) * 8 + (T_REG) * 64, 1, 0, 4},
-		{"sub", 3, T_REG + (T_REG) * 8 + (T_REG) * 64, 1, 0, 5},
-		{"and", 3, T_REG + T_DIR + T_IND + (T_REG + T_IND + T_DIR) * 8 + T_REG * 64, 1, 0, 6},
-		{"or", 3, T_REG + T_IND + T_DIR + (T_REG + T_IND + T_DIR) * 8 + T_REG * 64, 1, 0, 7},
-		{"xor", 3, T_REG + T_IND + T_DIR + (T_REG + T_IND + T_DIR) * 8 + T_REG * 64, 1, 0, 8},
-		{"zjmp", 1, T_DIR, 0, 1, 9},
-		{"ldi", 3, T_REG + T_DIR + T_IND + (T_DIR + T_REG) * 8 + T_REG * 64, 1, 1, 10},
-		{"sti", 3, T_REG + (T_REG + T_DIR + T_IND) * 8 + (T_DIR + T_REG) * 64, 1, 1, 11},
-		{"fork", 1, T_DIR, 0, 1, 12},
-		{"lld", 2, T_DIR + T_IND + T_REG * 8, 1, 0, 13},
-		{"lldi", 3, T_REG + T_DIR + T_IND + (T_DIR + T_REG) * 8 + T_REG * 64, 1, 1, 14},
-		{"lfork", 1, T_DIR, 0, 1, 15},
-		{"aff", 1, T_REG, 1, 0, 16},
-		{0, 0, 0, 0, 0, 15} };
-
-	return(op_tab);
+	op_tab = ft_memalloc_exit(sizeof(t_op) * 17);
+	op_tab[0] = (t_op){"live", 1, T_DIR, 0, 0, 1};
+	op_tab[1] = (t_op){"ld", 2, T_DIR + T_IND + T_REG * 8, 1, 0, 2};
+	op_tab[2] = (t_op){"st", 2, T_REG + (T_IND + T_REG) * 8, 1, 0, 3};
+	op_tab[3] = (t_op){"add", 3, T_REG + (T_REG) * 8 + (T_REG) * 64, 1, 0, 4};
+	op_tab[4] = (t_op){"sub", 3, T_REG + (T_REG) * 8 + (T_REG) * 64, 1, 0, 5};
+	op_tab[5] = (t_op){"and", 3, T_REG + T_DIR + T_IND + (T_REG + T_IND + T_DIR)
+		* 8 + T_REG * 64, 1, 0, 6};
+	op_tab[6] = (t_op){"or", 3, T_REG + T_IND + T_DIR + (T_REG + T_IND + T_DIR)
+		* 8 + T_REG * 64, 1, 0, 7};
+	op_tab[7] = (t_op){"xor", 3, T_REG + T_IND + T_DIR + (T_REG + T_IND + T_DIR)
+		* 8 + T_REG * 64, 1, 0, 8};
+	op_tab[8] = (t_op){"zjmp", 1, T_DIR, 0, 1, 9};
+	op_tab[9] = (t_op){"ldi", 3, T_REG + T_DIR + T_IND + (T_DIR + T_REG)
+		* 8 + T_REG * 64, 1, 1, 10};
+	op_tab[10] = (t_op){"sti", 3, T_REG + (T_REG + T_DIR + T_IND) * 8 +
+	(T_DIR + T_REG) * 64, 1, 1, 11};
+	op_tab[11] = (t_op){"fork", 1, T_DIR, 0, 1, 12};
+	op_tab[12] = (t_op){"lld", 2, T_DIR + T_IND + T_REG * 8, 1, 0, 13};
+	op_tab[13] = (t_op){"lldi", 3, T_REG + T_DIR + T_IND + (T_DIR + T_REG)
+		* 8 + T_REG * 64, 1, 1, 14};
+	op_tab[14] = (t_op){"lfork", 1, T_DIR, 0, 1, 15};
+	op_tab[15] = (t_op){"aff", 1, T_REG, 1, 0, 16};
+	return (op_tab);
 }
 
-static int check_int_param(char *str, t_env *env, long i)
+static int		check_int_param(char *str, t_env *env, long i)
 {
-	while(str[++i] && str[i]!= SEPARATOR_CHAR &&
-    !ft_isspace(str[i]) && !env->error)
+	while (str[++i] && str[i] != SEPARATOR_CHAR &&
+			!ft_isspace(str[i]) && !env->error)
 		if (!ft_isdigit(str[i]) || str[i] == '-')
 			ft_error(env, str, 4);
-	return(1);
+	return (1);
 }
 
-static int check_param(char *src, t_env *env, t_op op, short type)
+static int		check_param(char *src, t_env *env, t_op op, short type)
 {
-	int size;
-	unsigned int value;
-	int cmp;
-	char current_type;
+	unsigned int	value;
+	char			current_type;
+	int				size;
+	int				cmp;
 
 	src = src + env->index;
 	if (*src == 'r' && (type & T_REG && (current_type = 1)))
 		size = 1;
-	else if ((*src == LABEL_CHAR || ft_isdigit(*src) || *src == '-') && (type & T_IND) && (current_type = 3))
+	else if ((*src == LABEL_CHAR || ft_isdigit(*src) ||
+				*src == '-') && (type & T_IND) && (current_type = 3))
 		size = 2;
 	else if (*src == DIRECT_CHAR && (type & T_DIR) && (current_type = 2))
 		size = 4 / ((op.half_dir_size) ? 2 : 1);
@@ -63,7 +68,7 @@ static int check_param(char *src, t_env *env, t_op op, short type)
 		ft_error(env, src, 4);
 	if (!(value = 0) && (*src == LABEL_CHAR || (src[1] == LABEL_CHAR && ++src)))
 		value = get_label(++src, env, 0, size);
-	else if (check_int_param(src , env, !ft_isdigit(*src)))
+	else if (check_int_param(src, env, !ft_isdigit(*src)))
 		value = ft_atoi((!ft_isdigit(*src) && (*src != '-')) ? ++src : src);
 	if ((cmp = size) && size == 1 && value > REG_NUMBER)
 		ft_error(env, src, 5);
@@ -73,43 +78,49 @@ static int check_param(char *src, t_env *env, t_op op, short type)
 	return (current_type);
 }
 
-
-void get_param(t_op op, char *src, t_env *env)
+unsigned char	launc_param(t_op op, char *src, t_env *env, unsigned char octal)
 {
-	int state;
-	int nb_arg;
-	short type;
-	int pos;
-	unsigned char octal;
+	int				stat;
+	int				nb_arg;
+	short			type;
 
-	state = 0;
+	stat = 0;
 	nb_arg = 1;
-	pos = 0;
 	type = op.type;
+	while (src[env->index] && src[env->index] != COMMENT_CHAR
+			&& !env->error && src[env->index] != OTHER_COMMENT_CHAR)
+	{
+		if (ft_isspace(src[env->index]))
+			;
+		else if (stat == 0 && src[env->index] != SEPARATOR_CHAR && (stat = 1))
+			octal = octal * 4 + check_param(src, env, op, type);
+		else if ((stat == 1 || stat == 3) && src[env->index] == SEPARATOR_CHAR)
+		{
+			if (!(stat = 0) && ++nb_arg > op.nb_params)
+				ft_error(env, op.name, 6);
+			type /= 8;
+		}
+		else if (stat != 1)
+			ft_error(env, op.name, 4);
+		++env->index;
+	}
+	return (octal);
+}
+
+void			get_param(t_op op, char *src, t_env *env)
+{
+	unsigned char	octal;
+	int				pos;
+
+	pos = 0;
 	memory_manager(env, 1);
 	env->champ[env->pos++] = op.opcode;
 	if (op.has_octal)
 		pos = env->pos++;
-	while(src[env->index] && src[env->index] != COMMENT_CHAR && !env->error && src[env->index] != OTHER_COMMENT_CHAR)
-	{
-		if (ft_isspace(src[env->index]))
-      ;
-    else if (state == 0 && src[env->index] != SEPARATOR_CHAR && (state = 1))
-			octal = octal * 4 + check_param(src, env, op, type);
-		else if ((state == 1 || state == 3) && src[env->index] == SEPARATOR_CHAR)
-		{
-			if (++nb_arg > op.nb_params)
-				ft_error(env, op.name, 6);
-			state = 0;
-			type /= 8;
-		}
-		else if (state != 1)
-			ft_error(env, op.name, 4);
-		++env->index;
-	}
+	octal = launc_param(op, src, env, 0);
 	if (pos)
 	{
-		while(octal < 64)
+		while (octal < 64)
 			octal *= 4;
 		memory_manager(env, 1);
 		env->champ[pos] = octal;

@@ -81,6 +81,9 @@ int						main(int ac, char **av)
 	t_vm			env;
 	t_op			*op_tab;
 
+
+	if (ac < 2 && ft_dprintf(2, "Usage: ./vm [champion.cor]\n"))
+		return(0);
 	if (!(op_tab = (t_op*)ft_memalloc(sizeof(t_op) * 16)))
 		ft_exit(strerror(errno));
 	init(&env);

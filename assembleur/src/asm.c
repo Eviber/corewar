@@ -77,7 +77,7 @@ t_env	*init_env(int option, t_env *last_env)
 	if (option == 1)
 	{
 		env = ft_memalloc_exit(sizeof(t_env));
-		env->op = get_opt();
+		env->op = get_opt(NULL);
 	}
 	else if ((env = last_env))
 	{

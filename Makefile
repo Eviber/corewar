@@ -37,7 +37,7 @@ CC =				gcc -g -fsanitize=address -Wall -Werror -Wextra
 CFLAGS =			-I include/ -I libft/include/ `sdl2-config --cflags`
 LFLAGS =			-L $(PATH_LIBFT) -lft `sdl2-config --libs` -lSDL2_gfx -lSDL2_ttf -lm
 
-VM_PARS =			parser.c\
+VM_PARS =			vm_parser.c\
 					option.c\
 					header.c
 

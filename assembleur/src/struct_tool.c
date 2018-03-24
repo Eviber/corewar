@@ -6,17 +6,17 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/02/20 20:15:37 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/24 17:13:56 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void switch_extension(t_env *env, char *src, char *new_extension)
+void	switch_extension(t_env *env, char *src, char *new_extension)
 {
-	char *res;
-	size_t cmp;
-	size_t i;
+	char	*res;
+	size_t	cmp;
+	size_t	i;
 
 	cmp = ft_strlen(src);
 	while (src[--cmp] != '.')
@@ -26,24 +26,23 @@ void switch_extension(t_env *env, char *src, char *new_extension)
 	while (++i < cmp)
 		res[i] = src[i];
 	cmp = -1;
-	while(new_extension[++cmp])
+	while (new_extension[++cmp])
 		res[i++] = new_extension[cmp];
 	env->name = res;
 }
 
-
-void fill_length_file(t_env *env)
+void	fill_length_file(t_env *env)
 {
 	long tmp;
 
 	tmp = env->pos;
 	if (tmp > CHAMP_MAX_SIZE)
 		ft_error(env, NULL, 8);
-	fill_memory(env->res, tmp, sizeof(long), sizeof(COREWAR_EXEC_MAGIC) + PROG_NAME_LENGTH);
+	fill_memory(env->res, tmp, sizeof(long),
+			sizeof(COREWAR_EXEC_MAGIC) + PROG_NAME_LENGTH);
 }
 
-
-int find_next(char *src, char car)
+int		find_next(char *src, char car)
 {
 	int i;
 
@@ -56,26 +55,29 @@ int find_next(char *src, char car)
 		return (0);
 }
 
-int find_next_instruction(char *src)
+int		find_next_instruction(char *src)
 {
 	int i;
 
 	i = -1;
-	while (src[++i] && src[i] != LABEL_CHAR && src[i] != DIRECT_CHAR && src[i] != COMMENT_CHAR && src[i] != SEPARATOR_CHAR && !ft_isspace(src[i]) && src[i] != OTHER_COMMENT_CHAR)
+	while (src[++i] && src[i] != LABEL_CHAR && src[i] !=
+			DIRECT_CHAR && src[i] != COMMENT_CHAR && src[i] !=
+			SEPARATOR_CHAR && !ft_isspace(src[i]) && src[i] !=
+			OTHER_COMMENT_CHAR)
 		;
 	if (src[i])
 		return (i);
 	else
-		return(i);
+		return (i);
 }
 
-void check_error(t_env *env)
+void	check_error(t_env *env)
 {
 	if (!env->error)
 	{
 		if (env->state != 3)
 			ft_error(env, NULL, 10);
 		else if (env->pos == 0 && ((env->error = 1)))
-			ft_dprintf(2, "This is a weak champion, there are no instruction\n");
+			ft_error(env, NULL, 13);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: gcollett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 14:58:13 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/24 15:12:15 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/03/24 17:14:51 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	ft_other_error(t_env *env, char *name, int error)
 	if (error == 12)
 		ft_dprintf(2, "Serisouly, a champ without comment, where the\
 				punch line of %s\n", env->name);
+	if (error == 13)
+		ft_dprintf(2, "This is just a weak champ without any line of code\n");
 }
 
 void	ft_error(t_env *env, char *name, int error)

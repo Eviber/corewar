@@ -44,6 +44,7 @@ typedef void	(*t_op)(t_process *, t_vm *);
 ** Parser
 */
 t_opt			*get_opt(void);
+void			ft_confirm_num_player(t_vm *env);
 void			ft_print_head(t_vm *env, int cmp);
 void			ft_init_header(t_vm *env, char *line, int start, char **av);
 void			parsing(int ac, char **av, t_vm *vm, int cmp);

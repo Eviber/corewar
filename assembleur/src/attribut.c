@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/24 15:46:56 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/03/24 17:15:46 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ int		ft_fill_attr(char *line, t_env *env, char state, int effective_pos)
 
 char	search_attr(char *line, t_env *env, char state)
 {
-	while (line[++env->index]&& line[env->index] != COMMENT_CHAR
-			&& line[env->index] != OTHER_COMMENT_CHAR && !env->error)
+	while (line[++env->index] && line[env->index] != COMMENT_CHAR &&
+			line[env->index] != OTHER_COMMENT_CHAR && !env->error)
 	{
 		if (ft_isspace(env->index))
 			;
