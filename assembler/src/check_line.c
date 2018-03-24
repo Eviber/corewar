@@ -19,12 +19,12 @@ static void check_fct(t_node *node_inst, char **inst)
   int i;
 
   i = 0;
-  while((*inst)[i] && !ft_isspace((*inst)[i]) && (*inst)[i] != COMMENT_CHAR)
+  while ((*inst)[i] && !ft_isspace((*inst)[i]) && (*inst)[i] != COMMENT_CHAR)
     i++;
   node_fct = create_node(FCT, ft_strndup(*inst, i));
   add_child(node_inst, node_fct);
   *inst = *inst + i;
-  while(**inst && ft_isspace(**inst) && **inst != COMMENT_CHAR)
+  while (**inst && ft_isspace(**inst))
     (*inst)++;
 }
 
@@ -41,20 +41,20 @@ static void register_inst(t_node *node_inst, char *inst)
   }
 }
 
-static void check_label(t_node *node_line, char **line) // check label char ?
+static void check_label(t_node *node_line, char **line) // check label chars ? enfin utiliser le dfine LABELCHARS
 {
   t_node *node_label;
   int i;
 
   i = 0;
-  while((*line)[i] && !ft_isspace((*line)[i]) && (*line)[i] != COMMENT_CHAR)
+  while ((*line)[i] && !ft_isspace((*line)[i]) && (*line)[i] != COMMENT_CHAR)
     i++;
-  if ((*line)[i -1] == LABEL_CHAR && i > 1)
+  if (i > 1 && (*line)[i - 1] == LABEL_CHAR)
   {
     node_label = create_node(LABEL, ft_strndup(*line, i - 1));
     add_child(node_line, node_label);
     *line = *line + i;
-    while(**line && ft_isspace(**line) && (*line)[i] != COMMENT_CHAR)
+    while (**line && ft_isspace(**line))
       (*line)++;
   }
 }

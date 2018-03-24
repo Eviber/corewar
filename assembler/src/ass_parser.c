@@ -12,9 +12,9 @@
 
 #include <asm.h>
 
-static t_rules	get_rules(t_token type)
+static t_rules	*get_rules(t_token type)  //mmethode rapide
 {
-	static t_rules	rules[13] = {
+	static t_rules	*rules[14] = {
 	{ 0, {PROG, HEADER, CODE, 0, 0}},
 	{ 1, {HEADER, CMD_NAME, CMD_CMT, 0, 0 } },
 	{ 0, {HEADER, CMD_CMT, CMD_NAME, 0, 0 }},
@@ -23,6 +23,7 @@ static t_rules	get_rules(t_token type)
 	{ 2, {LINE, LABEL, 0, 0, 0 }},
 	{ 1, {LINE, INST, 0, 0, 0 }},
 	{ 0, {LINE, LABEL, INST, 0, 0 }},
+	{ 0, {INST, FCT, PARAM, 0, 0 }},
 	{ 3, {PARAM, PARAM, SEP, PARAM, 0 }},
 	{ 2, {PARAM, REG, 0, 0, 0 }},
 	{ 1, {PARAM, DIRECT, 0, 0, 0 }},
@@ -51,10 +52,7 @@ void check_grammar(t_node *root, t_rules rules, int deep, t_child *tmp_child)
 			print_token(tmp_child->elem->type, deep + 2);
 			if (tmp_child->elem->type != rules.res[++i])
 				pexit("Tree error", -4);
-			if (tmp_child->elem->type == HEADER ||
-				tmp_child->elem->type == CODE ||
-				tmp_child->elem->type == LINE ||
-				tmp_child->elem->type == PARAM)
+			if (tmp_child->elem->type > NONE && tmp_child->elem->type <= PARAM)
 				check_grammar(tmp_child->elem, get_rules(tmp_child->elem->type), deep + 4, root->children->next);
 			tmp_child = tmp_child->next;
 		}

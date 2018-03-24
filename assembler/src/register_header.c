@@ -35,7 +35,7 @@ static void   ft_realloc_line(t_node *node, char *buf, int old_s, int add_s)
   node->name = result;
 }
 
-static void fill_name(t_node *node, char *line, int fd, int i)
+static void fill_name(t_node *node, char *line, int fd, int i) // pense a verifier les length de name et de comment sur ment dans le parser
 {
   char buf[400];
   int j;
@@ -68,7 +68,7 @@ static void register_command(t_node *header, char *line, int fd, int type)
   int i;
 
   i = 0;
-  while (line[i] && line[i] != '"' && line[i] != '#')
+  while (line[i] && ft_isspace(line[i]) && line[i] != '"')
     i++;
   if (line[i] != '"')
     pexit("Missing name after an attribut\n", -2);

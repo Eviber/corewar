@@ -107,6 +107,7 @@ typedef struct			s_option
 	int					verbose;
 	char				visu;
 	long				dump;
+	long				dump_all;
 }						t_option;
 
 typedef struct			s_vm

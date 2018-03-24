@@ -20,6 +20,7 @@ t_opt *get_opt(void)
 		{"v", 1, 0, 1, 0},
 		{"g", 0, 0, 0, 0},
 		{"f", 0, 0, 0, 0},
+		{"dump_all", 1, 1, 1, 0},
 		{0, 0, 0, 0, 0} };
 
 	return(opt_tab);
@@ -62,10 +63,12 @@ int check_opt(int pos, char **av, t_vm *env)
 	cmp = search_opt(av[pos], env);
 	if (opt_have_value(pos, av, cmp, env))
 	{
-		if (cmp == 0)
-			env->option->dump = ft_atoi(av[pos + 1]);
+		if (cmp == 0 || cmp == 5)
+			env->option->dump = ft_atol(av[pos + 1]);
 		else if (cmp == 2)
 			env->option->verbose = ft_atoi(av[pos + 1]);
+		if (cmp == 5)
+				env->option->dump_all = ft_atol(av[pos + 1]);
 		return (1);
 	}
 	if (cmp == 3)

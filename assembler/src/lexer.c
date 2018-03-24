@@ -18,8 +18,10 @@ static int line_not_empty(char *line)
 	int i;
 
 	i = -1;
-	while (line && line[++i] && ft_isspace(line[i]))
+	while (line && line[++i] && ft_isspace(line[i]) && line[i] != COMMENT_CHAR)
 		;
+	if (line[i] == COMMENT_CHAR)
+		return(-1);
 	return(i);
 }
 
@@ -57,17 +59,24 @@ static void			check_header(t_node *root, int fd)
 	int				gnl;
 	char			*line;
 	t_node			*header;
+	int i;
 
 	line = NULL;
+	i = 0;
 	header = create_node(HEADER, NULL);
 	add_child(root, header);
 	while ((gnl = get_next_line(fd, &line)) > 0)
 	{
-		if (line && line[0] == '.')
-			get_cmd(header, line, fd);
-		ft_strdel(&line);
-		if (header->children && header->children->next)
+		while(line && line[i] && ft_isspace(line[i]) && line[i] != COMMENT_CHAR) // gerer ici si commentaire gerer ligne vide avev espace
+			i++;
+		if (line && line[i] != COMMENT_CHAR && line[i] == '.')
+			get_cmd(header, line + i, fd);
+		else if (line[i] != COMMENT_CHAR)
+		{
+			ft_strdel(&line);
 			break;
+		}
+		ft_strdel(&line);
 	}
 	if (gnl < 0)
 		pexit("Erreur de read", -2);

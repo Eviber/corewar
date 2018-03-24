@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// si pas assez argument exit c'est vraiment bon ?
-
 #include "vm.h"
 #include "corewar.h"
 
@@ -100,8 +98,8 @@ void					parsing(int ac, char **av, t_vm *env, int cmp)
 	line = ft_memalloc(CHAMP_MAX_SIZE);
 	env->nb_player = check_arg(ac, av, env);
 	nm_champ = -1;
-	if (ac < 2)
-		ft_exit("Usage: ./vm [champion.cor]");
+	if (ac < 2 && ft_printf("Usage: ./vm [champion.cor]\n"))
+		return(0);
 	else if ((ac = env->nb_player + 1))
 		while (--ac)
 		{
@@ -114,6 +112,5 @@ void					parsing(int ac, char **av, t_vm *env, int cmp)
 			close(fd);
 		}
 	ft_memdel((void**)&line);
-	//ft_print_head(env, -1);
 	intro_champ(env);
 }
