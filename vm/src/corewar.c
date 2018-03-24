@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/24 16:11:31 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 23:05:51 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void				init(t_vm *env)
 	env->c_todie = CYCLE_TO_DIE;
 	ft_bzero((void*)env->memory, MEM_SIZE);
 	env->nb_player = 0;
+	env->killed_process = NULL;
 	env->process = NULL;
 	env->ll_champ = NULL;
 	env->champion = NULL;

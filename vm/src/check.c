@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 23:06:13 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/24 19:26:45 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 22:58:10 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void			check_process(unsigned long *last_period, t_process *process, \
 			store_process(&env->process, process, &env->killed_process, prev);
 			(env->nb_process)--;
 		}
-		prev = process;
+		else
+			prev = process;
 		process = next;
 	}
 	reset_live_p(env->champion);

@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 18:29:25 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/24 19:28:39 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 22:57:59 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ t_process *prev)
 	{
 		if (*lst == todel)
 			*lst = todel->next;
-		else if (prev)
+		else
 			prev->next = todel->next;
+//		ft_memdel((void**)&todel);
 		add_process(st, todel);
 	}
 }

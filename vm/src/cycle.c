@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:12:20 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/24 17:06:30 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 23:06:30 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,20 @@ static void		dump_memory(unsigned char mem[], t_process *process, t_vm *env)
 	dump_process(process, env);
 }
 
+static void		kill_dead_process(t_process **todel)
+{
+	int			i;
+	t_process	*next;
+
+	i = 0;
+	while (todel && *todel && ++i <= 10)
+	{
+		next = (*todel)->next;
+		ft_memdel((void**)todel);
+		*todel = next;
+	}
+}
+
 void			run_cycle(t_op *op_tab, t_vm *env)
 {
 	t_process		*current;
@@ -104,6 +118,7 @@ void			run_cycle(t_op *op_tab, t_vm *env)
 			current = exec_process(current, op_tab, env);
 		if (--(env->curr_c_todie) <= 0)
 			check_process(&last_period, env->process, env);
+		kill_dead_process(&env->killed_process);
 		(env->cycle)++;
 	}
 }
