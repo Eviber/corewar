@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:36:55 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/24 15:31:39 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/24 16:11:51 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,11 @@ void				set_colormap(t_winenv *env)
 
 	i = 0;
 	cur = env->vm->champion;
-	memset(env->colormap, 0, MEM_SIZE);
+	ft_memset(env->colormap, 0, MEM_SIZE);
 	while (cur)
 	{
-		memset(env->colormap + (i * MEM_SIZE / env->vm->nb_player), i + 1, \
+		ft_memset(env->colormap + (i * MEM_SIZE / env->vm->nb_player), i + 1, \
 		cur->prog_size);
-		cur->index_color = i;
 		i++;
 		cur = cur->next;
 	}

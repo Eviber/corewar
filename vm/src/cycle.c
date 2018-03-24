@@ -6,27 +6,47 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:12:20 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/24 12:39:47 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/24 17:06:30 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 #include "visu.h"
+#include <math.h>
+
+static t_rgb	get_rgb(t_process *process, t_vm *env)
+{
+	t_rgb	color;
+	int		step;
+
+	step = 360 / ((env->nb_player > 3) ? env->nb_player + 1 : 3);
+	color = vm_hsl(120 + process->champ->index_color * step, 75, 50);
+	return (color);
+}
 
 static void		dump_process(t_process *process, t_vm *env)
 {
+	t_rgb	color;
+
 	if (env->option->dump_all >= 0)
 	{
 		ft_printf("nb process: %d\n", env->nb_process);
+		ft_printf("\033[4mPlayer | process ID | %-8s | inst | carry | %-10s\n",\
+		"PC", "last live");
+		ft_putstr("\033[0m");
 		while (process)
 		{
-			ft_printf("Player: %3d, ", process->champ->num);
-			ft_printf("process ID: %7d, ", process->id);
-			ft_printf("PC: %#08x, ", process->pc);
-			ft_printf("inst: %2d, ", process->inst);
-			ft_printf("carry : %d, ", process->carry);
-			ft_printf("last_live: %d\n", process->last_live);
+			color = get_rgb(process, env);
+			ft_printf("\033[38;2;%d;%d;%dm", color.r, color.g, color.b);
+			ft_printf("%-6d | ", process->champ->num);
+			ft_printf("%10d | ", process->id);
+			ft_printf("%#08x | ", process->pc);
+			ft_printf("%-4d | ", process->inst);
+			ft_printf("%-5d | ", process->carry);
+			ft_printf("%10d", process->last_live);
+			ft_putchar('\n');
 			process = process->next;
+			ft_putstr("\033[0m");
 		}
 	}
 	exit(0);
@@ -35,6 +55,7 @@ static void		dump_process(t_process *process, t_vm *env)
 static void		dump_memory(unsigned char mem[], t_process *process, t_vm *env)
 {
 	unsigned long	i;
+	t_rgb			color;
 	t_process		*tmp;
 
 	i = 0;
@@ -45,11 +66,12 @@ static void		dump_memory(unsigned char mem[], t_process *process, t_vm *env)
 		while (tmp && tmp->pc != i)
 			tmp = tmp->next;
 		if (i == 0)
-			ft_putstr("0x0000 : ");
+			ft_putstr("0x000000 : ");
 		else if (i % 32 == 0)
-			ft_printf("%#06x : ", i);
-		if (tmp)
-			ft_printf("\033[31;42m%02x\033[0m", (int)mem[i]);
+			ft_printf("%#08x : ", i);
+		if (tmp && (color = get_rgb(tmp, env)).r)
+			ft_printf("\033[48;2;%d;%d;%dm%02x\033[0m", color.r, color.g, \
+			color.b, (int)mem[i]);
 		else
 			ft_printf("%02x", (int)mem[i]);
 		i++;

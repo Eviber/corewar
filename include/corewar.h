@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/03/24 15:38:26 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/24 16:02:02 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 
 # define MAX_ARGS_NUMBER		4
 # define MAX_PLAYERS			79
-# define MEM_SIZE				(4*1024) // reset omg
+# define MEM_SIZE				(79*1024) // reset omg
 # define IDX_MOD				(MEM_SIZE / 8)
-# define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
+# define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS)
 
 # define COMMENT_CHAR			'#'
 # define OTHER_COMMENT_CHAR			';'
@@ -105,6 +105,13 @@ typedef struct			s_option
 	long				dump;
 	long				dump_all;
 }						t_option;
+
+typedef struct			s_rgb
+{
+	unsigned char		r;
+	unsigned char		g;
+	unsigned char		b;
+}						t_rgb;
 
 typedef struct			s_vm
 {
