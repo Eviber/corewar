@@ -33,6 +33,7 @@ static void				init(t_vm *env)
 	env->opt = get_opt();
 	env->option = (t_option*)ft_memalloc_exit(sizeof(t_option));
 	env->option->dump = -1;
+	env->option->dump_all = -1;
 }
 
 static void				init_op_tab(t_op *op_tab)

@@ -28,7 +28,7 @@
 # define SHOW_CYCL		2
 # define SHOW_DEAT		4
 # define SHOW_MOVE		8
-# define NB_OPTION		5
+# define NB_OPTION		6
 
 typedef struct	s_param
 {
