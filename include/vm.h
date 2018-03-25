@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:43:38 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/24 22:59:16 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/25 13:31:35 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int				check_reg(unsigned char peb, int nb_param, t_param *param);
 int				param_len(unsigned char peb, int mod, int nb_param);
 int				get_param_value(unsigned int at, int len, int *ret, t_vm *env);
 unsigned int	read_memory(unsigned int address, t_vm *env);
-t_process		*new_process(t_process *src, unsigned int new_pc);
+t_process		*new_process(t_process *src, unsigned int new_pc, t_vm *env);
 t_process		*exec_process(t_process *process, t_op *op_tab, t_vm *env);
 void			get_param(t_param *param, t_process *process, t_vm *env);
 void			add_process(t_process **lst, t_process *new);

@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/24 23:05:51 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/25 13:34:14 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void				init_process(t_header *champ, t_vm *env)
 		champ->nb_live_p = 0;
 		if (env->process)
 			pc = (MEM_SIZE / env->nb_player) + env->process->pc;
-		add_process(&env->process, new_process(env->process, pc));
+		add_process(&env->process, new_process(env->process, pc, env));
 		(env->nb_process)++;
 		env->process->champ = champ;
 		env->process->reg[0] = champ->num;
