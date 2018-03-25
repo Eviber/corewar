@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:36:55 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/24 20:16:37 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/25 15:15:16 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ static void			loadpalette(t_winenv *env)
 
 	if (env->vm->nb_player == 4)
 	{
-		env->palette[0 + 1] = hsl(9, 100, 66);
-		env->proc_palette[0] = hsl(9, 100, 66 + 20);
-		env->palette[1 + 1] = hsl(215, 68, 56);
-		env->proc_palette[1] = hsl(215, 68, 56 + 20);
-		env->palette[2 + 1] = hsl(151, 59, 48);
-		env->proc_palette[2] = hsl(151, 59, 48 + 20);
-		env->palette[3 + 1] = hsl(274, 55, 60);
-		env->proc_palette[3] = hsl(274, 55, 60 + 20);
+		env->palette[0 + 1] = hsl(9, 70, 50);
+		env->proc_palette[0] = hsl(9, 100, 50 + 20);
+		env->palette[1 + 1] = hsl(215, 70, 50);
+		env->proc_palette[1] = hsl(215, 100, 50 + 20);
+		env->palette[2 + 1] = hsl(151, 70, 50);
+		env->proc_palette[2] = hsl(151, 100, 50 + 20);
+		env->palette[3 + 1] = hsl(274, 70, 50);
+		env->proc_palette[3] = hsl(274, 100, 50 + 20);
 		return ;
 	}
 	i = 0;
