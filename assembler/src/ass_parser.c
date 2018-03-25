@@ -12,9 +12,19 @@
 
 #include <asm.h>
 
-static t_rules	*get_rules(t_token type)  //mmethode rapide
+static int search_rules(t_token type, t_rules *rules)
 {
-	static t_rules	*rules[14] = {
+	int i;
+
+	i = 0;
+	while (i < 14 && rules[i].res[0] != type)
+		i++;
+	return (i);
+}
+
+static t_rules	*get_rules()
+{
+	static t_rules	rules[14] = {
 	{ 0, {PROG, HEADER, CODE, 0, 0}},
 	{ 1, {HEADER, CMD_NAME, CMD_CMT, 0, 0 } },
 	{ 0, {HEADER, CMD_CMT, CMD_NAME, 0, 0 }},
@@ -30,45 +40,67 @@ static t_rules	*get_rules(t_token type)  //mmethode rapide
 	{ 0, {PARAM, IND, 0, 0, 0 }},
 	{ 0, { 0, 0, 0, 0, 0 }},
 	};
-	int i;
 
-	i = 0;
-	while (rules[i].res[0] && rules[i].res[0] != type)
-		i++;
-	return (rules[i]);
+	return (rules);
 }
 
-void check_grammar(t_node *root, t_rules rules, int deep, t_child *tmp_child)
+void check_grammar(t_node *root, t_rules *rules, int i)
 {
 	int i;
+	int j;
+	t_child *child;
 
-	i = 0;
-	if (root->type == rules.res[i])
+	j = 0;
+	child = root->children;
+	ft_printf("ANALYSE");
+	print_token(root->type, 0);
+	ft_printf("NAME = %s\n", root->name);
+	i = search_rules(root->type, rules);
+	while (child)
 	{
-		ft_printf("Analyse type : ");
-		print_token(root->type, deep);
-		while (tmp_child->children)
+		if (child->elem->type == rules[i].res[++j])
+			child = child->next;
+		else if (rules[i].possibility)
 		{
-			print_token(tmp_child->elem->type, deep + 2);
-			if (tmp_child->elem->type != rules.res[++i])
-				pexit("Tree error", -4);
-			if (tmp_child->elem->type > NONE && tmp_child->elem->type <= PARAM)
-				check_grammar(tmp_child->elem, get_rules(tmp_child->elem->type), deep + 4, root->children->next);
-			tmp_child = tmp_child->next;
+			i += 1;
+			j = 0;
+			child = root->children;
+		}
+		else
+			pexit("Error Token 1\n", -1);
+	}
+	if (rules[i].res[++j])
+	{
+		ft_printf("BUG");
+		print_token(root->type, 0);
+		ft_printf("rule = ");
+		print_token(rules[i].res[0], 0);
+		print_token(rules[i].res[1], 0);
+		print_token(rules[i].res[2], 0);
+		print_token(rules[i].res[3], 0);
+		ft_printf("i = %d : j = %d\n", i, j);
+		pexit("Error Token 2\n", -1);
+	}
+	else
+	{
+		child = root->children;
+		while(child)
+		{
+			if (child->elem->type > NONE && child->elem->type <= PARAM)
+				check_grammar(child->elem, rules);
+			child = child->next;
 		}
 	}
-	else if (rules.possibility == 0)
-		pexit("Tree error", -4);
-	else
-		check_grammar(root, *((&rules) + 1), deep);
 }
 
 void parser(t_node *root)
 {
 	t_node *tmp_tree;
+	t_rules *rules;
 
 	tmp_tree = root;
-  check_grammar(tmp_tree, get_rules(root->type), 0, tmp_tree->child);
+	rules = get_rules();
+  check_grammar(tmp_tree, rules, 0);
   //reduce_tree(root);
   //check_fct_params(root);
   //translate(root);

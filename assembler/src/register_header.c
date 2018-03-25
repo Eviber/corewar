@@ -68,6 +68,7 @@ static void register_command(t_node *header, char *line, int fd, int type)
   int i;
 
   i = 0;
+  ft_printf("line = %s\n",line);
   while (line[i] && ft_isspace(line[i]) && line[i] != '"')
     i++;
   if (line[i] != '"')
@@ -84,9 +85,9 @@ static void register_command(t_node *header, char *line, int fd, int type)
 void			get_cmd(t_node *header,char *line, int fd)
 {
 	if (!ft_strncmp(line, ".name", 5))
-		register_command(header, line, fd, CMD_NAME);
+		register_command(header, line + 5, fd, CMD_NAME);
 	else if (!ft_strncmp(line, ".comment", 8))
-		register_command(header, line, fd, CMD_CMT);
+		register_command(header, line + 8, fd, CMD_CMT);
   else
     pexit("attribut invalid\n", -1);
 }
