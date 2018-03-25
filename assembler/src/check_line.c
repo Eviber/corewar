@@ -37,7 +37,7 @@ static void register_inst(t_node *node_inst, char *inst)
   {
     node_param = create_node(PARAM, NULL);
     add_child(node_inst, node_param);
-    check_param(node_param, inst);
+    check_param(node_param, inst, 0);
   }
 }
 

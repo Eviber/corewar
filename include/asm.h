@@ -65,6 +65,7 @@ t_node				*lexer(char *prog, int fd);
 
 t_node				*create_node(t_token type, char *name);
 void				add_child(t_node *parent, t_node *children);
+void 		del_child(t_node *parent, t_child *children);
 
 void				pexit(char *s, int i);
 
@@ -74,8 +75,10 @@ void	print_tree(t_node *tree);
 void print_token(int index, int deepness);
 
 void check_line(t_node *node_line, char *line);
-void check_param(t_node *node_param, char *param);
+void check_param(t_node *node_param, char *param, int i);
 
 void parser(t_node *root);
+
+ void reduce_tree(t_node *root);
 
 #endif

@@ -22,6 +22,23 @@
 	}
 }*/
 
+void 		del_child(t_node *parent, t_child *children)
+{
+	t_child 		*tmp_child;
+
+	if (children == parent->children)
+		parent->children = children->next;
+	else
+	{
+		tmp_child = parent->children;
+		while (tmp_child->next != children)
+			tmp_child = tmp_child->next;
+		tmp_child->next = children->next;
+	}
+
+	ft_memdel((void **)&children);
+}
+
 void 		add_next_child(t_node *parent, t_node *children)
 {
 	t_child 		*tmp_child;

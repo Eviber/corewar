@@ -37,28 +37,30 @@ static void which_param(t_node *node_param, char **param)
     (*param)++;
 }
 
-void check_param(t_node *node_param, char *param)
+void check_param(t_node *node_param, char *param, int i)
 {
   t_node *new_param;
   t_node *node_sep;
-  int i;
 
-  i = 0;
+  new_param = NULL;
   while (param[i] && !ft_isspace(param[i]) && param[i] != COMMENT_CHAR &&
   param[i] != SEPARATOR_CHAR)
     i++;
-  new_param = create_node(PARAM, NULL);
-  add_child(node_param, new_param);
+  if (param[i] && param[i] != COMMENT_CHAR)
+  {
+    new_param = create_node(PARAM, NULL);
+    add_child(node_param, new_param);
+  }
   if (param[i] == SEPARATOR_CHAR)
   {
     node_sep = create_node(SEP, NULL);
     add_child(node_param, node_sep);
   }
-  which_param(new_param, &param);
+  which_param((new_param) ? new_param : node_param, &param);
   if (*param && *param != COMMENT_CHAR)
   {
     new_param = create_node(PARAM, NULL);
     add_child(node_param, new_param);
-    check_param(new_param, param);
+    check_param(new_param, param, 0);
   }
 }

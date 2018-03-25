@@ -44,53 +44,31 @@ static t_rules	*get_rules()
 	return (rules);
 }
 
-void check_grammar(t_node *root, t_rules *rules, int i)
+void check_grammar(t_node *root, t_rules *rules, int j)
 {
 	int i;
-	int j;
 	t_child *child;
 
-	j = 0;
 	child = root->children;
-	ft_printf("ANALYSE");
-	print_token(root->type, 0);
-	ft_printf("NAME = %s\n", root->name);
 	i = search_rules(root->type, rules);
 	while (child)
 	{
 		if (child->elem->type == rules[i].res[++j])
 			child = child->next;
-		else if (rules[i].possibility)
-		{
-			i += 1;
-			j = 0;
+		else if (rules[i++].possibility && !(j = 0))
 			child = root->children;
-		}
 		else
 			pexit("Error Token 1\n", -1);
 	}
 	if (rules[i].res[++j])
-	{
-		ft_printf("BUG");
-		print_token(root->type, 0);
-		ft_printf("rule = ");
-		print_token(rules[i].res[0], 0);
-		print_token(rules[i].res[1], 0);
-		print_token(rules[i].res[2], 0);
-		print_token(rules[i].res[3], 0);
-		ft_printf("i = %d : j = %d\n", i, j);
 		pexit("Error Token 2\n", -1);
-	}
-	else
-	{
-		child = root->children;
+	else if ((child = root->children))
 		while(child)
 		{
 			if (child->elem->type > NONE && child->elem->type <= PARAM)
-				check_grammar(child->elem, rules);
+				check_grammar(child->elem, rules, 0);
 			child = child->next;
 		}
-	}
 }
 
 void parser(t_node *root)
@@ -101,7 +79,7 @@ void parser(t_node *root)
 	tmp_tree = root;
 	rules = get_rules();
   check_grammar(tmp_tree, rules, 0);
-  //reduce_tree(root);
+  reduce_tree(root);
   //check_fct_params(root);
   //translate(root);
 }
