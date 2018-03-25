@@ -61,7 +61,10 @@ t_node				*create_node(t_token type, char *name)
 		node->children = NULL;
 		node->type = type;
 		if (name)
+		{
 			node->name = ft_strdup(name);
+			ft_strdel(&name);
+		}
 		else
 			node->name = NULL;
 		return (node);

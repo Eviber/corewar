@@ -33,7 +33,7 @@ PATH_ASM_SRC =		$(PATH_ASM)src/
 
 VPATH = $(PATH_VM_SRC):$(PATH_VM_PARS):$(PATH_VM_INST):$(PATH_VM_VISU):$(PATH_ASM_SRC)
 
-CC =				gcc -g -fsanitize=address -Wall -Werror -Wextra
+CC =				gcc -g -Wall -Werror -Wextra
 CFLAGS =			-I include/ -I libft/include/ `sdl2-config --cflags`
 LFLAGS =			-L $(PATH_LIBFT) -lft `sdl2-config --libs` -lSDL2_gfx -lSDL2_ttf -lm
 

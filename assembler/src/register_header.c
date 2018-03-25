@@ -39,8 +39,10 @@ static void fill_name(t_node *node, char *line, int fd, int i) // pense a verifi
 {
   char buf[400];
   int j;
+  int d;
 
   j = 0;
+  d = 0;
   while ((line[i] || ((get_next_line(fd, &line) > 0) && !(i = 0)))
    && line[i] != '"')
 	{
@@ -55,11 +57,17 @@ static void fill_name(t_node *node, char *line, int fd, int i) // pense a verifi
       ft_realloc_line(node, buf, j - 400, 400);
     if (line[i] != '"')
       buf[j++ % 400] = '\n';
+    else
+      break;
+    if (d++)
+      free(line);// t es deguelasse
   }
   if (line[i] != '"')
     pexit("Missing the end of an attribut\n", -2);
   else if (j % 400)
       ft_realloc_line(node, buf, j - 400, j % 400);
+  if (d)
+    ft_strdel(&line);
 }
 
 static void register_command(t_node *header, char *line, int fd, int type)
@@ -68,7 +76,6 @@ static void register_command(t_node *header, char *line, int fd, int type)
   int i;
 
   i = 0;
-  ft_printf("line = %s\n",line);
   while (line[i] && ft_isspace(line[i]) && line[i] != '"')
     i++;
   if (line[i] != '"')

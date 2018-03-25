@@ -36,11 +36,13 @@ static void			check_code(t_node *root, int fd)
 
 	i = 0;
 	line = NULL;
+
 	code = create_node(CODE, NULL);
 	add_child(root, code);
 	while ((gnl = get_next_line(fd, &line)) > 0)
 		if ((i = line_not_empty(line)) != -1 && (line[i] && line[i] != '#'))
 		{
+
 		  node_line = create_node(LINE, NULL);
 		  add_child(code, node_line);
 			check_line(node_line, line + i);
@@ -86,7 +88,7 @@ t_node				*lexer(char *prog, int fd)
 {
 	t_node			*tree;
 
-	tree = create_node(PROG, prog);
+	tree = create_node(PROG, ft_strdup(prog));
 	if (tree)
 	{
 		check_header(tree, fd);

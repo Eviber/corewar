@@ -12,40 +12,33 @@
 
 #include <asm.h>
 
-void erase_frontier_between_param(t_node *root)
+void erase_frontier_between_param(t_node *root, t_node *node_param)
 {
   t_child *child;
-  t_child *prev_child;
+  t_child *child_prev;
 
   if (root->type != INST)
   {
     child = root->children;
     while (child)
     {
-      erase_frontier_between_param(child->elem);
+      erase_frontier_between_param(child->elem, node_param);
       child = child->next;
     }
   }
-  else
+  else if (!node_param)
+    erase_frontier_between_param(root, root->children->next->elem);
+  else if (root->children->next->elem->children->next)
   {
-    child = root->children->next;
-    prev_child = root;
-    while (child->elem->type == PARAM)
+    child_prev = root->children;
+    while (child_prev->next->elem->children->next)
     {
-      if (child != prev_child->elem->children->next->elem->children->next)
-        prev_child = child;
-      if (child->elem->children->next)
-        child = child->elem->children->next;
-      else
-      {
-        while (prev_child->next)
-          prev_child =  prev_child->next;
-        prev_child->next = child;
-        del_child(prev_child->elem,
-        break;
-      }
-    }
+    child = root->children->next->elem->children->next;
+    add_child(root, child->elem);
+    del_child(root->children->next->elem, child); // tu leakserai pas toi ?
 
+      child_prev = child_prev->next;
+    }
   }
 }
 
@@ -81,7 +74,7 @@ void reduce_param(t_node *root)
   erase_separator(tmp_tree);
   tmp_tree = root;
   print_tree(root);
-  erase_frontier_between_param(tmp_tree);
+  erase_frontier_between_param(tmp_tree, NULL);
 }
 
  void reduce_tree(t_node *root)
