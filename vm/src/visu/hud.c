@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 09:37:09 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/24 12:55:17 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/25 14:26:21 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,26 @@ static void			hudvm(t_winenv *env, t_vm *vm)
 	char		*str;
 	char		*tmp;
 
-	env->cps = (env->cps + 1000 / (env->ticks - env->lastticks + \
-	!(env->ticks - env->lastticks))) / 2;
+	env->cps = 1000 /
+				(env->ticks - env->lastticks + !(env->ticks - env->lastticks));
 	dst.y = env->hudrect.w / 10;
-	ft_asprintf(&str, "Cycle :         %14lu%c", vm->cycle, 0);
+	ft_asprintf(&str, "Cycle :         %14lu", vm->cycle);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "Processes :     %14lu%c", vm->nb_process, 0);
+	ft_asprintf(&str, "Processes :     %14lu", vm->nb_process);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&tmp, "%lu/%lu%c", vm->curr_c_todie, vm->c_todie, 0);
-	ft_asprintf(&str, "Cycles to die : %14s%c", tmp, 0);
+	ft_asprintf(&tmp, "%lu/%lu%c", vm->curr_c_todie, vm->c_todie);
+	ft_asprintf(&str, "Cycles to die : %15s", tmp);
 	free(tmp);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "Cycle delta :   %14lu%c", vm->c_delta, 0);
+	ft_asprintf(&str, "Cycle delta :   %14lu", vm->c_delta);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "NBR_LIVE :      %11lu/%lu%c", vm->nbr_live - \
-	vm->old_nbr_live, NBR_LIVE, 0);
+	ft_asprintf(&str, "NBR_LIVE :      %11lu/%lu", vm->nbr_live - \
+	vm->old_nbr_live, NBR_LIVE);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "Checks :        %11lu/%lu%c", MAX_CHECKS - \
-	vm->max_check, MAX_CHECKS, 0);
+	ft_asprintf(&str, "Checks :        %11lu/%lu", MAX_CHECKS - \
+	vm->max_check, MAX_CHECKS);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "CPS :           %14lu%c", env->cps, 0);
+	ft_asprintf(&str, "CPS :           %14lu", env->cps);
 	dst = hudputstr(env, str, dst);
 }
 
@@ -68,18 +68,18 @@ static void			hudchamp(t_winenv *env, t_vm *vm, t_header *champ, int i)
 	dst.y = env->hudrect.w / 10 + env->hudrect.h * i / 5;
 	dst.y = env->hudrect.h + env->charrect.h - (4 - i) * \
 	(env->charrect.h * 7 + env->hudrect.w / 20);
-	ft_asprintf(&str, "Champion %d : %16s%c", champ->num, champ->prog_name, 0);
+	ft_asprintf(&str, "Champion %d : %16s", champ->num, champ->prog_name);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "Size : %22lu%c", champ->prog_size, 0);
+	ft_asprintf(&str, "Size : %22lu", champ->prog_size);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&tmp, "%lu (%lu)%c", vm->cycle - \
-	champ->last_live, champ->last_live, 0);
-	ft_asprintf(&str, "Last live : %17s%c", tmp, 0);
+	ft_asprintf(&tmp, "%lu (%lu)", vm->cycle - \
+	champ->last_live, champ->last_live);
+	ft_asprintf(&str, "Last live : %17s", tmp);
 	free(tmp);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "Lives : %21lu%c", champ->nb_live_p, 0);
+	ft_asprintf(&str, "Lives : %21lu", champ->nb_live_p);
 	dst = hudputstr(env, str, dst);
-	ft_asprintf(&str, "#############################%c", 0);
+	ft_asprintf(&str, "Processes : %17lu", champ->nb_process);
 	dst = hudputstr(env, str, dst);
 }
 
