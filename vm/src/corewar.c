@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/25 13:34:14 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/25 14:00:30 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ static void				init_process(t_header *champ, t_vm *env)
 			pc = (MEM_SIZE / env->nb_player) + env->process->pc;
 		add_process(&env->process, new_process(env->process, pc, env));
 		(env->nb_process)++;
+		(champ->nb_process)++;
 		env->process->champ = champ;
 		env->process->reg[0] = champ->num;
 		env->process->inst = env->memory[env->process->pc];
@@ -101,7 +102,7 @@ int						main(int ac, char **av)
 		ft_printf("Player %d(%s) win !\nThe game was finish at cycle %ld.\n", \
 		env.ll_champ->num, env.ll_champ->prog_name, env.cycle);
 	else
-		ft_putendl("Nobody win, no live");
+		ft_putendl("\nNobody win, no live");
 	while (env.option->visu)
 		env.option->visu = visu();
 	return (0);

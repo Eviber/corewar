@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/03/24 19:01:38 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/25 13:54:25 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define IND_CODE				3
 
 # define MAX_ARGS_NUMBER		4
-# define MAX_PLAYERS			79
-# define MEM_SIZE				(79*1024) // reset omg
+# define MAX_PLAYERS			4
+# define MEM_SIZE				(4*1024) // reset omg
 # define IDX_MOD				(MEM_SIZE / 8)
 # define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS)
 
@@ -71,6 +71,7 @@ typedef struct			s_header
 	unsigned long		last_live;
 	unsigned long		nb_live;
 	unsigned long		nb_live_p;
+	unsigned long		nb_process;
 	struct s_header		*next;
 	int					index_color;
 }						t_header;

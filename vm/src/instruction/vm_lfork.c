@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 17:26:54 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/25 13:33:22 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/25 13:58:34 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void			vm_lfork(t_process *process, t_vm *env)
 	new_pc = process->pc + param;
 	add_process(&env->process, new_process(process, new_pc, env));
 	env->process->inst = -1;
+	(env->process->champ->nb_process)++;
 	(env->nb_process)++;
 	process->pc += 3;
 }
