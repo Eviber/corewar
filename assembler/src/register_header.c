@@ -6,7 +6,7 @@
 /*   By: gcollett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 15:48:10 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/22 15:48:14 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/03/25 18:36:26 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,24 @@
 
 static void   ft_realloc_line(t_node *node, char *buf, int old_s, int add_s)
 {
-  char *result;
-  int i;
+	char *result;
+	int i;
 
-  i = -1;
-  if (old_s < 0)
-    old_s = 0;
-  result = ft_memalloc(old_s + add_s + 1);
-  if (!result)
-    pexit("Malloc returned null\n", 1);
-  while (++i < old_s)
-    result[i] = node->name[i];
-  while (i < (old_s + add_s))
-  {
-    result[i] = buf[i - old_s];
-    i++;
-  }
-  free(node->name);
-  node->name = result;
+	i = -1;
+	if (old_s < 0)
+		old_s = 0;
+	result = ft_memalloc(old_s + add_s + 1);
+	if (!result)
+		pexit("Malloc returned null\n", 1);
+	while (++i < old_s)
+		result[i] = node->name[i];
+	while (i < (old_s + add_s))
+	{
+		result[i] = buf[i - old_s];
+		i++;
+	}
+	free(node->name);
+	node->name = result;
 }
 
 static void fill_name(t_node *node, char *line, int fd, int i) // pense a verifier les length de name et de comment sur ment dans le parser
@@ -72,8 +72,8 @@ static void fill_name(t_node *node, char *line, int fd, int i) // pense a verifi
 
 static void register_command(t_node *header, char *line, int fd, int type)
 {
-  t_node *node;
-  int i;
+	t_node *node;
+	int i;
 
   i = 0;
   while (line[i] && ft_isspace(line[i]) && line[i] != '"')
@@ -89,12 +89,12 @@ static void register_command(t_node *header, char *line, int fd, int type)
     pexit("Champion comment too long\n", -3);
 }
 
-void			get_cmd(t_node *header,char *line, int fd)
+void			get_cmd(t_node *header, char *line, int fd)
 {
 	if (!ft_strncmp(line, ".name", 5))
 		register_command(header, line + 5, fd, CMD_NAME);
 	else if (!ft_strncmp(line, ".comment", 8))
 		register_command(header, line + 8, fd, CMD_CMT);
-  else
-    pexit("attribut invalid\n", -1);
+	else
+		pexit("attribut invalid\n", -1);
 }
