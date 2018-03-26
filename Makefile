@@ -81,15 +81,18 @@ VM_SRC =			$(VM_PARS)\
 					verbose.c\
 					params.c
 
-ASM_SRC =		asm.c							\
-						lexer.c						\
-						tree_funcs.c			\
-						print_tree.c			\
-						register_header.c	\
-						check_param.c			\
-						check_line.c			\
-						ass_parser.c			\
-						reduce_tree.c 		\
+ASM_SRC =		asm.c								\
+						lexer.c							\
+						tree_funcs.c				\
+						print_tree.c				\
+						register_header.c		\
+						check_param.c				\
+						check_line.c				\
+						ass_parser.c				\
+						reduce_tree.c 			\
+						error.c							\
+						check_fct_params.c	\
+						translate.c					\
 
 
 

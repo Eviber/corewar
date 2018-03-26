@@ -61,6 +61,16 @@ typedef struct		s_rules
 	t_token			res[5];
 }					t_rules;
 
+typedef struct		s_op
+{
+	char		*name;
+	int		nb_params;
+	short		type;
+	int		has_octal;
+	int		half_dir_size;
+  int opcode;
+}			t_op;
+
 t_node				*lexer(char *prog, int fd);
 
 t_node				*create_node(t_token type, char *name);
@@ -80,5 +90,8 @@ void check_param(t_node *node_param, char *param, int i);
 void parser(t_node *root);
 
  void reduce_tree(t_node *root);
+ void ft_error(char *name, int error, t_token type);
+ void check_fct_params(t_node *root);
+ void translate(t_node *tree);
 
 #endif

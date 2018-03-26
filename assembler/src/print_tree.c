@@ -16,7 +16,8 @@
 
 void print_token(int index, int deepness)
 {
-  ft_printf("%*Type = ", deepness);
+  if (deepness > 0)
+    ft_printf("%*Type = ", deepness);
   if (index == NONE)
    ft_printf("NONE\n");
   else if (index == PROG)
@@ -60,7 +61,7 @@ static void recursive_tree(t_node *elem, int deepness)
 
   child = elem->children;
   print_token(elem->type, deepness);
-  ft_printf("%*Name = |%s|\n", deepness, elem->name);
+  ft_printf("%*Name = |%s| %p\n", deepness, elem->name, elem);
   if (child)
     recursive_tree(child->elem, deepness + 4);
   while (child && child->next)

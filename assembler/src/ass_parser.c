@@ -80,6 +80,7 @@ void parser(t_node *root)
 	rules = get_rules();
   check_grammar(tmp_tree, rules, 0);
   reduce_tree(root);
-  //check_fct_params(root);
+	tmp_tree = root,
+  check_fct_params(tmp_tree);
   //translate(root);
 }

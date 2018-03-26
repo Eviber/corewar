@@ -30,13 +30,13 @@ void erase_frontier_between_param(t_node *root, t_node *node_param)
     erase_frontier_between_param(root, root->children->next->elem);
   else if (root->children->next->elem->children->next)
   {
+    print_token(root->type,  0);
     child_prev = root->children;
     while (child_prev->next->elem->children->next)
     {
-    child = root->children->next->elem->children->next;
-    add_child(root, child->elem);
-    del_child(root->children->next->elem, child); // tu leakserai pas toi ?
-
+      child = child_prev->next->elem->children->next;
+      add_child(root, child->elem);
+      del_child(child_prev->next->elem, child); // tu leakserai pas toi ?
       child_prev = child_prev->next;
     }
   }
@@ -72,9 +72,7 @@ void reduce_param(t_node *root)
 
   tmp_tree = root;
   erase_separator(tmp_tree);
-  tmp_tree = root;
-  print_tree(root);
-  erase_frontier_between_param(tmp_tree, NULL);
+  erase_frontier_between_param(root, NULL);
 }
 
  void reduce_tree(t_node *root)
@@ -83,6 +81,4 @@ void reduce_param(t_node *root)
 
    tmp_tree = root;
    reduce_param(tmp_tree);
-   print_tree(root);
-   //reduce_code(root);
  }

@@ -94,6 +94,7 @@ t_node				*lexer(char *prog, int fd)
 		check_header(tree, fd);
 		check_code(tree, fd);
 		print_tree(tree);
+		translate(tree);
 		return (tree);
 	}
 	return (NULL);
