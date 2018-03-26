@@ -92,6 +92,6 @@ void parser(t_node *root);
  void reduce_tree(t_node *root);
  void ft_error(char *name, int error, t_token type);
  void check_fct_params(t_node *root);
- void translate(t_node *tree);
+ void translate(t_node *tree, int size);
 
 #endif

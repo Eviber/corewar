@@ -26,7 +26,7 @@ t_op *get_opt()
 	return(op_tab);
 }
 
-void analyse_param(t_node *node) //a finir en gerant mieux les types checker la differences si tout les caracteres correspondent au direct indirect.
+void analyse_param(t_node *node) //
 {
 	int i;
 
@@ -46,7 +46,7 @@ void analyse_param(t_node *node) //a finir en gerant mieux les types checker la 
 	}
 }
 
-void get_param(t_node *root, t_op *instruction, int *size)
+void get_param(t_node *root, t_op *instruction)
 {
 	t_child *child;
 	t_child *deep_child;
@@ -54,7 +54,6 @@ void get_param(t_node *root, t_op *instruction, int *size)
 
 	child = root->children->next;
 	i = 1;
-	*size += 1 + (instruction->has_octal);
 	while (child)
 	{
 		deep_child = child;
@@ -73,7 +72,7 @@ void get_param(t_node *root, t_op *instruction, int *size)
 	}
 }
 
-void search_inst(t_node *root, t_op *instruction, int *size)
+void search_inst(t_node *root, t_op *instruction)
 {
 	t_child *child;
 	int i;
@@ -93,21 +92,18 @@ void search_inst(t_node *root, t_op *instruction, int *size)
 		while (++i < 16 && ft_strcmp(root->children->elem->name, instruction[i].name))
 			;
 		if (i < 16)
-			get_param(root, &instruction[i], size);
+			get_param(root, &instruction[i]);
 		else
 			ft_error(root->children->elem->name, 7, root->type);
   }
 }
 
-int check_fct_params(t_node *root)
+void check_fct_params(t_node *root)
 {
 	t_op *instruction;
 	t_node *tmp_tree;
-	long i;
 
-	i = -1;
 	instruction = get_opt();
 	tmp_tree = root;
-	search_inst(root, instruction, &i);
-	return (i);
+	search_inst(root, instruction);
 }
