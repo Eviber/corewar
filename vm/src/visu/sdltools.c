@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:42:23 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/06 08:22:44 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/26 19:17:32 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,15 @@ void			cleartex(SDL_Renderer *render, SDL_Texture *tex, SDL_Color col)
 	SDL_RenderClear(render);
 }
 
-SDL_Texture		*strtotex(char *str, t_winenv *env, SDL_Color color)
+SDL_Texture		*strtotex(char *str, t_winenv *env, SDL_Color color, int fat)
 {
 	SDL_Texture		*tex;
 	SDL_Surface		*surf;
 
-	surf = TTF_RenderText_Blended(env->font, str, color);
+	if (fat)
+		surf = TTF_RenderText_Blended(env->bigfont, str, color);
+	else
+		surf = TTF_RenderText_Blended(env->font, str, color);
 	if (!surf)
 		panic("Failed creating text surface", SDL_GetError());
 	tex = SDL_CreateTextureFromSurface(env->render, surf);

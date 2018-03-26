@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:03:43 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/06 16:05:36 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/26 19:19:10 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ SDL_Texture			*valtotex(t_winenv *env, int val, int base, SDL_Color color)
 	str[0] = digits[val / base];
 	str[1] = digits[val % base];
 	str[2] = '\0';
-	return (strtotex(str, env, color));
+	return (strtotex(str, env, color, 0));
 }
 
 int					quitvisu(t_winenv *env)

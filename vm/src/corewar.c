@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/25 14:00:30 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/25 19:09:24 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,9 @@ int						main(int ac, char **av)
 		env.ll_champ->num, env.ll_champ->prog_name, env.cycle);
 	else
 		ft_putendl("\nNobody win, no live");
-	while (env.option->visu)
+	//while (env.option->visu)
 		env.option->visu = visu();
+	if (env.option->visu)
+		visu_finish(env.ll_champ);
 	return (0);
 }
