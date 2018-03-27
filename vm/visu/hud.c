@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 09:37:09 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/25 15:10:41 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/26 19:18:36 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static SDL_Rect		hudputstr(t_winenv *env, char *str, SDL_Rect dst,
 {
 	SDL_Texture	*tex;
 
-	tex = strtotex(str, env, color);
+	tex = strtotex(str, env, color, 0);
 	free(str);
 	SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
 	dst.x = (env->hudrect.w - dst.w) / 2;

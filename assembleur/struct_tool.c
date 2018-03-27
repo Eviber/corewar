@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/24 17:13:56 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/03/26 20:37:05 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,27 @@ void	switch_extension(t_env *env, char *src, char *new_extension)
 	size_t	cmp;
 	size_t	i;
 
-	cmp = ft_strlen(src);
-	while (src[--cmp] != '.')
-		;
-	res = ft_memalloc_exit(cmp + ft_strlen(new_extension) + 1);
+	cmp = ft_strlen(src);	
 	i = -1;
-	while (++i < cmp)
-		res[i] = src[i];
-	cmp = -1;
-	while (new_extension[++cmp])
-		res[i++] = new_extension[cmp];
-	env->name = res;
+	while (src[++i] && src[i] != '.')
+		;
+	if (src[i] != '.')
+	{
+		env->name = src;
+		ft_error(env, src, 14);
+	}
+	else
+	{
+		res = ft_memalloc_exit(i + ft_strlen(new_extension) + 1);
+		cmp =cmp - (cmp - i);
+		i = -1;
+		while (++i < cmp)
+			res[i] = src[i];
+		cmp = -1;
+		while (new_extension[++cmp])
+			res[i++] = new_extension[cmp];
+		env->name = res;
+	}
 }
 
 void	fill_length_file(t_env *env)
@@ -61,9 +71,8 @@ int		find_next_instruction(char *src)
 
 	i = -1;
 	while (src[++i] && src[i] != LABEL_CHAR && src[i] !=
-			DIRECT_CHAR && src[i] != COMMENT_CHAR && src[i] !=
-			SEPARATOR_CHAR && !ft_isspace(src[i]) && src[i] !=
-			OTHER_COMMENT_CHAR)
+			DIRECT_CHAR && src[i] != COMMENT_CHAR && !ft_isspace(src[i]) 
+			&& src[i] != OTHER_COMMENT_CHAR)
 		;
 	if (src[i])
 		return (i);

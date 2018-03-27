@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/03/25 19:49:32 by vsporer          ###   ########.fr        #
+#    Updated: 2018/03/27 14:56:25 by gcollett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,8 @@ VM_VISU =			visu.c\
 					visutools.c\
 					hsl.c\
 					sdltools.c\
-					event_manager.c
+					event_manager.c \
+					visu_finish.c
 
 VM_SRC =			$(VM_PARS)\
 					$(VM_INST)\

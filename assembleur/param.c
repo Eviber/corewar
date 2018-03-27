@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/24 16:57:56 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/03/26 20:44:05 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,13 +118,17 @@ void			get_param(t_op op, char *src, t_env *env)
 	if (op.has_octal)
 		pos = env->pos++;
 	octal = launc_param(op, src, env, 0);
-	if (pos)
+	if (!env->error)
 	{
-		while (octal < 64)
-			octal *= 4;
-		memory_manager(env, 1);
-		env->champ[pos] = octal;
+		if (pos)
+		{
+			while (octal < 64)
+				octal *= 4;
+			memory_manager(env, 1);
+			env->champ[pos] = octal;
+		}
+		if (!src[env->index])
+			--env->index;
 	}
-	if (!src[env->index])
-		--env->index;
 }
+

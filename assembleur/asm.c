@@ -6,10 +6,11 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/24 15:18:01 by gcollett         ###   ########.fr       */
-/*                                                                            */
+/*   Updated: 2018/03/26 20:37:33 by vsporer          ###   ########.fr       */
+/*                                                                           */
 /* ************************************************************************** */
 
+// pense a gerer les epsae avant un attribut 
 #include "asm.h"
 
 int		search_inst(char *src, t_env *env)
@@ -34,7 +35,7 @@ int		search_inst(char *src, t_env *env)
 		get_param(env->op[cmp], src, env);
 		return (1);
 	}
-	src[env->index + fin_src] = '\0';
+	src[env->index + fin_src + 1] = '\0';
 	ft_error(env, src + env->index, 7);
 	return (0);
 }
@@ -42,23 +43,19 @@ int		search_inst(char *src, t_env *env)
 void	read_champ(t_env *env, char *line)
 {
 	int		state;
-	long	next_space;
-	long	next_label_token;
 
 	state = 0;
-	next_space = find_next_instruction(line);
-	next_label_token = find_next(line, LABEL_CHAR);
-	while (line[++env->index] && line[env->index] !=
-			COMMENT_CHAR && state != 2 && !env->error
-			&& line[env->index] != COMMENT_CHAR)
+	while (line[++env->index] && line[env->index] != COMMENT_CHAR && state 
+			!= 2 && !env->error && line[env->index] != COMMENT_CHAR)
 	{
 		if (ft_isspace(line[env->index]))
 			;
 		else if (state == 0 && is_label(line, env->index))
 		{
-			new_label(env, line, ft_strchr(line + env->index,
-						LABEL_CHAR) - line, env->label);
-			env->index += (ft_strchr(line + env->index, LABEL_CHAR) - line);
+			new_label(env, line + env->index, ft_strchr(line + env->index,
+						LABEL_CHAR) - line - env->index, env->label);
+			env->index += (ft_strchr(line + env->index, LABEL_CHAR) - line - 
+					env->index);
 			state = 1;
 		}
 		else if (state != 2 && search_inst(line, env) && (state = 2))
@@ -121,7 +118,7 @@ char	*read_file(char *file, t_env *env)
 				read_attribut(env, line);
 			else if (env->state == 2 && (env->state = 3))
 				env->pos = 0;
-			else if (env->state == 3)
+			if (env->state == 3)
 				read_champ(env, line);
 			ft_memdel((void **)&line);
 		}
@@ -143,10 +140,12 @@ int		main(int argc, char **argv)
 	else if ((env = init_env(1, NULL)))
 		while (--argc > 0)
 		{
-			switch_extension(env, argv[argc], ".cor");
 			if (fd < 0 && (env->error = 1))
 				ft_dprintf(2, "Open error for creation of %s\n", env->name);
-			read_file(argv[argc], env);
+			if (!env->error)
+				switch_extension(env, argv[argc], ".cor");
+			if (!env->error)
+				read_file(argv[argc], env);
 			if (env->state == 3 && !env->error)
 			{
 				fd = open(env->name, O_RDWR | O_CREAT | O_TRUNC, 0666);

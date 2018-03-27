@@ -100,7 +100,7 @@ void	read_attribut(t_env *env, char *line)
 			&& ((!(state & 16)) || (state & 16 && state & 32 && !(state & 2))))
 		state = search_attr(line, env, state);
 	if (((state & 1) && !(state & 4)) || ((state & 8) && !(state & 32)))
-		state = ft_fill_attr(line, env, state, 0);
+		state = ft_fill_attr(line, env, state, -1);
 	if (state == 63)
 		env->state = 2;
 }

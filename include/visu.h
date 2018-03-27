@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 22:47:24 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/24 14:42:13 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/26 19:18:01 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct			s_winenv
 	SDL_Rect			charrect;
 	SDL_Window			*win;
 	SDL_Renderer		*render;
+	TTF_Font			*bigfont;
 	TTF_Font			*font;
 	SDL_Texture			*wintex;
 	SDL_Texture			*memtex;
@@ -56,7 +57,7 @@ t_winenv				*getsdlenv(t_vm *vm);
 SDL_Texture				*getnewtex(t_winenv *env, int access, int w, int h);
 void					cleartex(SDL_Renderer *render, SDL_Texture *tex, \
 						SDL_Color col);
-SDL_Texture				*strtotex(char *str, t_winenv *env, SDL_Color color);
+SDL_Texture				*strtotex(char *str, t_winenv *env, SDL_Color color, int fat);
 
 /*
 **	Specific tools
@@ -77,6 +78,7 @@ void					huddisp(t_winenv *env);
 **	Main functions
 */
 void					visu_init(t_vm *vm);
+void					visu_finish(t_header *winner);
 int						visu(void);
 void					putinvisu(unsigned int addr, t_header *champ);
 
