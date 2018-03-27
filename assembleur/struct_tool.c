@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/26 20:37:05 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/27 21:26:12 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,15 @@ void	switch_extension(t_env *env, char *src, char *new_extension)
 	size_t	i;
 
 	cmp = ft_strlen(src);
-	i = -1;
-	while (src[++i] && src[i] != '.')
+	i = cmp;
+	while (i-- && src[i] != '.')
 		;
 	if (src[i] != '.')
-	{
-		env->name = src;
 		ft_error(env, src, 14);
-	}
 	else
 	{
 		res = ft_memalloc_exit(i + ft_strlen(new_extension) + 1);
-		cmp =cmp - (cmp - i);
+		cmp = cmp - (cmp - i);
 		i = -1;
 		while (++i < cmp)
 			res[i] = src[i];

@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 00:09:48 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/24 12:47:14 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/27 21:37:47 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,20 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdarg.h>
+# include <unistd.h>
 
 # define BUFF_SIZE 500
+
+typedef	struct		s_memory
+{
+	int				fd;
+	char			*buf;
+	int				taille_buf;
+	int				cmp_line;
+	int				cmp_buf;
+	struct s_memory	*next;
+	struct s_memory	*prev;
+}					t_memory;
 
 typedef struct		s_list
 {
@@ -102,6 +114,7 @@ char				*ft_strtrimall(char const *s);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 char				*ft_uimaxtoa(uintmax_t n, unsigned int base);
+void				*ft_memalloc_exit(size_t size);
 
 int					get_next_line(const int fd, char **line);
 

@@ -14,8 +14,8 @@
 
 int		check_int_param(char *str, t_env *env, long i)
 {
-	while (str[++i] && str[i] != SEPARATOR_CHAR &&
-			!ft_isspace(str[i]) && !env->error)
+	while (str[++i] && str[i] != SEPARATOR_CHAR && str[i] != COMMENT_CHAR &&
+			!ft_isspace(str[i]) && !env->error && str[i] != OTHER_COMMENT_CHAR)
 		if (!ft_isdigit(str[i]) || str[i] == '-')
 			ft_error(env, str, 4);
 	return (1);

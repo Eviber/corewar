@@ -93,6 +93,7 @@ void				new_label(t_env *env, char *src, size_t end_src,
 		t_label *tmp);
 int					is_label(char *src, int start);
 void				check_label(t_env *env, t_label *tmp);
+void				clean_label(t_env *env, t_label *tmp);
 
 /*
 ** struct_tool

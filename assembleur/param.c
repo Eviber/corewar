@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/26 20:44:05 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/27 21:31:04 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,13 @@ static int		check_param(char *src, t_env *env, t_op op, short type)
 	return (current_type);
 }
 
+unsigned char check_norme(int nb_arg, t_op op, t_env *env, unsigned char octal)
+{
+	if (nb_arg < op.nb_params)
+		ft_error(env, op.name, 15);
+	return (octal)
+}
+
 unsigned char	launc_param(t_op op, char *src, t_env *env, unsigned char octal)
 {
 	int				stat;
@@ -85,19 +92,17 @@ unsigned char	launc_param(t_op op, char *src, t_env *env, unsigned char octal)
 			;
 		else if (stat == 0 && src[env->index] != SEPARATOR_CHAR && (stat = 1))
 			octal = octal * 4 + check_param(src, env, op, type);
-		else if ((stat == 1 || stat == 3) && src[env->index] == SEPARATOR_CHAR
-		 && !(stat = 0))
+		else if ((stat == 1 || stat == 3) && src[env->index] == SEPARATOR_CHAR)
 		{
-			if ((type /= 8) > 0 && ++nb_arg > op.nb_params)
+			if (!(stat = 0) && ++nb_arg > op.nb_params)
 				ft_error(env, op.name, 6);
+			type /= 8;
 		}
 		else if (stat != 1)
 			ft_error(env, op.name, 4);
 		++env->index;
 	}
-	if (nb_arg < op.nb_params)
-		ft_error(env, op.name, 15);
-	return (octal);
+	return (check_norme(nb_arg, op, env, octal));
 }
 
 void			get_param(t_op op, char *src, t_env *env)

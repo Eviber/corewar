@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/26 20:12:53 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/27 21:30:09 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		get_label(char *name, t_env *env, int i, int size)
 	if (tmp && !ft_strncmp(tmp->name, name, i) && !(tmp->name[i]))
 		if (tmp->index != -1)
 			return (tmp->index - env->pos_last_inst);
-	if (!tmp || (ft_strncmp(tmp->name, name, i) || !tmp->name[i]))
+	if (!tmp || (ft_strncmp(tmp->name, name, i) || tmp->name[i]))
 	{
 		if (tmp && (tmp->next = ft_memalloc_exit(sizeof(t_label))))
 			tmp = tmp->next;
@@ -41,15 +41,11 @@ void	new_label(t_env *env, char *src, size_t end_src, t_label *tmp)
 {
 	if (tmp)
 	{
-		while (tmp->next && (ft_strncmp(src, tmp->name, end_src) || tmp->name[end_src]))
-		{
+		while (tmp->next && (ft_strncmp(src, tmp->name, end_src) ||
+					tmp->name[end_src]))
 			tmp = tmp->next;
-		}
-		if (tmp && !ft_strncmp(src, tmp->name, end_src) &&
-				ft_strlen(tmp->name) == end_src)
-		{
+		if (tmp && !ft_strncmp(src, tmp->name, end_src) && !tmp->name[end_src])
 			tmp->index = env->pos;
-		}
 		else if ((tmp->next = ft_memalloc_exit(sizeof(t_label))))
 		{
 			tmp->next->name = ft_strsub(src, 0, end_src);
@@ -87,7 +83,6 @@ void	check_label(t_env *env, t_label *tmp)
 	tmp = env->label;
 	while (tmp && !env->error)
 	{
-
 		tmp2 = tmp->appel;
 		if (tmp->index == -1)
 		{
@@ -102,5 +97,26 @@ void	check_label(t_env *env, t_label *tmp)
 			tmp2 = tmp2->next;
 		}
 		tmp = tmp->next;
+	}
+}
+
+void	clean_label(t_env *env, t_label *tmp)
+{
+	t_roquet *tmp2;
+
+	tmp2 = NULL;
+	while (tmp)
+	{
+		tmp = env->label->next;
+		tmp2 = env->label->appel;
+		while (tmp2)
+		{
+			tmp2 = env->label->appel->next;
+			ft_memdel((void **)&env->label->appel);
+			env->label->appel = tmp2;
+		}
+		ft_strdel(&env->label->name);
+		ft_memdel((void **)&env->label);
+		env->label = tmp;
 	}
 }
