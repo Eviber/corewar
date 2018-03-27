@@ -1,0 +1,9 @@
+*.o
+*.a
+*.swp
+corewar
+asm
+a.out
+test.c
+tmp
+*.dSYM
