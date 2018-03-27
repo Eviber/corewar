@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:36:55 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/26 19:55:46 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/27 15:37:58 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ static void			initsdl(t_winenv *env, const char *name, Uint32 flags)
 	env->render = SDL_CreateRenderer(env->win, -1, SDL_RENDERER_ACCELERATED);
 	if (!env->render)
 		panic("Error while creating renderer", SDL_GetError());
-	if (TTF_Init() == -1 || !(env->font = TTF_OpenFont("roboto.ttf", 20)) ||
-		!(env->bigfont = TTF_OpenFont("impact.ttf", 200)))
+	if (TTF_Init() == -1 ||
+		!(env->font = TTF_OpenFont("vm/visu/roboto.ttf", 20)) ||
+		!(env->bigfont = TTF_OpenFont("vm/visu/impact.ttf", 200)))
 		panic("Error while initializing SDL_TTF", TTF_GetError());
 	SDL_SetRenderDrawColor(env->render, 9, 11, 16, SDL_ALPHA_OPAQUE);
 	SDL_RenderClear(env->render);
