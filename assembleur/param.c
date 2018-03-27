@@ -73,7 +73,7 @@ unsigned char check_norme(int nb_arg, t_op op, t_env *env, unsigned char octal)
 {
 	if (nb_arg < op.nb_params)
 		ft_error(env, op.name, 15);
-	return (octal)
+	return (octal);
 }
 
 unsigned char	launc_param(t_op op, char *src, t_env *env, unsigned char octal)

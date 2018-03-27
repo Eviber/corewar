@@ -66,14 +66,14 @@ void	read_champ(t_env *env, char *line)
 	}
 }
 
-t_env	*init_env(t_env *env, magic)
+t_env	*init_env(t_env *env, int magic)
 {
 	if (env)
 	{
 		env = ft_memalloc_exit(sizeof(t_env));
 		env->op = get_opt(NULL);
 	}
-	else if ((env = last_env))
+	else
 	{
 		if (env->name)
 			ft_memdel((void **)&env->name);
@@ -153,7 +153,7 @@ int		main(int argc, char **argv)
 				write(fd, env->champ, env->pos);
 				close(fd);
 			}
-			env = init_env(env, COREWAR_EXEC_MAGIC));
+			env = init_env(env, COREWAR_EXEC_MAGIC);
 		}
 	return (0);
 }
