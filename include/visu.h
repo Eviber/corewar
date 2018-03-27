@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 22:47:24 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/27 15:50:43 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/27 18:03:27 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ SDL_Texture				*valtotex(t_winenv *env, int val, int base,
 int						quitvisu(t_winenv *env);
 SDL_Color				hsl(int h, double s, double l);
 void					event_manager(t_winenv *env);
+void					end_blur(t_winenv *env, int squares[45][80],
+									SDL_Color color);
+
 /*
 **	Subfunctions
 */

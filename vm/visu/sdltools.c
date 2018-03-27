@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:42:23 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/27 15:50:49 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/27 17:40:30 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ t_winenv		*getsdlenv(t_vm *vm)
 	return (winenv);
 }
 
-void			setcolor(SDL_Renderer *render, SDL_Color color, unsigned char alpha)
+void			setcolor(SDL_Renderer *render, SDL_Color color,
+						unsigned char alpha)
 {
 	SDL_SetRenderDrawColor(render, color.r, color.g, color.b, alpha);
 }
