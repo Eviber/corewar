@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/26 19:44:11 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/27 16:01:34 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,8 @@ int						main(int ac, char **av)
 	t_vm			env;
 	t_op			*op_tab;
 
-
 	if (ac < 2 && ft_dprintf(2, "Usage: ./vm [champion.cor]\n"))
-		return(0);
+		return (0);
 	if (!(op_tab = (t_op*)ft_memalloc(sizeof(t_op) * 16)))
 		ft_exit(strerror(errno));
 	init(&env);

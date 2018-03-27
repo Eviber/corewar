@@ -31,6 +31,9 @@ punch line of %s\n", env->name);
 		ft_dprintf(2, "This is just a weak champ without any line of code\n");
 	if (error == 14)
 		ft_dprintf(2, "Extension of %s is invalid\n", name);
+	if (error == 15)
+		ft_dprintf(2, "Less argument in %s at line %d than needed\n",
+		 name, env->line);
 }
 
 void	ft_error(t_env *env, char *name, int error)

@@ -6,38 +6,52 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/23 14:11:48 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/27 16:00:20 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void	ft_print_head(t_vm *env, int cmp)
+int		ft_test_num_player(t_header *tmp, long num, t_header *player, int error)
 {
-	t_header	*tmp;
-
-	tmp = env->champion;
-	ft_printf("dump = %ld\n", env->option->dump);
-	ft_printf("visu = %ld\n", env->option->visu);
-	ft_printf("nb_player = %ld\n", env->nb_player);
 	while (tmp)
 	{
-		ft_printf("\nmagic = %x\n", tmp->magic);
-		ft_printf("num = %d\n", tmp->num);
-		ft_printf("name = %s\n", tmp->prog_name);
-		ft_printf("taille = %lu\n", tmp->prog_size);
-		ft_printf("comment = %s\n\n", tmp->comment);
+		if (tmp != player)
+		{
+			if (tmp->num_lock && tmp->num_lock == player->num_lock)
+			{
+				ft_dprintf(2, "Two champion has the same number\n");
+				exit(1);
+			}
+			else if (tmp->num == num && tmp->num_lock != num)
+			{
+				error = 1;
+				tmp->num++;
+			}
+		}
 		tmp = tmp->next;
 	}
-	while (cmp++ < MEM_SIZE - 1)
+	return (error);
+}
+
+void	ft_confirm_num_player(t_vm *env)
+{
+	t_header	*tmp;
+	int			error;
+
+	error = 1;
+	while (error == 1)
 	{
-		if (cmp && !(cmp % 64))
-			ft_printf("\n");
-		if (env->memory[cmp] < 16)
-			ft_printf("0");
-		ft_printf("%x ", env->memory[cmp]);
+		tmp = env->champion;
+		error = 0;
+		while (tmp)
+		{
+			if (tmp->num_lock)
+				tmp->num = tmp->num_lock;
+			error = ft_test_num_player(env->champion, tmp->num, tmp, error);
+			tmp = tmp->next;
+		}
 	}
-	ft_printf("\n");
 }
 
 void	ft_fill_header(t_header *tmp, char *line, unsigned long i, int error)
@@ -55,40 +69,31 @@ void	ft_fill_header(t_header *tmp, char *line, unsigned long i, int error)
 	}
 	if (error)
 		exit(1);
-	ft_printf("tmp->name = %s\n", tmp->prog_name);
 	if (tmp->magic != COREWAR_EXEC_MAGIC)
 		ft_exit("MAGIC ne correspond pas\n");
 	if (tmp->prog_size > CHAMP_MAX_SIZE)
 		ft_exit("Le champion est trop long\n");
 }
 
-void	ft_choose_num_player(t_vm *env, int num_k, int fail, int max)
+void	ft_choose_num_player(t_vm *env, int num_k)
 {
 	t_header	*tmp;
-	t_header	*tmp2;
-	int			num;
+	long		max;
 
-	num = 0;
-	while (fail == 1 && !(fail = 0))
+	max = 0;
+	tmp = env->champion;
+	while (tmp->next)
 	{
-		tmp = env->champion;
-		while (tmp->next && (tmp2 = env->champion) && (fail == 0))
-		{
-			if (tmp->num == num_k && (fail = 1))
-				tmp->num++;
-			num = tmp->num;
-			max = ((max < tmp->num) ? num : max);
-			while (tmp2->next && (fail == 0))
-			{
-				if (tmp != tmp2 && (tmp2->num == num_k || tmp2->num == num) && (fail = 1))
-					tmp2->num++;
-				max = ((max < tmp->num) ? num : max);
-				tmp2 = tmp2->next;
-			}
-			tmp = tmp->next;
-		}
+		max = ((max < tmp->num) ? tmp->num : max);
+		tmp = tmp->next;
 	}
-	tmp->num = ((num_k) ? num_k : max + 1);
+	if (num_k)
+	{
+		tmp->num = num_k;
+		tmp->num_lock = num_k;
+	}
+	else
+		tmp->num = max + 1;
 }
 
 void	ft_init_header(t_vm *env, char *line, int start, char **av)
@@ -111,7 +116,7 @@ void	ft_init_header(t_vm *env, char *line, int start, char **av)
 	}
 	if (start > 2 && !(ft_strcmp(av[start - 2], "-n")))
 		num = ft_atoi(av[start - 1]);
-	ft_choose_num_player(env, num, 1, 0);
+	ft_choose_num_player(env, num);
 	ft_fill_header(tmp, line, -1, 0);
 	ft_strdel(&line);
 }

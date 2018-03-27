@@ -12,6 +12,15 @@
 
 #include "asm.h"
 
+int		check_int_param(char *str, t_env *env, long i)
+{
+	while (str[++i] && str[i] != SEPARATOR_CHAR &&
+			!ft_isspace(str[i]) && !env->error)
+		if (!ft_isdigit(str[i]) || str[i] == '-')
+			ft_error(env, str, 4);
+	return (1);
+}
+
 void	load_new_roquet(t_label *target, t_env *env, int size)
 {
 	t_roquet *tmp;

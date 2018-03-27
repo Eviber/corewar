@@ -10,7 +10,7 @@
 /*                                                                           */
 /* ************************************************************************** */
 
-// pense a gerer les epsae avant un attribut 
+// pense a gerer les epsae avant un attribut
 #include "asm.h"
 
 int		search_inst(char *src, t_env *env)
@@ -45,7 +45,7 @@ void	read_champ(t_env *env, char *line)
 	int		state;
 
 	state = 0;
-	while (line[++env->index] && line[env->index] != COMMENT_CHAR && state 
+	while (line[++env->index] && line[env->index] != COMMENT_CHAR && state
 			!= 2 && !env->error && line[env->index] != COMMENT_CHAR)
 	{
 		if (ft_isspace(line[env->index]))
@@ -54,13 +54,13 @@ void	read_champ(t_env *env, char *line)
 		{
 			new_label(env, line + env->index, ft_strchr(line + env->index,
 						LABEL_CHAR) - line - env->index, env->label);
-			env->index += (ft_strchr(line + env->index, LABEL_CHAR) - line - 
+			env->index += (ft_strchr(line + env->index, LABEL_CHAR) - line -
 					env->index);
 			state = 1;
 		}
 		else if (state != 2 && search_inst(line, env) && (state = 2))
 			;
-		else
+		else if (!env->error)
 			ft_error(env, NULL, 1);
 	}
 }
@@ -108,7 +108,6 @@ char	*read_file(char *file, t_env *env)
 	long	tmp;
 
 	tmp = 0;
-	line = ft_memalloc_exit(CHAMP_MAX_SIZE);
 	fd = open(file, O_RDONLY);
 	if (fd > 0)
 		while (get_next_line(fd, &line) > 0 && ++env->line && !env->error)
@@ -140,8 +139,6 @@ int		main(int argc, char **argv)
 	else if ((env = init_env(1, NULL)))
 		while (--argc > 0)
 		{
-			if (fd < 0 && (env->error = 1))
-				ft_dprintf(2, "Open error for creation of %s\n", env->name);
 			if (!env->error)
 				switch_extension(env, argv[argc], ".cor");
 			if (!env->error)

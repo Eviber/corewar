@@ -69,7 +69,6 @@ typedef struct		s_env
 /*
 ** attribut
 */
-char				search_attr(char *line, t_env *env, char state);
 void				read_attribut(t_env *env, char *line);
 
 /*
@@ -115,5 +114,6 @@ void				load_new_roquet(t_label *target, t_env *env, int size);
 void				fill_memory(char *mem, long value, int size, int start);
 void				*ft_memalloc_exit(size_t size);
 void				memory_manager(t_env *env, int size);
+int					check_int_param(char *str, t_env *env, long i);
 
 #endif

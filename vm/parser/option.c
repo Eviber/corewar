@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/24 17:30:39 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/03/27 15:59:36 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,22 @@ int		search_opt(char *str, t_vm *env)
 		while (++cmp < NB_OPTION && ft_strcmp(str + 1, env->opt[cmp].name))
 			;
 	if ((!(str + 1) || cmp > NB_OPTION - 1) &&
-			ft_dprintf(2, "%s is not a valid n\n", str))
+			ft_dprintf(2, "%s is not a valid option\n", str))
 		exit(1);
 	return (cmp);
+}
+
+void	check_if_number_is_valid(long num, int cmp)
+{
+	if (cmp == 1 && (num == 0) &&
+	ft_dprintf(2, "0 is not a valid number of player\n"))
+		exit(1);
+	if (cmp == 2 && (num != SHOW_LIVE && num != SHOW_CYCL
+		&& num != SHOW_DEAT && num != SHOW_MOVE))
+	{
+		ft_dprintf(2, "%d is not a valid number for verbose option\n", num);
+		exit(1);
+	}
 }
 
 int		opt_have_value(int pos, char **av, int cmp, t_vm *env)
@@ -51,6 +64,7 @@ int		opt_have_value(int pos, char **av, int cmp, t_vm *env)
 			++i;
 		while (av[pos + 1] && av[pos + 1][++i] && ft_isdigit(av[pos + 1][i]))
 			;
+		check_if_number_is_valid(ft_atol(av[pos + 1]), cmp);
 		if (av[pos + 1] && !(av[pos + 1][i]))
 			return (1);
 	}

@@ -77,29 +77,6 @@ t_process **st, t_process *prev)
 			*lst = todel->next;
 		else
 			prev->next = todel->next;
-//		ft_memdel((void**)&todel);
 		add_process(st, todel);
 	}
 }
-/*
-void				del_process(t_process **lst, t_process *todel)
-{
-	unsigned long	i;
-	t_process		*tmp;
-
-	i = 0;
-	tmp = *lst;
-	if (todel)
-	{
-		if (*lst == todel)
-			*lst = todel->next;
-		else
-		{
-			while (tmp && tmp->next != todel)
-				tmp = tmp->next;
-			if (tmp)
-				tmp->next = todel->next;
-		}
-		ft_memdel((void**)&todel);
-	}
-}*/

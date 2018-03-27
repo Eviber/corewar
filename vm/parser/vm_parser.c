@@ -65,7 +65,6 @@ static unsigned long	check_arg(int ac, char **av, t_vm *env)
 		else
 			nb_champ++;
 	}
-	ft_printf("nb_champ = %d | CHAM_MAX = %d\n ", nb_champ, MAX_PLAYERS);
 	if (nb_champ > MAX_PLAYERS)
 		ft_exit("Too many player\n");
 	if (nb_champ == 0)
@@ -111,7 +110,7 @@ void					parsing(int ac, char **av, t_vm *env, int cmp)
 			rd(line, env, cmp, ++nm_champ * (MEM_SIZE / (env->nb_player)));
 			close(fd);
 		}
-//	ft_confirm_num_player(env);
+	ft_confirm_num_player(env);
 	ft_memdel((void**)&line);
 	intro_champ(env);
 }

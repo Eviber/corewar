@@ -55,7 +55,6 @@ static void		dump_process(t_process *process, t_vm *env)
 static void		dump_memory(unsigned char mem[], t_process *process, t_vm *env)
 {
 	unsigned long	i;
-//	t_rgb			color;
 	t_process		*tmp;
 
 	i = 0;
@@ -69,11 +68,7 @@ static void		dump_memory(unsigned char mem[], t_process *process, t_vm *env)
 			ft_putstr("0x000000 : ");
 		else if (i % 32 == 0)
 			ft_printf("%#08x : ", i);
-/*		if (tmp && (color = get_rgb(tmp, env)).r)
-			ft_printf("\033[48;2;%d;%d;%dm%02x\033[0m", color.r, color.g, \
-			color.b, (int)mem[i]);
-		else*/
-			ft_printf("%02x", (int)mem[i]);
+		ft_printf("%02x", (int)mem[i]);
 		i++;
 		if (i % 32 == 0)
 			ft_putchar('\n');

@@ -18,7 +18,7 @@ void	switch_extension(t_env *env, char *src, char *new_extension)
 	size_t	cmp;
 	size_t	i;
 
-	cmp = ft_strlen(src);	
+	cmp = ft_strlen(src);
 	i = -1;
 	while (src[++i] && src[i] != '.')
 		;
@@ -71,7 +71,7 @@ int		find_next_instruction(char *src)
 
 	i = -1;
 	while (src[++i] && src[i] != LABEL_CHAR && src[i] !=
-			DIRECT_CHAR && src[i] != COMMENT_CHAR && !ft_isspace(src[i]) 
+			DIRECT_CHAR && src[i] != COMMENT_CHAR && !ft_isspace(src[i])
 			&& src[i] != OTHER_COMMENT_CHAR)
 		;
 	if (src[i])

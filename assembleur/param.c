@@ -40,15 +40,6 @@ t_op			*get_opt(t_op *op_tab)
 	return (op_tab);
 }
 
-static int		check_int_param(char *str, t_env *env, long i)
-{
-	while (str[++i] && str[i] != SEPARATOR_CHAR &&
-			!ft_isspace(str[i]) && !env->error)
-		if (!ft_isdigit(str[i]) || str[i] == '-')
-			ft_error(env, str, 4);
-	return (1);
-}
-
 static int		check_param(char *src, t_env *env, t_op op, short type)
 {
 	unsigned int	value;
@@ -94,16 +85,18 @@ unsigned char	launc_param(t_op op, char *src, t_env *env, unsigned char octal)
 			;
 		else if (stat == 0 && src[env->index] != SEPARATOR_CHAR && (stat = 1))
 			octal = octal * 4 + check_param(src, env, op, type);
-		else if ((stat == 1 || stat == 3) && src[env->index] == SEPARATOR_CHAR)
+		else if ((stat == 1 || stat == 3) && src[env->index] == SEPARATOR_CHAR
+		 && !(stat = 0))
 		{
-			if (!(stat = 0) && ++nb_arg > op.nb_params)
+			if ((type /= 8) > 0 && ++nb_arg > op.nb_params)
 				ft_error(env, op.name, 6);
-			type /= 8;
 		}
 		else if (stat != 1)
 			ft_error(env, op.name, 4);
 		++env->index;
 	}
+	if (nb_arg < op.nb_params)
+		ft_error(env, op.name, 15);
 	return (octal);
 }
 
@@ -131,4 +124,3 @@ void			get_param(t_op op, char *src, t_env *env)
 			--env->index;
 	}
 }
-
