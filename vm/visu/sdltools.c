@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:42:23 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/26 19:17:32 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/27 15:50:49 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 
 #include "corewar.h"
 #include "visu.h"
-
-void			panic(const char *str, const char *str2)
-{
-	ft_dprintf(2, "%s: %s\n", str, str2);
-	exit(-1);
-}
 
 t_winenv		*getsdlenv(t_vm *vm)
 {
@@ -34,6 +28,11 @@ t_winenv		*getsdlenv(t_vm *vm)
 			winenv->quit = 0;
 		}
 	return (winenv);
+}
+
+void			setcolor(SDL_Renderer *render, SDL_Color color, unsigned char alpha)
+{
+	SDL_SetRenderDrawColor(render, color.r, color.g, color.b, alpha);
 }
 
 SDL_Texture		*getnewtex(t_winenv *env, int access, int w, int h)

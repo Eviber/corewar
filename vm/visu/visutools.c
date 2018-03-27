@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:03:43 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/26 19:19:10 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/27 15:49:16 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 #include <SDL_ttf.h>
 
 #include "visu.h"
+
+void				panic(const char *str, const char *str2)
+{
+	ft_dprintf(2, "%s: %s\n", str, str2);
+	exit(-1);
+}
 
 void				visu_update(t_winenv *env)
 {
