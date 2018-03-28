@@ -68,7 +68,7 @@ void	read_champ(t_env *env, char *line)
 
 t_env	*init_env(t_env *env, int magic)
 {
-	if (env)
+	if (!env)
 	{
 		env = ft_memalloc_exit(sizeof(t_env));
 		env->op = get_opt(NULL);
