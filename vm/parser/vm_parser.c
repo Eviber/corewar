@@ -6,12 +6,13 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/24 19:12:44 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/28 11:45:38 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 #include "corewar.h"
+#include "libft.h"
 
 static void				intro_champ(t_vm *env)
 {
@@ -43,6 +44,12 @@ unsigned long pos)
 	unsigned long cmp;
 
 	cmp = -1;
+	if (pos + max > MEM_SIZE)
+	{
+		ft_dprintf(2, "No joke, your champ is bigger than the memory size \
+please don't change includes file\n");
+		exit(-42);
+	}
 	while (++cmp < max)
 		env->memory[pos + cmp] = line[cmp];
 	return (0);
