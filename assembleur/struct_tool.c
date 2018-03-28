@@ -43,10 +43,13 @@ void	fill_length_file(t_env *env)
 	long tmp;
 
 	tmp = env->pos;
-	if (tmp > CHAMP_MAX_SIZE)
-		ft_error(env, NULL, 8);
-	fill_memory(env->res, tmp, sizeof(long),
-			sizeof(COREWAR_EXEC_MAGIC) + PROG_NAME_LENGTH);
+	if (!env->error)
+	{
+		if (tmp > CHAMP_MAX_SIZE)
+			ft_error(env, NULL, 8);
+		fill_memory(env->res, tmp, sizeof(long),
+				sizeof(COREWAR_EXEC_MAGIC) + PROG_NAME_LENGTH);
+	}
 }
 
 int		find_next(char *src, char car)

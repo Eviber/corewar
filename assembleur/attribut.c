@@ -14,8 +14,8 @@
 
 void	ft_fill_attr(char *line, t_env *env, char *mem, int effective_pos)
 {
-	while (line[++env->index] && line[env->index] != COMMENT_CHAR
-			&& !env->error && line[env->index] != OTHER_COMMENT_CHAR)
+	while (line[++env->index] && !env->error && ((*mem % 2) == 0 || (line[
+		env->index] != COMMENT_CHAR && line[env->index] != OTHER_COMMENT_CHAR)))
 	{
 		if (line[env->index] == '"')
 		{
@@ -24,11 +24,11 @@ void	ft_fill_attr(char *line, t_env *env, char *mem, int effective_pos)
 			(*mem)++;
 		}
 		else if (*mem < 4 && env->pos + effective_pos -
-				sizeof(COREWAR_EXEC_MAGIC) > PROG_NAME_LENGTH)
+				sizeof(COREWAR_EXEC_MAGIC) >= PROG_NAME_LENGTH)
 			ft_error(env, NULL, 2);
 		else if (*mem > 4 && env->pos + effective_pos -
 				(sizeof(COREWAR_EXEC_MAGIC) + PROG_NAME_LENGTH +
-				sizeof(long)) > COMMENT_LENGTH)
+				sizeof(long)) >= COMMENT_LENGTH)
 			ft_error(env, NULL, 3);
 		else if (!ft_isspace(line[env->index]) && (*mem % 2) == 1)
 			ft_error(env, NULL, 1);
