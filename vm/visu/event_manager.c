@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 17:27:56 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/07 15:36:54 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/28 12:36:50 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static void		event_pause(SDL_Event *event, int *mod, t_winenv *env)
 {
 	while (!(env->quit |= SDL_QuitRequested()))
 	{
+		SDL_RenderCopy(env->render, env->wintex, NULL, NULL);
+		SDL_RenderPresent(env->render);
 		if (SDL_PollEvent(event) && \
 		(event->type == SDL_KEYDOWN || event->type == SDL_KEYUP))
 		{
@@ -36,6 +38,7 @@ static void		event_pause(SDL_Event *event, int *mod, t_winenv *env)
 				*mod = (*mod ^ (*mod & EVENT_STOP));
 				return ;
 			}
+			env->quit |= (event->key.keysym.scancode == SDL_SCANCODE_Q);
 		}
 	}
 }
@@ -58,6 +61,7 @@ static void		event_step(SDL_Event *event, int *mod, t_winenv *env)
 			else if (event->key.keysym.scancode == SDL_SCANCODE_S && \
 			event->key.state == SDL_PRESSED)
 				return ;
+			env->quit |= (event->key.keysym.scancode == SDL_SCANCODE_Q);
 		}
 	}
 }
@@ -82,6 +86,7 @@ void			event_manager(t_winenv *env)
 				if (event.key.state == SDL_PRESSED)
 					mod |= EVENT_STEP;
 			}
+			env->quit |= (event.key.keysym.scancode == SDL_SCANCODE_Q);
 		}
 	if ((mod & EVENT_STEP))
 		event_step(&event, &mod, env);
