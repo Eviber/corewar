@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:12:20 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/25 15:42:45 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/03/28 11:38:06 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,4 +127,5 @@ void			run_cycle(t_op *op_tab, t_vm *env)
 		kill_dead_process(&env->killed_process, env);
 		(env->cycle)++;
 	}
+	env->mem_mov = 1;
 }
