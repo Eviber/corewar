@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/27 16:00:20 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/03/28 16:31:34 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	ft_fill_header(t_header *tmp, char *line, unsigned long i, int error)
 		ft_exit("MAGIC ne correspond pas\n");
 	if (tmp->prog_size > CHAMP_MAX_SIZE)
 		ft_exit("Le champion est trop long\n");
+	if (!tmp->prog_size)
+		ft_exit("Le champion n a pas de taille\n");
 }
 
 void	ft_choose_num_player(t_vm *env, int num_k)

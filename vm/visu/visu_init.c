@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 08:36:55 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/27 15:37:58 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/03/28 16:24:59 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ static void			loadbytetex(t_winenv *env)
 	unsigned int	i;
 	unsigned int	j;
 
-	env->bytetex[0][0] = valtotex(env, 0, 16, env->palette[0]);
-	i = 1;
+	i = 0;
 	while (i < MAX_PLAYERS + 1)
 	{
 		j = 0;
