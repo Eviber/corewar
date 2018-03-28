@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/27 21:26:30 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/03/28 12:15:41 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,23 +66,18 @@ void	read_champ(t_env *env, char *line)
 	}
 }
 
-t_env	*init_env(t_env *env, int magic)
+t_env	*init_env(t_env *env, int magic, int option)
 {
-	if (!env)
+	if (option == 0)
 	{
 		env = ft_memalloc_exit(sizeof(t_env));
 		env->op = get_opt(NULL);
 	}
 	else
 	{
-		if (env->name)
-			ft_memdel((void **)&env->name);
-		ft_memdel((void **)&env->res);
-		ft_memdel((void **)&env->champ);
-		env->name = NULL;
-		env->line = 0;
-		env->state = 0;
-		env->error = 0;
+		clean_env(env, option);
+		if (option == 2)
+			return (NULL);
 	}
 	env->taille = PROG_NAME_LENGTH + COMMENT_LENGTH +
 		sizeof(COREWAR_EXEC_MAGIC) + sizeof(long) + 4;
@@ -136,10 +131,10 @@ int		main(int argc, char **argv)
 	int		fd;
 	t_env	*env;
 
-	if (argc < 2)
+	if (--argc < 1)
 		write(2, "Usage : ./asm file.s\n", 21);
-	else if ((env = init_env(NULL, COREWAR_EXEC_MAGIC)))
-		while (--argc > 0)
+	else if ((env = init_env(NULL, COREWAR_EXEC_MAGIC, 0)))
+		while (argc != 0)
 		{
 			if (!env->error)
 				switch_extension(env, argv[argc], ".cor");
@@ -153,7 +148,7 @@ int		main(int argc, char **argv)
 				write(fd, env->champ, env->pos);
 				close(fd);
 			}
-			env = init_env(env, COREWAR_EXEC_MAGIC);
+			env = init_env(env, COREWAR_EXEC_MAGIC, (--argc == 0) ? 2 : 1);
 		}
 	return (0);
 }

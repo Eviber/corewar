@@ -6,7 +6,7 @@
 /*   By: gcollett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:16:13 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/24 17:21:47 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/03/28 12:17:11 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,17 @@ void				check_error(t_env *env);
 ** tool
 */
 
-void				ft_error(t_env *env, char *name, int error);
 void				load_new_roquet(t_label *target, t_env *env, int size);
 void				fill_memory(char *mem, long value, int size, int start);
 void				*ft_memalloc_exit(size_t size);
 void				memory_manager(t_env *env, int size);
 int					check_int_param(char *str, t_env *env, long i);
+
+/*
+** exit
+*/
+
+void				ft_error(t_env *env, char *name, int error);
+void				clean_env(t_env *env, int option);
 
 #endif

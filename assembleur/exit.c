@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcollett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 14:58:13 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/27 21:23:55 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/03/28 12:15:29 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+void	clean_env(t_env *env, int option)
+{
+	if (env->name)
+		ft_memdel((void **)&env->name);
+	ft_memdel((void **)&env->res);
+	ft_memdel((void **)&env->champ);
+	env->line = 0;
+	env->state = 0;
+	env->error = 0;
+	if (option == 2)
+	{
+		ft_memdel((void **)&env->op);
+		ft_memdel((void **)&env);
+	}
+}
 
 void	ft_other_error(t_env *env, char *name, int error)
 {

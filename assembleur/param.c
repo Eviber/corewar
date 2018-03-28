@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/27 21:31:04 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/03/28 12:16:15 by gcollett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ static int		check_param(char *src, t_env *env, t_op op, short type)
 	return (current_type);
 }
 
-unsigned char check_norme(int nb_arg, t_op op, t_env *env, unsigned char octal)
+unsigned char	check_norme(int nb_arg, t_op op, t_env *env,
+		unsigned char octal)
 {
 	if (!env->error && nb_arg < op.nb_params)
 		ft_error(env, op.name, 15);
