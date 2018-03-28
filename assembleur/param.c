@@ -71,7 +71,7 @@ static int		check_param(char *src, t_env *env, t_op op, short type)
 
 unsigned char check_norme(int nb_arg, t_op op, t_env *env, unsigned char octal)
 {
-	if (nb_arg < op.nb_params)
+	if (!env->error && nb_arg < op.nb_params)
 		ft_error(env, op.name, 15);
 	return (octal);
 }

@@ -22,7 +22,7 @@ void	switch_extension(t_env *env, char *src, char *new_extension)
 	i = cmp;
 	while (i-- && src[i] != '.')
 		;
-	if (src[i] != '.')
+	if (src[i] != '.' || src[i + 1] != 's' || (src[i + 1] && src[i + 2]))
 		ft_error(env, src, 14);
 	else
 	{

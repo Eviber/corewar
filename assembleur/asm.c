@@ -102,15 +102,12 @@ t_env	*init_env(t_env *env, int magic)
 ** 2 = Header valid go read the body
 */
 
-char	*read_file(char *file, t_env *env)
+char	*read_file(char *file, t_env *env, char *line)
 {
-	char	*line;
 	int		fd;
-	long	tmp;
 
-	tmp = 0;
 	fd = open(file, O_RDONLY);
-	if (fd > 0 && !(line = NULL))
+	if (fd > 0)
 		while (get_next_line(fd, &line) > 0 && ++env->line && !env->error)
 		{
 			env->index = -1;
@@ -122,12 +119,15 @@ char	*read_file(char *file, t_env *env)
 				read_champ(env, line);
 			ft_memdel((void **)&line);
 		}
-	if (fd <= 0 && (env->error = 1))
-		ft_dprintf(2, "Open error on : %s\n", file);
-	ft_strdel(&line);
-	check_error(env);
-	fill_length_file(env);
-	check_label(env, NULL);
+	if ((fd <= 0 || get_next_line(fd, &line) < 0) && (env->error = 1))
+		ft_dprintf(2, "%s error on : %s\n", (fd < 0) ? "Open" : "Gnl", file);
+	else
+	{
+		ft_strdel(&line);
+		check_error(env);
+		fill_length_file(env);
+		check_label(env, NULL);
+	}
 	return (env->res);
 }
 
@@ -144,7 +144,7 @@ int		main(int argc, char **argv)
 			if (!env->error)
 				switch_extension(env, argv[argc], ".cor");
 			if (!env->error)
-				read_file(argv[argc], env);
+				read_file(argv[argc], env, NULL);
 			if (env->state == 3 && !env->error)
 			{
 				fd = open(env->name, O_RDWR | O_CREAT | O_TRUNC, 0666);

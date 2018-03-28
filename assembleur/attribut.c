@@ -29,7 +29,11 @@ void	ft_fill_attr(char *line, t_env *env, char *mem, int effective_pos)
 		else if (*mem > 4 && env->pos + effective_pos -
 				(sizeof(COREWAR_EXEC_MAGIC) + PROG_NAME_LENGTH +
 				sizeof(long)) > COMMENT_LENGTH)
+		{
+			ft_printf("%d + %d - %d> %d\n", env->pos, effective_pos, sizeof(COREWAR_EXEC_MAGIC) + PROG_NAME_LENGTH +
+			sizeof(long), COMMENT_LENGTH);
 			ft_error(env, NULL, 3);
+		}
 		else if (!ft_isspace(line[env->index]) && (*mem % 2) == 1)
 			ft_error(env, NULL, 1);
 		else if ((*mem % 2) == 0)
@@ -50,6 +54,7 @@ void	search_attr(char *line, t_env *env, char *name, char *comment)
 		else if (!ft_strncmp(line + env->index, NAME_CMD_STRING,
 					ft_strlen(NAME_CMD_STRING)) && !*name && (*name = 1))
 		{
+			ft_printf("TEEEI\n");
 			env->pos = sizeof(COREWAR_EXEC_MAGIC);
 			env->index += ft_strlen(NAME_CMD_STRING) - 1;
 			return ;
@@ -57,6 +62,7 @@ void	search_attr(char *line, t_env *env, char *name, char *comment)
 		else if (!ft_strncmp(line + env->index, COMMENT_CMD_STRING,
 				ft_strlen(COMMENT_CMD_STRING)) && !*comment && (*comment = 5))
 		{
+			ft_printf("HAIII\n");
 			env->pos = sizeof(COREWAR_EXEC_MAGIC) +
 				PROG_NAME_LENGTH + sizeof(long);
 			env->index += ft_strlen(COMMENT_CMD_STRING) - 1;
@@ -77,11 +83,15 @@ void	read_attribut(t_env *env, char *line)
 		name = 0;
 		comment = 0;
 	}
+	ft_printf("commet = %d | name = %d\n", comment, name);
 	if ((name == 0 && comment == 7) || (name == 3 && comment == 0) ||
 			(name == 0 && comment == 0))
 		search_attr(line, env, &name, &comment);
 	if ((name > 0 && name < 3) || (comment > 4 && comment < 7))
+	{
+		ft_printf("commet = %d \n", (name == 1) ? name : comment);
 		ft_fill_attr(line, env, (name == 1) ? &name : &comment, 0);
+	}
 	if (name == 3 && comment == 7)
 		env->state = 2;
 }
