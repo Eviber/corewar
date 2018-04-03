@@ -75,13 +75,13 @@ t_env	*init_env(t_env *env, int magic, int option)
 	}
 	else
 	{
+		clean_label(env, env->label);
 		clean_env(env, option);
 		if (option == 2)
 			return (NULL);
 	}
 	env->taille = PROG_NAME_LENGTH + COMMENT_LENGTH +
 		sizeof(COREWAR_EXEC_MAGIC) + sizeof(long) + 4;
-	clean_label(env, env->label);
 	env->label = NULL;
 	env->res = ft_memalloc_exit(env->taille);
 	env->champ = ft_memalloc_exit(40);
@@ -102,7 +102,7 @@ char	*read_file(char *file, t_env *env, char *line)
 	int		fd;
 
 	fd = open(file, O_RDONLY);
-	if (fd > 0)
+	if (fd > 0 && !(line = NULL))
 		while (get_next_line(fd, &line) > 0 && ++env->line && !env->error)
 		{
 			env->index = -1;
@@ -149,6 +149,6 @@ int		main(int argc, char **argv)
 				close(fd);
 			}
 			env = init_env(env, COREWAR_EXEC_MAGIC, (--argc == 0) ? 2 : 1);
-		}
+	}
 	return (0);
 }
