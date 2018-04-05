@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:12:20 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/28 11:38:06 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/04/05 15:45:06 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,11 @@ static void		dump_process(t_process *process, t_vm *env)
 static void		dump_memory(unsigned char mem[], t_process *process, t_vm *env)
 {
 	unsigned long	i;
-	t_process		*tmp;
 
 	i = 0;
 	ft_putchar('\n');
 	while (i < MEM_SIZE)
 	{
-		tmp = process;
-		while (tmp && tmp->pc != i)
-			tmp = tmp->next;
 		if (i == 0)
 			ft_putstr("0x000000 : ");
 		else if (i % 32 == 0)
