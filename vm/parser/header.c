@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/28 16:31:34 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/04/05 18:25:53 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		ft_test_num_player(t_header *tmp, long num, t_header *player, int error)
 		{
 			if (tmp->num_lock && tmp->num_lock == player->num_lock)
 			{
-				ft_dprintf(2, "Two champion has the same number\n");
+				ft_dprintf(2, "Two champions have the same id\n");
 				exit(1);
 			}
 			else if (tmp->num == num && tmp->num_lock != num)
@@ -72,9 +72,9 @@ void	ft_fill_header(t_header *tmp, char *line, unsigned long i, int error)
 	if (tmp->magic != COREWAR_EXEC_MAGIC)
 		ft_exit("MAGIC ne correspond pas\n");
 	if (tmp->prog_size > CHAMP_MAX_SIZE)
-		ft_exit("Le champion est trop long\n");
+		ft_exit("Champion too big\n");
 	if (!tmp->prog_size)
-		ft_exit("Le champion n a pas de taille\n");
+		ft_exit("Champion doesn't have a size\n");
 }
 
 void	ft_choose_num_player(t_vm *env, int num_k)

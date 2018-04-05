@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/04/05 20:23:11 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/04/05 20:29:39 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int		check_opt(int pos, char **av, t_vm *env)
 	if (cmp == 4)
 		env->option->visu = SDL_WINDOW_RESIZABLE;
 	if (env->opt[cmp].value_needed && ft_dprintf(2,
-				"option %s need a value\n", env->opt[cmp].name))
+				"option %s needs a value\n", env->opt[cmp].name))
 		exit(1);
 	else if (cmp == 2)
 		env->option->verbose = 1;
