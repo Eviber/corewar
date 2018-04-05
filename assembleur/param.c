@@ -86,13 +86,11 @@ unsigned char	launc_param(t_op op, char *src, t_env *env, unsigned char octal)
 	stat = 0;
 	nb_arg = 1;
 	type = op.type;
-	ft_printf("src = %s\n", src);
 	while (src[env->index] && src[env->index] != COMMENT_CHAR
 			&& !env->error && src[env->index] != OTHER_COMMENT_CHAR)
 	{
-		ft_printf("stav = %d src[%d] = %c\n", stat, env->index, src[env->index]);
 		if (ft_isspace(src[env->index]))
-			stat = (stat = 1) ? 2 : stat;
+			stat = (stat == 1) ? 2 : stat;
 		else if (stat == 0 && src[env->index] != SEPARATOR_CHAR && (stat = 1))
 			octal = octal * 4 + check_param(src, env, op, type);
 		else if ((stat == 1 || stat == 3) && src[env->index] == SEPARATOR_CHAR)
@@ -101,7 +99,8 @@ unsigned char	launc_param(t_op op, char *src, t_env *env, unsigned char octal)
 				ft_error(env, op.name, 6);
 			type /= 8;
 		}
-		else if ((stat != 1 && stat != 2) || (stat == 2 && src[env->index] != ft_isspace(src[env->index])))
+		else if (stat != 1)
+			if ((stat == 2 && !ft_isspace(src[env->index])) || stat != 2)
 			ft_error(env, op.name, 4);
 		++env->index;
 	}
