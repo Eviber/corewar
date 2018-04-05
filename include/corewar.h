@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by sbrochar          #+#    #+#             */
-/*   Updated: 2018/03/28 16:39:23 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/04/05 12:50:07 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,5 @@ typedef struct			s_vm
 */
 
 void					ft_exit(char *str);
-void					*ft_memalloc_exit(size_t size);
 
 #endif

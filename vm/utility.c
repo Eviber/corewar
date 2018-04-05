@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 16:27:31 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/23 16:29:52 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/04/05 12:49:51 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,4 @@ unsigned int	read_memory(unsigned int address, t_vm *env)
 	value += env->memory[(address + 2) % MEM_SIZE] << 8;
 	value += env->memory[(address + 3) % MEM_SIZE];
 	return (value);
-}
-
-void			*ft_memalloc_exit(size_t size)
-{
-	void	*mem;
-
-	if (!(mem = ft_memalloc(size)))
-	{
-		ft_dprintf(2, "Malloc has failed in this execution\n");
-		exit(1);
-	}
-	return (mem);
 }

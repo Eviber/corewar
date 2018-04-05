@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/27 16:01:34 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/04/05 13:16:51 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,33 @@ static void				init_process(t_header *champ, t_vm *env)
 	}
 }
 
+static void				destroy_env(t_vm *env)
+{
+	t_process	*next_p;
+	t_header	*next_c;
+
+	ft_memdel((void**)&env->option);
+	while (env->killed_process)
+	{
+		next_p = env->killed_process->next;
+		ft_memdel((void**)&env->killed_process);
+		env->killed_process = next_p;
+	}
+	while (env->champion)
+	{
+		next_c = env->champion->next;
+		ft_memdel((void**)&env->champion);
+		env->champion = next_c;
+	}
+}
+
 int						main(int ac, char **av)
 {
 	t_vm			env;
-	t_op			*op_tab;
+	t_op			op_tab[16];
 
 	if (ac < 2 && ft_dprintf(2, "Usage: ./vm [champion.cor]\n"))
 		return (0);
-	if (!(op_tab = (t_op*)ft_memalloc(sizeof(t_op) * 16)))
-		ft_exit(strerror(errno));
 	init(&env);
 	init_op_tab(op_tab);
 	parsing(ac, av, &env, 0);
@@ -106,5 +124,6 @@ int						main(int ac, char **av)
 		env.option->visu = visu();
 	if (env.option->visu)
 		visu_finish(env.ll_champ);
+	destroy_env(&env);
 	return (0);
 }

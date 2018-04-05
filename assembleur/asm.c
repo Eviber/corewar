@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/28 12:15:41 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/04/05 13:17:24 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,6 @@ int		main(int argc, char **argv)
 				close(fd);
 			}
 			env = init_env(env, COREWAR_EXEC_MAGIC, (--argc == 0) ? 2 : 1);
-	}
+		}
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 02:18:15 by ygaude            #+#    #+#              #
-#    Updated: 2018/03/24 12:46:51 by ygaude           ###   ########.fr        #
+#    Updated: 2018/04/05 12:49:24 by vsporer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRC = free_tab.c ft_abs.c ft_atoi.c ft_atol.c ft_bzero.c ft_imaxtoa.c          \
 	  ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c          \
 	  ft_strnlen.c ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c         \
 	  ft_strsub.c ft_strtoupper.c ft_strtrim.c ft_strtrimall.c ft_tolower.c    \
-	  ft_toupper.c ft_uimaxtoa.c get_next_line.c
+	  ft_toupper.c ft_uimaxtoa.c get_next_line.c ft_memalloc_exit.c
 
 OBJ = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC))
 
