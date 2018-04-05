@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:12:20 by vsporer           #+#    #+#             */
-/*   Updated: 2018/04/05 17:17:28 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/04/05 20:23:04 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ static void		dump_memory(unsigned char mem[], t_process *process, t_vm *env)
 	while (i < MEM_SIZE)
 	{
 		if (i == 0)
-			ft_putstr("0x000000 : ");
+			ft_putstr("0x0000 : ");
 		else if (i % 32 == 0)
-			ft_printf("%#08x : ", i);
+			ft_printf("%#06x : ", i);
 		ft_printf("%02x", (int)mem[i]);
 		i++;
 		if (i % 32 == 0)
@@ -107,7 +107,8 @@ void			run_cycle(t_op *op_tab, t_vm *env)
 	last_period = 0;
 	while (env->process)
 	{
-		if ((env->option->verbose & SHOW_CYCL))
+		if ((env->option->verbose & SHOW_CYCL) && \
+		env->cycle != (unsigned long)env->option->dump)
 			ft_printf("It is now cycle %d\n", env->cycle + 1);
 		if (env->option->visu)
 			env->option->visu = visu();

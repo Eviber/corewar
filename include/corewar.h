@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by sbrochar          #+#    #+#             */
-/*   Updated: 2018/04/05 13:57:32 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/04/05 20:23:48 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define IND_CODE				3
 
 # define MAX_ARGS_NUMBER		4
-# define MAX_PLAYERS			2000
+# define MAX_PLAYERS			4
 # define MEM_SIZE				(MAX_PLAYERS*1024)
 # define IDX_MOD				(MEM_SIZE / 8)
 # define CHAMP_MAX_SIZE			(MEM_SIZE / MAX_PLAYERS)

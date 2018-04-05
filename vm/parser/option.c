@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/28 11:44:12 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/04/05 20:23:11 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ void	check_if_number_is_valid(long num, int cmp)
 	if (cmp == 1 && (num == 0) &&
 	ft_dprintf(2, "0 is not a valid number of player\n"))
 		exit(1);
-	if (cmp == 2 && (num != SHOW_LIVE && num != SHOW_CYCL
-		&& num != SHOW_DEAT && num != SHOW_MOVE))
+	if (cmp == 2 && !(num > 0 && num < 16))
 	{
 		ft_dprintf(2, "%d is not a valid number for verbose option\n", num);
 		exit(1);
