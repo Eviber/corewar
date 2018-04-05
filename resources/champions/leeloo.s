@@ -70,12 +70,12 @@ decal2: live %1
 	
 	fork %:separ2
 	live %4
-	ld %0x08F40370,r3   #ld %0x07F40370,r3
+	ld %0x08F40370,r3   ;ld %0x07F40370,r3
 
 	ld %0,r2
 	zjmp %:toto
 separ2:	live %3
-	ld %0x037004F4,r3  #ld %0x70037004,r3
+	ld %0x037004F4,r3  ;ld %0x70037004,r3
 
 	xor r2,r2,r2
 	zjmp %:toto

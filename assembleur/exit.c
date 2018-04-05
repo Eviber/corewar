@@ -6,7 +6,7 @@
 /*   By: gcollett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 14:58:13 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/28 12:15:29 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/04/05 15:37:11 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,23 @@ token [TOKEN][%03d:%03d] LABEL\n", name, env->line, env->index);
 	if (error == 10)
 		ft_dprintf(2, "Error all the attribut are not present.\n");
 	if (error == 11)
-		ft_dprintf(2, "This is champ has no named, I didn't like this \
-type of bad guys\n");
+		ft_dprintf(2, "This is champ has no name, I don't like this type of \
+bad guys\n");
 	if (error == 12)
-		ft_dprintf(2, "Serisouly, a champ without comment, where the \
-punch line of %s\n", env->name);
+		ft_dprintf(2, "Seriously, a champ without comment, where is %s's \
+punch line\n", env->name);
 	if (error == 13)
-		ft_dprintf(2, "This is just a weak champ without any line of code\n");
+		ft_dprintf(2, "This is just a weak champ without any instruction\n");
 	if (error == 14)
 		ft_dprintf(2, "Extension of %s is invalid\n", name);
 	if (error == 15)
-		ft_dprintf(2, "Less argument in %s at line %d than needed\n",
+		ft_dprintf(2, "Not enough arguments in %s at line %d\n",
 				name, env->line);
 }
 
 void	ft_error(t_env *env, char *name, int error)
 {
-	ft_dprintf(2, "Compiling of %s fail : ", (env->name) ? env->name : name);
+	ft_dprintf(2, "Compiling of %s failed : ", (env->name) ? env->name : name);
 	env->error = 1;
 	if (error > 6)
 		ft_other_error(env, name, error);
@@ -76,6 +76,5 @@ void	ft_error(t_env *env, char *name, int error)
 		ft_dprintf(2, "Number of register %s\
 				greater than %d\n", name, REG_NUMBER);
 	if (error == 6)
-		ft_dprintf(2, "More argument in %s at line %d \
-than allowd\n", name, env->line);
+		ft_dprintf(2, "Too many arguments in %s at line %d\n", name, env->line);
 }

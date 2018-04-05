@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/24 14:57:25 by gcollett         ###   ########.fr       */
+/*   Updated: 2018/04/05 16:15:19 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,20 @@
 
 int		check_int_param(char *str, t_env *env, long i)
 {
+	int state;
+
+	state = 0;
 	while (str[++i] && str[i] != SEPARATOR_CHAR && str[i] != COMMENT_CHAR &&
-			!ft_isspace(str[i]) && !env->error && str[i] != OTHER_COMMENT_CHAR)
-		if (!ft_isdigit(str[i]) || str[i] == '-')
+			!env->error && str[i] != OTHER_COMMENT_CHAR)
+	{
+		if (ft_isdigit(str[i]))
+			state = 1;
+		else if (ft_isspace(str[i]) && state == 1)
+			state = 2;
+		if (((!ft_isdigit(str[i]) || str[i] == '-') ||
+				(ft_isdigit(str[i]) && state == 2)) && !ft_isspace(str[i]))
 			ft_error(env, str, 4);
+	}
 	return (1);
 }
 
