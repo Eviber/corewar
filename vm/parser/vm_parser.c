@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/03/28 16:32:20 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/04/05 18:22:14 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void				intro_champ(t_vm *env)
 		}
 		ft_printf("* Player %d, weighing %d bytes,", tmp->num, tmp->prog_size);
 		ft_printf(" \"%s\" (\"%s\") !\n", tmp->prog_name, tmp->comment);
-		ft_printf("Lets ready to the rumble \n\n");
+		ft_printf("Ready? Fight!\n\n");
 	}
 }
 
@@ -47,7 +47,7 @@ unsigned long pos)
 	if (pos + max > MEM_SIZE)
 	{
 		ft_dprintf(2, "No joke, your champ is bigger than the memory size \
-please don't change includes file\n");
+please don't change the header\n");
 		exit(-42);
 	}
 	while (++cmp < max)
@@ -73,7 +73,7 @@ static unsigned long	check_arg(int ac, char **av, t_vm *env)
 			nb_champ++;
 	}
 	if (nb_champ > MAX_PLAYERS)
-		ft_exit("Too many player\n");
+		ft_exit("Too many players\n");
 	if (nb_champ == 0)
 		ft_exit("No player\n");
 	return (nb_champ);
@@ -86,11 +86,11 @@ static char				*get_header(int fd)
 	int		cmp;
 
 	if (fd <= 0)
-		ft_exit("Fichier inacessible\n");
+		ft_exit("File not found\n");
 	taille = PROG_NAME_LENGTH + COMMENT_LENGTH + sizeof(int) + sizeof(long);
 	line = ft_memalloc(taille + 5);
 	if ((cmp = read(fd, line, taille + 4)) < taille)
-		ft_exit((cmp <= 0) ? "Erreur de read\n" : "Fichier trop petit\n");
+		ft_exit((cmp <= 0) ? "read error\n" : "file too small\n");
 	return (line);
 }
 
