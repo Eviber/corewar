@@ -102,7 +102,7 @@ char	*read_file(char *file, t_env *env, char *line)
 	int		fd;
 
 	fd = open(file, O_RDONLY);
-	if (fd > 0 && !(line = NULL))
+	if (fd > 0)
 		while (get_next_line(fd, &line) > 0 && ++env->line && !env->error)
 		{
 			env->index = -1;
