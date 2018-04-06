@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/04/06 11:17:34 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/04/06 12:03:20 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,31 @@ static void				init_process(t_header *champ, t_vm *env)
 	}
 }
 
+static int				usage(void)
+{
+	ft_dprintf(2, "Usage: ./corewar [-g | -f -dump N | -dump_all N -v N] \
+<[-n N] champion2.cor> <...>\n");
+	ft_dprintf(2, "-dump N		: Dumps memory after N cycles then exits\n");
+	ft_dprintf(2, "-dump_all N	: Dumps memory and list processes after N \
+cycles then exits\n");
+	ft_dprintf(2, "-g		: Graphic mode\n");
+	ft_dprintf(2, "-f		: Graphic mode windowed\n");
+	ft_dprintf(2, "-n N		: Set next champion's ID\n");
+	ft_dprintf(2, "-v N		: Verbose mode, N = verbosity level:\n");
+	ft_dprintf(2, "				- 1 : Show lives\n");
+	ft_dprintf(2, "				- 2 : Show cycles\n");
+	ft_dprintf(2, "				- 4 : Show deaths\n");
+	ft_dprintf(2, "				- 8 : Show PC movements\n");
+	return (21);
+}
+
 int						main(int ac, char **av)
 {
 	t_vm			*env;
 	t_op			*op_tab;
 
-	if (ac < 2 && ft_dprintf(2, "Usage: ./vm [champion.cor]\n"))
-		return (0);
+	if (ac < 2)
+		return (usage());
 	op_tab = ft_memalloc_exit(sizeof(t_op) * 16);
 	env = ft_memalloc_exit(sizeof(t_vm));
 	init(env);
