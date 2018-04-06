@@ -12,6 +12,14 @@
 
 #include "asm.h"
 
+int		ft_norme2(int effective_pos, char *mem, t_env *env)
+{
+	return (effective_pos == 0 && (*mem % 2) == 0 &&
+	((*mem < 4 && env->pos == sizeof(COREWAR_EXEC_MAGIC)) ||
+	(*mem > 4 && env->pos == sizeof(COREWAR_EXEC_MAGIC) + PROG_NAME_LENGTH +
+	sizeof(long))));
+}
+
 void	ft_fill_attr(char *line, t_env *env, char *mem, int effective_pos)
 {
 	while (line[++env->index] && !env->error && ((*mem % 2) == 0 || (line[
@@ -19,7 +27,7 @@ void	ft_fill_attr(char *line, t_env *env, char *mem, int effective_pos)
 	{
 		if (line[env->index] == '"')
 		{
-			if (effective_pos == 0 && (*mem % 2) == 0)
+			if (ft_norme2(effective_pos, mem, env))
 				ft_error(env, NULL, 11 + (*mem > 4));
 			(*mem)++;
 		}
