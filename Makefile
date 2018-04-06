@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/04/05 14:12:38 by vsporer          ###   ########.fr        #
+#    Updated: 2018/04/06 11:15:19 by ygaude           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ VPATH = $(PATH_VM_SRC):$(PATH_VM_PARS):$(PATH_VM_INST):$(PATH_VM_VISU):$(PATH_AS
 
 CC =				gcc -Wall -Werror -Wextra -g
 CFLAGS =			-I include/ -I libft/include/ `sdl2-config --cflags`
-LFLAGS =			-L $(PATH_LIBFT) -lft `sdl2-config --libs` -lSDL2_gfx -lSDL2_ttf -lm
+LFLAGS =			-L $(PATH_LIBFT) -lft `sdl2-config --libs` -lSDL2_ttf -lm
 
 VM_PARS =			vm_parser.c\
 					option.c\
