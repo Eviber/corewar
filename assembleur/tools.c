@@ -60,18 +60,6 @@ void	fill_memory(char *mem, long value, int size, int start)
 	}
 }
 
-void	*ft_memalloc_exit(size_t size)
-{
-	void *mem;
-
-	if (!(mem = ft_memalloc(size)))
-	{
-		ft_dprintf(2, "Malloc has failed in this execution\n");
-		exit(1);
-	}
-	return (mem);
-}
-
 void	memory_manager(t_env *env, int size)
 {
 	char *save;

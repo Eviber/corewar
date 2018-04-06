@@ -57,8 +57,8 @@ typedef struct		s_env
 	int				error;
 	long			pos;
 	long			pos_last_inst;
-	long			index;
 	int				state;
+	long			index;
 	long			line;
 	size_t			taille;
 	t_label			*label;
@@ -112,7 +112,6 @@ void				check_error(t_env *env);
 
 void				load_new_roquet(t_label *target, t_env *env, int size);
 void				fill_memory(char *mem, long value, int size, int start);
-void				*ft_memalloc_exit(size_t size);
 void				memory_manager(t_env *env, int size);
 int					check_int_param(char *str, t_env *env, long i);
 

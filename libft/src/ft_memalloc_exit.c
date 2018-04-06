@@ -20,7 +20,10 @@ void	*ft_memalloc_exit(size_t size)
 	t = -1;
 	str = (char *)malloc(sizeof(char) * size);
 	if (!str)
-		exit(0);
+	{
+		write (2, "Malloc error\n", 13);
+		exit(-42);
+	}
 	while (++t < size)
 		str[t] = '\0';
 	return (str);
