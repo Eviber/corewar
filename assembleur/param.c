@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/04/05 16:55:23 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/04/06 10:47:36 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,7 @@ unsigned char	launc_param(t_op op, char *src, t_env *env, unsigned char octal)
 				ft_error(env, op.name, 6);
 			type /= 8;
 		}
-		else if (stat != 1)
-			if ((stat == 2 && !ft_isspace(src[env->index])) || stat != 2)
+		else if (s != 1 && ((s == 2 && !ft_isspace(src[env->index])) || s != 2))
 			ft_error(env, op.name, 4);
 		++env->index;
 	}
