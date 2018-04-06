@@ -6,7 +6,7 @@
 /*   By: gcollett <gcollett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 20:15:21 by gcollett          #+#    #+#             */
-/*   Updated: 2018/04/06 10:47:36 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/04/06 10:59:35 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,23 +79,23 @@ unsigned char	check_norme(int nb_arg, t_op op, t_env *env,
 
 unsigned char	launc_param(t_op op, char *src, t_env *env, unsigned char octal)
 {
-	int				stat;
+	int				s;
 	int				nb_arg;
 	short			type;
 
-	stat = 0;
+	s = 0;
 	nb_arg = 1;
 	type = op.type;
 	while (src[env->index] && src[env->index] != COMMENT_CHAR
 			&& !env->error && src[env->index] != OTHER_COMMENT_CHAR)
 	{
 		if (ft_isspace(src[env->index]))
-			stat = (stat == 1) ? 2 : stat;
-		else if (stat == 0 && src[env->index] != SEPARATOR_CHAR && (stat = 1))
+			s = (s == 1) ? 2 : s;
+		else if (s == 0 && src[env->index] != SEPARATOR_CHAR && (s = 1))
 			octal = octal * 4 + check_param(src, env, op, type);
-		else if ((stat == 1 || stat == 3) && src[env->index] == SEPARATOR_CHAR)
+		else if ((s == 1 || s == 3) && src[env->index] == SEPARATOR_CHAR)
 		{
-			if (!(stat = 0) && ++nb_arg > op.nb_params)
+			if (!(s = 0) && ++nb_arg > op.nb_params)
 				ft_error(env, op.name, 6);
 			type /= 8;
 		}
