@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:43:38 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/25 13:31:35 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/04/06 10:09:37 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_opt			*get_opt(void);
 /*
 ** VM core
 */
-int				check_peb(unsigned char peb, char **perm, int nb_param);
+int				check_peb(unsigned char peb, char perm[3][3], int nb_param);
 int				check_reg(unsigned char peb, int nb_param, t_param *param);
 int				param_len(unsigned char peb, int mod, int nb_param);
 int				get_param_value(unsigned int at, int len, int *ret, t_vm *env);

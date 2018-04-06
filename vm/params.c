@@ -6,13 +6,13 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 16:03:33 by vsporer           #+#    #+#             */
-/*   Updated: 2018/03/23 15:57:26 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/04/06 10:09:08 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int				check_peb(unsigned char peb, char **perm, int nb_param)
+int				check_peb(unsigned char peb, char perm[3][3], int nb_param)
 {
 	int		param;
 	int		len;
