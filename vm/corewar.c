@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:05:59 by vsporer           #+#    #+#             */
-/*   Updated: 2018/04/05 14:16:05 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/04/06 11:17:34 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,27 +81,6 @@ static void				init_process(t_header *champ, t_vm *env)
 	}
 }
 
-static void				destroy_env(t_vm *env)
-{
-	t_process	*next_p;
-	t_header	*next_c;
-
-	ft_memdel((void**)&env->option);
-	while (env->killed_process)
-	{
-		next_p = env->killed_process->next;
-		ft_memdel((void**)&env->killed_process);
-		env->killed_process = next_p;
-	}
-	while (env->champion)
-	{
-		next_c = env->champion->next;
-		ft_memdel((void**)&env->champion);
-		env->champion = next_c;
-	}
-	ft_memdel((void**)&env);
-}
-
 int						main(int ac, char **av)
 {
 	t_vm			*env;
@@ -127,7 +106,6 @@ int						main(int ac, char **av)
 		env->option->visu = visu();
 	if (env->option->visu)
 		visu_finish(env->ll_champ);
-	ft_memdel((void**)&op_tab);
-	destroy_env(env);
+	destroy_env(env, op_tab);
 	return (0);
 }

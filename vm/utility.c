@@ -6,7 +6,7 @@
 /*   By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 16:27:31 by vsporer           #+#    #+#             */
-/*   Updated: 2018/04/05 12:49:51 by vsporer          ###   ########.fr       */
+/*   Updated: 2018/04/06 11:17:54 by vsporer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,26 @@ unsigned int	read_memory(unsigned int address, t_vm *env)
 	value += env->memory[(address + 2) % MEM_SIZE] << 8;
 	value += env->memory[(address + 3) % MEM_SIZE];
 	return (value);
+}
+
+void			destroy_env(t_vm *env, t_op *op_tab)
+{
+	t_process	*next_p;
+	t_header	*next_c;
+
+	ft_memdel((void**)&env->option);
+	while (env->killed_process)
+	{
+		next_p = env->killed_process->next;
+		ft_memdel((void**)&env->killed_process);
+		env->killed_process = next_p;
+	}
+	while (env->champion)
+	{
+		next_c = env->champion->next;
+		ft_memdel((void**)&env->champion);
+		env->champion = next_c;
+	}
+	ft_memdel((void**)&env);
+	ft_memdel((void**)&op_tab);
 }
