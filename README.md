@@ -7,6 +7,28 @@ What is Corewar?
 
 ## Getting Started
 
+### Usage
+
+Compiling asm files
+```
+Usage : ./asm file.s
+```
+
+Running the VM
+```
+Usage: ./corewar [-g | -f -dump N | -dump_all N -v N] <[-n N] champion2.cor> <...>
+-dump N		: Dumps memory after N cycles then exits
+-dump_all N	: Dumps memory and list processes after N cycles then exits
+-g		: Graphic mode
+-f		: Graphic mode windowed
+-n N	: Set next champion's ID
+-v N	: Verbose mode, N = verbosity level:
+			- 1 : Show lives
+			- 2 : Show cycles
+			- 4 : Show deaths
+			- 8 : Show PC movements
+```
+
 ### Prerequisites
 
 You will need SDL2 and SDL2\_TTF
