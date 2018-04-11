@@ -6,7 +6,7 @@
 #    By: vsporer <vsporer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/20 14:41:19 by vsporer           #+#    #+#              #
-#    Updated: 2018/04/06 11:15:19 by ygaude           ###   ########.fr        #
+#    Updated: 2018/04/11 14:22:43 by ygaude           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,13 +123,6 @@ fclean: clean
 	@rm -f $(ASM)
 	@make -C $(PATH_LIBFT) fclean
 	@echo "$(C_DEL)$(ASM), $(VM) and $(LIBFT) removed.$(C_RESET)"
-
-test: all
-	@echo "\\/\\/\\/\\/\\/\\/\\/BEGIN TEST\\/\\/\\/\\/\\/\\/\\/"
-	@echo ""
-	@./$(NAME)
-	@echo ""
-	@echo "/\\/\\/\\/\\/\\/\\/\\END TEST/\\/\\/\\/\\/\\/\\/\\"
 
 re: fclean all
 
