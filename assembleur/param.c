@@ -93,7 +93,7 @@ unsigned char	launc_param(t_op op, char *src, t_env *env, unsigned char octal)
 			s = (s == 1) ? 2 : s;
 		else if (s == 0 && src[env->index] != SEPARATOR_CHAR && (s = 1))
 			octal = octal * 4 + check_param(src, env, op, type);
-		else if ((s == 1 || s == 3) && src[env->index] == SEPARATOR_CHAR)
+		else if ((s > 0 || s < 4) && src[env->index] == SEPARATOR_CHAR)
 		{
 			if (!(s = 0) && ++nb_arg > op.nb_params)
 				ft_error(env, op.name, 6);

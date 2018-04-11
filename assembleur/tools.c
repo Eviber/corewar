@@ -66,7 +66,7 @@ void	memory_manager(t_env *env, int size)
 	long cmp;
 
 	if (env->pos + size > CHAMP_MAX_SIZE)
-		env->error = 2;
+		ft_error(env, NULL, 8);
 	else if (env->pos + size > env->size_champ)
 	{
 		cmp = -1;
