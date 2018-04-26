@@ -6,7 +6,7 @@
 /*   By: ygaude <ygaude@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 09:37:09 by ygaude            #+#    #+#             */
-/*   Updated: 2018/03/26 19:18:36 by ygaude           ###   ########.fr       */
+/*   Updated: 2018/04/26 20:47:53 by ygaude           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void			hudchamp(t_winenv *env, t_vm *vm, t_header *champ, int i)
 	dst.y = env->hudrect.w / 10 + env->hudrect.h * i / 5;
 	dst.y = env->hudrect.h + env->charrect.h - (4 - i) * \
 	(env->charrect.h * 7 + env->hudrect.w / 20);
-	ft_asprintf(&str, "Champion %d : %16s", champ->num, champ->prog_name);
+	ft_asprintf(&str, "Champion %d : %15", champ->num, champ->prog_name);
 	dst = hudputstr(env, str, dst, env->proc_palette[champ->index_color]);
 	ft_asprintf(&str, "Size : %22lu", champ->prog_size);
 	dst = hudputstr(env, str, dst, env->proc_palette[champ->index_color]);
