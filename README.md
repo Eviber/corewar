@@ -1,6 +1,7 @@
 # Corewar
 
 **([Video example](https://youtu.be/Ty2P6FtErXk))**
+![Corewar screenshot](https://i.imgur.com/v0MLoDQ.png "Corewar screenshot")
 
 What is Corewar?
 * Corewar is a very peculiar game. It’s about bringing “players” together around a “virtual machine”, which will load some “champions” who will fight against one an- other with the support of “processes”, with the objective being for these champions to stay “alive”.
